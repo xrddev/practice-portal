@@ -1,31 +1,35 @@
 package xrddev.practiceportal.model.enums;
 
 public enum Interests {
-    TECHNOLOGY,                  // Interest in tech trends, gadgets, and innovation
-    ART,                         // Interest in visual arts, design, and creativity
-    MUSIC,                       // Listening to, performing, or composing music
-    TRAVELING,                   // Exploring new places, cultures, and experiences
-    SPORTS,                      // Playing, following, or studying sports
-    READING,                     // Passion for literature, books, and knowledge
-    WRITING,                     // Creative, academic, or professional writing
-    SOCIAL_MEDIA,                // Engaging with social networks and online communities
-    GAMING,                      // Video games, e-sports, and interactive entertainment
-    ENVIRONMENT,                 // Sustainability, ecology, and environmental protection
-    HEALTHCARE,                  // Interest in medicine, health, and wellbeing
-    ENTREPRENEURSHIP,            // Starting businesses, startups, and innovation hubs
-    EDUCATION,                   // Passion for teaching, learning, and mentoring
-    DESIGN,                      // Graphic, product, interior, or fashion design
-    SCIENCE,                     // Fascination with scientific discovery and research
-    VOLUNTEERING,                // Social contribution, community service, and NGOs
-    FILM_CINEMA,                 // Movies, filmmaking, and cinema culture
-    THEATER,                     // Acting, stagecraft, and performance arts
-    ANIMALS,                     // Caring for animals, veterinary interests
-    HISTORY_CULTURE,             // Exploring history, archaeology, and cultural heritage
-    FINANCE,                     // Investing, stock markets, and financial literacy
-    LAW_JUSTICE,                 // Legal systems, human rights, and justice
-    AGRICULTURE,                 // Interest in farming, food production, and sustainability
-    ASTRONOMY,                   // Exploring the universe, space science
-    PUBLIC_SPEAKING,             // Presenting ideas confidently, debating
-    DIY_CRAFTS,                  // Creating handmade items, do-it-yourself projects
-    PHOTOGRAPHY                  // Capturing moments through photography and editing
+    COMPUTER_SCIENCE,            // Study of computation, algorithms, and systems
+    ARTIFICIAL_INTELLIGENCE,     // Research in AI, ML, and intelligent systems
+    DATA_SCIENCE,                // Working with data analysis, big data, statistics
+    CYBERSECURITY,               // Information security, risk assessment
+    SOFTWARE_ENGINEERING,        // Design and development of software systems
+    NETWORKS,                    // Computer networks, IoT, telecommunications
+    ROBOTICS,                    // Automation, robotic systems
+    ELECTRICAL_ENGINEERING,      // Power systems, control, electronics
+    MECHANICAL_ENGINEERING,      // Mechanics, CAD, industrial systems
+    CIVIL_ENGINEERING,           // Structures, geotechnics, environmental
+    ENVIRONMENTAL_SCIENCES,      // Ecology, sustainability, climate studies
+    BIOTECHNOLOGY,               // Molecular biology, genetics, bioprocesses
+    MEDICAL_SCIENCES,            // Healthcare research, medical tech
+    BUSINESS_ADMINISTRATION,     // Strategy, marketing, operations
+    ECONOMICS,                   // Micro/macro economics, finance
+    LAW,                         // Legal studies, human rights, corporate law
+    PSYCHOLOGY,                  // Cognitive, clinical, social psychology
+    EDUCATION_SCIENCES,          // Pedagogy, e-learning, curriculum design
+    LINGUISTICS,                 // Phonetics, syntax, language learning
+    HISTORY,                     // Historical research, archaeology
+    PHILOSOPHY,                  // Logic, ethics, epistemology
+    ARCHITECTURE,                // Urban planning, architectural design
+    AGRICULTURAL_SCIENCES,       // Crop sciences, agri-tech, sustainability
+    ASTRONOMY,                   // Space exploration, astrophysics
+    MEDIA_COMMUNICATIONS,        // Journalism, digital media
+    SOCIAL_SCIENCES,             // Sociology, anthropology, political science
+    ART_STUDIES,                 // Visual arts, fine arts theory
+    MUSIC_STUDIES,               // Musicology, performance studies
+    LITERATURE,                  // Literary analysis, theory
+    PUBLIC_HEALTH,               // Epidemiology, health systems
+    ETHICS_AND_DEONTOLOGY        // Ethics, compliance, professional standards
 }

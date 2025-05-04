@@ -9,4 +9,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByEmail(String email); // Για μελλοντική επικύρωση email
     Optional<User> findByUsername(String username); // Για μελλοντική επικύρωση username
+    boolean existsByUsername(String username);
+
 }

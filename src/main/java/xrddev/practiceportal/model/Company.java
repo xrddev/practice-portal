@@ -33,12 +33,22 @@ public class Company extends User {
 
     @Column(name = "website", nullable = true, length = 100)
     @Size(max = 100, message = "Website can be up to 100 characters.")
-    @Pattern(regexp = "^(https?:\\/\\/)?([\\w\\-]+\\.)+[\\w\\-]+(\\/\\S*)?$", 
+    @Pattern(
+            regexp = "^(https?:\\/\\/)?([\\w\\-]+\\.)+[a-zA-Z]{2,}(\\/\\S*)?$",
             message = "Website must be a valid URL format.")
     private String website;
 
+    @Column(name = "internship_coordinator", nullable = false, length = 100)
+    @NotNull(message = "Internship coordinator cannot be null!")
+    @Size(max = 100, message = "Internship coordinator's name can be up to 100 characters.")
+    private String internshipCoordinator;
+
+    @Column(name = "internship_coordinator_email", nullable = false, length = 100)
+    @NotNull(message = "Internship coordinator email cannot be null!")
+    @Email(message = "Internship coordinator email must be valid.")
+    @Size(max = 100, message = "Internship coordinator email can be up to 100 characters.")
+    private String internshipCoordinatorEmail;
+
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<InternshipPosition> internshipPositions;
-
-
 }

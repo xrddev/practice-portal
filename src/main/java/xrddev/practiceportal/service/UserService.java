@@ -8,29 +8,19 @@ import xrddev.practiceportal.model.User;
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    // Αποθήκευση χρήστη στη βάση δεδομένων
-    public User registerUser(User user) {
-        // Επικύρωση: αν υπάρχει ήδη email ή username
-        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
-            throw new RuntimeException("Email is already taken.");
-        }
-        if (userRepository.findByUsername(user.getUsername()).isPresent()) {
-            throw new RuntimeException("Username is already taken.");
-        }
-
-        // Κρυπτογράφηση του password (προαιρετικά)
-        user.setPassword(encryptPassword(user.getPassword()));
-
-        // Αποθήκευση στη βάση δεδομένων
-        return userRepository.save(user);
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    // Μέθοδος κρυπτογράφησης password (για Spring Security Bcrypt)
-    private String encryptPassword(String password) {
-        // Στην πραγματική εφαρμογή θα χρησιμοποιήσεις BCryptPasswordEncoder
-        return password; // Το αφήνουμε απλό για αρχή
+    // Υλοποίηση του existsByUsername
+    public boolean existsByUsername(String username) {
+        return userRepository.existsByUsername(username);
+    }
+
+    // Υλοποίηση αποθήκευσης χρήστη
+    public void save(User user) {
+        userRepository.save(user);
     }
 }
