@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <link rel="icon" href="/uoi-logo-new-1024x784.webp" type="image/webp">
     <meta charset="UTF-8">
@@ -224,7 +226,11 @@
     Please fix the errors and try again.
 </div>
 
+
 <form action="/public/register/student" method="post" onsubmit="return validateForm()">
+
+    <input type="hidden" name="userId" th:value="${userId}">
+
     <!-- Student Number -->
     <label for="studentNumber">Student Number:</label>
     <input type="text" id="studentNumber" name="studentNumber" placeholder="e.g., 1234567" required>

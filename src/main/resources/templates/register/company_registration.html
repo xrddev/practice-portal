@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/uoi-logo-new-1024x784.webp" type="image/webp">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Ubuntu Mono', monospace;
+            background: linear-gradient(135deg, #0073e6, #00b3b3);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-align: center;
+            color: #ffcc33;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 450px;
+            animation: slideIn 1s;
+        }
+
+        label {
+            font-size: 1rem;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Ubuntu Mono', monospace;
+            font-size: 1rem;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border: 2px solid #ffcc33;
+            box-shadow: 0 0 5px rgba(255, 204, 51, 0.8);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0059b3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Ubuntu Mono', monospace;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #003d80;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 10px 0;
+            font-size: 0.8rem;
+            margin-top: auto;
+            width: 100%;
+            border: none;
+        }
+
+        .tooltip {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: -5px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .message-box {
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .message-box.success {
+            background: rgba(46, 204, 113, 0.9);
+            color: white;
+        }
+
+        .message-box.error {
+            background: rgba(231, 76, 60, 0.9);
+            color: white;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Company Registration</h1>
+
+<div class="message-box success" style="display: none;" id="success-message">
+    Registration successful!
+</div>
+<div class="message-box error" style="display: none;" id="error-message">
+    Please fill in all required fields correctly.
+</div>
+
+<form action="/public/register/company" method="post" onsubmit="return validateCompanyForm()">
+
+    <label for="companyName">Company Name:</label>
+    <input type="text" id="companyName" name="companyName" placeholder="Enter company name" required>
+    <div class="tooltip">Official registered name of the company.</div>
+
+    <label for="address">Address:</label>
+    <input type="text" id="address" name="address" placeholder="e.g., Ermou 25, Athens, 10563" required>
+    <div class="tooltip">Provide full address in the format: <strong>Street Number, City, Postal Code</strong> (separated by commas).</div>
+
+    <label for="phone">Phone:</label>
+    <input type="text" id="phone" name="phone" placeholder="Enter phone number" required>
+    <div class="tooltip">Company's contact phone number.</div>
+
+    <label for="website">Website:</label>
+    <input type="text" id="website" name="website" placeholder="Enter company website">
+    <div class="tooltip">Link to your official website (optional).</div>
+
+    <label for="internshipCoordinator">Internship Coordinator:</label>
+    <input type="text" id="internshipCoordinator" name="internshipCoordinator" placeholder="Enter coordinator's name" required>
+    <div class="tooltip">Person responsible for student internships.</div>
+
+    <label for="internshipCoordinatorEmail">Internship Coordinator Email:</label>
+    <input type="email" id="internshipCoordinatorEmail" name="internshipCoordinatorEmail" placeholder="Enter coordinator's email" required>
+    <div class="tooltip">Valid email address of the coordinator.</div>
+
+    <button type="submit">Register</button>
+</form>
+
+<footer>
+    &copy; 2025. Developed with ❤️ by
+    <a href="https://github.com/xrddev" style="color: #ffcc33; text-decoration: none;" target="_blank">
+        xrddev
+    </a>.
+</footer>
+
+<script>
+    function validateCompanyForm() {
+        const name = document.getElementById("companyName").value.trim();
+        const address = document.getElementById("address").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const website = document.getElementById("website").value.trim();
+        const coordinator = document.getElementById("internshipCoordinator").value.trim();
+        const email = document.getElementById("internshipCoordinatorEmail").value.trim();
+
+        if (!name || !address || !phone || !coordinator || !email) {
+            showError("Please fill in all required fields.");
+            return false;
+        }
+
+        // Length checks
+        if (name.length > 150) {
+            showError("Company name can be up to 150 characters.");
+            return false;
+        }
+
+        if (address.length > 200) {
+            showError("Address can be up to 200 characters.");
+            return false;
+        }
+
+        if (coordinator.length > 100) {
+            showError("Coordinator name can be up to 100 characters.");
+            return false;
+        }
+
+        if (email.length > 100) {
+            showError("Coordinator email can be up to 100 characters.");
+            return false;
+        }
+
+        if (website.length > 0 && website.length > 100) {
+            showError("Website can be up to 100 characters.");
+            return false;
+        }
+
+        // Address: τουλάχιστον 2 κόμματα
+        const commaCount = (address.match(/,/g) || []).length;
+        if (commaCount < 2) {
+            showError("Address must be in the format: Street Number, City, Postal Code (with commas).");
+            return false;
+        }
+
+        // Address: τελειώνει με 5 ψηφία
+        const addressPattern = /,\s*\d{5}$/;
+        if (!addressPattern.test(address)) {
+            showError("The address must end with a valid 5-digit postal code.");
+            return false;
+        }
+
+        // Phone: μόνο αριθμοί και κενά, επιτρέπεται + στην αρχή, 7–15 χαρακτήρες
+        const phonePattern = /^\+?[0-9 ]{7,15}$/;
+        if (!phonePattern.test(phone)) {
+            showError("Phone number must be 7-15 digits and can include spaces and an optional '+'.");
+            return false;
+        }
+
+        // Website (αν έχει δοθεί): απλό αλλά ασφαλές regex
+        const websitePattern = /^(https?:\/\/)?([\w\-]+\.)+[a-z]{2,}(\/\S*)?$/i;
+        if (website && !websitePattern.test(website)) {
+            showError("Website must be a valid URL.");
+            return false;
+        }
+
+        // Email: σωστή μορφή
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            showError("Please enter a valid email address.");
+            return false;
+        }
+
+        document.getElementById("success-message").style.display = "block";
+        return true;
+    }
+
+
+    function showError(message) {
+        const errorMessage = document.getElementById("error-message");
+        errorMessage.textContent = message;
+        errorMessage.style.display = "block";
+    }
+</script>
+
+</body>
+</html>

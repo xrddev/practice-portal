@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/uoi-logo-new-1024x784.webp" type="image/webp">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Ubuntu Mono', monospace;
+            background: linear-gradient(135deg, #0073e6, #00b3b3);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-align: center;
+            color: #ffcc33;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 450px;
+            animation: slideIn 1s;
+        }
+
+        label {
+            font-size: 1rem;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Ubuntu Mono', monospace;
+            font-size: 1rem;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border: 2px solid #ffcc33;
+            box-shadow: 0 0 5px rgba(255, 204, 51, 0.8);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0059b3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Ubuntu Mono', monospace;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #003d80;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 10px 0;
+            font-size: 0.8rem;
+            margin-top: auto;
+            width: 100%;
+            border: none;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tooltip {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: -5px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .message-box {
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .message-box.success {
+            background: rgba(46, 204, 113, 0.9);
+            color: white;
+        }
+
+        .message-box.error {
+            background: rgba(231, 76, 60, 0.9);
+            color: white;
+        }
+
+        .selected-interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px;
+            border: 1px solid #ffcc33;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .interest-tag {
+            display: flex;
+            align-items: center;
+            background: #0073e6;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-family: 'Ubuntu Mono', monospace;
+        }
+
+        .interest-tag button {
+            all: unset;
+            background: #ff4d4d;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-left: 10px;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .interest-tag button:hover {
+            background: #ff3333;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+<h1>Professor Registration</h1>
+
+<div class="message-box success" style="display: none;" id="success-message">
+    Registration successful!
+</div>
+<div class="message-box error" style="display: none;" id="error-message">
+    Please fix the errors and try again.
+</div>
+
+<form action="/public/register/professor" method="post" onsubmit="return validateProfessorForm()">
+
+    <!-- First Name -->
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+    <div class="tooltip">Enter your first name.</div>
+
+    <!-- Last Name -->
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+    <div class="tooltip">Enter your last name.</div>
+
+    <!-- Interests -->
+    <label for="interestsSelect">Interests:</label>
+    <div>
+        <select id="interestsSelect" name="interestsDropdown">
+            <option value="" disabled selected>Select an interest</option>
+        </select>
+    </div>
+    <div class="tooltip">Select topics you are interested in supervising. You can choose multiple interests.</div>
+    <div id="selectedInterestsContainer" class="selected-interests"></div>
+    <input type="hidden" id="interestsHiddenInput" name="interests">
+    <div class="tooltip">Choose interests one by one. Selected interests will appear above.</div>
+
+    <!-- Submit Button -->
+    <button type="submit">Register</button>
+</form>
+
+<footer>
+    &copy; 2025. Developed with ❤️ by
+    <a href="https://github.com/xrddev" style="color: #ffcc33; text-decoration: none;" target="_blank">
+        xrddev
+    </a>.
+</footer>
+
+<script>
+    const API_TOKEN = "my-secure-api-token";  // Αντικατάστησέ το με το πραγματικό σου token
+    let selectedInterests = [];
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            const response = await fetch('/api/interests', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-API-TOKEN': API_TOKEN
+                }
+            });
+            if (!response.ok) {
+                throw new Error(`Failed to load interests: ${response.statusText}`);
+            }
+            const data = await response.json();
+            const interests = data.interests || data;  // Πιάνει και array και object
+            console.log('Loaded interests:', interests);  // Debug log
+
+            const interestsSelect = document.getElementById('interestsSelect');
+            interestsSelect.innerHTML = '<option value="" disabled selected>Select an interest</option>';
+            interests.forEach(interest => {
+                const option = document.createElement('option');
+                option.value = interest;
+                option.textContent = interest.replace(/_/g, ' ').toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+                interestsSelect.appendChild(option);
+            });
+            interestsSelect.addEventListener('change', (event) => {
+                const selectedValue = event.target.value;
+                if (selectedValue && !selectedInterests.includes(selectedValue)) {
+                    selectedInterests.push(selectedValue);
+                    updateInterestsContainer();
+                }
+                interestsSelect.value = "";
+            });
+        } catch (error) {
+            console.error('Error loading interests:', error);
+            const interestsSelect = document.getElementById('interestsSelect');
+            interestsSelect.innerHTML = '<option value="" disabled>Failed to load interests</option>';
+        }
+    });
+
+    function updateInterestsContainer() {
+        const container = document.getElementById('selectedInterestsContainer');
+        container.innerHTML = '';
+        selectedInterests.forEach(interest => {
+            const interestTag = document.createElement('div');
+            interestTag.className = 'interest-tag';
+            interestTag.textContent = interest.replace(/_/g, ' ').toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+            const removeButton = document.createElement('button');
+            removeButton.textContent = '×';
+            removeButton.onclick = () => removeInterest(interest);
+            interestTag.appendChild(removeButton);
+            container.appendChild(interestTag);
+        });
+        document.getElementById('interestsHiddenInput').value = selectedInterests.join(',');
+    }
+
+    function removeInterest(interest) {
+        selectedInterests = selectedInterests.filter(i => i !== interest);
+        updateInterestsContainer();
+    }
+
+    function validateProfessorForm() {
+        const firstName = document.getElementById("firstName").value.trim();
+        const lastName = document.getElementById("lastName").value.trim();
+
+        if (!firstName || firstName.length > 50) {
+            showError("First name is required and can be up to 50 characters.");
+            return false;
+        }
+        if (!lastName || lastName.length > 50) {
+            showError("Last name is required and can be up to 50 characters.");
+            return false;
+        }
+        if (selectedInterests.length === 0) {
+            showError("Please select at least one interest.");
+            return false;
+        }
+        document.getElementById("success-message").style.display = "block";
+        return true;
+    }
+
+    function showError(message) {
+        const errorMessage = document.getElementById("error-message");
+        errorMessage.textContent = message;
+        errorMessage.style.display = "block";
+    }
+</script>
+</body>
+</html>
