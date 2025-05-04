@@ -1,0 +1,540 @@
+<head>
+    <link rel="icon" href="/uoi-logo-new-1024x784.webp" type="image/webp">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        /* Αφαιρεί τα βελάκια στα input τύπου number */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield; /* Για Firefox */
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Ubuntu Mono', monospace;
+            background: linear-gradient(135deg, #0073e6, #00b3b3);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-align: center;
+            color: #ffcc33;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 450px;
+            animation: slideIn 1s;
+        }
+
+        label {
+            font-size: 1rem;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Ubuntu Mono', monospace;
+            font-size: 1rem;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border: 2px solid #ffcc33;
+            box-shadow: 0 0 5px rgba(255, 204, 51, 0.8);
+        }
+
+        textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0059b3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Ubuntu Mono', monospace;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #003d80;
+            transform: scale(1.05);
+        }
+
+        button:disabled {
+            background-color: #666666;
+            cursor: not-allowed;
+        }
+
+        footer {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 10px 0;
+            font-size: 0.8rem;
+            margin-top: auto;
+            width: 100%;
+            border: none;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tooltip {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: -5px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .message-box {
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .message-box.success {
+            background: rgba(46, 204, 113, 0.9);
+            color: white;
+        }
+
+        .message-box.error {
+            background: rgba(231, 76, 60, 0.9);
+            color: white;
+        }
+
+        .selected-skills,
+        .selected-interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px;
+            border: 1px solid #ffcc33;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .skill-tag,
+        .interest-tag {
+            display: flex;
+            align-items: center;
+            background: #0073e6;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-family: 'Ubuntu Mono', monospace;
+        }
+
+        .skill-tag button,
+        .interest-tag button {
+            all: unset;
+            background: #ff4d4d;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-left: 10px;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .skill-tag button:hover,
+        .interest-tag button:hover {
+            background: #ff3333;
+            transform: scale(1.1);
+        }
+
+        .skill-tag button:focus,
+        .interest-tag button:focus {
+            outline: none;
+        }
+
+        .skill-tag button:active,
+        .interest-tag button:active {
+            transform: scale(0.95);
+        }
+
+    </style>
+</head>
+
+
+
+<body>
+<h1>Student Registration</h1>
+<!-- Μήνυμα επιτυχίας ή λάθους -->
+<div class="message-box success" style="display: none;" id="success-message">
+    Registration successful!
+</div>
+<div class="message-box error" style="display: none;" id="error-message">
+    Please fix the errors and try again.
+</div>
+
+<form action="/public/register/student" method="post" onsubmit="return validateForm()">
+    <!-- Student Number -->
+    <label for="studentNumber">Student Number:</label>
+    <input type="text" id="studentNumber" name="studentNumber" placeholder="e.g., 1234567" required>
+    <div class="tooltip">Your unique university number (5-7 digits).</div>
+
+    <!-- Department -->
+    <label for="department">Department:</label>
+    <select id="department" name="department" required>
+        <option value="">Loading...</option>
+    </select>
+    <div class="tooltip">Choose the department you belong to.</div>
+
+    <!-- Year of Study -->
+    <label for="yearOfStudy">Year of Study:</label>
+    <input type="number" id="yearOfStudy" name="yearOfStudy" placeholder="Enter your year of study" required>
+    <div class="tooltip">Enter your current year of study (e.g., 1, 2, 3).</div>
+
+    <!-- Average Grade -->
+    <label for="averageGrade">Grade:</label>
+    <input type="number" id="averageGrade" name="averageGrade" placeholder="Enter your grade" required>
+    <div class="tooltip">Enter your grade as an integer value (e.g., 5, 6, 7).</div>
+
+    <!-- Skills -->
+    <label for="skillsSelect">Skills:</label>
+    <div>
+        <select id="skillsSelect" name="skillsDropdown">
+            <option value="" disabled selected>Select a skill</option>
+        </select>
+    </div>
+    <div id="selectedSkillsContainer" class="selected-skills">
+        <!-- Εδώ θα εμφανίζονται τα επιλεγμένα skills -->
+    </div>
+    <!-- Κρυφό input για αποστολή επιλεγμένων skills -->
+    <input type="hidden" id="skillsHiddenInput" name="skills">
+
+    <div class="tooltip">
+        Choose skills one by one. Selected skills will appear inside the box above.
+    </div>
+
+
+    <label for="interestsSelect">Interests:</label>
+    <div>
+        <select id="interestsSelect" name="interestsDropdown">
+            <option value="" disabled selected>Select an interest</option>
+        </select>
+    </div>
+    <div id="selectedInterestsContainer" class="selected-interests">
+        <!-- Εδώ θα εμφανίζονται τα επιλεγμένα interests -->
+    </div>
+
+    <!-- Κρυφό input για αποστολή επιλεγμένων interests -->
+    <input type="hidden" id="interestsHiddenInput" name="interests">
+
+    <div class="tooltip">
+        Choose interests one by one. Selected interests will appear inside the box above.
+    </div>
+
+
+    <!-- Preferred Location -->
+    <label for="preferredLocation">Preferred Location:</label>
+    <input type="text" id="preferredLocation" name="preferredLocation" placeholder="e.g., Ioannina">
+    <div class="tooltip">Where would you prefer to work?</div>
+
+
+    <!-- Submit Button -->
+    <button type="submit" id="submit-button">Register</button>
+</form>
+
+
+<footer>
+    &copy; 2025. Developed with ❤️ by
+    <a href="https://github.com/xrddev" target="_blank"
+       style="color: #ffcc33; text-decoration: none;">
+        xrddev
+    </a>.
+</footer>
+
+
+
+
+<script>
+    function validateForm() {
+        const studentNumber = document.getElementById("studentNumber").value;
+        const yearOfStudy = document.getElementById("yearOfStudy").value;
+        const averageGrade = document.getElementById("averageGrade").value;
+
+        // Ενημέρωση του hidden input με τις επιλεγμένες δεξιότητες
+        const hiddenInput = document.getElementById('skillsHiddenInput');
+        hiddenInput.value = selectedSkills.join(","); // Μετατροπή του array σε συμβολοσειρά με κόμμα (,)
+
+        if (!/^\d{5,7}$/.test(studentNumber)) {
+            showError("Invalid student number. Must be 5-7 digits.");
+            return false;
+        }
+
+        if (yearOfStudy < 1 || yearOfStudy > 10) {
+            showError("Year of study must be between 1 and 10.");
+            return false;
+        }
+
+        if (averageGrade < 0 || averageGrade > 10) {
+            showError("Average grade must be between 0.0 and 10.0.");
+            return false;
+        }
+
+        if (selectedSkills.length === 0) {
+            showError("Please select at least one skill.");
+            return false;
+        }
+
+        if (selectedInterests.length === 0) {
+            showError("Please select at least one interest.");
+            return false;
+        }
+
+        document.getElementById("success-message").style.display = "block";
+        return true;
+    }
+
+    function showError(message) {
+        const errorMessage = document.getElementById("error-message");
+        errorMessage.textContent = message;
+        errorMessage.style.display = "block";
+    }
+
+
+
+    // Token για το API
+    const API_TOKEN = "my-secure-api-token";
+
+    // Φόρτωση των Departments από το backend με χρήση του token
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            const response = await fetch('/api/departments', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-API-TOKEN': API_TOKEN // Προσθήκη του Token εδώ
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to load departments: " + response.statusText);
+            }
+
+            const departments = await response.json(); // Ανάγνωση των δεδομένων JSON
+            const departmentSelect = document.getElementById('department'); // Επιλογή του select πεδίου
+
+            // Καθαρισμός υπάρχουσας λίστας και προσθήκη δυναμικών επιλογών
+            departmentSelect.innerHTML = '<option value="">Select your department</option>';
+            departments.forEach(department => {
+                const option = document.createElement('option');
+                option.value = department;
+                option.textContent = department.replace(/_/g, ' ') // Αντικαθιστά "_" με κενά
+                    .toLowerCase()
+                    .replace(/\b\w/g, c => c.toUpperCase()); // Κεφαλαίο πρώτο γράμμα σε κάθε λέξη
+                departmentSelect.appendChild(option);
+            });
+        } catch (error) {
+            console.error("Error loading departments:", error);
+            const departmentSelect = document.getElementById('department');
+            departmentSelect.innerHTML = '<option value="">Failed to load departments</option>'; // Εμφάνιση μηνύματος αποτυχίας
+        }
+    });
+
+
+    let selectedSkills = [];
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            const response = await fetch('/api/skills', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-API-TOKEN': API_TOKEN
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to load skills: " + response.status);
+            }
+
+            const skills = await response.json();
+            const skillsSelect = document.getElementById('skillsSelect');
+
+            // Καθαρισμός παλιών δεδομένων
+            skillsSelect.innerHTML = '<option value="" disabled selected>Select a skill</option>';
+
+            // Προσθήκη skills στη λίστα
+            skills.forEach(skill => {
+                const option = document.createElement('option');
+                option.value = skill;
+                option.textContent = skill.replace(/_/g, ' ')
+                    .toLowerCase()
+                    .replace(/\b\w/g, c => c.toUpperCase());
+                skillsSelect.appendChild(option);
+            });
+
+            // Event listener για αυτόματη προσθήκη skill
+            skillsSelect.addEventListener('change', (event) => {
+                const selectedValue = event.target.value;
+                if (selectedValue && !selectedSkills.includes(selectedValue)) {
+                    selectedSkills.push(selectedValue); // Προσθήκη στο array
+                    updateSkillsContainer(); // Ενημέρωση του UI
+                }
+                skillsSelect.value = ""; // Επαναφορά του dropdown
+            });
+        } catch (error) {
+            console.error("Error loading skills:", error);
+            const skillsSelect = document.getElementById('skillsSelect');
+            skillsSelect.innerHTML = '<option value="" disabled>Failed to load skills</option>';
+        }
+    });
+
+    function updateSkillsContainer() {
+        const container = document.getElementById('selectedSkillsContainer');
+        container.innerHTML = ''; // Καθαρισμός παλιών δεδομένων
+
+        selectedSkills.forEach(skill => {
+            const skillTag = document.createElement('div');
+            skillTag.className = 'skill-tag';
+            skillTag.textContent = skill.replace(/_/g, ' ')
+                .toLowerCase()
+                .replace(/\b\w/g, c => c.toUpperCase());
+
+            const removeButton = document.createElement('button');
+            removeButton.textContent = '×';
+            removeButton.onclick = () => removeSkill(skill);
+
+            skillTag.appendChild(removeButton);
+            container.appendChild(skillTag);
+        });
+    }
+    function removeSkill(skill) {
+        selectedSkills = selectedSkills.filter(s => s !== skill); // Αφαίρεση από το array
+        updateSkillsContainer(); // Ενημέρωση του UI
+    }
+
+
+    let selectedInterests = []; // Πίνακας για τα επιλεγμένα interests
+    document.addEventListener('DOMContentLoaded', async () => {
+        // Φόρτωση των Interests από το backend
+        try {
+            const response = await fetch('/api/interests', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-API-TOKEN': API_TOKEN
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to load interests: ${response.statusText}`);
+            }
+
+            const interests = await response.json();
+            const interestsSelect = document.getElementById('interestsSelect');
+
+            // Προσθήκη options για τα interests
+            interestsSelect.innerHTML = '<option value="" disabled selected>Select an interest</option>';
+            interests.forEach(interest => {
+                const option = document.createElement('option');
+                option.value = interest;
+                option.textContent = interest.replace(/_/g, ' ')
+                    .toLowerCase()
+                    .replace(/\b\w/g, c => c.toUpperCase());
+                interestsSelect.appendChild(option);
+            });
+
+            // Αυτόματη προσθήκη στη λίστα ενδιαφερόντων
+            interestsSelect.addEventListener('change', (event) => {
+                const selectedValue = event.target.value;
+                if (selectedValue && !selectedInterests.includes(selectedValue)) {
+                    selectedInterests.push(selectedValue); // Προσθήκη στο array
+                    updateInterestsContainer(); // Ενημέρωση UI
+                }
+                interestsSelect.value = ""; // Επαναφορά επιλογής dropdown
+            });
+        } catch (error) {
+            console.error('Error loading interests:', error);
+            const interestsSelect = document.getElementById('interestsSelect');
+            interestsSelect.innerHTML = '<option value="" disabled>Failed to load interests</option>';
+        }
+    });
+    function updateInterestsContainer() {
+        const container = document.getElementById('selectedInterestsContainer');
+        container.innerHTML = ''; // Καθαρισμός παλιών δεδομένων
+
+        selectedInterests.forEach(interest => {
+            const interestTag = document.createElement('div');
+            interestTag.className = 'interest-tag';
+            interestTag.textContent = interest.replace(/_/g, ' ')
+                .toLowerCase()
+                .replace(/\b\w/g, c => c.toUpperCase());
+
+            const removeButton = document.createElement('button');
+            removeButton.textContent = '×';
+            removeButton.onclick = () => removeInterest(interest);
+
+            interestTag.appendChild(removeButton);
+            container.appendChild(interestTag);
+        });
+
+        // Ενημέρωση του hidden input
+        document.getElementById('interestsHiddenInput').value = selectedInterests.join(',');
+    }
+    function removeInterest(interest) {
+        selectedInterests = selectedInterests.filter(i => i !== interest);
+        updateInterestsContainer();
+    }
+
+</script>
+</body>
+</html>

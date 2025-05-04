@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/uoi-logo-new-1024x784.webp" type="image/webp">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Portal - University of Ioannina</title>
+    <!-- Προσθήκη σύνδεσης με την ίδια Google Font όπως στο register.html -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Ubuntu Mono', monospace;
+            background: linear-gradient(135deg, #0073e6, #00b3b3);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-top: 40px; /* Λιγότερο κενό από πάνω */
+            font-size: 3.5rem; /* Μεγάλη και ευδιάκριτη γραμματοσειρά */
+            text-align: center; /* Κεντραρισμένο */
+            color: #ffcc33; /* Απαλό γαλάζιο χρώμα */
+            font-family: 'Ubuntu Mono', monospace; /* Ubuntu Mono γραμματοσειρά */
+            line-height: 1.2; /* Αναλογία γραμμών */
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+            letter-spacing: 1.5px; /* Βελτίωση διαστήματος γραμμάτων */
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            margin-top: 40px; /* Spacing between the title and the box */
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0059b3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #003d80;
+            transform: scale(1.05);
+        }
+
+        .announcements {
+            margin-top: 25px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            margin-top: 40px;
+        }
+
+        .announcement-item {
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+
+        footer {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3); /* Χρώμα background για συνέπεια */
+            color: rgba(255, 255, 255, 0.9); /* Χρώμα font για συνέπεια */
+            padding: 10px 0; /* Προσθήκη padding */
+            font-size: 0.8rem; /* Ίδιο μέγεθος γραμματοσειράς */
+            margin-top: auto; /* Κρατά το footer στο κάτω μέρος */
+            width: 100%; /* Καλύπτει ολόκληρο το πλάτος */
+            border: none; /* Εξασφαλίζει ότι δεν υπάρχει γραμμή */
+        }
+
+
+
+    </style>
+</head>
+<body>
+<!-- Page Header -->
+<h1>Practice Portal of the University of Ioannina</h1>
+
+
+<!-- Login Container -->
+<div class="container">
+    <h2>Login</h2>
+    <form action="/login" method="post">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+
+    <!-- Links for Registration and Password Reset -->
+    <p style="margin-top: 15px;">
+        <a href="/reset-password" style="color: #ffcc33; text-decoration: none;">
+            Forgot your password?
+        </a>
+    </p>
+    <p style="margin-top: 15px;">
+        Don't have an account?
+        <a href="/public/register" style="color: #ffcc33; text-decoration: none;">
+            Register
+        </a>
+    </p>
+</div>
+
+<div class="announcements">
+    <h2>Announcements</h2>
+    <!-- Dynamically loaded announcements -->
+    <div id="announcements-container">
+        <p>Loading announcements...</p>
+    </div>
+</div>
+
+<footer>
+    &copy; 2025. Developed with ❤️ by
+    <a href="https://github.com/xrddev" target="_blank"
+       style="color: #ffcc33; text-decoration: none;">
+        xrddev
+    </a>.
+</footer>
+
+<script>
+    async function fetchAnnouncements() {
+        try {
+            // Κλήση στο backend endpoint
+            const response = await fetch('/api/announcements', {
+                method: 'GET',
+                headers: {
+                    'X-API-TOKEN': 'my-secure-api-token' // Προσθέτουμε το token
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Error communicating with the server.'); // Σφάλμα αν η κατάσταση δεν είναι "OK"
+            }
+
+            // Ανάγνωση απόκρισης JSON
+            const announcements = await response.json();
+
+            // Επιλέγουμε το container στο HTML
+            const container = document.getElementById('announcements-container');
+            container.innerHTML = ''; // Καθαρίζουμε το container
+
+            // Ελέγχουμε αν υπάρχουν ανακοινώσεις
+            if (announcements.length === 0) {
+                container.innerHTML = '<p>There are currently no announcements.</p>';
+            } else {
+                announcements.forEach(announcement => {
+                    const announcementItem = document.createElement('div');
+                    announcementItem.className = 'announcement-item';
+
+                    // Χειρισμός Ημερομηνίας
+                    let formattedDate = 'N/A'; // Εξασφαλίζουμε fallback για τη μορφή της ημερομηνίας
+                    if (announcement.datePosted) {
+                        const datePosted = new Date(announcement.datePosted); // Μετατροπή από string σε Date
+                        if (!isNaN(datePosted)) {
+                            formattedDate = datePosted.toLocaleDateString(); // Μορφή ημερομηνίας (ανάλογα με τοπικές ρυθμίσεις)
+                        }
+                    }
+
+                    // Δημιουργία περιεχομένου ανακοίνωσης
+                    announcementItem.textContent = `🔔 [${formattedDate}] ${announcement.message}`;
+                    container.appendChild(announcementItem); // Προσθήκη στο DOM
+                });
+            }
+        } catch (error) {
+            console.error('Σφάλμα:', error); // Καταγραφή σφαλμάτων στην κονσόλα
+            const container = document.getElementById('announcements-container');
+            container.innerHTML = '<p>Error loading announcements. Please try again later.</p>';
+        }
+    }
+
+    // Εκτέλεση της λειτουργίας όταν φορτώσει η σελίδα
+    document.addEventListener('DOMContentLoaded', fetchAnnouncements);
+
+</script>
+
