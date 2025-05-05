@@ -1,59 +1,63 @@
 package xrddev.practiceportal.controller.registration;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import xrddev.practiceportal.config.SessionKeys;
 import xrddev.practiceportal.model.Student;
-import xrddev.practiceportal.model.User;
 import xrddev.practiceportal.model.enums.Department;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
-import xrddev.practiceportal.repository.StudentRepository;
-import xrddev.practiceportal.repository.UserRepository;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/public/register/student")
 public class StudentRegistrationController {
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private StudentRepository studentRepository;
-
     @GetMapping
-    public String showStudentRegistrationForm(@RequestParam("userId") Long userId, Model model) {
-        model.addAttribute("userId", userId); // hidden πεδίο στο form
+    public String showStudentRegistrationForm(Model model) {
+
+        List<String> departments = Arrays.stream(Department.values()).map(Enum::name).toList();
+        model.addAttribute(SessionKeys.DEPARTMENTS, departments);
+
+        List<String> skills = Arrays.stream(Skills.values()).map(Enum::name).toList();
+        model.addAttribute(SessionKeys.SKILLS, skills);
+
+        List<String> interests = Arrays.stream(Interests.values()).map(Enum::name).toList();
+        model.addAttribute(SessionKeys.INTERESTS, interests);
+
         return "register/student_registration";
     }
 
     @PostMapping
-    @ResponseBody
-    public ResponseEntity<String> registerStudent(
-            @RequestParam Long userId,
-            @RequestParam String studentNumber,
-            @RequestParam String department,
-            @RequestParam int yearOfStudy,
-            @RequestParam double averageGrade,
-            @RequestParam(required = false) String skills,
-            @RequestParam(required = false) String interests,
-            @RequestParam(required = false) String preferredLocation) {
+    public String handleStudentRegistration(
+            @RequestParam @NotNull @Size(min = 5, max = 7) String studentNumber,
+            @RequestParam @NotNull String department,
+            @RequestParam @NotNull int yearOfStudy,
+            @RequestParam @NotNull double averageGrade,
+            @RequestParam List<String> skills,
+            @RequestParam List<String> interests,
+            @RequestParam(required = false) String preferredLocation,
+            Model model)
+    {
+        Student student = new Student();
+        student.setPassword((String) model.getAttribute(SessionKeys.PASSWORD));
+        student.setEmail((String) model.getAttribute(SessionKeys.EMAIL));
+        student.setStudentNumber(studentNumber);
+        student.setDepartment(Department.valueOf(department));
+        student.setYearOfStudy(yearOfStudy);
+        student.setAverageGrade(averageGrade);
+        student.setSkills(skills.stream().map(Skills::valueOf).toList());
+        student.setInterests(interests.stream().map(Interests::valueOf).toList());
+        student.setPreferredLocation(preferredLocation);
 
-        System.out.println("Received data for Student Registration:");
-        System.out.println("UserId: " + userId);
+        System.out.println(student);
 
-        Optional<User> optionalUser = userRepository.findById(userId);
-        if (optionalUser.isEmpty()) {
-            System.out.println("[ERROR] User not found with ID: " + userId);
-            return ResponseEntity.badRequest().body("User not found.");
-        }
-
-        return ResponseEntity.ok("Student data saved successfully!");
+        return "redirect:/public/register/success";
     }
 }
+

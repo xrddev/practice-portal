@@ -6,12 +6,17 @@ import xrddev.practiceportal.model.Announcement;
 import xrddev.practiceportal.repository.AnnouncementRepository;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Component
 public class AnnouncementService {
 
     @Autowired
     private AnnouncementRepository announcementRepository;
+
+    public List<Announcement> getAllAnnouncements() {
+        return announcementRepository.findAll(); // Επιστροφή όλων των ανακοινώσεων
+    }
 
     public void addSampleAnnouncement() {
         //Latest announcements on top

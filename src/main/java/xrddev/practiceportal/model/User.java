@@ -19,11 +19,6 @@ public class User{
     @Column(name = "user_id")
     private Long id;
 
-    @Column(name = "username", nullable = false, unique = true, length = 50)
-    @NotNull(message = "Username cannot be null !")
-    @Size(min = 3, max = 50, message = "Username has to be 3 up to 50 characters.")
-    private String username;
-
     @Column(name = "password", nullable = false, length = 64)
     @NotNull(message = "Password cannot be null !")
     @Size(min = 6, max = 64, message = "Password has to be 6 up to 64 characters.")

@@ -7,7 +7,6 @@
     <title>Create Your Account</title>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-
         *, *::before, *::after {
             box-sizing: border-box;
         }
@@ -148,9 +147,12 @@
 </div>
 
 <form id="accountForm" action="/public/register" method="post" onsubmit="return validateForm()">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" placeholder="Choose a username" required>
-    <div class="tooltip">Choose a unique username (3–50 characters) for your account.</div>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+    <div class="tooltip">
+        Enter your official university email (XXX@uoi.gr). This is your account ID and will be used for login & all communication.
+    </div>
 
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" placeholder="Enter your password" required>
@@ -160,19 +162,16 @@
     <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required>
     <div class="tooltip">Re-enter the same password to confirm.</div>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" placeholder="Enter your email" required>
-    <div class="tooltip">Enter your email address (will be used for login & communication).</div>
-
     <label for="role">Select Your Role:</label>
     <select id="role" name="role" required>
         <option value="">-- Select Role --</option>
-        <option value="STUDENT">Student</option>
-        <option value="PROFESSOR">Professor</option>
-        <option value="COMPANY">Company</option>
+        <th:block th:each="role : ${ROLES}">
+            <option th:value="${role}"
+                    th:text="${#strings.capitalize(role.toLowerCase().replace('_', ' '))}">
+            </option>
+        </th:block>
     </select>
     <div class="tooltip">Choose your role to continue the registration process.</div>
-
     <button type="submit">Continue</button>
 </form>
 
@@ -184,18 +183,15 @@
     </a>.
 </footer>
 
+
 <script>
+
     function validateForm() {
-        const username = document.getElementById("username").value.trim();
         const password = document.getElementById("password").value.trim();
         const confirmPassword = document.getElementById("confirmPassword").value.trim();
         const email = document.getElementById("email").value.trim();
         const role = document.getElementById("role").value;
 
-        if (username.length < 3 || username.length > 50) {
-            showError("Username must be between 3 and 50 characters.");
-            return false;
-        }
         if (password.length < 6 || password.length > 64) {
             showError("Password must be between 6 and 64 characters.");
             return false;
@@ -225,6 +221,7 @@
         errorMessage.textContent = message;
         errorMessage.style.display = "block";
     }
+
 </script>
 </body>
 </html>

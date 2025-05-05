@@ -19,7 +19,6 @@ public class SecurityConfig {
                                 "/index",
                                 "/public/**",
                                 "/uoi-logo-new-1024x784.webp",
-                                "/api/**",
                                 "/error/**" // Εξαίρεση για το "/error"
                         ).permitAll()
                         .anyRequest().authenticated()

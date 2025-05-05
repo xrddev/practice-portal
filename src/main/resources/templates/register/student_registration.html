@@ -229,17 +229,19 @@
 
 <form action="/public/register/student" method="post" onsubmit="return validateForm()">
 
-    <input type="hidden" name="userId" th:value="${userId}">
-
     <!-- Student Number -->
     <label for="studentNumber">Student Number:</label>
     <input type="text" id="studentNumber" name="studentNumber" placeholder="e.g., 1234567" required>
-    <div class="tooltip">Your unique university number (5-7 digits).</div>
+    <div class="tooltip">Your unique university number (5–7 digits).</div>
 
     <!-- Department -->
     <label for="department">Department:</label>
     <select id="department" name="department" required>
-        <option value="">Loading...</option>
+        <option value="" disabled selected>Select your department</option>
+        <th:block th:each="dept : ${DEPARTMENTS}">
+            <option th:value="${dept}"
+                    th:text="${#strings.replace(#strings.capitalize(dept.toLowerCase()), '_', ' ')}"></option>
+        </th:block>
     </select>
     <div class="tooltip">Choose the department you belong to.</div>
 
@@ -250,14 +252,18 @@
 
     <!-- Average Grade -->
     <label for="averageGrade">Grade:</label>
-    <input type="number" id="averageGrade" name="averageGrade" placeholder="Enter your grade" required>
-    <div class="tooltip">Enter your grade as an integer value (e.g., 5, 6, 7).</div>
+    <input type="number" id="averageGrade" name="averageGrade" placeholder="Enter your grade" step="0.01" required>
+    <div class="tooltip">Enter your grade as a decimal value (e.g., 7.5, 8.25).</div>
 
     <!-- Skills -->
     <label for="skillsSelect">Skills:</label>
     <div>
         <select id="skillsSelect" name="skillsDropdown">
             <option value="" disabled selected>Select a skill</option>
+            <th:block th:each="skill : ${SKILLS}">
+                <option th:value="${skill}"
+                        th:text="${#strings.replace(#strings.capitalize(skill.toLowerCase()), '_', ' ')}"></option>
+            </th:block>
         </select>
     </div>
     <div id="selectedSkillsContainer" class="selected-skills">
@@ -275,6 +281,10 @@
     <div>
         <select id="interestsSelect" name="interestsDropdown">
             <option value="" disabled selected>Select an interest</option>
+            <th:block th:each="interest : ${INTERESTS}">
+                <option th:value="${interest}"
+                        th:text="${#strings.replace(#strings.capitalize(interest.toLowerCase()), '_', ' ')}"></option>
+            </th:block>
         </select>
     </div>
     <div id="selectedInterestsContainer" class="selected-interests">
@@ -356,94 +366,15 @@
         errorMessage.style.display = "block";
     }
 
-
-
-    // Token για το API
-    const API_TOKEN = "my-secure-api-token";
-
-    // Φόρτωση των Departments από το backend με χρήση του token
-    document.addEventListener('DOMContentLoaded', async () => {
-        try {
-            const response = await fetch('/api/departments', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-API-TOKEN': API_TOKEN // Προσθήκη του Token εδώ
-                }
-            });
-
-            if (!response.ok) {
-                throw new Error("Failed to load departments: " + response.statusText);
-            }
-
-            const departments = await response.json(); // Ανάγνωση των δεδομένων JSON
-            const departmentSelect = document.getElementById('department'); // Επιλογή του select πεδίου
-
-            // Καθαρισμός υπάρχουσας λίστας και προσθήκη δυναμικών επιλογών
-            departmentSelect.innerHTML = '<option value="">Select your department</option>';
-            departments.forEach(department => {
-                const option = document.createElement('option');
-                option.value = department;
-                option.textContent = department.replace(/_/g, ' ') // Αντικαθιστά "_" με κενά
-                    .toLowerCase()
-                    .replace(/\b\w/g, c => c.toUpperCase()); // Κεφαλαίο πρώτο γράμμα σε κάθε λέξη
-                departmentSelect.appendChild(option);
-            });
-        } catch (error) {
-            console.error("Error loading departments:", error);
-            const departmentSelect = document.getElementById('department');
-            departmentSelect.innerHTML = '<option value="">Failed to load departments</option>'; // Εμφάνιση μηνύματος αποτυχίας
-        }
-    });
-
-
     let selectedSkills = [];
-    document.addEventListener('DOMContentLoaded', async () => {
-        try {
-            const response = await fetch('/api/skills', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-API-TOKEN': API_TOKEN
-                }
-            });
-
-            if (!response.ok) {
-                throw new Error("Failed to load skills: " + response.status);
-            }
-
-            const skills = await response.json();
-            const skillsSelect = document.getElementById('skillsSelect');
-
-            // Καθαρισμός παλιών δεδομένων
-            skillsSelect.innerHTML = '<option value="" disabled selected>Select a skill</option>';
-
-            // Προσθήκη skills στη λίστα
-            skills.forEach(skill => {
-                const option = document.createElement('option');
-                option.value = skill;
-                option.textContent = skill.replace(/_/g, ' ')
-                    .toLowerCase()
-                    .replace(/\b\w/g, c => c.toUpperCase());
-                skillsSelect.appendChild(option);
-            });
-
-            // Event listener για αυτόματη προσθήκη skill
-            skillsSelect.addEventListener('change', (event) => {
-                const selectedValue = event.target.value;
-                if (selectedValue && !selectedSkills.includes(selectedValue)) {
-                    selectedSkills.push(selectedValue); // Προσθήκη στο array
-                    updateSkillsContainer(); // Ενημέρωση του UI
-                }
-                skillsSelect.value = ""; // Επαναφορά του dropdown
-            });
-        } catch (error) {
-            console.error("Error loading skills:", error);
-            const skillsSelect = document.getElementById('skillsSelect');
-            skillsSelect.innerHTML = '<option value="" disabled>Failed to load skills</option>';
+    document.getElementById('skillsSelect').addEventListener('change', (event) => {
+        const selectedValue = event.target.value;
+        if (selectedValue && !selectedSkills.includes(selectedValue)) {
+            selectedSkills.push(selectedValue); // Προσθήκη στο array
+            updateSkillsContainer(); // Ενημέρωση του UI
         }
+        event.target.value = ""; // Επαναφορά του dropdown
     });
-
     function updateSkillsContainer() {
         const container = document.getElementById('selectedSkillsContainer');
         container.innerHTML = ''; // Καθαρισμός παλιών δεδομένων
@@ -468,51 +399,14 @@
         updateSkillsContainer(); // Ενημέρωση του UI
     }
 
-
-    let selectedInterests = []; // Πίνακας για τα επιλεγμένα interests
-    document.addEventListener('DOMContentLoaded', async () => {
-        // Φόρτωση των Interests από το backend
-        try {
-            const response = await fetch('/api/interests', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-API-TOKEN': API_TOKEN
-                }
-            });
-
-            if (!response.ok) {
-                throw new Error(`Failed to load interests: ${response.statusText}`);
-            }
-
-            const interests = await response.json();
-            const interestsSelect = document.getElementById('interestsSelect');
-
-            // Προσθήκη options για τα interests
-            interestsSelect.innerHTML = '<option value="" disabled selected>Select an interest</option>';
-            interests.forEach(interest => {
-                const option = document.createElement('option');
-                option.value = interest;
-                option.textContent = interest.replace(/_/g, ' ')
-                    .toLowerCase()
-                    .replace(/\b\w/g, c => c.toUpperCase());
-                interestsSelect.appendChild(option);
-            });
-
-            // Αυτόματη προσθήκη στη λίστα ενδιαφερόντων
-            interestsSelect.addEventListener('change', (event) => {
-                const selectedValue = event.target.value;
-                if (selectedValue && !selectedInterests.includes(selectedValue)) {
-                    selectedInterests.push(selectedValue); // Προσθήκη στο array
-                    updateInterestsContainer(); // Ενημέρωση UI
-                }
-                interestsSelect.value = ""; // Επαναφορά επιλογής dropdown
-            });
-        } catch (error) {
-            console.error('Error loading interests:', error);
-            const interestsSelect = document.getElementById('interestsSelect');
-            interestsSelect.innerHTML = '<option value="" disabled>Failed to load interests</option>';
+    let selectedInterests = [];
+    document.getElementById('interestsSelect').addEventListener('change', (event) => {
+        const selectedValue = event.target.value;
+        if (selectedValue && !selectedInterests.includes(selectedValue)) {
+            selectedInterests.push(selectedValue); // Προσθήκη στο array
+            updateInterestsContainer(); // Ενημέρωση UI
         }
+        event.target.value = ""; // Επαναφορά του dropdown
     });
     function updateInterestsContainer() {
         const container = document.getElementById('selectedInterestsContainer');

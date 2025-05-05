@@ -14,11 +14,6 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    // Υλοποίηση του existsByUsername
-    public boolean existsByUsername(String username) {
-        return userRepository.existsByUsername(username);
-    }
-
     // Υλοποίηση αποθήκευσης χρήστη
     public void save(User user) {
         userRepository.save(user);

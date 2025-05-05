@@ -13,18 +13,11 @@ import java.util.Set;
 @Component
 public class PracticeAdminInitializer implements CommandLineRunner {
 
-    private final UserService userService;
-
-    public PracticeAdminInitializer(UserService userService) {
-        this.userService = userService;
-    }
-
     @Override
     public void run(String... args) {
 
         // Δημιουργία των administrators με set methods
         PracticeOfficeAdministrator adminStem = new PracticeOfficeAdministrator();
-        adminStem.setUsername("ADMIN_STEM");
         adminStem.setPassword(encodePassword("q4Yt!9eP@7v#ZrF2"));
         adminStem.setEmail("practice-office-stem@uoi.gr");
         adminStem.setAssignedDepartments(Set.of(
@@ -39,7 +32,6 @@ public class PracticeAdminInitializer implements CommandLineRunner {
         ));
 
         PracticeOfficeAdministrator adminHealth = new PracticeOfficeAdministrator();
-        adminHealth.setUsername("ADMIN_HEALTH");
         adminHealth.setPassword(encodePassword("Lp@3zX#2Ve!8mQaR"));
         adminHealth.setEmail("practice-office-health@uoi.gr");
         adminHealth.setAssignedDepartments(Set.of(
@@ -50,7 +42,6 @@ public class PracticeAdminInitializer implements CommandLineRunner {
         ));
 
         PracticeOfficeAdministrator adminArts = new PracticeOfficeAdministrator();
-        adminArts.setUsername("ADMIN_ARTS");
         adminArts.setPassword(encodePassword("Z!8vG$e2LpX@4qRt"));
         adminArts.setEmail("practice-office-arts@uoi.gr");
         adminArts.setAssignedDepartments(Set.of(
@@ -63,7 +54,6 @@ public class PracticeAdminInitializer implements CommandLineRunner {
         ));
 
         PracticeOfficeAdministrator adminSocial = new PracticeOfficeAdministrator();
-        adminSocial.setUsername("ADMIN_SOCIAL");
         adminSocial.setPassword(encodePassword("Xr@9pL#vQ7!8eMzY"));
         adminSocial.setEmail("practice-office-social@uoi.gr");
         adminSocial.setAssignedDepartments(Set.of(
@@ -75,20 +65,7 @@ public class PracticeAdminInitializer implements CommandLineRunner {
                 Department.EARLY_YEARS_LEARNING_CARE,
                 Department.ARCHITECTURE
         ));
-
-        List<PracticeOfficeAdministrator> adminList = List.of(adminStem, adminHealth, adminArts, adminSocial);
-
-        // Αποθήκευση μόνο αν δεν υπάρχει
-        adminList.forEach(admin -> {
-            if (!userService.existsByUsername(admin.getUsername())) {
-                userService.save(admin);
-                System.out.println("✅ PracticeOfficeAdministrator '" + admin.getUsername() + "' δημιουργήθηκε.");
-            } else {
-                System.out.println("ℹ️ PracticeOfficeAdministrator '" + admin.getUsername() + "' υπάρχει ήδη.");
-            }
-        });
     }
-
     private String encodePassword(String rawPassword) {
         return new BCryptPasswordEncoder().encode(rawPassword);
     }

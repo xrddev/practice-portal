@@ -1,49 +1,54 @@
 package xrddev.practiceportal.controller.registration;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import xrddev.practiceportal.model.User;
-import xrddev.practiceportal.repository.UserRepository;
+import xrddev.practiceportal.config.SessionKeys;
+import xrddev.practiceportal.model.enums.UserRole;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 @RequestMapping("/public/register")
+@SessionAttributes({
+        SessionKeys.PASSWORD,
+        SessionKeys.EMAIL,
+        SessionKeys.ROLES,
+})
 public class UserRegistrationController {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
+
+    public UserRegistrationController() {
+        this.passwordEncoder = new BCryptPasswordEncoder();
+    }
 
     @GetMapping
-    public String showRegistrationForm() {
+    public String showRegistrationForm(Model model) {
+        List<String> roles = Arrays.stream(UserRole.values()).map(Enum::name).toList();
+        model.addAttribute(SessionKeys.ROLES, roles);
         return "register/user_register";
     }
 
     @PostMapping
-    public String registerUser(
-            @RequestParam String username,
-            @RequestParam String email,
-            @RequestParam String password,
-            @RequestParam String role,
-            RedirectAttributes redirectAttributes) {
+    public String handleUserRegistration(
+            @RequestParam @NotNull @Size(min = 6, max = 64) String password,
+            @RequestParam @NotNull @Email String email,
+            @RequestParam @NotNull UserRole role,
+            Model model) {
 
-        User user = new User();
-        user.setUsername(username);
-        user.setEmail(email);
-        user.setPassword(password);
+        model.addAttribute(SessionKeys.PASSWORD, passwordEncoder.encode(password));
+        model.addAttribute(SessionKeys.EMAIL, email);
 
-        userRepository.save(user);
-        redirectAttributes.addAttribute("userId", user.getId());
-
-        return switch (role.toUpperCase()) {
-            case "STUDENT" -> "redirect:/public/register/student";
-            case "PROFESSOR" -> "redirect:/public/register/professor";
-            case "COMPANY" -> "redirect:/public/register/company";
-            default -> {
-                System.out.println("[ERROR] Unknown role: " + role);
-                yield "redirect:/error";
-            }
+        return switch (role) {
+            case STUDENT -> "redirect:/public/register/student";
+            case PROFESSOR -> "redirect:/public/register/professor";
+            case COMPANY -> "redirect:/public/register/company";
         };
     }
 }
