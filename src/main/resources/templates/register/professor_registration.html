@@ -204,7 +204,12 @@
     <div>
         <select id="interestsSelect" name="interestsDropdown">
             <option value="" disabled selected>Select an interest</option>
+            <th:block th:each="interest : ${INTERESTS}">
+                <option th:value="${interest}"
+                        th:text="${#strings.replace(#strings.capitalize(interest.toLowerCase()), '_', ' ')}"></option>
+            </th:block>
         </select>
+
     </div>
     <div class="tooltip">Select topics you are interested in supervising. You can choose multiple interests.</div>
     <div id="selectedInterestsContainer" class="selected-interests"></div>
@@ -223,46 +228,15 @@
 </footer>
 
 <script>
-    const API_TOKEN = "my-secure-api-token";  // Αντικατάστησέ το με το πραγματικό σου token
+
     let selectedInterests = [];
-
-    document.addEventListener('DOMContentLoaded', async () => {
-        try {
-            const response = await fetch('/api/interests', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-API-TOKEN': API_TOKEN
-                }
-            });
-            if (!response.ok) {
-                throw new Error(`Failed to load interests: ${response.statusText}`);
-            }
-            const data = await response.json();
-            const interests = data.interests || data;  // Πιάνει και array και object
-            console.log('Loaded interests:', interests);  // Debug log
-
-            const interestsSelect = document.getElementById('interestsSelect');
-            interestsSelect.innerHTML = '<option value="" disabled selected>Select an interest</option>';
-            interests.forEach(interest => {
-                const option = document.createElement('option');
-                option.value = interest;
-                option.textContent = interest.replace(/_/g, ' ').toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
-                interestsSelect.appendChild(option);
-            });
-            interestsSelect.addEventListener('change', (event) => {
-                const selectedValue = event.target.value;
-                if (selectedValue && !selectedInterests.includes(selectedValue)) {
-                    selectedInterests.push(selectedValue);
-                    updateInterestsContainer();
-                }
-                interestsSelect.value = "";
-            });
-        } catch (error) {
-            console.error('Error loading interests:', error);
-            const interestsSelect = document.getElementById('interestsSelect');
-            interestsSelect.innerHTML = '<option value="" disabled>Failed to load interests</option>';
+    document.getElementById('interestsSelect').addEventListener('change', (event) => {
+        const selectedValue = event.target.value;
+        if (selectedValue && !selectedInterests.includes(selectedValue)) {
+            selectedInterests.push(selectedValue);
+            updateInterestsContainer();
         }
+        event.target.value = ""; // Reset dropdown
     });
 
     function updateInterestsContainer() {

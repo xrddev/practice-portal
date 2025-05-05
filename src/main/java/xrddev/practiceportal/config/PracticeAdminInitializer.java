@@ -5,9 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import xrddev.practiceportal.model.PracticeOfficeAdministrator;
 import xrddev.practiceportal.model.enums.Department;
-import xrddev.practiceportal.service.UserService;
 
-import java.util.List;
 import java.util.Set;
 
 @Component

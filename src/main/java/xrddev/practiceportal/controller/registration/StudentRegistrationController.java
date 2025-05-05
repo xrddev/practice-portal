@@ -7,25 +7,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import xrddev.practiceportal.config.ModelAttributes;
-import xrddev.practiceportal.model.Student;
 import xrddev.practiceportal.model.enums.Department;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
 import xrddev.practiceportal.config.SessionAttribute;
-import xrddev.practiceportal.repository.StudentRepository;
+import xrddev.practiceportal.service.StudentService;
 
 import java.util.Arrays;
 import java.util.List;
+
 
 @Controller
 @RequestMapping("/public/register/student")
 public class StudentRegistrationController {
 
-    private final StudentRepository studentRepository;
+    private final StudentService studentService;
 
-    public StudentRegistrationController(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
+    public StudentRegistrationController(StudentService studentService) {
+        this.studentService = studentService;
     }
+
 
     @GetMapping
     public String showStudentRegistrationForm(Model model) {
@@ -53,20 +54,19 @@ public class StudentRegistrationController {
             @RequestParam(required = false) String preferredLocation,
             HttpSession session) {
 
-        Student student = new Student();
-        student.setPassword((String) session.getAttribute(SessionAttribute.PASSWORD));
-        student.setEmail((String) session.getAttribute(SessionAttribute.EMAIL));
-        student.setStudentNumber(studentNumber);
-        student.setDepartment(Department.valueOf(department));
-        student.setYearOfStudy(yearOfStudy);
-        student.setAverageGrade(averageGrade);
-        student.setSkills(skills.stream().map(Skills::valueOf).toList());
-        student.setInterests(interests.stream().map(Interests::valueOf).toList());
-        student.setPreferredLocation(preferredLocation);
-        studentRepository.save(student);
+        studentService.registerStudent(
+                (String) session.getAttribute(SessionAttribute.EMAIL),
+                (String) session.getAttribute(SessionAttribute.PASSWORD),
+                studentNumber,
+                department,
+                yearOfStudy,
+                averageGrade,
+                skills,interests,
+                preferredLocation);
 
         session.removeAttribute(SessionAttribute.EMAIL);
         session.removeAttribute(SessionAttribute.PASSWORD);
+
         return "redirect:/public/register/success";
     }
 }

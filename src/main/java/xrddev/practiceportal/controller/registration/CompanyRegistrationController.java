@@ -1,24 +1,19 @@
 package xrddev.practiceportal.controller.registration;
 
 import jakarta.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import xrddev.practiceportal.config.SessionAttribute;
-import xrddev.practiceportal.model.Company;
-import xrddev.practiceportal.repository.CompanyRepository;
 import xrddev.practiceportal.service.CompanyService;
 
 @Controller
 @RequestMapping("/public/register/company")
 public class CompanyRegistrationController {
+    private final CompanyService companyService;
 
-    private final CompanyRepository companyRepository;
-
-    public CompanyRegistrationController(CompanyRepository companyRepository) {
-        this.companyRepository = companyRepository;
+    public CompanyRegistrationController(CompanyService companyService) {
+        this.companyService = companyService;
     }
 
     @GetMapping
@@ -36,19 +31,19 @@ public class CompanyRegistrationController {
             @RequestParam String internshipCoordinatorEmail,
             HttpSession session) {
 
-        Company company = new Company();
-        company.setPassword((String) session.getAttribute(SessionAttribute.PASSWORD));
-        company.setEmail((String) session.getAttribute(SessionAttribute.EMAIL));
-        company.setCompanyName(companyName);
-        company.setAddress(address);
-        company.setPhone(phone);
-        company.setWebsite(website);
-        company.setInternshipCoordinator(internshipCoordinator);
-        company.setInternshipCoordinatorEmail(internshipCoordinatorEmail);
-        companyRepository.save(company);
+        companyService.registerCompany(
+                (String) session.getAttribute(SessionAttribute.EMAIL),
+                (String) session.getAttribute(SessionAttribute.PASSWORD),
+                companyName,
+                address,
+                phone,
+                website,
+                internshipCoordinator,
+                internshipCoordinatorEmail);
 
         session.removeAttribute(SessionAttribute.EMAIL);
         session.removeAttribute(SessionAttribute.PASSWORD);
+
         return "redirect:/public/register/success";
     }
 }

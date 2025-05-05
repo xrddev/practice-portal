@@ -36,7 +36,4 @@ public class Professor extends User {
     @OneToMany(mappedBy = "supervisor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<InternshipPosition> supervisedPositions;
 
-    @ManyToOne
-    @JoinColumn(name = "committee_id", nullable = true)
-    private InternshipCommittee committee;
 }
