@@ -31,10 +31,10 @@ public class Company extends User {
     @Pattern(regexp = "^\\+?[0-9 ]{7,15}$", message = "Phone number must be valid (7-15 digits, optional +).")
     private String phone;
 
-    @Column(name = "website", nullable = true, length = 100)
+    @Column(name = "website", length = 100)
     @Size(max = 100, message = "Website can be up to 100 characters.")
     @Pattern(
-            regexp = "^(https?:\\/\\/)?([\\w\\-]+\\.)+[a-zA-Z]{2,}(\\/\\S*)?$",
+            regexp = "^(https?://)?([\\w\\-]+\\.)+[a-zA-Z]{2,}(/\\S*)?$|^$",
             message = "Website must be a valid URL format.")
     private String website;
 

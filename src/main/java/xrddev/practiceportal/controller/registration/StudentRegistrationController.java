@@ -1,15 +1,18 @@
 package xrddev.practiceportal.controller.registration;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import xrddev.practiceportal.config.SessionKeys;
+import xrddev.practiceportal.config.ModelAttributes;
 import xrddev.practiceportal.model.Student;
 import xrddev.practiceportal.model.enums.Department;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
+import xrddev.practiceportal.config.SessionAttribute;
+import xrddev.practiceportal.repository.StudentRepository;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,17 +21,23 @@ import java.util.List;
 @RequestMapping("/public/register/student")
 public class StudentRegistrationController {
 
+    private final StudentRepository studentRepository;
+
+    public StudentRegistrationController(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
+
     @GetMapping
     public String showStudentRegistrationForm(Model model) {
 
         List<String> departments = Arrays.stream(Department.values()).map(Enum::name).toList();
-        model.addAttribute(SessionKeys.DEPARTMENTS, departments);
+        model.addAttribute(ModelAttributes.DEPARTMENTS, departments);
 
         List<String> skills = Arrays.stream(Skills.values()).map(Enum::name).toList();
-        model.addAttribute(SessionKeys.SKILLS, skills);
+        model.addAttribute(ModelAttributes.SKILLS, skills);
 
         List<String> interests = Arrays.stream(Interests.values()).map(Enum::name).toList();
-        model.addAttribute(SessionKeys.INTERESTS, interests);
+        model.addAttribute(ModelAttributes.INTERESTS, interests);
 
         return "register/student_registration";
     }
@@ -42,11 +51,11 @@ public class StudentRegistrationController {
             @RequestParam List<String> skills,
             @RequestParam List<String> interests,
             @RequestParam(required = false) String preferredLocation,
-            Model model)
-    {
+            HttpSession session) {
+
         Student student = new Student();
-        student.setPassword((String) model.getAttribute(SessionKeys.PASSWORD));
-        student.setEmail((String) model.getAttribute(SessionKeys.EMAIL));
+        student.setPassword((String) session.getAttribute(SessionAttribute.PASSWORD));
+        student.setEmail((String) session.getAttribute(SessionAttribute.EMAIL));
         student.setStudentNumber(studentNumber);
         student.setDepartment(Department.valueOf(department));
         student.setYearOfStudy(yearOfStudy);
@@ -54,9 +63,10 @@ public class StudentRegistrationController {
         student.setSkills(skills.stream().map(Skills::valueOf).toList());
         student.setInterests(interests.stream().map(Interests::valueOf).toList());
         student.setPreferredLocation(preferredLocation);
+        studentRepository.save(student);
 
-        System.out.println(student);
-
+        session.removeAttribute(SessionAttribute.EMAIL);
+        session.removeAttribute(SessionAttribute.PASSWORD);
         return "redirect:/public/register/success";
     }
 }

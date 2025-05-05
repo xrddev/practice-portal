@@ -1,50 +1,54 @@
 package xrddev.practiceportal.controller.registration;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import xrddev.practiceportal.config.SessionAttribute;
+import xrddev.practiceportal.model.Company;
+import xrddev.practiceportal.repository.CompanyRepository;
 import xrddev.practiceportal.service.CompanyService;
 
 @Controller
 @RequestMapping("/public/register/company")
 public class CompanyRegistrationController {
 
-    private final CompanyService companyService;
+    private final CompanyRepository companyRepository;
 
-    @Autowired
-    public CompanyRegistrationController(CompanyService companyService) {
-        this.companyService = companyService;
+    public CompanyRegistrationController(CompanyRepository companyRepository) {
+        this.companyRepository = companyRepository;
     }
 
-    // Εμφάνιση φόρμας εγγραφής εταιρείας
     @GetMapping
     public String showCompanyRegistrationForm() {
-        return "register/company_registration"; // Επιστροφή του HTML template
+        return "register/company_registration";
     }
 
-
     @PostMapping
-    public ResponseEntity<String> registerCompany(
+    public String handleCompanyRegistration(
             @RequestParam String companyName,
             @RequestParam String address,
             @RequestParam String phone,
             @RequestParam(required = false) String website,
             @RequestParam String internshipCoordinator,
-            @RequestParam String internshipCoordinatorEmail) {
+            @RequestParam String internshipCoordinatorEmail,
+            HttpSession session) {
 
-        // Εκτυπώσεις δεδομένων για δοκιμαστικούς σκοπούς
-        System.out.println("Company Name: " + companyName);
-        System.out.println("Address: " + address);
-        System.out.println("Phone: " + phone);
-        System.out.println("Website: " + (website != null ? website : "N/A"));
-        System.out.println("Internship Coordinator: " + internshipCoordinator);
-        System.out.println("Internship Coordinator Email: " + internshipCoordinatorEmail);
+        Company company = new Company();
+        company.setPassword((String) session.getAttribute(SessionAttribute.PASSWORD));
+        company.setEmail((String) session.getAttribute(SessionAttribute.EMAIL));
+        company.setCompanyName(companyName);
+        company.setAddress(address);
+        company.setPhone(phone);
+        company.setWebsite(website);
+        company.setInternshipCoordinator(internshipCoordinator);
+        company.setInternshipCoordinatorEmail(internshipCoordinatorEmail);
+        companyRepository.save(company);
 
-        // Επιστροφή επιτυχούς μηνύματος
-        return ResponseEntity.ok("Company data received and printed successfully!");
+        session.removeAttribute(SessionAttribute.EMAIL);
+        session.removeAttribute(SessionAttribute.PASSWORD);
+        return "redirect:/public/register/success";
     }
-
-
 }
