@@ -24,6 +24,16 @@ public class Student extends User{
     @Size(min = 5, max = 7, message = "Student number must be between 5 and 7 characters.")
     private String studentNumber;
 
+    @Column(name = "first_name", nullable = false, length = 50)
+    @NotNull(message = "First name cannot be null!")
+    @Size(max = 50, message = "First name can have up to 50 characters.")
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false, length = 50)
+    @NotNull(message = "Last name cannot be null!")
+    @Size(max = 50, message = "Last name can have up to 50 characters.")
+    private String lastName;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "department", nullable = false, length = 50)
     @NotNull(message = "Department cannot be null!")
@@ -57,5 +67,4 @@ public class Student extends User{
 
     @OneToOne(mappedBy = "student")
     private InternshipPosition internshipPosition;
-
 }

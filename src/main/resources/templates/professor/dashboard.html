@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="icon" href="/uoi-logo-new-1024x784.webp" type="image/webp">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Ubuntu Mono', monospace;
+            background: linear-gradient(135deg, #0073e6, #00b3b3);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-top: 40px;
+            font-size: 3rem;
+            text-align: center;
+            color: #ffcc33;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            color: #ffcc33;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+        }
+
+        .box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        p {
+            font-size: 1.4rem;
+            margin: 20px 0;
+        }
+
+        .positions-list li {
+            background: rgba(255,255,255,0.1);
+            margin-bottom: 8px;
+            padding: 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .positions-list li:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.02);
+        }
+
+        footer {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 10px 0;
+            font-size: 0.8rem;
+            margin-top: auto;
+            width: 100%;
+            border: none;
+        }
+
+        a {
+            color: #ffcc33;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Professor – Practice Dashboard</h1>
+
+<div class="box">
+    <p>
+        Welcome,
+        <strong th:text="${professor.fullName}">Professor Name</strong>!
+    </p>
+    <p>
+        Your email:
+        <strong th:text="${professor.email}">professor@example.com</strong>
+    </p>
+</div>
+
+<div class="box positions-list" style="max-width:800px; margin-top:20px;">
+    <h2>Your Supervised Positions</h2>
+    <ul style="list-style:none; padding:0;">
+        <li th:each="pos : ${positions}">
+            <strong th:text="${pos.title}">Position Title</strong>
+            <span style="margin-left:10px; color:#ccc;">for</span>
+            <span th:text="${pos.student.fullName}">Student Name</span>
+            <small style="display:block; color:#aaa;" th:text="${pos.student.email}">student@example.com</small>
+        </li>
+        <li th:if="${#lists.isEmpty(positions)}" style="color:#ffa;">
+            No supervised positions yet.
+        </li>
+    </ul>
+</div>
+
+<footer>
+    &copy; 2025. Developed with ❤️ by
+    <a href="https://github.com/xrddev" target="_blank">
+        xrddev
+    </a>.
+</footer>
+
+</body>
+</html>

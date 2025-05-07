@@ -2,10 +2,12 @@ package xrddev.practiceportal.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import xrddev.practiceportal.model.Professor;
 import xrddev.practiceportal.model.Student;
 import xrddev.practiceportal.model.enums.Department;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
+import xrddev.practiceportal.model.enums.UserRole;
 import xrddev.practiceportal.repository.StudentRepository;
 
 import java.util.List;
@@ -24,6 +26,9 @@ public class StudentService {
                                 double averageGrade, List<String> skills, List<String> interests, String preferredLocation) {
 
         Student student = new Student();
+        student.setRole(UserRole.STUDENT);
+        student.setFirstName("StudentFirstName");
+        student.setLastName("StudentLastName");
         student.setEmail(email);
         student.setPassword(password);
         student.setStudentNumber(studentNumber);
