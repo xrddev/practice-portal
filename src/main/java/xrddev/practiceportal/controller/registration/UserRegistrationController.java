@@ -46,6 +46,7 @@ public class UserRegistrationController {
             case STUDENT -> "redirect:/public/register/student";
             case PROFESSOR -> "redirect:/public/register/professor";
             case COMPANY -> "redirect:/public/register/company";
+            default -> throw new IllegalStateException("Unexpected value: " + role);
         };
     }
 }
