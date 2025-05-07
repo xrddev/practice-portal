@@ -11,6 +11,7 @@ import xrddev.practiceportal.model.enums.OverallGrade;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "internship_evaluation")
 public class InternshipEvaluation {
 
     @Id

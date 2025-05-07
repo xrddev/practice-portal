@@ -13,13 +13,11 @@ import java.util.Optional;
 
 @Service
 public class StudentService {
-
     private final StudentRepository studentRepository;
 
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
-
 
     @Transactional
     public void registerStudent(String email, String password, String studentNumber, String department, int yearOfStudy,
