@@ -171,7 +171,7 @@
 <div class="box">
     <h2>Your Posted Positions</h2>
     <ul>
-        <li th:each="pos : ${positions}">
+        <li th:each="pos : ${positionsDto}">
             <div class="position-info">
                 <div class="position-title" th:text="${pos.title}">Position Title</div>
                 <div class="position-dates">

@@ -7,47 +7,13 @@ import lombok.NoArgsConstructor;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
 
-import java.lang.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
-import jakarta.validation.Constraint;
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
-import jakarta.validation.Payload;
 
-/**
- * Custom annotation to check that endDate ≥ startDate.
- */
-@Target({ElementType.TYPE})
-@Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = DateRangeValidator.class)
-@Documented
-@interface DateRange {
-    String message() default "End date must be on or after start date";
-    Class<?>[] groups() default {};
-    Class<? extends Payload>[] payload() default {};
-    String startField();
-    String endField();
-}
-
-class DateRangeValidator implements ConstraintValidator<DateRange, InternshipPositionCreateDto> {
-    public void initialize(DateRange ann) {
-        String startField = ann.startField();
-        String endField = ann.endField();
-    }
-    public boolean isValid(InternshipPositionCreateDto dto, ConstraintValidatorContext ctx) {
-        if (dto.getStartDate() == null || dto.getEndDate() == null) {
-            return true; // let @NotNull handle the error
-        }
-        return !dto.getEndDate().isBefore(dto.getStartDate());
-    }
-}
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@DateRange(startField = "startDate", endField = "endDate",
-        message = "End date must be the same as or after the start date")
 public class InternshipPositionCreateDto {
 
     @NotBlank(message = "Title is required")

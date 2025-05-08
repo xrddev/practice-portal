@@ -23,7 +23,7 @@ public class InternshipPositionDto {
     private Long supervisorId;
     private Long evaluationId;
 
-    // Μετατροπή InternshipPosition → InternshipPositionDto
+
     public InternshipPositionDto(InternshipPosition pos) {
         this.id = pos.getId();
         this.title = pos.getTitle();

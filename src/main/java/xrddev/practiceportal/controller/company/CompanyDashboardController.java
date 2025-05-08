@@ -7,7 +7,7 @@ import java.security.Principal;
 import java.util.List;
 
 import xrddev.practiceportal.dto.company.CompanyDashboardDto;
-import xrddev.practiceportal.model.InternshipPosition;
+import xrddev.practiceportal.dto.intership_position.InternshipPositionResponseDto;
 import xrddev.practiceportal.service.CompanyService;
 import xrddev.practiceportal.service.InternshipPositionService;
 
@@ -28,10 +28,11 @@ public class CompanyDashboardController {
         String companyEmail = principal.getName();
 
         var company = companyService.findByEmail(companyEmail).orElseThrow(() -> new RuntimeException("Company not found"));
-        List<InternshipPosition> positions = internshipPositionService.getByCompanyEmail(companyEmail);
+        List<InternshipPositionResponseDto> positionsDto = internshipPositionService
+                .getByCompanyEmail(companyEmail).stream().map(InternshipPositionResponseDto::new).toList();
 
         model.addAttribute("companyDto", new CompanyDashboardDto(company));
-        model.addAttribute("positions", positions);
+        model.addAttribute("positionsDto", positionsDto);
         return "company/dashboard";
     }
 }
