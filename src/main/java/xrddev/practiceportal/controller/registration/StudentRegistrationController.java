@@ -46,6 +46,8 @@ public class StudentRegistrationController {
     @PostMapping
     public String handleStudentRegistration(
             @RequestParam @NotNull @Size(min = 5, max = 7) String studentNumber,
+            @RequestParam @NotNull String firstName,              // νέο
+            @RequestParam @NotNull String lastName,               // νέο
             @RequestParam @NotNull String department,
             @RequestParam @NotNull int yearOfStudy,
             @RequestParam @NotNull double averageGrade,
@@ -58,10 +60,13 @@ public class StudentRegistrationController {
                 (String) session.getAttribute(SessionAttribute.EMAIL),
                 (String) session.getAttribute(SessionAttribute.PASSWORD),
                 studentNumber,
+                firstName,
+                lastName,
                 department,
                 yearOfStudy,
                 averageGrade,
-                skills,interests,
+                skills,
+                interests,
                 preferredLocation);
 
         session.removeAttribute(SessionAttribute.EMAIL);

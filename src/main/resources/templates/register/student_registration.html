@@ -227,12 +227,23 @@
 </div>
 
 
-<form action="/public/register/student" method="post" onsubmit="return validateForm()">
+<form action="/public/register/student" method="post">
+
 
     <!-- Student Number -->
     <label for="studentNumber">Student Number:</label>
     <input type="text" id="studentNumber" name="studentNumber" placeholder="e.g., 1234567" required>
     <div class="tooltip">Your unique university number (5–7 digits).</div>
+
+    <!-- First Name -->
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+    <div class="tooltip">Enter your first name.</div>
+
+    <!-- Last Name -->
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+    <div class="tooltip">Enter your last name.</div>
 
     <!-- Department -->
     <label for="department">Department:</label>

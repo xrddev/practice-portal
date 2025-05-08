@@ -56,7 +56,9 @@ public class SecurityConfig {
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/")
+                        .logoutSuccessUrl("/logout-success")
+                        .invalidateHttpSession(true)    // (προαιρετικά) τερματισμός session
+                        .deleteCookies("JSESSIONID")    // (προαιρετικά) διαγραφή cookie
                         .permitAll()
                 )
                 .csrf(csrf -> csrf

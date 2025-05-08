@@ -22,13 +22,22 @@ public class StudentService {
     }
 
     @Transactional
-    public void registerStudent(String email, String password, String studentNumber, String department, int yearOfStudy,
-                                double averageGrade, List<String> skills, List<String> interests, String preferredLocation) {
+    public void registerStudent(String email,
+                                String password,
+                                String studentNumber,
+                                String firstName,          // νέο
+                                String lastName,           // νέο
+                                String department,
+                                int yearOfStudy,
+                                double averageGrade,
+                                List<String> skills,
+                                List<String> interests,
+                                String preferredLocation) {
 
         Student student = new Student();
         student.setRole(UserRole.STUDENT);
-        student.setFirstName("StudentFirstName");
-        student.setLastName("StudentLastName");
+        student.setFirstName(firstName);
+        student.setLastName(lastName);
         student.setEmail(email);
         student.setPassword(password);
         student.setStudentNumber(studentNumber);
@@ -40,5 +49,10 @@ public class StudentService {
         student.setPreferredLocation(preferredLocation);
 
         studentRepository.save(student);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<Student> findByEmail(String email) {
+        return studentRepository.findByEmail(email);
     }
 }

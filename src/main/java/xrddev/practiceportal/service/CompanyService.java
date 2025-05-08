@@ -6,6 +6,8 @@ import xrddev.practiceportal.model.Company;
 import xrddev.practiceportal.model.enums.UserRole;
 import xrddev.practiceportal.repository.CompanyRepository;
 
+import java.util.Optional;
+
 @Service
 public class CompanyService {
     private final CompanyRepository companyRepository;
@@ -32,4 +34,7 @@ public class CompanyService {
         companyRepository.save(company);
     }
 
+    public Optional<Company> findByEmail(String email) {
+        return companyRepository.findByEmail(email);
+    }
 }
