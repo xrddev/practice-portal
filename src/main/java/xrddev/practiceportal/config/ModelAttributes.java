@@ -6,6 +6,7 @@ public final class ModelAttributes {
     public static final String DEPARTMENTS = "DEPARTMENTS";
     public static final String SKILLS = "SKILLS";
     public static final String INTERESTS = "INTERESTS";
+    public static final String INTERNSHIP_POSITION_CREATE_DTO = "INTERNSHIP_POSITION_CREATE_DTO";
 
     private ModelAttributes() throws Exception {
         throw new Exception("This is a utility class and cannot be instantiated");

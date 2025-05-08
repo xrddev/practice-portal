@@ -1,28 +1,27 @@
 package xrddev.practiceportal.dto.company;
 
-import xrddev.practiceportal.dto.intership_position.InternshipPositionDto;
+import lombok.Data;
 import xrddev.practiceportal.model.Company;
+import xrddev.practiceportal.dto.intership_position.InternshipPositionDto;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public record CompanyDashboardDto(
-    Long id,
-    String name,
-    String email,
-    String address,
-    List<InternshipPositionDto> positions
-) {
+@Data
+public class CompanyDashboardDto {
+    private String companyName;
+    private String email;
+    private String address;
+    private List<InternshipPositionDto> positions;
+
+    // Μετατροπή Company → CompanyDashboardDto
     public CompanyDashboardDto(Company company) {
-        this(
-            company.getId(),
-            company.getCompanyName(),
-            company.getEmail(),
-            company.getAddress(),
-            company.getInternshipPositions()
-                   .stream()
-                   .map(InternshipPositionDto::new)
-                   .collect(Collectors.toList())
-        );
+        this.companyName = company.getCompanyName();
+        this.email = company.getEmail();
+        this.address = company.getAddress();
+        this.positions = company.getInternshipPositions()
+                .stream()
+                .map(InternshipPositionDto::new)
+                .collect(Collectors.toList());
     }
 }

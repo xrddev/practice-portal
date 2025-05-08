@@ -27,11 +27,7 @@ public class ProfessorDashboardController {
                     .orElseThrow(() -> new RuntimeException("Professor not found"));
 
 
-    List<InternshipPositionDto> supervisedPositions = professor
-                    .getSupervisedPositions()
-                    .stream()
-                    .map(InternshipPositionDto::new)
-                    .toList();
+    List<InternshipPositionDto> supervisedPositions = null;
 
     model.addAttribute("positions", supervisedPositions);
     model.addAttribute("professor", new ProfessorDashboardDto(professor));

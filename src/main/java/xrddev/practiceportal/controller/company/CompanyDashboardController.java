@@ -1,31 +1,37 @@
 package xrddev.practiceportal.controller.company;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import java.security.Principal;
+import java.util.List;
+
 import xrddev.practiceportal.dto.company.CompanyDashboardDto;
-import xrddev.practiceportal.model.Company;
+import xrddev.practiceportal.model.InternshipPosition;
 import xrddev.practiceportal.service.CompanyService;
+import xrddev.practiceportal.service.InternshipPositionService;
 
 @Controller
-@RequiredArgsConstructor
 public class CompanyDashboardController {
 
     private final CompanyService companyService;
+    private final InternshipPositionService internshipPositionService;
+
+    public CompanyDashboardController(CompanyService companyService,
+                                      InternshipPositionService internshipPositionService) {
+        this.companyService = companyService;
+        this.internshipPositionService = internshipPositionService;
+    }
 
     @GetMapping("/company/dashboard")
-    public String showDashboard(
-            @AuthenticationPrincipal User principal,
-            Model model
-    ) {
-        Company company = companyService
-                .findByEmail(principal.getUsername())
-                .orElseThrow(() -> new RuntimeException("Company not found"));
+    public String dashboard(Model model, Principal principal) {
+        String companyEmail = principal.getName();
 
-        model.addAttribute("company", new CompanyDashboardDto(company));
+        var company = companyService.findByEmail(companyEmail).orElseThrow(() -> new RuntimeException("Company not found"));
+        List<InternshipPosition> positions = internshipPositionService.getByCompanyEmail(companyEmail);
+
+        model.addAttribute("companyDto", new CompanyDashboardDto(company));
+        model.addAttribute("positions", positions);
         return "company/dashboard";
     }
 }

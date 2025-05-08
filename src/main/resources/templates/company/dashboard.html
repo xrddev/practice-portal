@@ -27,65 +27,112 @@
         }
         .box {
             background: rgba(255, 255, 255, 0.1);
-            padding: 40px 20px 30px 20px;
+            padding: 30px 20px;
             border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
             width: 90%;
-            max-width: 600px;
+            max-width: 800px;
             text-align: center;
-            animation: fadeInUp 0.8s ease forwards;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             margin-top: 30px;
-            position: relative;
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
         p {
-            font-size: 1.4rem;
-            margin: 20px 0;
+            font-size: 1.2rem;
+            margin: 10px 0;
         }
         .action-buttons {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             position: absolute;
             top: 15px;
             right: 15px;
         }
         .action-buttons button {
             border: none;
-            border-radius: 20px;
+            border-radius: 5px;
             padding: 8px 16px;
             font-family: 'Ubuntu Mono', monospace;
             font-size: 0.9rem;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-            background: #ff4d4d;
+            background-color: #ff4d4d;
             color: white;
+            transition: background-color 0.3s, transform 0.2s;
         }
         .action-buttons button:hover {
-            background: #e60000;
+            background-color: #e60000;
             transform: scale(1.05);
         }
         ul {
             list-style: none;
             padding: 0;
+            margin: 0;
         }
         li {
             background: rgba(255, 255, 255, 0.1);
-            margin-bottom: 8px;
-            padding: 12px;
-            border-radius: 6px;
-            transition: all 0.3s ease;
+            margin-bottom: 12px;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
         }
         li:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .position-info {
+            text-align: left;
+        }
+        .position-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        .position-deadline {
+            font-size: 0.9rem;
+            color: #ffcc33;
+        }
+        .position-actions button {
+            margin-left: 6px;
+            border: none;
+            border-radius: 5px;
+            padding: 6px 12px;
+            font-family: 'Ubuntu Mono', monospace;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .edit-button {
+            background-color: #ff4d4d;
+            color: white;
+        }
+        .edit-button:hover {
+            background-color: #e60000;
+        }
+        .delete-button {
+            background-color: #ff4d4d;
+            color: white;
+        }
+        .delete-button:hover {
+            background-color: #e60000;
+        }
+        .add-position-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .add-position-btn {
+            background-color: #33cc33;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-family: 'Ubuntu Mono', monospace;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .add-position-btn:hover {
+            background-color: #28a428;
+            transform: scale(1.05);
         }
         footer {
             text-align: center;
@@ -95,7 +142,6 @@
             font-size: 0.8rem;
             margin-top: auto;
             width: 100%;
-            border: none;
         }
         a {
             color: #ffcc33;
@@ -107,7 +153,7 @@
 
 <h1>Company – Internship Dashboard</h1>
 
-<div class="box">
+<div class="box" style="position: relative;">
     <div class="action-buttons">
         <form th:action="@{/edit-profile}" method="get">
             <button type="submit">Edit Profile</button>
@@ -117,23 +163,41 @@
             <button type="submit">Logout</button>
         </form>
     </div>
-    <p>Welcome, <strong th:text="${company.name}">Company Name</strong>!</p>
-    <p>Your email: <strong th:text="${company.email}">email@company.com</strong></p>
-    <p>Your address: <strong th:text="${company.address}">123 Some St.</strong></p>
+    <p>Welcome, <strong th:text="${companyDto.companyName}">Company Name</strong>!</p>
+    <p>Your email: <strong th:text="${companyDto.email}">email@company.com</strong></p>
+    <p>Your address: <strong th:text="${companyDto.address}">123 Some St.</strong></p>
 </div>
 
-<div class="box" style="max-width:800px; margin-top:20px;">
+<div class="box">
     <h2>Your Posted Positions</h2>
     <ul>
-        <li th:each="pos : ${company.positions}">
-            <strong th:text="${pos.title}">Position Title</strong><br/>
-            <small th:text="'Deadline: ' + ${pos.deadline}">Deadline</small>
-        </li>
-        <li th:if="${#lists.isEmpty(company.positions)}" style="color:#ffa;">
-            No positions posted yet.
+        <li th:each="pos : ${positions}">
+            <div class="position-info">
+                <div class="position-title" th:text="${pos.title}">Position Title</div>
+                <div class="position-dates">
+                    <span th:text="'Start Date: ' + ${#dates.format(pos.startDate, 'yyyy-MM-dd')}">Start Date</span>
+                    &nbsp;–&nbsp;
+                    <span th:text="'End Date: ' + ${#dates.format(pos.endDate, 'yyyy-MM-dd')}">End Date</span>
+                </div>
+            </div>
+            <div class="position-actions">
+                <form th:action="@{|/company/positions/edit/${pos.id}|}" method="get" style="display:inline;">
+                    <button class="edit-button" type="submit">Edit</button>
+                </form>
+                <form th:action="@{|/company/positions/delete/${pos.id}|}" method="post" style="display:inline;">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    <button class="delete-button" type="submit">Delete</button>
+                </form>
+            </div>
         </li>
     </ul>
+    <div class="add-position-container">
+        <form th:action="@{/company/new-position}" method="get">
+            <button class="add-position-btn" type="submit">+ Add New Position</button>
+        </form>
+    </div>
 </div>
+
 
 <footer>
     &copy; 2025. Developed with ❤️ by
