@@ -11,7 +11,7 @@ import xrddev.practiceportal.model.user.Company;
 import xrddev.practiceportal.model.user.Professor;
 import xrddev.practiceportal.model.user.Student;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -37,14 +37,12 @@ public class InternshipPosition {
     private String description;
 
     @Column(name = "start_date", nullable = false)
-    @Temporal(TemporalType.DATE)
     @NotNull(message = "The start date of the position cannot be null!")
-    private Date startDate;
+    private LocalDate startDate;
 
     @Column(name = "end_date", nullable = false)
-    @Temporal(TemporalType.DATE)
     @NotNull(message = "The end date of the position cannot be null!")
-    private Date endDate;
+    private LocalDate endDate;
 
     @ElementCollection(targetClass = Skills.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
@@ -74,7 +72,11 @@ public class InternshipPosition {
     private Professor supervisor;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "evaluation_id", referencedColumnName = "evaluation_id")
-    private InternshipEvaluation evaluation;
+    @JoinColumn(name = "company_evaluation_id", referencedColumnName = "evaluation_id")
+    private CompanyEvaluation companyEvaluation;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "professor_evaluation_id", referencedColumnName = "evaluation_id")
+    private ProfessorEvaluation professorEvaluation;
 
 }

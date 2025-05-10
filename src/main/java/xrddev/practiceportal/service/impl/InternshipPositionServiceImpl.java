@@ -6,14 +6,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionCreateDto;
+import xrddev.practiceportal.dto.intership_position.InternshipPositionDashboardDto;
 import xrddev.practiceportal.model.internship.InternshipPosition;
 import xrddev.practiceportal.model.user.Company;
 import xrddev.practiceportal.repository.api.InternshipPositionRepository;
 import xrddev.practiceportal.service.api.CompanyService;
 import xrddev.practiceportal.service.api.InternshipPositionService;
 
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -34,19 +33,15 @@ public class InternshipPositionServiceImpl implements InternshipPositionService 
         InternshipPosition internshipPosition = new InternshipPosition();
         internshipPosition.setTitle(dto.getTitle());
         internshipPosition.setDescription(dto.getDescription());
-        internshipPosition.setStartDate(
-            Date.from(dto.getStartDate().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        internshipPosition.setEndDate(
-            Date.from(dto.getEndDate().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        internshipPosition.setStartDate(dto.getStartDate());
+        internshipPosition.setEndDate(dto.getEndDate());
         internshipPosition.setSkills(dto.getSkills());
         internshipPosition.setInterests(dto.getInterests());
         internshipPosition.setAvailable(true);
-
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String email = ((UserDetails) principal).getUsername();
 
-        Company company = companyService.findByEmail(email)
-            .orElseThrow(() -> new EntityNotFoundException("Company not found: " + email));
+        Company company = companyService.findByEmail(email).orElseThrow(() -> new EntityNotFoundException("Company not found: " + email));
 
         internshipPosition.setCompany(company);
         positionRepository.save(internshipPosition);
@@ -63,5 +58,27 @@ public class InternshipPositionServiceImpl implements InternshipPositionService 
             .findByIdAndCompanyEmail(id, companyEmail)
             .orElseThrow(() -> new EntityNotFoundException("Position not found or not yours"));
         positionRepository.delete(position);
+    }
+
+    @Override
+    public InternshipPosition getByIdAndCompanyEmail(Long id, String companyEmail) {
+        return positionRepository.findByIdAndCompanyEmail(id, companyEmail)
+                .orElseThrow(() -> new EntityNotFoundException("Position not found or not yours"));
+    }
+
+    @Override
+    @Transactional
+    public void updatePosition(Long id, InternshipPositionDashboardDto dto, String companyEmail) {
+        InternshipPosition position = positionRepository.findByIdAndCompanyEmail(id, companyEmail)
+                .orElseThrow(() -> new EntityNotFoundException("Position not found or not yours"));
+
+        position.setTitle(dto.getTitle());
+        position.setDescription(dto.getDescription());
+        position.setStartDate(dto.getStartDate());
+        position.setEndDate(dto.getEndDate());
+        position.setSkills(dto.getSkills());
+        position.setInterests(dto.getInterests());
+
+        positionRepository.save(position);
     }
 }

@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import xrddev.practiceportal.dto.intership_position.InternshipPositionDto;
+import xrddev.practiceportal.dto.intership_position.InternshipPositionDashboardDto;
 import xrddev.practiceportal.model.user.Professor;
 import xrddev.practiceportal.dto.professor.ProfessorDashboardDto;
 import xrddev.practiceportal.service.api.ProfessorService;
@@ -27,7 +27,7 @@ public class ProfessorDashboardController {
                     .orElseThrow(() -> new RuntimeException("Professor not found"));
 
 
-    List<InternshipPositionDto> supervisedPositions = null;
+    List<InternshipPositionDashboardDto> supervisedPositions = null;
 
     model.addAttribute("positions", supervisedPositions);
     model.addAttribute("professor", new ProfessorDashboardDto(professor));

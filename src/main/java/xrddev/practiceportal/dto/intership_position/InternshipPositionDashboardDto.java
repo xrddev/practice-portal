@@ -4,14 +4,22 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import xrddev.practiceportal.dto.student.StudentDto;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
+import xrddev.practiceportal.model.internship.InternshipPosition;
+import xrddev.practiceportal.model.user.Student;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+@NoArgsConstructor
 @Data
-public class InternshipPositionCreateDto {
+public class InternshipPositionDashboardDto {
+
+    private Long id;
 
     @NotNull(message = "Title is required.")
     @Size(max = 150, message = "Title can be up to 150 characters.")
@@ -32,4 +40,17 @@ public class InternshipPositionCreateDto {
 
     @NotEmpty(message = "At least one interest is required.")
     private List<Interests> interests;
+
+    private StudentDto student;
+
+
+    public InternshipPositionDashboardDto(InternshipPosition position) {
+        this.id = position.getId();
+        this.title = position.getTitle();
+        this.description = position.getDescription();
+        this.startDate = position.getStartDate();
+        this.endDate = position.getEndDate();
+        this.skills = position.getSkills();
+        this.interests = position.getInterests();
+    }
 }
