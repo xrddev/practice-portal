@@ -7,9 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionDto;
-import xrddev.practiceportal.model.Professor;
-import xrddev.practiceportal.service.ProfessorService;
+import xrddev.practiceportal.model.user.Professor;
 import xrddev.practiceportal.dto.professor.ProfessorDashboardDto;
+import xrddev.practiceportal.service.api.ProfessorService;
 
 import java.util.List;
 

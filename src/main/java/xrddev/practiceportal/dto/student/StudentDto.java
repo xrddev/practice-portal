@@ -1,6 +1,6 @@
 package xrddev.practiceportal.dto.student;
 
-import xrddev.practiceportal.model.Student;
+import xrddev.practiceportal.model.user.Student;
 
 public record StudentDto(
         Long id,

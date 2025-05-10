@@ -12,7 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import xrddev.practiceportal.service.CustomUserDetailsService;
+import xrddev.practiceportal.service.api.CustomUserDetailsService;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package xrddev.practiceportal.model;
+package xrddev.practiceportal.model.internship;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;

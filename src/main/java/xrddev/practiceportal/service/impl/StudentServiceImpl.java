@@ -1,32 +1,34 @@
-package xrddev.practiceportal.service;
+package xrddev.practiceportal.service.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import xrddev.practiceportal.model.Professor;
-import xrddev.practiceportal.model.Student;
+import xrddev.practiceportal.model.user.Student;
 import xrddev.practiceportal.model.enums.Department;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
 import xrddev.practiceportal.model.enums.UserRole;
-import xrddev.practiceportal.repository.StudentRepository;
+import xrddev.practiceportal.repository.api.StudentRepository;
+import xrddev.practiceportal.service.api.StudentService;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class StudentService {
+public class StudentServiceImpl implements StudentService {
+
     private final StudentRepository studentRepository;
 
-    public StudentService(StudentRepository studentRepository) {
+    public StudentServiceImpl(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
 
+    @Override
     @Transactional
     public void registerStudent(String email,
                                 String password,
                                 String studentNumber,
-                                String firstName,          // νέο
-                                String lastName,           // νέο
+                                String firstName,
+                                String lastName,
                                 String department,
                                 int yearOfStudy,
                                 double averageGrade,
@@ -51,6 +53,7 @@ public class StudentService {
         studentRepository.save(student);
     }
 
+    @Override
     @Transactional(readOnly = true)
     public Optional<Student> findByEmail(String email) {
         return studentRepository.findByEmail(email);

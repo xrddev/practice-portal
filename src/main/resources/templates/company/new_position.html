@@ -94,7 +94,7 @@
 <div id="error-message" class="message-box error" style="display:none;"></div>
 
 <form th:action="@{/company/new-position}"
-      th:object="${INTERNSHIP_POSITION_CREATE_DTO }"
+      th:object="${INTERNSHIP_POSITION_CREATE_DTO}"
       method="post"
       onsubmit="return validatePositionForm()">
 
@@ -135,7 +135,7 @@
         <option value="" disabled selected>Select a skill</option>
         <th:block th:each="skill : ${SKILLS}">
             <option th:value="${skill}"
-                    th:text="${#strings.capitalize(skill.toLowerCase().replace('_',' '))}">
+                    th:text="${#strings.capitalize(skill.name().toLowerCase().replace('_',' '))}">
             </option>
         </th:block>
     </select>
@@ -149,7 +149,7 @@
         <option value="" disabled selected>Select an interest</option>
         <th:block th:each="interest : ${INTERESTS}">
             <option th:value="${interest}"
-                    th:text="${#strings.capitalize(interest.toLowerCase().replace('_',' '))}">
+                    th:text="${#strings.capitalize(interest.name().toLowerCase().replace('_',' '))}">
             </option>
         </th:block>
     </select>

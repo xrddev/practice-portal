@@ -1,18 +1,18 @@
-package xrddev.practiceportal.service;
+package xrddev.practiceportal.service.impl;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
-import xrddev.practiceportal.repository.UserRepository;
-import xrddev.practiceportal.model.User;
+import xrddev.practiceportal.repository.api.UserRepository;
+import xrddev.practiceportal.model.user.User;
+import xrddev.practiceportal.service.api.CustomUserDetailsService;
 
 @Service
-public class CustomUserDetailsService implements UserDetailsService {
+public class CustomUserDetailsServiceImpl implements CustomUserDetailsService {
 
     private final UserRepository userRepo;
 
-    public CustomUserDetailsService(UserRepository userRepo) {
+    public CustomUserDetailsServiceImpl(UserRepository userRepo) {
         this.userRepo = userRepo;
     }
 

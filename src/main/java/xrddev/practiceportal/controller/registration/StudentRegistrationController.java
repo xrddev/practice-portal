@@ -11,7 +11,7 @@ import xrddev.practiceportal.model.enums.Department;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
 import xrddev.practiceportal.config.SessionAttribute;
-import xrddev.practiceportal.service.StudentService;
+import xrddev.practiceportal.service.api.StudentService;
 
 import java.util.Arrays;
 import java.util.List;

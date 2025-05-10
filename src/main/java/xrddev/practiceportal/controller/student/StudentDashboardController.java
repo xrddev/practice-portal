@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import xrddev.practiceportal.dto.student.StudentDto;
-import xrddev.practiceportal.model.Student;
-import xrddev.practiceportal.service.StudentService;
+import xrddev.practiceportal.model.user.Student;
+import xrddev.practiceportal.service.api.StudentService;
 
 @Controller
 @RequiredArgsConstructor

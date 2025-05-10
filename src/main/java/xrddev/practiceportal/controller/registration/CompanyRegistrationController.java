@@ -5,7 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import xrddev.practiceportal.config.SessionAttribute;
-import xrddev.practiceportal.service.CompanyService;
+import xrddev.practiceportal.service.api.CompanyService;
+
 
 @Controller
 @RequestMapping("/public/register/company")

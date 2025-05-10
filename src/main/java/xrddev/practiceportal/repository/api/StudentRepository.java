@@ -1,10 +1,8 @@
-package xrddev.practiceportal.repository;
+package xrddev.practiceportal.repository.api;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import xrddev.practiceportal.model.Professor;
-import xrddev.practiceportal.model.Student;
+import xrddev.practiceportal.model.user.Student;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface StudentRepository extends JpaRepository<Student, Long> {

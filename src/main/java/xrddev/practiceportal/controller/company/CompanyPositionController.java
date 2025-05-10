@@ -6,13 +6,15 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import xrddev.practiceportal.config.ModelAttributes;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionCreateDto;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
-import xrddev.practiceportal.service.InternshipPositionService;
+import xrddev.practiceportal.service.api.InternshipPositionService;
 
+import java.security.Principal;
 import java.util.Arrays;
 
 @Controller
@@ -30,7 +32,7 @@ public class CompanyPositionController {
         model.addAttribute(ModelAttributes.INTERNSHIP_POSITION_CREATE_DTO, new InternshipPositionCreateDto());
         model.addAttribute(ModelAttributes.SKILLS, Arrays.stream(Skills.values()).toList());
         model.addAttribute(ModelAttributes.INTERESTS, Arrays.stream(Interests.values()).toList());
-        return "company/new_position_form";
+        return "/company/new_position";
     }
 
 
@@ -46,10 +48,17 @@ public class CompanyPositionController {
                     Arrays.stream(Skills.values()).toList());
             model.addAttribute(ModelAttributes.INTERESTS,
                     Arrays.stream(Interests.values()).toList());
-            return "company/new_position_form";
+            return "new_position";
         }
 
         internshipPositionService.createPosition(dto);
+        return "redirect:/company/dashboard";
+    }
+
+    @PostMapping("/company/positions/delete/{id}")
+    public String deletePosition(@PathVariable Long id, Principal principal) {
+        String companyEmail = principal.getName();
+        internshipPositionService.deleteByIdAndCompanyEmail(id, companyEmail);
         return "redirect:/company/dashboard";
     }
 }

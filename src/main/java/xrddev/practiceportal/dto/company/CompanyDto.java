@@ -1,7 +1,7 @@
 package xrddev.practiceportal.dto.company;
 
 import lombok.Data;
-import xrddev.practiceportal.model.Company;
+import xrddev.practiceportal.model.user.Company;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionDto;
 
 import java.util.List;

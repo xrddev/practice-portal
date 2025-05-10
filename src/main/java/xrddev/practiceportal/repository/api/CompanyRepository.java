@@ -1,12 +1,10 @@
-package xrddev.practiceportal.repository;
+package xrddev.practiceportal.repository.api;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import xrddev.practiceportal.model.Company;
+import xrddev.practiceportal.model.user.Company;
 
 import java.util.Optional;
 
 public interface CompanyRepository extends JpaRepository<Company, Long> {
-
     Optional<Company> findByEmail(String email);
-
 }

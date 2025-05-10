@@ -1,7 +1,7 @@
 package xrddev.practiceportal.dto.intership_position;
 
 import lombok.Data;
-import xrddev.practiceportal.model.InternshipPosition;
+import xrddev.practiceportal.model.internship.InternshipPosition;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
 

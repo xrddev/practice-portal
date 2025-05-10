@@ -1,4 +1,4 @@
-package xrddev.practiceportal.model;
+package xrddev.practiceportal.model.internship;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -7,6 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
+import xrddev.practiceportal.model.user.Company;
+import xrddev.practiceportal.model.user.Professor;
+import xrddev.practiceportal.model.user.Student;
 
 import java.util.Date;
 import java.util.List;

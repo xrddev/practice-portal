@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import xrddev.practiceportal.config.ModelAttributes;
-import xrddev.practiceportal.service.AnnouncementService;
+import xrddev.practiceportal.service.api.AnnouncementService;
 
 @Controller
 public class LandingPageController {

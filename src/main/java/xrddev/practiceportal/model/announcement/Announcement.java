@@ -1,4 +1,4 @@
-package xrddev.practiceportal.model;
+package xrddev.practiceportal.model.announcement;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,16 +1,13 @@
 package xrddev.practiceportal.controller.registration;
 
 import jakarta.servlet.http.HttpSession;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import xrddev.practiceportal.config.ModelAttributes;
 import xrddev.practiceportal.config.SessionAttribute;
-import xrddev.practiceportal.model.Professor;
 import xrddev.practiceportal.model.enums.Interests;
-import xrddev.practiceportal.repository.ProfessorRepository;
-import xrddev.practiceportal.service.ProfessorService;
+import xrddev.practiceportal.service.api.ProfessorService;
 
 import java.util.Arrays;
 import java.util.List;
