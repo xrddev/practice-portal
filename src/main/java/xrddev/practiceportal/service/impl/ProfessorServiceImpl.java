@@ -59,4 +59,9 @@ public class ProfessorServiceImpl implements ProfessorService {
         professorRepository.save(professor);
     }
 
+    @Override
+    public long count() {
+        return professorRepository.count();
+    }
+
 }

@@ -1,4 +1,4 @@
-package xrddev.practiceportal.controller.registration;
+package xrddev.practiceportal.controller.registration.common;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;

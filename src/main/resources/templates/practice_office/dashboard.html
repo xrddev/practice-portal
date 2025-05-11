@@ -1,61 +1,151 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Practice Office Dashboard</title>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <meta charset="UTF-8">
+    <title>Admin – Dashboard</title>
+    <link rel="icon" href="/uoi-logo-new-1024x784.webp" type="image/webp">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Ubuntu Mono', monospace;
+            background: linear-gradient(135deg, #0073e6, #00b3b3);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-top: 40px;
+            font-size: 3rem;
+            text-align: center;
+            color: #ffcc33;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+
+        .action-buttons button {
+            border: none;
+            border-radius: 5px;
+            padding: 8px 16px;
+            font-family: 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            cursor: pointer;
+            background-color: #ff4d4d;
+            color: white;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .action-buttons button:hover {
+            background-color: #e60000;
+            transform: scale(1.05);
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .admin-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .admin-actions a {
+            display: block;
+            background-color: #eacd45;
+            color: #003366;
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .admin-actions a:hover {
+            background-color: #ffdb4d;
+        }
+
+        footer {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 10px 0;
+            font-size: 0.8rem;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        a.brand-link {
+            color: #ffcc33;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" th:href="@{/}">PracticePortal</a>
-    <div class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" th:href="@{/practice-office/dashboard}">Dashboard</a>
-            </li>
-        </ul>
+
+<h1>Admin – Dashboard</h1>
+
+<!-- Admin Details -->
+<div class="box">
+    <div class="action-buttons">
+        <form th:action="@{/logout}" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <button type="submit">Logout</button>
+        </form>
     </div>
-</nav>
+    <p><strong>Email:</strong> <span th:text="${ADMIN_DTO.email}">admin@example.com</span></p>
+</div>
 
-<div class="container mt-4">
-    <h1>Dashboard Γραφείου Πρακτικής</h1>
+<!-- Statistics Section -->
+<div class="box">
+    <h2>Application Statistics</h2>
+    <p>Total Students: <strong th:text="${TOTAL_STUDENTS}">120</strong></p>
+    <p>Total Companies: <strong th:text="${TOTAL_COMPANIES}">45</strong></p>
+    <p>Total Professors: <strong th:text="${TOTAL_PROFESSORS}">30</strong></p>
+    <p>Total Internship Positions: <strong th:text="${TOTAL_POSITIONS}">85</strong></p>
+</div>
 
-    <div class="row mt-3">
-        <div class="col-md-3">
-            <div class="card text-center">
-                <div class="card-header">Εταιρείες</div>
-                <div class="card-body">
-                    <h2 th:text="${companyCount}">0</h2>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card text-center">
-                <div class="card-header">Θέσεις</div>
-                <div class="card-body">
-                    <h2 th:text="${positionCount}">0</h2>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card text-center">
-                <div class="card-header">Φοιτητές</div>
-                <div class="card-body">
-                    <h2 th:text="${studentCount}">0</h2>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card text-center">
-                <div class="card-header">Τρέχουσα Περίοδος</div>
-                <div class="card-body">
-                    <span th:text="${currentPeriod != null ? currentPeriod.name() : '–'}">–</span>
-                </div>
-            </div>
-        </div>
+<!-- Admin Actions -->
+<div class="box">
+    <h2>Management Actions</h2>
+    <div class="admin-actions">
+        <a th:href="@{/admin/students}">Manage Students</a>
+        <a th:href="@{/admin/companies}">Manage Companies</a>
+        <a th:href="@{/admin/professors}">Manage Professors</a>
+        <a th:href="@{/admin/internships}">Manage Internships</a>
+        <a th:href="@{/admin/settings}">Platform Settings</a>
     </div>
 </div>
 
-<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<footer>
+    &copy; 2025. Developed with ❤️ by
+    <a href="https://github.com/xrddev" target="_blank" class="brand-link">xrddev</a>.
+</footer>
+
 </body>
 </html>

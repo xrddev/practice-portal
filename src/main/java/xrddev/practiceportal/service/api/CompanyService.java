@@ -16,4 +16,5 @@ public interface CompanyService {
     Optional<Company> findByEmail(String email);
 
     void updateCompany(CompanyDashboardDto dto, String email);
+    long count();
 }

@@ -1,16 +1,16 @@
-package xrddev.practiceportal.controller.registration;
+package xrddev.practiceportal.controller.registration.company;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import xrddev.practiceportal.config.SessionAttribute;
+import xrddev.practiceportal.controller.registration.common.RegistrationSessionHelper;
 import xrddev.practiceportal.service.api.CompanyService;
 
 
 @Controller
 @RequestMapping("/public/register/company")
-public class CompanyRegistrationController {
+public class CompanyRegistrationController extends RegistrationSessionHelper {
     private final CompanyService companyService;
 
     public CompanyRegistrationController(CompanyService companyService) {
@@ -33,8 +33,8 @@ public class CompanyRegistrationController {
             HttpSession session) {
 
         companyService.registerCompany(
-                (String) session.getAttribute(SessionAttribute.EMAIL),
-                (String) session.getAttribute(SessionAttribute.PASSWORD),
+                super.getEmail(session),
+                super.getPassword(session),
                 companyName,
                 address,
                 phone,
@@ -42,9 +42,7 @@ public class CompanyRegistrationController {
                 internshipCoordinator,
                 internshipCoordinatorEmail);
 
-        session.removeAttribute(SessionAttribute.EMAIL);
-        session.removeAttribute(SessionAttribute.PASSWORD);
-
+        super.clearSession(session);
         return "redirect:/public/register/success";
     }
 }

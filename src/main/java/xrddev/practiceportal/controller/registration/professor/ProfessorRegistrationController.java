@@ -1,4 +1,4 @@
-package xrddev.practiceportal.controller.registration;
+package xrddev.practiceportal.controller.registration.professor;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import xrddev.practiceportal.config.ModelAttributes;
 import xrddev.practiceportal.config.SessionAttribute;
+import xrddev.practiceportal.controller.registration.common.RegistrationSessionHelper;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.service.api.ProfessorService;
 
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/public/register/professor")
-public class ProfessorRegistrationController {
+public class ProfessorRegistrationController extends RegistrationSessionHelper {
 
     private final ProfessorService professorService;
 
@@ -37,14 +38,13 @@ public class ProfessorRegistrationController {
             HttpSession session) {
 
         professorService.registerProfessor(
-                (String) session.getAttribute(SessionAttribute.EMAIL),
-                (String) session.getAttribute(SessionAttribute.PASSWORD),
+                super.getEmail(session),
+                super.getPassword(session),
                 firstName,
                 lastName,
                 interests);
 
-        session.removeAttribute(SessionAttribute.EMAIL);
-        session.removeAttribute(SessionAttribute.PASSWORD);
+        super.clearSession(session);
         return "redirect:/public/register/success";
     }
 }

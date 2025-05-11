@@ -81,4 +81,9 @@ public class InternshipPositionServiceImpl implements InternshipPositionService 
 
         positionRepository.save(position);
     }
+
+    @Override
+    public long count(){
+        return positionRepository.count();
+    }
 }

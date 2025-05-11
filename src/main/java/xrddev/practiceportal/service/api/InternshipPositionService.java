@@ -11,5 +11,5 @@ public interface InternshipPositionService {
     void deleteByIdAndCompanyEmail(Long id, String companyEmail);
     InternshipPosition getByIdAndCompanyEmail(Long id, String companyEmail);
     void updatePosition(Long id, InternshipPositionDashboardDto dto, String companyEmail);
-
+    long count();
 }

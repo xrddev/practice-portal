@@ -62,4 +62,9 @@ public class CompanyServiceImpl implements CompanyService {
         companyRepository.save(company);
     }
 
+    @Override
+    public long count(){
+        return companyRepository.count();
+    }
+
 }

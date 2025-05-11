@@ -22,10 +22,8 @@ public class AdminDataInitializer {
             PracticeOfficeAdminService adminService,
             PasswordEncoder passwordEncoder,
             @Value("${app.admin.emails}") String emailsCsv,
-            @Value("${app.admin.passwords}") String pwCsv,
-            @Value("${app.admin.firstName:PracticeOffice}") String firstName,
-            @Value("${app.admin.lastName:Admin}") String lastName
-    ) {
+            @Value("${app.admin.passwords}") String pwCsv)
+    {
         List<String> emails = Arrays.stream(emailsCsv.split(","))
                                     .map(String::trim)
                                     .toList();
@@ -47,8 +45,6 @@ public class AdminDataInitializer {
                     PracticeOfficeAdminDto dto = new PracticeOfficeAdminDto();
                     dto.setEmail(email);
                     dto.setPassword(passwordEncoder.encode(rawPw));
-                    dto.setFirstName(firstName);
-                    dto.setLastName(lastName);
                     adminService.registerAdmin(dto);
                     System.out.printf(">> Created admin %s with pw from props%n", email);
                 }

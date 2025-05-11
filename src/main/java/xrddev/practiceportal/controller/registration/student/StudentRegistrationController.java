@@ -1,4 +1,4 @@
-package xrddev.practiceportal.controller.registration;
+package xrddev.practiceportal.controller.registration.student;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.constraints.NotNull;
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import xrddev.practiceportal.config.ModelAttributes;
+import xrddev.practiceportal.controller.registration.common.RegistrationSessionHelper;
 import xrddev.practiceportal.model.enums.Department;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
@@ -19,14 +20,13 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/public/register/student")
-public class StudentRegistrationController {
+public class StudentRegistrationController extends RegistrationSessionHelper {
 
     private final StudentService studentService;
 
     public StudentRegistrationController(StudentService studentService) {
         this.studentService = studentService;
     }
-
 
     @GetMapping
     public String showStudentRegistrationForm(Model model) {
@@ -57,8 +57,8 @@ public class StudentRegistrationController {
             HttpSession session) {
 
         studentService.registerStudent(
-                (String) session.getAttribute(SessionAttribute.EMAIL),
-                (String) session.getAttribute(SessionAttribute.PASSWORD),
+                super.getEmail(session),
+                super.getPassword(session),
                 studentNumber,
                 firstName,
                 lastName,
@@ -69,10 +69,7 @@ public class StudentRegistrationController {
                 interests,
                 preferredLocation);
 
-        System.out.println("Student skilss : " + skills);
-
-        session.removeAttribute(SessionAttribute.EMAIL);
-        session.removeAttribute(SessionAttribute.PASSWORD);
+        super.clearSession(session);
         return "redirect:/public/register/success";
     }
 }

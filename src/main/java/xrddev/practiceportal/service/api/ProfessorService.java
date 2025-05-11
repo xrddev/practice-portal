@@ -11,5 +11,6 @@ public interface ProfessorService {
                            List<String> interests);
     Optional<Professor> findByEmail(String email);
     void updateProfessor(ProfessorDashboardDto dto, String email);
+    long count();
 
 }

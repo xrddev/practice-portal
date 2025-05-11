@@ -1,23 +1,20 @@
 package xrddev.practiceportal.dto.practice_office;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import xrddev.practiceportal.model.user.PracticeOfficeAdmin;
 
+@NoArgsConstructor
 @Data
 public class PracticeOfficeAdminDto {
+
     private Long id;
-
-    @NotBlank(message = "First name is required")
-    private String firstName;
-
-    @NotBlank(message = "Last name is required")
-    private String lastName;
-
-    @Email(message = "Invalid email address")
-    @NotBlank(message = "Email is required")
     private String email;
-
-    @NotBlank(message = "Password is required")
     private String password;
+
+    public PracticeOfficeAdminDto(PracticeOfficeAdmin admin) {
+        this.id       = admin.getId();
+        this.email    = admin.getEmail();
+        this.password = admin.getPassword();
+    }
 }

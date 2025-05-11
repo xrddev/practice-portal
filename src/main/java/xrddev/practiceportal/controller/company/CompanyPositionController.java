@@ -4,10 +4,7 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import xrddev.practiceportal.config.ModelAttributes;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionCreateDto;
@@ -20,6 +17,7 @@ import java.security.Principal;
 import java.util.Arrays;
 
 @Controller
+@RequestMapping("/company")
 public class CompanyPositionController {
 
     private final InternshipPositionService internshipPositionService;
@@ -28,18 +26,17 @@ public class CompanyPositionController {
         this.internshipPositionService = internshipPositionService;
     }
 
-    @GetMapping("/company/new-position")
+    @GetMapping("/new-position")
     public String showCreateForm(Model model) {
         model.addAttribute(ModelAttributes.INTERNSHIP_POSITION_CREATE_DTO, new InternshipPositionCreateDto());
         model.addAttribute(ModelAttributes.SKILLS, Arrays.stream(Skills.values()).toList());
         model.addAttribute(ModelAttributes.INTERESTS, Arrays.stream(Interests.values()).toList());
-        return "/company/new_position";
+        return "company/new_position";
     }
 
-    @PostMapping("/company/new-position")
+    @PostMapping("/new-position")
     public String handleCreateForm(
-            @Valid @ModelAttribute(ModelAttributes.INTERNSHIP_POSITION_CREATE_DTO)
-            InternshipPositionCreateDto dto,
+            @Valid @ModelAttribute(ModelAttributes.INTERNSHIP_POSITION_CREATE_DTO) InternshipPositionCreateDto dto,
             BindingResult bindingResult,
             Model model,
             RedirectAttributes redirectAttributes) {
@@ -47,7 +44,7 @@ public class CompanyPositionController {
         if (bindingResult.hasErrors()) {
             model.addAttribute(ModelAttributes.SKILLS, Arrays.stream(Skills.values()).toList());
             model.addAttribute(ModelAttributes.INTERESTS, Arrays.stream(Interests.values()).toList());
-            return "/company/new_position";
+            return "company/new_position";
         }
 
         internshipPositionService.createPosition(dto);
@@ -55,9 +52,7 @@ public class CompanyPositionController {
         return "redirect:/company/dashboard";
     }
 
-
-
-    @PostMapping("/company/positions/delete/{id}")
+    @PostMapping("/positions/delete/{id}")
     public String deletePosition(@PathVariable Long id, Principal principal, RedirectAttributes redirectAttributes) {
         String companyEmail = principal.getName();
         internshipPositionService.deleteByIdAndCompanyEmail(id, companyEmail);
@@ -65,8 +60,7 @@ public class CompanyPositionController {
         return "redirect:/company/dashboard";
     }
 
-
-    @GetMapping("/company/positions/edit/{id}")
+    @GetMapping("/positions/edit/{id}")
     public String showEditForm(@PathVariable Long id, Model model, Principal principal) {
         String companyEmail = principal.getName();
         var position = internshipPositionService.getByIdAndCompanyEmail(id, companyEmail);
@@ -75,14 +69,13 @@ public class CompanyPositionController {
         model.addAttribute(ModelAttributes.SKILLS, Arrays.stream(Skills.values()).toList());
         model.addAttribute(ModelAttributes.INTERESTS, Arrays.stream(Interests.values()).toList());
 
-        return "/company/edit_position";
+        return "company/edit_position";
     }
 
-    @PostMapping("/company/positions/edit/{id}")
+    @PostMapping("/positions/edit/{id}")
     public String handleEditForm(
             @PathVariable Long id,
-            @Valid @ModelAttribute(ModelAttributes.INTERNSHIP_POSITION_DASHBOARD_DTO)
-            InternshipPositionDashboardDto internshipPositionDashboardDto,
+            @Valid @ModelAttribute(ModelAttributes.INTERNSHIP_POSITION_DASHBOARD_DTO) InternshipPositionDashboardDto internshipPositionDashboardDto,
             BindingResult bindingResult,
             Principal principal,
             Model model,

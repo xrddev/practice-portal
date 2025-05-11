@@ -53,34 +53,4 @@ public class CompanyDashboardController {
         model.addAttribute(ModelAttributes.INTERNSHIP_POSITION_DASHBOARD_DTO, internshipPositionDashboardDto);
         return "company/dashboard";
     }
-
-    @GetMapping("/edit-profile")
-    public String editProfile(Model model, Principal principal) {
-        String companyEmail = principal.getName();
-        var company = companyService
-                .findByEmail(companyEmail)
-                .orElseThrow(() -> new RuntimeException("Company not found"));
-
-        model.addAttribute(ModelAttributes.COMPANY_DASHBOARD_DTO, new CompanyDashboardDto(company));
-        return "company/edit_profile";
-    }
-
-    @PostMapping("/edit-profile")
-    public String updateProfile(
-            @Valid @ModelAttribute(ModelAttributes.COMPANY_DASHBOARD_DTO) CompanyDashboardDto dto,
-            BindingResult bindingResult,
-            Principal principal,
-            Model model,
-            RedirectAttributes redirectAttributes) {
-
-        if (bindingResult.hasErrors()) {
-            model.addAttribute(ModelAttributes.COMPANY_DASHBOARD_DTO, dto);
-            return "company/edit_profile";
-        }
-
-        dto.setEmail(principal.getName()); //No email override
-        companyService.updateCompany(dto, principal.getName());
-        redirectAttributes.addFlashAttribute("profileUpdated", true);
-        return "redirect:/company/dashboard";
-    }
 }

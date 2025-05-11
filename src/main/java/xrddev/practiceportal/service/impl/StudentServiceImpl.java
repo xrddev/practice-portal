@@ -77,4 +77,9 @@ public class StudentServiceImpl implements StudentService {
     public Optional<Student> findByEmail(String email) {
         return studentRepository.findByEmail(email);
     }
+
+    @Override
+    public long count() {
+        return studentRepository.count();
+    }
 }
