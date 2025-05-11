@@ -404,6 +404,8 @@
             skillTag.appendChild(removeButton);
             container.appendChild(skillTag);
         });
+
+        document.getElementById('skillsHiddenInput').value = selectedSkills.join(',');
     }
     function removeSkill(skill) {
         selectedSkills = selectedSkills.filter(s => s !== skill); // Αφαίρεση από το array
@@ -447,5 +449,42 @@
     }
 
 </script>
+
+
+<script>
+    function validateStudentForm() {
+        const studentNumber = document.getElementById("studentNumber").value;
+        const yearOfStudy = document.getElementById("yearOfStudy").value;
+        const averageGrade = document.getElementById("averageGrade").value;
+
+        if (!/^\d{5,7}$/.test(studentNumber)) {
+            alert("Invalid student number. Must be 5–7 digits.");
+            return false;
+        }
+
+        if (yearOfStudy < 1 || yearOfStudy > 10) {
+            alert("Year of study must be between 1 and 10.");
+            return false;
+        }
+
+        if (averageGrade < 0 || averageGrade > 10) {
+            alert("Average grade must be between 0.0 and 10.0.");
+            return false;
+        }
+
+        if (selectedSkills.length === 0) {
+            alert("Please select at least one skill.");
+            return false;
+        }
+
+        if (selectedInterests.length === 0) {
+            alert("Please select at least one interest.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
 </body>
 </html>

@@ -15,7 +15,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
             min-height: 100vh;
         }
         h1 {
@@ -27,29 +26,18 @@
         }
         .box {
             background: rgba(255, 255, 255, 0.1);
-            padding: 40px 20px 30px 20px;
+            padding: 30px 20px;
             border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
             width: 90%;
-            max-width: 600px;
+            max-width: 800px;
             text-align: center;
-            animation: fadeInUp 0.8s ease forwards;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             margin-top: 30px;
             position: relative;
         }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
         p {
-            font-size: 1.4rem;
-            margin: 20px 0;
+            font-size: 1.2rem;
+            margin: 10px 0;
         }
         .action-buttons {
             display: flex;
@@ -60,18 +48,36 @@
         }
         .action-buttons button {
             border: none;
-            border-radius: 20px;
+            border-radius: 5px;
             padding: 8px 16px;
             font-family: 'Ubuntu Mono', monospace;
             font-size: 0.9rem;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-            background: #ff4d4d;
+            background-color: #ff4d4d;
             color: white;
+            transition: background-color 0.3s, transform 0.2s;
         }
         .action-buttons button:hover {
-            background: #e60000;
+            background-color: #e60000;
             transform: scale(1.05);
+        }
+        .position-tags {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .position-tags .tag {
+            display: inline-block;
+            background-color: #eacd45;
+            color: #003366;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin: 6px 8px 0 0;
+            transition: opacity 0.2s;
+        }
+        .position-tags .tag:hover {
+            opacity: 0.85;
         }
         footer {
             text-align: center;
@@ -81,57 +87,87 @@
             font-size: 0.8rem;
             margin-top: auto;
             width: 100%;
-            border: none;
         }
         a {
             color: #ffcc33;
             text-decoration: none;
         }
+
+        .message-box {
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: bold;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .message-box.success {
+            background: rgba(46, 204, 113, 0.9);
+            color: white;
+        }
+
+        .fade-out {
+            transition: opacity 1s ease-out;
+            opacity: 0;
+        }
+
+
+
     </style>
 </head>
 <body>
 
 <h1>Professor – Internship Dashboard</h1>
 
+<div th:if="${profileUpdated}" id="profile-success" class="message-box success">
+    Profile updated successfully!
+</div>
+
 <div class="box">
     <div class="action-buttons">
-        <form action="#" th:action="@{/edit-profile}" method="get" style="display:inline;">
+        <form th:action="@{/professor/edit-profile}" method="get">
             <button type="submit">Edit Profile</button>
         </form>
-        <form th:action="@{/logout}" method="post" style="display:inline;">
+        <form th:action="@{/logout}" method="post">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
             <button type="submit">Logout</button>
         </form>
     </div>
-    <p>
-        Welcome,
-        <strong th:text="${professor.fullName}">Professor Name</strong>!
-    </p>
-    <p>
-        Your email:
-        <strong th:text="${professor.email}">professor@example.com</strong>
-    </p>
-</div>
 
-<div class="box positions-list" style="max-width:800px; margin-top:20px;">
-    <h2>Your Supervised Positions</h2>
-    <ul style="list-style:none; padding:0;">
-        <li th:each="pos : ${positions}" style="background: rgba(255,255,255,0.1); margin-bottom: 8px; padding: 12px; border-radius: 6px; transition: all 0.3s ease;">
-            <strong th:text="${pos.title}">Position Title</strong>
-            <span style="margin-left:10px; color:#ccc;">for</span>
-            <span th:text="${pos.student.fullName}">Student Name</span>
-            <small style="display:block; color:#aaa;" th:text="${pos.student.email}">student@example.com</small>
-        </li>
-        <li th:if="${#lists.isEmpty(positions)}" style="color:#ffa;">
-            No supervised positions yet.
-        </li>
-    </ul>
+    <p>Welcome, <strong th:text="|${PROFESSOR_DASHBOARD_DTO.firstName} ${PROFESSOR_DASHBOARD_DTO.lastName}|">Professor Name</strong>!</p>
+    <p>Your email: <strong th:text="${PROFESSOR_DASHBOARD_DTO.email}">email@uoi.gr</strong></p>
+
+    <div class="position-tags interests" th:if="${PROFESSOR_DASHBOARD_DTO.interests}">
+        <span class="label" style="font-size: 1.2rem;">Interests:</span><br/>
+        <span th:each="interest : ${PROFESSOR_DASHBOARD_DTO.interests}" th:text="${interest}" class="tag">Interest</span>
+    </div>
 </div>
 
 <footer>
     &copy; 2025. Developed with ❤️ by
     <a href="https://github.com/xrddev" target="_blank">xrddev</a>.
 </footer>
+
+
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+        const fadeOutFlash = (id) => {
+            const el = document.getElementById(id);
+            if (el) {
+                setTimeout(() => {
+                    el.classList.add("fade-out");
+                    setTimeout(() => el.remove(), 1000);
+                }, 1000);
+            }
+        };
+
+        fadeOutFlash("profile-success");
+    });
+</script>
+
 
 </body>
 </html>

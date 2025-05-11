@@ -2,6 +2,7 @@ package xrddev.practiceportal.service.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import xrddev.practiceportal.dto.student.StudentDto;
 import xrddev.practiceportal.model.user.Student;
 import xrddev.practiceportal.model.enums.Department;
 import xrddev.practiceportal.model.enums.Interests;
@@ -52,6 +53,24 @@ public class StudentServiceImpl implements StudentService {
 
         studentRepository.save(student);
     }
+
+    @Override
+    public void updateStudent(StudentDto dto, String email) {
+        Student student = studentRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Student not found"));
+
+        student.setFirstName(dto.getFirstName());
+        student.setLastName(dto.getLastName());
+        student.setStudentNumber(dto.getStudentNumber());
+        student.setYearOfStudy(dto.getYearOfStudy());
+        student.setAverageGrade(dto.getAverageGrade());
+        student.setInterests(dto.getInterests());
+        student.setSkills(dto.getSkills());
+        student.setPreferredLocation(dto.getPreferredLocation());
+
+        studentRepository.save(student);
+    }
+
 
     @Override
     @Transactional(readOnly = true)

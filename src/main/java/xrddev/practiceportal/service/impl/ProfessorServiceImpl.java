@@ -3,6 +3,7 @@ package xrddev.practiceportal.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import xrddev.practiceportal.dto.professor.ProfessorDashboardDto;
 import xrddev.practiceportal.model.user.Professor;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.UserRole;
@@ -45,4 +46,17 @@ public class ProfessorServiceImpl implements ProfessorService {
     public Optional<Professor> findByEmail(String email) {
         return professorRepository.findByEmail(email);
     }
+
+    @Override
+    @Transactional
+    public void updateProfessor(ProfessorDashboardDto dto, String email) {
+        Professor professor = professorRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Professor not found"));
+
+        professor.setFirstName(dto.getFirstName());
+        professor.setLastName(dto.getLastName());
+        professor.setInterests(dto.getInterests());
+        professorRepository.save(professor);
+    }
+
 }

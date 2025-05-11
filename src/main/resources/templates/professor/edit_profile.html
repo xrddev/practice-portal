@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Professor Profile</title>
+    <link rel="icon" href="/uoi-logo-new-1024x784.webp" type="image/webp">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: 'Ubuntu Mono', monospace;
+            background: linear-gradient(135deg, #004d40, #00695c);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            color: #ffcc33;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        form {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+            width: 90%;
+            max-width: 500px;
+            animation: slideIn 1s;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-size: 1rem;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Ubuntu Mono', monospace;
+            font-size: 1rem;
+            background-color: rgba(255,255,255,0.8);
+            color: #333;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border: 2px solid #ffcc33;
+            box-shadow: 0 0 5px rgba(255,204,51,0.8);
+        }
+        .tooltip {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            margin: -5px 0 10px;
+            text-align: left;
+        }
+        .selected-interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px;
+            border: 1px solid #ffcc33;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+        .interest-tag {
+            display: flex;
+            align-items: center;
+            background: #0073e6;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .interest-tag button {
+            all: unset;
+            background: #ff4d4d;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-left: 10px;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .interest-tag button:hover {
+            background: #ff3333;
+            transform: scale(1.1);
+        }
+        .message-box {
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        .message-box.error {
+            background: rgba(231,76,60,0.9);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #33cc33;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Ubuntu Mono', monospace;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background-color: #28a428;
+            transform: scale(1.05);
+        }
+        footer {
+            text-align: center;
+            background: rgba(0,0,0,0.3);
+            color: rgba(255,255,255,0.9);
+            padding: 10px 0;
+            font-size: 0.8rem;
+            margin-top: auto;
+            width: 100%;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Edit Professor Profile</h1>
+
+<div id="error-message" class="message-box error" style="display:none;"></div>
+
+<form th:action="@{/professor/edit-profile}" th:object="${PROFESSOR_DASHBOARD_DTO}" method="post" onsubmit="return validateProfessorForm()">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" th:field="*{firstName}" maxlength="100" required/>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" th:field="*{lastName}" maxlength="100" required/>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" th:field="*{email}" readonly/>
+    <div class="tooltip">Email cannot be changed!</div>
+
+    <label for="interestsSelect">Interests:</label>
+    <select id="interestsSelect">
+        <option value="" disabled selected>Select an interest to add</option>
+        <th:block th:each="interest : ${INTERESTS}">
+            <option th:value="${interest}" th:text="${#strings.capitalize(interest.name().toLowerCase().replace('_',' '))}"></option>
+        </th:block>
+    </select>
+    <div class="tooltip">Previously selected interests shown below.</div>
+    <div id="selectedInterestsContainer" class="selected-interests"></div>
+    <div id="interestsHiddenInputs"></div>
+
+    <button type="submit">Save Changes</button>
+</form>
+
+<footer>
+    &copy; 2025. Developed with ❤️ by
+    <a href="https://github.com/xrddev" target="_blank" style="color:#ffcc33; text-decoration:none;">xrddev</a>.
+</footer>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let selectedInterests = /*[[${PROFESSOR_DASHBOARD_DTO.interests}]]*/ [];
+    /*]]>*/
+</script>
+
+<script>
+    function formatLabel(text) {
+        return text.replace(/_/g, ' ').toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+    }
+
+    function updateInterestsContainer() {
+        const container = document.getElementById('selectedInterestsContainer');
+        const hidden = document.getElementById('interestsHiddenInputs');
+        container.innerHTML = '';
+        hidden.innerHTML = '';
+        selectedInterests.forEach(interest => {
+            const tag = document.createElement('div');
+            tag.className = 'interest-tag';
+            tag.textContent = formatLabel(interest);
+            const btn = document.createElement('button');
+            btn.textContent = '×';
+            btn.onclick = () => removeInterest(interest);
+            tag.appendChild(btn);
+            container.appendChild(tag);
+            const inp = document.createElement('input');
+            inp.type = 'hidden';
+            inp.name = 'interests';
+            inp.value = interest;
+            hidden.appendChild(inp);
+        });
+    }
+
+    function removeInterest(interest) {
+        selectedInterests = selectedInterests.filter(i => i !== interest);
+        updateInterestsContainer();
+    }
+
+    document.getElementById('interestsSelect').addEventListener('change', e => {
+        const val = e.target.value;
+        if (val && !selectedInterests.includes(val)) {
+            selectedInterests.push(val);
+            updateInterestsContainer();
+        }
+        e.target.value = '';
+    });
+
+    function validateProfessorForm() {
+        const firstName = document.getElementById("firstName").value.trim();
+        const lastName = document.getElementById("lastName").value.trim();
+        const errBox = document.getElementById("error-message");
+        errBox.style.display = 'none';
+
+        if (!firstName || !lastName) {
+            showError("Please fill in all required fields.");
+            return false;
+        }
+        if (selectedInterests.length === 0) {
+            showError("Please select at least one interest.");
+            return false;
+        }
+        return true;
+    }
+
+    function showError(msg) {
+        const errBox = document.getElementById("error-message");
+        errBox.textContent = msg;
+        errBox.style.display = 'block';
+    }
+
+    updateInterestsContainer();
+</script>
+
+</body>
+</html>

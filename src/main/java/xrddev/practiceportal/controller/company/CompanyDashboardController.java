@@ -6,21 +6,21 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import xrddev.practiceportal.config.ModelAttributes;
 import xrddev.practiceportal.dto.company.CompanyDashboardDto;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionDashboardDto;
 import xrddev.practiceportal.dto.student.StudentDto;
-import xrddev.practiceportal.model.internship.InternshipPosition;
 import xrddev.practiceportal.service.api.CompanyService;
 import xrddev.practiceportal.service.api.InternshipPositionService;
 
 @Controller
+@RequestMapping("/company")
 public class CompanyDashboardController {
 
     private final CompanyService companyService;
@@ -31,7 +31,7 @@ public class CompanyDashboardController {
         this.internshipPositionService = internshipPositionService;
     }
 
-    @GetMapping("/company/dashboard")
+    @GetMapping("/dashboard")
     public String dashboard(Model model, Principal principal) {
         String companyEmail = principal.getName();
 
@@ -65,7 +65,7 @@ public class CompanyDashboardController {
         return "company/edit_profile";
     }
 
-    @PostMapping("/company/edit-profile")
+    @PostMapping("/edit-profile")
     public String updateProfile(
             @Valid @ModelAttribute(ModelAttributes.COMPANY_DASHBOARD_DTO) CompanyDashboardDto dto,
             BindingResult bindingResult,
@@ -78,6 +78,7 @@ public class CompanyDashboardController {
             return "company/edit_profile";
         }
 
+        dto.setEmail(principal.getName()); //No email override
         companyService.updateCompany(dto, principal.getName());
         redirectAttributes.addFlashAttribute("profileUpdated", true);
         return "redirect:/company/dashboard";

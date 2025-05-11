@@ -16,6 +16,10 @@ public class StudentDto {
 
     private Long id;
 
+    @Email(message = "Invalid email format.")
+    @NotNull(message = "Email cannot be null.")
+    private String email;
+
     @NotNull(message = "Student number cannot be null!")
     @Size(min = 5, max = 7, message = "Student number must be between 5 and 7 characters.")
     private String studentNumber;
@@ -47,9 +51,9 @@ public class StudentDto {
     @Size(max = 50, message = "Preferred location can have up to 50 characters.")
     private String preferredLocation;
 
-
     public StudentDto(Student student) {
         this.id = student.getId();
+        this.email = student.getEmail();
         this.studentNumber = student.getStudentNumber();
         this.firstName = student.getFirstName();
         this.lastName = student.getLastName();

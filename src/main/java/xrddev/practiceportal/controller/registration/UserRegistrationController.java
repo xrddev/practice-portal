@@ -3,10 +3,12 @@ package xrddev.practiceportal.controller.registration;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import xrddev.practiceportal.config.ModelAttributes;
 import xrddev.practiceportal.config.SessionAttribute;
 import jakarta.servlet.http.HttpSession;
@@ -27,7 +29,8 @@ public class UserRegistrationController {
 
     @GetMapping
     public String showRegistrationForm(Model model) {
-        List<String> roles = Arrays.stream(UserRole.values()).map(Enum::name).toList();
+        List<String> roles = Arrays.stream(UserRole.values())
+                .filter(x -> !x.equals(UserRole.ADMIN)).map(Enum::name).toList();
         model.addAttribute(ModelAttributes.ROLES, roles);
         return "register/user_register";
     }
@@ -38,6 +41,11 @@ public class UserRegistrationController {
             @RequestParam @NotNull @Email String email,
             @RequestParam @NotNull UserRole role,
             HttpSession session) {
+
+        if (role == UserRole.ADMIN) {
+            throw new ResponseStatusException(
+                    HttpStatus.FORBIDDEN, "Cannot register as ADMIN ! / GOT U ");
+        }
 
         session.setAttribute(SessionAttribute.PASSWORD, passwordEncoder.encode(password));
         session.setAttribute(SessionAttribute.EMAIL, email);

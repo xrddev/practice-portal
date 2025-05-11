@@ -1,5 +1,6 @@
 package xrddev.practiceportal.service.api;
 
+import xrddev.practiceportal.dto.student.StudentDto;
 import xrddev.practiceportal.model.user.Student;
 import java.util.List;
 import java.util.Optional;
@@ -18,4 +19,6 @@ public interface StudentService {
                          String preferredLocation);
 
     Optional<Student> findByEmail(String email);
+    void updateStudent(StudentDto dto, String email);
+
 }

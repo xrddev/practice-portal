@@ -69,9 +69,10 @@ public class StudentRegistrationController {
                 interests,
                 preferredLocation);
 
+        System.out.println("Student skilss : " + skills);
+
         session.removeAttribute(SessionAttribute.EMAIL);
         session.removeAttribute(SessionAttribute.PASSWORD);
-
         return "redirect:/public/register/success";
     }
 }

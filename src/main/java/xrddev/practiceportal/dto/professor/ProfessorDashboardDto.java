@@ -1,15 +1,45 @@
 package xrddev.practiceportal.dto.professor;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.user.Professor;
+import xrddev.practiceportal.dto.intership_position.InternshipPositionDashboardDto;
 
-public record ProfessorDashboardDto(
-        String fullName,
-        String email
-) {
-    public ProfessorDashboardDto(Professor p) {
-        this(
-                p.getFirstName() + " " + p.getLastName(),
-                p.getEmail()
-        );
+import java.util.List;
+import java.util.stream.Collectors;
+
+@NoArgsConstructor
+@Data
+public class ProfessorDashboardDto {
+
+    @NotNull(message = "First name is required.")
+    @Size(max = 100, message = "First name can be up to 100 characters.")
+    private String firstName;
+
+    @NotNull(message = "Last name is required.")
+    @Size(max = 100, message = "Last name can be up to 100 characters.")
+    private String lastName;
+
+    @Email(message = "Email must be valid.")
+    private String email;
+
+    @NotNull(message = "At least one interest is required.")
+    private List<Interests> interests;
+
+    private List<InternshipPositionDashboardDto> supervisedPositions;
+
+    public ProfessorDashboardDto(Professor professor) {
+        this.firstName = professor.getFirstName();
+        this.lastName = professor.getLastName();
+        this.email = professor.getEmail();
+        this.interests = professor.getInterests();
+        this.supervisedPositions = professor.getSupervisedPositions()
+                .stream()
+                .map(InternshipPositionDashboardDto::new)
+                .collect(Collectors.toList());
     }
 }
