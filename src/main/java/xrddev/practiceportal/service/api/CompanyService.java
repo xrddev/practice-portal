@@ -2,6 +2,8 @@ package xrddev.practiceportal.service.api;
 
 import xrddev.practiceportal.dto.company.CompanyDashboardDto;
 import xrddev.practiceportal.model.user.Company;
+
+import java.util.List;
 import java.util.Optional;
 
 public interface CompanyService {
@@ -18,4 +20,8 @@ public interface CompanyService {
     long count();
     CompanyDashboardDto getByEmailMappedToDto(String email);
     Optional<Company> findByEmail(String email);
+
+    List<CompanyDashboardDto> getAllMappedToDto();
+    void deleteByEmail(String email);
+
 }

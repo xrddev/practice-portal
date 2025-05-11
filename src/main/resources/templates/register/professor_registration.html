@@ -7,9 +7,7 @@
     <title>Professor Registration</title>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
+        *, *::before, *::after { box-sizing: border-box; }
 
         body {
             margin: 0;
@@ -89,18 +87,11 @@
             font-size: 0.8rem;
             margin-top: auto;
             width: 100%;
-            border: none;
         }
 
         @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-20px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         .tooltip {
@@ -150,14 +141,12 @@
             padding: 5px 15px;
             border-radius: 20px;
             font-size: 0.9rem;
-            font-family: 'Ubuntu Mono', monospace;
         }
 
         .interest-tag button {
             all: unset;
             background: #ff4d4d;
             color: white;
-            font-size: 0.9rem;
             font-weight: bold;
             margin-left: 10px;
             border-radius: 50%;
@@ -180,89 +169,85 @@
 <body>
 <h1>Professor Registration</h1>
 
-<div class="message-box success" style="display: none;" id="success-message">
-    Registration successful!
-</div>
-<div class="message-box error" style="display: none;" id="error-message">
-    Please fix the errors and try again.
-</div>
+<div class="message-box success" style="display: none;" id="success-message">Registration successful!</div>
+<div class="message-box error" style="display: none;" id="error-message">Please fix the errors and try again.</div>
 
 <form action="/public/register/professor" method="post" onsubmit="return validateProfessorForm()">
-
-    <!-- First Name -->
     <label for="firstName">First Name:</label>
     <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
     <div class="tooltip">Enter your first name.</div>
 
-    <!-- Last Name -->
     <label for="lastName">Last Name:</label>
     <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
     <div class="tooltip">Enter your last name.</div>
 
-    <!-- Interests -->
-    <label for="interestsSelect">Interests:</label>
-    <div>
-        <select id="interestsSelect" name="interestsDropdown">
-            <option value="" disabled selected>Select an interest</option>
-            <th:block th:each="interest : ${INTERESTS}">
-                <option th:value="${interest}"
-                        th:text="${#strings.replace(#strings.capitalize(interest.toLowerCase()), '_', ' ')}"></option>
-            </th:block>
-        </select>
+    <label for="department">Department:</label>
+    <select id="department" name="department" required>
+        <option value="" disabled selected>Select your department</option>
+        <th:block th:each="dept : ${DEPARTMENTS}">
+            <option th:value="${dept}"
+                    th:text="${#strings.replace(#strings.capitalize(dept.toLowerCase()), '_', ' ')}"></option>
+        </th:block>
+    </select>
+    <div class="tooltip">Select the department you belong to.</div>
 
-    </div>
+    <label for="interestsSelect">Interests:</label>
+    <select id="interestsSelect" name="interestsDropdown">
+        <option value="" disabled selected>Select an interest</option>
+        <th:block th:each="interest : ${INTERESTS}">
+            <option th:value="${interest}"
+                    th:text="${#strings.replace(#strings.capitalize(interest.toLowerCase()), '_', ' ')}"></option>
+        </th:block>
+    </select>
     <div class="tooltip">Select topics you are interested in supervising. You can choose multiple interests.</div>
     <div id="selectedInterestsContainer" class="selected-interests"></div>
     <input type="hidden" id="interestsHiddenInput" name="interests">
+
     <div class="tooltip">Choose interests one by one. Selected interests will appear above.</div>
 
-    <!-- Submit Button -->
     <button type="submit">Register</button>
 </form>
 
 <footer>
     &copy; 2025. Developed with ❤️ by
-    <a href="https://github.com/xrddev" style="color: #ffcc33; text-decoration: none;" target="_blank">
-        xrddev
-    </a>.
+    <a href="https://github.com/xrddev" style="color: #ffcc33; text-decoration: none;" target="_blank">xrddev</a>.
 </footer>
 
 <script>
-
     let selectedInterests = [];
+
     document.getElementById('interestsSelect').addEventListener('change', (event) => {
-        const selectedValue = event.target.value;
-        if (selectedValue && !selectedInterests.includes(selectedValue)) {
-            selectedInterests.push(selectedValue);
+        const value = event.target.value;
+        if (value && !selectedInterests.includes(value)) {
+            selectedInterests.push(value);
             updateInterestsContainer();
         }
-        event.target.value = ""; // Reset dropdown
+        event.target.value = "";
     });
 
     function updateInterestsContainer() {
         const container = document.getElementById('selectedInterestsContainer');
         container.innerHTML = '';
         selectedInterests.forEach(interest => {
-            const interestTag = document.createElement('div');
-            interestTag.className = 'interest-tag';
-            interestTag.textContent = interest.replace(/_/g, ' ').toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
-            const removeButton = document.createElement('button');
-            removeButton.textContent = '×';
-            removeButton.onclick = () => removeInterest(interest);
-            interestTag.appendChild(removeButton);
-            container.appendChild(interestTag);
+            const tag = document.createElement('div');
+            tag.className = 'interest-tag';
+            tag.textContent = interest.replace(/_/g, ' ').toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+            const btn = document.createElement('button');
+            btn.textContent = '×';
+            btn.onclick = () => {
+                selectedInterests = selectedInterests.filter(i => i !== interest);
+                updateInterestsContainer();
+            };
+            tag.appendChild(btn);
+            container.appendChild(tag);
         });
         document.getElementById('interestsHiddenInput').value = selectedInterests.join(',');
-    }
-
-    function removeInterest(interest) {
-        selectedInterests = selectedInterests.filter(i => i !== interest);
-        updateInterestsContainer();
     }
 
     function validateProfessorForm() {
         const firstName = document.getElementById("firstName").value.trim();
         const lastName = document.getElementById("lastName").value.trim();
+        const department = document.getElementById("department").value;
 
         if (!firstName || firstName.length > 50) {
             showError("First name is required and can be up to 50 characters.");
@@ -272,18 +257,23 @@
             showError("Last name is required and can be up to 50 characters.");
             return false;
         }
+        if (!department) {
+            showError("Please select a department.");
+            return false;
+        }
         if (selectedInterests.length === 0) {
             showError("Please select at least one interest.");
             return false;
         }
+
         document.getElementById("success-message").style.display = "block";
         return true;
     }
 
     function showError(message) {
-        const errorMessage = document.getElementById("error-message");
-        errorMessage.textContent = message;
-        errorMessage.style.display = "block";
+        const box = document.getElementById("error-message");
+        box.textContent = message;
+        box.style.display = "block";
     }
 </script>
 </body>

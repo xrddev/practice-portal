@@ -22,7 +22,6 @@ public class PracticeOfficeStudentController {
     @GetMapping
     public String showAllStudents(Model model, Principal principal) {
         model.addAttribute("students", studentService.getAllMappedToDto());
-        model.addAttribute("ADMIN_EMAIL", principal.getName());
         return "practice_office/students";
     }
 

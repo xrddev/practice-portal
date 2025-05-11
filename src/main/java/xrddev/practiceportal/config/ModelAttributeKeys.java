@@ -11,7 +11,7 @@ public final class ModelAttributeKeys {
     public static final String COMPANY_DASHBOARD_DTO = "COMPANY_DASHBOARD_DTO";
     public static final String MATCHED_STUDENTS_DTO = "MATCHED_STUDENTS_DTO";
     public static final String PROFESSOR_DASHBOARD_DTO = "PROFESSOR_DASHBOARD_DTO";
-
+    public static final String COMPANY_DASHBOARD_DTO_LIST = "COMPANY_DASHBOARD_DTO_LIST";
     private ModelAttributeKeys() throws Exception {
         throw new Exception("This is a utility class and cannot be instantiated");
     }

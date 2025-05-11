@@ -70,11 +70,6 @@ public class InternshipPositionServiceImpl implements InternshipPositionService 
         internshipPositionRepository.delete(position);
     }
 
-    @Override
-    public InternshipPosition getByIdAndCompanyEmail(Long id, String companyEmail) {
-        return internshipPositionRepository.findByIdAndCompanyEmail(id, companyEmail)
-                .orElseThrow(() -> new EntityNotFoundException("Position not found or not yours"));
-    }
 
     @Override
     @Transactional
@@ -107,4 +102,15 @@ public class InternshipPositionServiceImpl implements InternshipPositionService 
         return new InternshipPositionDto(position);
     }
 
+    @Override
+    public List<InternshipPositionDto> getAllMappedToDto(){
+        return internshipPositionRepository.findAll().stream()
+                .map(InternshipPositionDto::new)
+                .toList();
+    }
+
+    @Override
+    public void deleteById(Long id){
+        internshipPositionRepository.deleteById(id);
+    }
 }

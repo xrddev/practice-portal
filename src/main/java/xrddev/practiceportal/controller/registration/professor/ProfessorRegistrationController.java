@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import xrddev.practiceportal.config.ModelAttributeKeys;
 import xrddev.practiceportal.controller.registration.common.RegistrationSessionHelper;
+import xrddev.practiceportal.model.enums.Department;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.service.api.ProfessorService;
 
@@ -31,6 +32,7 @@ public class ProfessorRegistrationController extends RegistrationSessionHelper {
     public String handleProfessorRegistration(
             @RequestParam String firstName,
             @RequestParam String lastName,
+            @RequestParam("department") Department department,
             @RequestParam List<String> interests,
             HttpSession session) {
 
@@ -39,9 +41,11 @@ public class ProfessorRegistrationController extends RegistrationSessionHelper {
                 super.getPassword(session),
                 firstName,
                 lastName,
+                department,
                 interests);
 
         super.clearSession(session);
         return "redirect:/public/register/success";
     }
+
 }

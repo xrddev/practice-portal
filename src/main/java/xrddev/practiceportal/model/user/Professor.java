@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import xrddev.practiceportal.model.enums.Department;
 import xrddev.practiceportal.model.internship.InternshipPosition;
 import xrddev.practiceportal.model.enums.Interests;
 
@@ -27,6 +28,12 @@ public class Professor extends User {
     @NotNull(message = "Last name cannot be null!")
     @Size(max = 50, message = "Last name can have up to 50 characters.")
     private String lastName;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "department", nullable = false)
+    @NotNull(message = "Department cannot be null!")
+    private Department department;
+
 
     @ElementCollection(targetClass = Interests.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)

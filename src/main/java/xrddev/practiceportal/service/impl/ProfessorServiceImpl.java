@@ -4,7 +4,8 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import xrddev.practiceportal.dto.professor.ProfessorDashboardDto;
+import xrddev.practiceportal.dto.professor.ProfessorDto;
+import xrddev.practiceportal.model.enums.Department;
 import xrddev.practiceportal.model.user.Professor;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.UserRole;
@@ -27,11 +28,13 @@ public class ProfessorServiceImpl implements ProfessorService {
                                   String password,
                                   String firstName,
                                   String lastName,
+                                  Department department,
                                   List<String> interests) {
         Professor professor = new Professor();
         professor.setRole(UserRole.PROFESSOR);
         professor.setEmail(email);
         professor.setPassword(password);
+        professor.setDepartment(department);
         professor.setFirstName(firstName);
         professor.setLastName(lastName);
         professor.setInterests(
@@ -50,7 +53,7 @@ public class ProfessorServiceImpl implements ProfessorService {
 
     @Override
     @Transactional
-    public void updateProfessor(ProfessorDashboardDto dto, String email) {
+    public void updateProfessor(ProfessorDto dto, String email) {
         Professor professor = professorRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Professor not found"));
 
@@ -66,11 +69,23 @@ public class ProfessorServiceImpl implements ProfessorService {
     }
 
     @Override
-    public ProfessorDashboardDto getByEmailMappedToDto(String email) {
+    public ProfessorDto getByEmailMappedToDto(String email) {
         return professorRepository.findByEmail(email)
-                .map(ProfessorDashboardDto::new)
+                .map(ProfessorDto::new)
                 .orElseThrow(() -> new EntityNotFoundException("Professor not found"));
     }
 
+    @Override
+    public List<ProfessorDto> getAllMappedToDto() {
+        return professorRepository.findAll()
+                .stream()
+                .map(ProfessorDto::new)
+                .toList();
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        professorRepository.deleteById(id);
+    }
 
 }

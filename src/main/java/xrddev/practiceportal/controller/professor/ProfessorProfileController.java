@@ -11,12 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import xrddev.practiceportal.config.ModelAttributeKeys;
-import xrddev.practiceportal.dto.professor.ProfessorDashboardDto;
-import xrddev.practiceportal.model.enums.Interests;
+import xrddev.practiceportal.dto.professor.ProfessorDto;
 import xrddev.practiceportal.service.api.ProfessorService;
 
 import java.security.Principal;
-import java.util.Arrays;
 
 @Controller
 @RequestMapping("/professor")
@@ -33,7 +31,7 @@ public class ProfessorProfileController {
 
     @PostMapping("/edit-profile")
     public String updateProfile(
-            @Valid @ModelAttribute(ModelAttributeKeys.PROFESSOR_DASHBOARD_DTO) ProfessorDashboardDto dto,
+            @Valid @ModelAttribute(ModelAttributeKeys.PROFESSOR_DASHBOARD_DTO) ProfessorDto dto,
             BindingResult bindingResult,
             Principal principal,
             Model model,
@@ -41,6 +39,7 @@ public class ProfessorProfileController {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute(ModelAttributeKeys.PROFESSOR_DASHBOARD_DTO, dto);
+            System.out.println("Got here !");
             return "professor/edit_profile";
         }
 

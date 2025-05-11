@@ -139,6 +139,7 @@
 
     <p>Welcome, <strong th:text="|${PROFESSOR_DASHBOARD_DTO.firstName} ${PROFESSOR_DASHBOARD_DTO.lastName}|">Professor Name</strong>!</p>
     <p>Your email: <strong th:text="${PROFESSOR_DASHBOARD_DTO.email}">email@uoi.gr</strong></p>
+    <p>Department: <strong th:text="${PROFESSOR_DASHBOARD_DTO.department}">INFORMATICS</strong></p>
 
     <div class="position-tags interests" th:if="${PROFESSOR_DASHBOARD_DTO.interests}">
         <span class="label" style="font-size: 1.2rem;">Interests:</span><br/>

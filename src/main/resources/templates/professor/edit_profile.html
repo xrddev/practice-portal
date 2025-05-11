@@ -161,6 +161,10 @@
     <input type="email" id="email" th:field="*{email}" readonly/>
     <div class="tooltip">Email cannot be changed!</div>
 
+    <label for="department">Department:</label>
+    <input type="text" id="department" th:field="*{department}" readonly />
+    <div class="tooltip">Department cannot be changed.</div>
+
     <label for="interestsSelect">Interests:</label>
     <select id="interestsSelect">
         <option value="" disabled selected>Select an interest to add</option>

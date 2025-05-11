@@ -8,6 +8,7 @@ import xrddev.practiceportal.model.enums.UserRole;
 import xrddev.practiceportal.repository.api.CompanyRepository;
 import xrddev.practiceportal.service.api.CompanyService;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -75,6 +76,21 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public long count(){
         return companyRepository.count();
+    }
+
+    @Override
+    public List<CompanyDashboardDto> getAllMappedToDto() {
+        return companyRepository.findAll()
+                .stream()
+                .map(CompanyDashboardDto::new)
+                .toList();
+    }
+
+    @Override
+    public void deleteByEmail(String email) {
+        var company = companyRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Company not found with email: " + email));
+        companyRepository.delete(company);
     }
 
 }
