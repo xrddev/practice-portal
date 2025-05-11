@@ -10,7 +10,9 @@ import java.time.LocalDateTime;
 public abstract class AbstractPeriod {
 
     @Id
-    protected Integer id = 1;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status_mode", nullable = false)

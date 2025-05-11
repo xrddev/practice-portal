@@ -20,7 +20,6 @@ public class CompanyDashboardDto {
     private String internshipCoordinatorEmail;
     private List<InternshipPositionDashboardDto> positions;
 
-    // Μετατροπή Company → CompanyDashboardDto
     public CompanyDashboardDto(Company company) {
         this.companyName = company.getCompanyName();
         this.email = company.getEmail();

@@ -30,7 +30,7 @@ public class UserRegistrationController {
     @GetMapping
     public String showRegistrationForm(Model model) {
         List<String> roles = Arrays.stream(UserRole.values())
-                .filter(x -> !x.equals(UserRole.ADMIN)).map(Enum::name).toList();
+                .filter(x -> !x.equals(UserRole.PRACTICE_OFFICE)).map(Enum::name).toList();
         model.addAttribute(ModelAttributes.ROLES, roles);
         return "register/user_register";
     }
@@ -42,7 +42,7 @@ public class UserRegistrationController {
             @RequestParam @NotNull UserRole role,
             HttpSession session) {
 
-        if (role == UserRole.ADMIN) {
+        if (role == UserRole.PRACTICE_OFFICE) {
             throw new ResponseStatusException(
                     HttpStatus.FORBIDDEN, "Cannot register as ADMIN ! / GOT U ");
         }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Practice Office Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" th:href="@{/}">PracticePortal</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/practice-office/dashboard}">Dashboard</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h1>Dashboard Γραφείου Πρακτικής</h1>
+
+    <div class="row mt-3">
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-header">Εταιρείες</div>
+                <div class="card-body">
+                    <h2 th:text="${companyCount}">0</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-header">Θέσεις</div>
+                <div class="card-body">
+                    <h2 th:text="${positionCount}">0</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-header">Φοιτητές</div>
+                <div class="card-body">
+                    <h2 th:text="${studentCount}">0</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-header">Τρέχουσα Περίοδος</div>
+                <div class="card-body">
+                    <span th:text="${currentPeriod != null ? currentPeriod.name() : '–'}">–</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

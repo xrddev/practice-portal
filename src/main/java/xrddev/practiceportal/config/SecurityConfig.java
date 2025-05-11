@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Role;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import xrddev.practiceportal.model.enums.UserRole;
 import xrddev.practiceportal.service.api.CustomUserDetailsService;
 
 import java.io.IOException;
@@ -41,10 +43,10 @@ public class SecurityConfig {
                 .authenticationProvider(authProvider)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/", "/index", "/public/**", "/error/**").permitAll()
-                        .requestMatchers("/student/**").hasRole("STUDENT")
-                        .requestMatchers("/professor/**").hasRole("PROFESSOR")
-                        .requestMatchers("/company/**").hasRole("COMPANY")
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/student/**").hasRole(UserRole.STUDENT.name())
+                        .requestMatchers("/professor/**").hasRole(UserRole.PROFESSOR.name())
+                        .requestMatchers("/company/**").hasRole(UserRole.COMPANY.name())
+                        .requestMatchers("/admin/**").hasRole(UserRole.PRACTICE_OFFICE.name())
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
@@ -69,31 +71,25 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationSuccessHandler customSuccessHandler() {
-        return new AuthenticationSuccessHandler() {
-            @Override
-            public void onAuthenticationSuccess(HttpServletRequest req,
-                                                HttpServletResponse res,
-                                                Authentication auth)
-                    throws IOException, ServletException {
-                var authorities = auth.getAuthorities().stream()
-                        .map(GrantedAuthority::getAuthority)
-                        .toList();
-                if (authorities.contains("ROLE_PROFESSOR")) {
-                    res.sendRedirect("/professor/dashboard");
-                }
-                else if (authorities.contains("ROLE_STUDENT")) {
-                    res.sendRedirect("/student/dashboard");
-                }
-                else if (authorities.contains("ROLE_COMPANY")) {
-                    res.sendRedirect("/company/dashboard");
-                }
-                else if (authorities.contains("ROLE_ADMIN")) {
-                    res.sendRedirect("/admin/dashboard");
-                }
-                else {
-                    // fallback
-                    res.sendRedirect("/");
-                }
+        return (req, res, auth) -> {
+            var authorities = auth.getAuthorities().stream()
+                    .map(GrantedAuthority::getAuthority)
+                    .toList();
+            if (authorities.contains("ROLE_PROFESSOR")) {
+                res.sendRedirect("/professor/dashboard");
+            }
+            else if (authorities.contains("ROLE_STUDENT")) {
+                res.sendRedirect("/student/dashboard");
+            }
+            else if (authorities.contains("ROLE_COMPANY")) {
+                res.sendRedirect("/company/dashboard");
+            }
+            else if (authorities.contains("ROLE_PRACTICE_OFFICE")) {
+                res.sendRedirect("/practice-office/dashboard");
+            }
+            else {
+                // fallback
+                res.sendRedirect("/");
             }
         };
     }
