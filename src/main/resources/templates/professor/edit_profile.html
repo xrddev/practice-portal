@@ -165,7 +165,7 @@
     <select id="interestsSelect">
         <option value="" disabled selected>Select an interest to add</option>
         <th:block th:each="interest : ${INTERESTS}">
-            <option th:value="${interest}" th:text="${#strings.capitalize(interest.name().toLowerCase().replace('_',' '))}"></option>
+            <option th:value="${interest}" th:text="${#strings.capitalize(interest.toLowerCase().replace('_',' '))}"></option>
         </th:block>
     </select>
     <div class="tooltip">Previously selected interests shown below.</div>

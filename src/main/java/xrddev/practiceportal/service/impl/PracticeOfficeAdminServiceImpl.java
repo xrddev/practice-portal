@@ -1,5 +1,6 @@
 package xrddev.practiceportal.service.impl;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import xrddev.practiceportal.dto.practice_office.PracticeOfficeAdminDto;
@@ -13,10 +14,10 @@ import java.util.Optional;
 @Service
 public class PracticeOfficeAdminServiceImpl implements PracticeOfficeAdminService {
 
-    private final PracticeOfficeAdminRepository repository;
+    private final PracticeOfficeAdminRepository practiceOfficeAdminRepository;
 
-    public PracticeOfficeAdminServiceImpl(PracticeOfficeAdminRepository repository) {
-        this.repository = repository;
+    public PracticeOfficeAdminServiceImpl(PracticeOfficeAdminRepository practiceOfficeAdminRepository) {
+        this.practiceOfficeAdminRepository = practiceOfficeAdminRepository;
     }
 
     @Override
@@ -26,11 +27,18 @@ public class PracticeOfficeAdminServiceImpl implements PracticeOfficeAdminServic
         admin.setRole(UserRole.PRACTICE_OFFICE);
         admin.setEmail(dto.getEmail());
         admin.setPassword(dto.getPassword());
-        repository.save(admin);
+        practiceOfficeAdminRepository.save(admin);
     }
 
     @Override
     public Optional<PracticeOfficeAdmin> findByEmail(String email) {
-        return repository.findByEmail(email);
+        return practiceOfficeAdminRepository.findByEmail(email);
+    }
+
+    @Override
+    public PracticeOfficeAdminDto getByEmailMappedToDto(String email) {
+        return practiceOfficeAdminRepository.findByEmail(email)
+                .map(PracticeOfficeAdminDto::new)
+                .orElseThrow(() -> new EntityNotFoundException("Admin not found"));
     }
 }

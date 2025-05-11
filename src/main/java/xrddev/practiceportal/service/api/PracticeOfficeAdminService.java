@@ -9,4 +9,7 @@ import java.util.Optional;
 public interface PracticeOfficeAdminService {
     void registerAdmin(PracticeOfficeAdminDto dto);
     Optional<PracticeOfficeAdmin> findByEmail(String email);
+
+    PracticeOfficeAdminDto getByEmailMappedToDto(String email);
+
 }

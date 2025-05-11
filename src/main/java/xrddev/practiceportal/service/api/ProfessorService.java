@@ -13,4 +13,6 @@ public interface ProfessorService {
     void updateProfessor(ProfessorDashboardDto dto, String email);
     long count();
 
+    ProfessorDashboardDto getByEmailMappedToDto(String email);
+
 }

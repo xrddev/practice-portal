@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import xrddev.practiceportal.config.ModelAttributeKeys;
 import xrddev.practiceportal.dto.professor.ProfessorDashboardDto;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.service.api.ProfessorService;
@@ -26,30 +27,26 @@ public class ProfessorProfileController {
 
     @GetMapping("/edit-profile")
     public String editProfile(Model model, Principal principal) {
-        var professor = professorService
-                .findByEmail(principal.getName())
-                .orElseThrow(() -> new RuntimeException("Professor not found"));
-
-        model.addAttribute("PROFESSOR_DASHBOARD_DTO", new ProfessorDashboardDto(professor));
-        model.addAttribute("INTERESTS", Arrays.asList(Interests.values()));
+        model.addAttribute(ModelAttributeKeys.PROFESSOR_DASHBOARD_DTO, professorService.getByEmailMappedToDto(principal.getName()));
         return "professor/edit_profile";
     }
 
     @PostMapping("/edit-profile")
     public String updateProfile(
-            @Valid @ModelAttribute("PROFESSOR_DASHBOARD_DTO") ProfessorDashboardDto dto,
+            @Valid @ModelAttribute(ModelAttributeKeys.PROFESSOR_DASHBOARD_DTO) ProfessorDashboardDto dto,
             BindingResult bindingResult,
             Principal principal,
             Model model,
             RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("PROFESSOR_DASHBOARD_DTO", dto);
-            model.addAttribute("INTERESTS", Arrays.asList(Interests.values()));
+            model.addAttribute(ModelAttributeKeys.PROFESSOR_DASHBOARD_DTO, dto);
             return "professor/edit_profile";
         }
 
+        // Ensure the email is taken from the authenticated user and not from the submitted form for security reasons
         dto.setEmail(principal.getName());
+
         professorService.updateProfessor(dto, principal.getName());
         redirectAttributes.addFlashAttribute("profileUpdated", true);
         return "redirect:/professor/dashboard";

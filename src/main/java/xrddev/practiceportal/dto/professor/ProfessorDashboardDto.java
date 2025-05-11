@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.user.Professor;
-import xrddev.practiceportal.dto.intership_position.InternshipPositionDashboardDto;
+import xrddev.practiceportal.dto.intership_position.InternshipPositionDto;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,7 +30,7 @@ public class ProfessorDashboardDto {
     @NotNull(message = "At least one interest is required.")
     private List<Interests> interests;
 
-    private List<InternshipPositionDashboardDto> supervisedPositions;
+    private List<InternshipPositionDto> supervisedPositions;
 
     public ProfessorDashboardDto(Professor professor) {
         this.firstName = professor.getFirstName();
@@ -39,7 +39,7 @@ public class ProfessorDashboardDto {
         this.interests = professor.getInterests();
         this.supervisedPositions = professor.getSupervisedPositions()
                 .stream()
-                .map(InternshipPositionDashboardDto::new)
+                .map(InternshipPositionDto::new)
                 .collect(Collectors.toList());
     }
 }

@@ -1,5 +1,6 @@
 package xrddev.practiceportal.service.impl;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -63,5 +64,13 @@ public class ProfessorServiceImpl implements ProfessorService {
     public long count() {
         return professorRepository.count();
     }
+
+    @Override
+    public ProfessorDashboardDto getByEmailMappedToDto(String email) {
+        return professorRepository.findByEmail(email)
+                .map(ProfessorDashboardDto::new)
+                .orElseThrow(() -> new EntityNotFoundException("Professor not found"));
+    }
+
 
 }

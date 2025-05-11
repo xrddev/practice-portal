@@ -6,7 +6,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionCreateDto;
-import xrddev.practiceportal.dto.intership_position.InternshipPositionDashboardDto;
+import xrddev.practiceportal.dto.intership_position.InternshipPositionDto;
+import xrddev.practiceportal.dto.student.StudentDto;
 import xrddev.practiceportal.model.internship.InternshipPosition;
 import xrddev.practiceportal.model.user.Company;
 import xrddev.practiceportal.repository.api.InternshipPositionRepository;
@@ -18,12 +19,12 @@ import java.util.List;
 @Service
 public class InternshipPositionServiceImpl implements InternshipPositionService {
 
-    private final InternshipPositionRepository positionRepository;
+    private final InternshipPositionRepository internshipPositionRepository;
     private final CompanyService companyService;
 
     public InternshipPositionServiceImpl(InternshipPositionRepository positionRepo,
                                          CompanyService companyService) {
-        this.positionRepository = positionRepo;
+        this.internshipPositionRepository = positionRepo;
         this.companyService = companyService;
     }
 
@@ -44,32 +45,41 @@ public class InternshipPositionServiceImpl implements InternshipPositionService 
         Company company = companyService.findByEmail(email).orElseThrow(() -> new EntityNotFoundException("Company not found: " + email));
 
         internshipPosition.setCompany(company);
-        positionRepository.save(internshipPosition);
+        internshipPositionRepository.save(internshipPosition);
     }
 
     @Override
-    public List<InternshipPosition> getByCompanyEmail(String email) {
-        return positionRepository.findAllByCompanyEmail(email);
+    public List<InternshipPositionDto> getAllByEmailMappedToDto(String companyEmail) {
+        return internshipPositionRepository.findAllByCompanyEmail(companyEmail).stream()
+                .map(position -> {
+                    InternshipPositionDto dto = new InternshipPositionDto(position);
+                    if (!position.isAvailable() && position.getStudent() != null) {
+                        dto.setStudent(new StudentDto(position.getStudent()));
+                    }
+                    return dto;
+                })
+                .toList();
     }
+
 
     @Override
     public void deleteByIdAndCompanyEmail(Long id, String companyEmail) {
-        InternshipPosition position = positionRepository
+        InternshipPosition position = internshipPositionRepository
             .findByIdAndCompanyEmail(id, companyEmail)
             .orElseThrow(() -> new EntityNotFoundException("Position not found or not yours"));
-        positionRepository.delete(position);
+        internshipPositionRepository.delete(position);
     }
 
     @Override
     public InternshipPosition getByIdAndCompanyEmail(Long id, String companyEmail) {
-        return positionRepository.findByIdAndCompanyEmail(id, companyEmail)
+        return internshipPositionRepository.findByIdAndCompanyEmail(id, companyEmail)
                 .orElseThrow(() -> new EntityNotFoundException("Position not found or not yours"));
     }
 
     @Override
     @Transactional
-    public void updatePosition(Long id, InternshipPositionDashboardDto dto, String companyEmail) {
-        InternshipPosition position = positionRepository.findByIdAndCompanyEmail(id, companyEmail)
+    public void updatePosition(Long id, InternshipPositionDto dto, String companyEmail) {
+        InternshipPosition position = internshipPositionRepository.findByIdAndCompanyEmail(id, companyEmail)
                 .orElseThrow(() -> new EntityNotFoundException("Position not found or not yours"));
 
         position.setTitle(dto.getTitle());
@@ -79,11 +89,22 @@ public class InternshipPositionServiceImpl implements InternshipPositionService 
         position.setSkills(dto.getSkills());
         position.setInterests(dto.getInterests());
 
-        positionRepository.save(position);
+        internshipPositionRepository.save(position);
     }
 
     @Override
     public long count(){
-        return positionRepository.count();
+        return internshipPositionRepository.count();
     }
+
+
+    @Override
+    public InternshipPositionDto getByIdAndCompanyEmailMappedToDto(Long id, String email) {
+        InternshipPosition position = internshipPositionRepository
+                .findByIdAndCompanyEmail(id, email)
+                .orElseThrow(() -> new EntityNotFoundException("Not found or not allowed"));
+
+        return new InternshipPositionDto(position);
+    }
+
 }

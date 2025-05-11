@@ -28,14 +28,8 @@ public class StudentProfileController {
 
     @GetMapping("/edit-profile")
     public String editProfile(Model model, Principal principal) {
-        var student = studentService
-                .findByEmail(principal.getName())
-                .orElseThrow(() -> new RuntimeException("Student not found"));
-
-        model.addAttribute("STUDENT_DTO", new StudentDto(student));
-        model.addAttribute("INTERESTS", Arrays.asList(Interests.values()));
-        model.addAttribute("SKILLS", Arrays.asList(Skills.values()));
-        model.addAttribute("DEPARTMENTS", Arrays.asList(Department.values()));
+        String email = principal.getName();
+        model.addAttribute("STUDENT_DTO", studentService.getByEmailMappedToDto(email));
         return "student/edit_profile";
     }
 
@@ -49,13 +43,12 @@ public class StudentProfileController {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("STUDENT_DTO", dto);
-            model.addAttribute("INTERESTS", Arrays.asList(Interests.values()));
-            model.addAttribute("SKILLS", Arrays.asList(Skills.values()));
-            model.addAttribute("DEPARTMENTS", Arrays.asList(Department.values()));
             return "student/edit_profile";
         }
 
+        // Ensure the email is taken from the authenticated user and not from the submitted form for security reasons
         dto.setEmail(principal.getName());
+
         studentService.updateStudent(dto, principal.getName());
         redirectAttributes.addFlashAttribute("profileUpdated", true);
         return "redirect:/student/dashboard";

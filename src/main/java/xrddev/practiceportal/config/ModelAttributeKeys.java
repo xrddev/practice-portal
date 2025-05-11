@@ -1,6 +1,6 @@
 package xrddev.practiceportal.config;
 
-public final class ModelAttributes {
+public final class ModelAttributeKeys {
     public static final String ANNOUNCEMENTS = "ANNOUNCEMENTS";
     public static final String ROLES = "ROLES";
     public static final String DEPARTMENTS = "DEPARTMENTS";
@@ -10,8 +10,9 @@ public final class ModelAttributes {
     public static final String INTERNSHIP_POSITION_DASHBOARD_DTO = "INTERNSHIP_POSITION_DASHBOARD_DTO";
     public static final String COMPANY_DASHBOARD_DTO = "COMPANY_DASHBOARD_DTO";
     public static final String MATCHED_STUDENTS_DTO = "MATCHED_STUDENTS_DTO";
+    public static final String PROFESSOR_DASHBOARD_DTO = "PROFESSOR_DASHBOARD_DTO";
 
-    private ModelAttributes() throws Exception {
+    private ModelAttributeKeys() throws Exception {
         throw new Exception("This is a utility class and cannot be instantiated");
     }
 }

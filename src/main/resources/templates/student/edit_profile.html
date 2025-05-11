@@ -155,7 +155,7 @@
         <option value="" disabled>Select your department</option>
         <th:block th:each="dept : ${DEPARTMENTS}">
             <option th:value="${dept}"
-                    th:text="${#strings.capitalize(dept.name().toLowerCase().replace('_',' '))}"
+                    th:text="${#strings.capitalize(dept.toLowerCase().replace('_',' '))}"
                     th:selected="${dept == STUDENT_DTO.department}">
             </option>
         </th:block>
@@ -174,7 +174,7 @@
     <select id="skillsSelect">
         <option value="" disabled selected>Select a skill to add</option>
         <th:block th:each="skill : ${SKILLS}">
-            <option th:value="${skill}" th:text="${#strings.capitalize(skill.name().toLowerCase().replace('_',' '))}"></option>
+            <option th:value="${skill}" th:text="${#strings.capitalize(skill.toLowerCase().replace('_',' '))}"></option>
         </th:block>
     </select>
     <div class="tooltip">Previously selected skills shown below.</div>
@@ -185,7 +185,7 @@
     <select id="interestsSelect">
         <option value="" disabled selected>Select an interest to add</option>
         <th:block th:each="interest : ${INTERESTS}">
-            <option th:value="${interest}" th:text="${#strings.capitalize(interest.name().toLowerCase().replace('_',' '))}"></option>
+            <option th:value="${interest}" th:text="${#strings.capitalize(interest.toLowerCase().replace('_',' '))}"></option>
         </th:block>
     </select>
     <div class="tooltip">Previously selected interests shown below.</div>

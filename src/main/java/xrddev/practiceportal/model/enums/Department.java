@@ -26,4 +26,6 @@ public enum Department {
     MUSIC_STUDIES,
     EARLY_YEARS_LEARNING_CARE,
     TRANSLATION_INTERPRETING
+
+
 }

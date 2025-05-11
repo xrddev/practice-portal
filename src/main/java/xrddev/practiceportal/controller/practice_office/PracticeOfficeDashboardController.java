@@ -1,6 +1,7 @@
 package xrddev.practiceportal.controller.practice_office;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import xrddev.practiceportal.service.api.PracticeOfficeAdminService;
 import xrddev.practiceportal.service.api.StudentService;
 
 import java.security.Principal;
+
 
 @Controller
 @RequestMapping("/practice-office")
@@ -29,12 +31,8 @@ public class PracticeOfficeDashboardController {
 
     @GetMapping("/dashboard")
     public String showDashboard(Model model, Principal principal) {
-        var adminDto = practiceOfficeAdminService
-                .findByEmail(principal.getName())
-                .map(PracticeOfficeAdminDto::new)
-                .orElseThrow(() -> new RuntimeException("Practice Office Admin not found"));
-
-        model.addAttribute("ADMIN_DTO", adminDto);
+        String email = principal.getName();
+        model.addAttribute("ADMIN_DTO", practiceOfficeAdminService.getByEmailMappedToDto(email));
         model.addAttribute("TOTAL_STUDENTS", studentService.count());
         model.addAttribute("TOTAL_COMPANIES", companyService.count());
         model.addAttribute("TOTAL_PROFESSORS", professorService.count());

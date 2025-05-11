@@ -13,8 +13,9 @@ public interface CompanyService {
                          String website,
                          String internshipCoordinator,
                          String internshipCoordinatorEmail);
-    Optional<Company> findByEmail(String email);
 
     void updateCompany(CompanyDashboardDto dto, String email);
     long count();
+    CompanyDashboardDto getByEmailMappedToDto(String email);
+    Optional<Company> findByEmail(String email);
 }

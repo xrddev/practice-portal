@@ -42,10 +42,20 @@ public class CompanyServiceImpl implements CompanyService {
         companyRepository.save(company);
     }
 
+
     @Override
     public Optional<Company> findByEmail(String email) {
         return companyRepository.findByEmail(email);
     }
+
+    @Override
+    public CompanyDashboardDto getByEmailMappedToDto(String email) {
+        return companyRepository.findByEmail(email)
+                .map(CompanyDashboardDto::new)
+                .orElseThrow(() -> new RuntimeException("Company not found"));
+    }
+
+
 
     @Override
     @Transactional

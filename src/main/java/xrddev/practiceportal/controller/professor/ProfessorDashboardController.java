@@ -19,11 +19,9 @@ public class ProfessorDashboardController {
 
   @GetMapping("/dashboard")
   public String viewDashboard(Model model, Principal principal) {
-    var professorDto = professorService
-            .findByEmail(principal.getName())
-            .map(ProfessorDashboardDto::new)
-            .orElseThrow(() -> new RuntimeException("Professor not found"));
-    model.addAttribute("PROFESSOR_DASHBOARD_DTO", professorDto);
+    String email = principal.getName();
+    model.addAttribute("PROFESSOR_DASHBOARD_DTO", professorService.getByEmailMappedToDto(email));
     return "professor/dashboard";
   }
+
 }

@@ -21,5 +21,9 @@ public interface StudentService {
     Optional<Student> findByEmail(String email);
     void updateStudent(StudentDto dto, String email);
     long count();
+    List<StudentDto> getAllMappedToDto();
+    void deleteById(Long id);
+
+    StudentDto getByEmailMappedToDto(String email);
 
 }

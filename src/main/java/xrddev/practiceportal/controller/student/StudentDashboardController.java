@@ -19,12 +19,8 @@ public class StudentDashboardController {
 
     @GetMapping("/dashboard")
     public String viewDashboard(Model model, Principal principal) {
-        var studentDto = studentService
-                .findByEmail(principal.getName())
-                .map(StudentDto::new)
-                .orElseThrow(() -> new RuntimeException("Student not found"));
-
-        model.addAttribute("STUDENT_DTO", studentDto);
+        String email = principal.getName();
+        model.addAttribute("STUDENT_DTO", studentService.getByEmailMappedToDto(email));
         return "student/dashboard";
     }
 }

@@ -1,5 +1,6 @@
 package xrddev.practiceportal.service.impl;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import xrddev.practiceportal.dto.student.StudentDto;
@@ -82,4 +83,26 @@ public class StudentServiceImpl implements StudentService {
     public long count() {
         return studentRepository.count();
     }
+
+    @Override
+    public List<StudentDto> getAllMappedToDto() {
+        return studentRepository.findAll()
+                .stream()
+                .map(StudentDto::new)
+                .toList();
+    }
+
+    @Override
+    @Transactional
+    public void deleteById(Long id) {
+        studentRepository.deleteById(id);
+    }
+
+    @Override
+    public StudentDto getByEmailMappedToDto(String email) {
+        return studentRepository.findByEmail(email)
+                .map(StudentDto::new)
+                .orElseThrow(() -> new EntityNotFoundException("Student not found"));
+    }
+
 }

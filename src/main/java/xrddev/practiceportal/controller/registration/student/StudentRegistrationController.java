@@ -6,12 +6,11 @@ import jakarta.validation.constraints.Size;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import xrddev.practiceportal.config.ModelAttributes;
+import xrddev.practiceportal.config.ModelAttributeKeys;
 import xrddev.practiceportal.controller.registration.common.RegistrationSessionHelper;
 import xrddev.practiceportal.model.enums.Department;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
-import xrddev.practiceportal.config.SessionAttribute;
 import xrddev.practiceportal.service.api.StudentService;
 
 import java.util.Arrays;
@@ -23,23 +22,14 @@ import java.util.List;
 public class StudentRegistrationController extends RegistrationSessionHelper {
 
     private final StudentService studentService;
+    private Model model;
 
     public StudentRegistrationController(StudentService studentService) {
         this.studentService = studentService;
     }
 
     @GetMapping
-    public String showStudentRegistrationForm(Model model) {
-
-        List<String> departments = Arrays.stream(Department.values()).map(Enum::name).toList();
-        model.addAttribute(ModelAttributes.DEPARTMENTS, departments);
-
-        List<String> skills = Arrays.stream(Skills.values()).map(Enum::name).toList();
-        model.addAttribute(ModelAttributes.SKILLS, skills);
-
-        List<String> interests = Arrays.stream(Interests.values()).map(Enum::name).toList();
-        model.addAttribute(ModelAttributes.INTERESTS, interests);
-
+    public String showStudentRegistrationForm() {
         return "register/student_registration";
     }
 

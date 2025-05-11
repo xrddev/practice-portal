@@ -4,8 +4,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import xrddev.practiceportal.config.ModelAttributes;
-import xrddev.practiceportal.config.SessionAttribute;
+import xrddev.practiceportal.config.ModelAttributeKeys;
 import xrddev.practiceportal.controller.registration.common.RegistrationSessionHelper;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.service.api.ProfessorService;
@@ -24,9 +23,7 @@ public class ProfessorRegistrationController extends RegistrationSessionHelper {
     }
 
     @GetMapping
-    public String showProfessorRegistrationForm(Model model) {
-        List<String> interests = Arrays.stream(Interests.values()).map(Enum::name).toList();
-        model.addAttribute(ModelAttributes.INTERESTS, interests);
+    public String showProfessorRegistrationForm() {
         return "register/professor_registration";
     }
 

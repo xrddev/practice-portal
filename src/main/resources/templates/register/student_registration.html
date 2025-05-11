@@ -249,10 +249,10 @@
     <label for="department">Department:</label>
     <select id="department" name="department" required>
         <option value="" disabled selected>Select your department</option>
-        <th:block th:each="dept : ${DEPARTMENTS}">
-            <option th:value="${dept}"
-                    th:text="${#strings.replace(#strings.capitalize(dept.toLowerCase()), '_', ' ')}"></option>
-        </th:block>
+        <option th:each="dept : ${DEPARTMENTS}"
+                th:value="${dept}"
+                th:text="${#strings.replace(#strings.capitalize(dept.toLowerCase()), '_', ' ')}">
+        </option>
     </select>
     <div class="tooltip">Choose the department you belong to.</div>
 

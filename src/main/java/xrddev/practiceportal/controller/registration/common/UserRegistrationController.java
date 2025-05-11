@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import xrddev.practiceportal.config.ModelAttributes;
+import xrddev.practiceportal.config.ModelAttributeKeys;
 import xrddev.practiceportal.config.SessionAttribute;
 import jakarta.servlet.http.HttpSession;
 import xrddev.practiceportal.model.enums.UserRole;
@@ -31,7 +31,7 @@ public class UserRegistrationController {
     public String showRegistrationForm(Model model) {
         List<String> roles = Arrays.stream(UserRole.values())
                 .filter(x -> !x.equals(UserRole.PRACTICE_OFFICE)).map(Enum::name).toList();
-        model.addAttribute(ModelAttributes.ROLES, roles);
+        model.addAttribute(ModelAttributeKeys.ROLES, roles);
         return "register/user_register";
     }
 

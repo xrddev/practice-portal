@@ -9,15 +9,13 @@ import xrddev.practiceportal.dto.student.StudentDto;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
 import xrddev.practiceportal.model.internship.InternshipPosition;
-import xrddev.practiceportal.model.user.Student;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @NoArgsConstructor
 @Data
-public class InternshipPositionDashboardDto {
+public class InternshipPositionDto {
 
     private Long id;
 
@@ -44,7 +42,7 @@ public class InternshipPositionDashboardDto {
     private StudentDto student;
 
 
-    public InternshipPositionDashboardDto(InternshipPosition position) {
+    public InternshipPositionDto(InternshipPosition position) {
         this.id = position.getId();
         this.title = position.getTitle();
         this.description = position.getDescription();
