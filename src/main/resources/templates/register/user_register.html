@@ -142,9 +142,10 @@
 
 <h1>Create Your Account</h1>
 
-<div class="message-box error" style="display: none;" id="error-message">
+<div class="message-box error" id="error-message" style="opacity: 0; transition: opacity 0.3s;">
     Please fix the errors and try again.
 </div>
+
 
 <form id="accountForm" action="/public/register" method="post" onsubmit="return validateForm()">
 
@@ -219,7 +220,7 @@
     function showError(message) {
         const errorMessage = document.getElementById("error-message");
         errorMessage.textContent = message;
-        errorMessage.style.display = "block";
+        errorMessage.style.opacity = "1";
     }
 
 </script>

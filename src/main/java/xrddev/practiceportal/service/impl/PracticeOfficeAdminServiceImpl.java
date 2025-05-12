@@ -3,7 +3,7 @@ package xrddev.practiceportal.service.impl;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-import xrddev.practiceportal.dto.practice_office.PracticeOfficeAdminDto;
+import xrddev.practiceportal.dto.user.practice_office.PracticeOfficeAdminDto;
 import xrddev.practiceportal.model.enums.UserRole;
 import xrddev.practiceportal.model.user.PracticeOfficeAdmin;
 import xrddev.practiceportal.repository.api.PracticeOfficeAdminRepository;

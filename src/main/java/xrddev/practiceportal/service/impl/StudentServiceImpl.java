@@ -3,7 +3,8 @@ package xrddev.practiceportal.service.impl;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import xrddev.practiceportal.dto.student.StudentDto;
+import xrddev.practiceportal.dto.user.student.StudentDto;
+import xrddev.practiceportal.dto.user.student.StudentRegistrationDto;
 import xrddev.practiceportal.model.user.Student;
 import xrddev.practiceportal.model.enums.Department;
 import xrddev.practiceportal.model.enums.Interests;
@@ -26,34 +27,26 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     @Transactional
-    public void registerStudent(String email,
-                                String password,
-                                String studentNumber,
-                                String firstName,
-                                String lastName,
-                                String department,
-                                int yearOfStudy,
-                                double averageGrade,
-                                List<String> skills,
-                                List<String> interests,
-                                String preferredLocation) {
-
+    public void registerStudent(StudentRegistrationDto studentRegistrationDto) {
         Student student = new Student();
+
+        student.setEmail(studentRegistrationDto.getEmail());
+        student.setPassword(studentRegistrationDto.getPassword());
         student.setRole(UserRole.STUDENT);
-        student.setFirstName(firstName);
-        student.setLastName(lastName);
-        student.setEmail(email);
-        student.setPassword(password);
-        student.setStudentNumber(studentNumber);
-        student.setDepartment(Department.valueOf(department));
-        student.setYearOfStudy(yearOfStudy);
-        student.setAverageGrade(averageGrade);
-        student.setSkills(skills.stream().map(Skills::valueOf).toList());
-        student.setInterests(interests.stream().map(Interests::valueOf).toList());
-        student.setPreferredLocation(preferredLocation);
+
+        student.setStudentNumber(studentRegistrationDto.getStudentNumber());
+        student.setFirstName(studentRegistrationDto.getFirstName());
+        student.setLastName(studentRegistrationDto.getLastName());
+        student.setDepartment(studentRegistrationDto.getDepartment());
+        student.setYearOfStudy(studentRegistrationDto.getYearOfStudy());
+        student.setAverageGrade(studentRegistrationDto.getAverageGrade());
+        student.setSkills(studentRegistrationDto.getSkills());
+        student.setInterests(studentRegistrationDto.getInterests());
+        student.setPreferredLocation(studentRegistrationDto.getPreferredLocation());
 
         studentRepository.save(student);
     }
+
 
     @Override
     public void updateStudent(StudentDto dto, String email) {

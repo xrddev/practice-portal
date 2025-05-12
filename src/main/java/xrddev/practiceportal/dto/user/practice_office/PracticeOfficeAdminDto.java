@@ -1,4 +1,4 @@
-package xrddev.practiceportal.dto.practice_office;
+package xrddev.practiceportal.dto.user.practice_office;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

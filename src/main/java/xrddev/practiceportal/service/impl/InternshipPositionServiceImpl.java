@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionCreateDto;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionDto;
-import xrddev.practiceportal.dto.student.StudentDto;
+import xrddev.practiceportal.dto.user.student.StudentDto;
 import xrddev.practiceportal.model.internship.InternshipPosition;
 import xrddev.practiceportal.model.user.Company;
 import xrddev.practiceportal.repository.api.InternshipPositionRepository;

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import xrddev.practiceportal.config.ModelAttributeKeys;
-import xrddev.practiceportal.dto.company.CompanyDashboardDto;
+import xrddev.practiceportal.dto.user.company.CompanyDashboardDto;
 import xrddev.practiceportal.service.api.CompanyService;
 
 import java.security.Principal;

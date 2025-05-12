@@ -1,20 +1,14 @@
 package xrddev.practiceportal.service.api;
 
-import xrddev.practiceportal.dto.company.CompanyDashboardDto;
+import xrddev.practiceportal.dto.user.company.CompanyDashboardDto;
+import xrddev.practiceportal.dto.user.company.CompanyRegistrationDto;
 import xrddev.practiceportal.model.user.Company;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface CompanyService {
-    void registerCompany(String email,
-                         String password,
-                         String companyName,
-                         String address,
-                         String phone,
-                         String website,
-                         String internshipCoordinator,
-                         String internshipCoordinatorEmail);
+    void registerCompany(CompanyRegistrationDto companyRegistrationDto);
 
     void updateCompany(CompanyDashboardDto dto, String email);
     long count();

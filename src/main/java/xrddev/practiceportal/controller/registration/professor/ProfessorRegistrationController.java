@@ -1,17 +1,14 @@
 package xrddev.practiceportal.controller.registration.professor;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import xrddev.practiceportal.config.ModelAttributeKeys;
 import xrddev.practiceportal.controller.registration.common.RegistrationSessionHelper;
-import xrddev.practiceportal.model.enums.Department;
-import xrddev.practiceportal.model.enums.Interests;
+import xrddev.practiceportal.dto.user.professor.ProfessorRegistrationDto;
 import xrddev.practiceportal.service.api.ProfessorService;
-
-import java.util.Arrays;
-import java.util.List;
 
 @Controller
 @RequestMapping("/public/register/professor")
@@ -24,28 +21,24 @@ public class ProfessorRegistrationController extends RegistrationSessionHelper {
     }
 
     @GetMapping
-    public String showProfessorRegistrationForm() {
+    public String showProfessorRegistrationForm(Model model) {
+        model.addAttribute("professor", new ProfessorRegistrationDto());
         return "register/professor_registration";
     }
 
     @PostMapping
     public String handleProfessorRegistration(
-            @RequestParam String firstName,
-            @RequestParam String lastName,
-            @RequestParam("department") Department department,
-            @RequestParam List<String> interests,
+            @ModelAttribute("professor") @Valid ProfessorRegistrationDto professorRegistrationDto,
+            BindingResult bindingResult,
             HttpSession session) {
 
-        professorService.registerProfessor(
-                super.getEmail(session),
-                super.getPassword(session),
-                firstName,
-                lastName,
-                department,
-                interests);
+        if (bindingResult.hasErrors())
+            return "register/professor_registration";
 
+        professorRegistrationDto.setEmail(super.getEmail(session));
+        professorRegistrationDto.setPassword(super.getPassword(session));
+        professorService.registerProfessor(professorRegistrationDto);
         super.clearSession(session);
         return "redirect:/public/register/success";
     }
-
 }

@@ -4,11 +4,10 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import xrddev.practiceportal.dto.professor.ProfessorDto;
-import xrddev.practiceportal.model.enums.Department;
-import xrddev.practiceportal.model.user.Professor;
-import xrddev.practiceportal.model.enums.Interests;
+import xrddev.practiceportal.dto.user.professor.ProfessorDto;
+import xrddev.practiceportal.dto.user.professor.ProfessorRegistrationDto;
 import xrddev.practiceportal.model.enums.UserRole;
+import xrddev.practiceportal.model.user.Professor;
 import xrddev.practiceportal.repository.api.ProfessorRepository;
 import xrddev.practiceportal.service.api.ProfessorService;
 
@@ -22,26 +21,18 @@ public class ProfessorServiceImpl implements ProfessorService {
 
     private final ProfessorRepository professorRepository;
 
-    @Override
-    @Transactional
-    public void registerProfessor(String email,
-                                  String password,
-                                  String firstName,
-                                  String lastName,
-                                  Department department,
-                                  List<String> interests) {
+    public void registerProfessor(ProfessorRegistrationDto professorRegistrationDto) {
         Professor professor = new Professor();
+
+        professor.setEmail(professorRegistrationDto.getEmail());
+        professor.setPassword(professorRegistrationDto.getPassword());
         professor.setRole(UserRole.PROFESSOR);
-        professor.setEmail(email);
-        professor.setPassword(password);
-        professor.setDepartment(department);
-        professor.setFirstName(firstName);
-        professor.setLastName(lastName);
-        professor.setInterests(
-            interests.stream()
-                     .map(Interests::valueOf)
-                     .toList()
-        );
+
+        professor.setFirstName(professorRegistrationDto.getFirstName());
+        professor.setLastName(professorRegistrationDto.getLastName());
+        professor.setDepartment(professorRegistrationDto.getDepartment());
+        professor.setInterests(professorRegistrationDto.getInterests());
+
         professorRepository.save(professor);
     }
 

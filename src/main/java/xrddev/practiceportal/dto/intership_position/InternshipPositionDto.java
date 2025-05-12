@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import xrddev.practiceportal.dto.student.StudentDto;
+import xrddev.practiceportal.dto.user.student.StudentDto;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
 import xrddev.practiceportal.model.internship.InternshipPosition;

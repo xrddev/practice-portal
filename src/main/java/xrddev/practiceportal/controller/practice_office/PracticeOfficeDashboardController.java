@@ -1,12 +1,10 @@
 package xrddev.practiceportal.controller.practice_office;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import xrddev.practiceportal.dto.practice_office.PracticeOfficeAdminDto;
 import xrddev.practiceportal.service.api.ApplicationPeriodService;
 import xrddev.practiceportal.service.api.CompanyService;
 import xrddev.practiceportal.service.api.InternshipPositionService;

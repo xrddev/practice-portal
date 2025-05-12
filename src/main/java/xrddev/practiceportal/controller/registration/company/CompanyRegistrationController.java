@@ -1,10 +1,14 @@
 package xrddev.practiceportal.controller.registration.company;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import xrddev.practiceportal.controller.registration.common.RegistrationSessionHelper;
+import xrddev.practiceportal.dto.user.company.CompanyRegistrationDto;
 import xrddev.practiceportal.service.api.CompanyService;
 
 
@@ -18,30 +22,24 @@ public class CompanyRegistrationController extends RegistrationSessionHelper {
     }
 
     @GetMapping
-    public String showCompanyRegistrationForm() {
+    public String showCompanyRegistrationForm(Model model) {
+        model.addAttribute("company", new CompanyRegistrationDto());
         return "register/company_registration";
     }
 
     @PostMapping
     public String handleCompanyRegistration(
-            @RequestParam String companyName,
-            @RequestParam String address,
-            @RequestParam String phone,
-            @RequestParam(required = false) String website,
-            @RequestParam String internshipCoordinator,
-            @RequestParam String internshipCoordinatorEmail,
+            @ModelAttribute("company") @Valid CompanyRegistrationDto companyRegistrationDto,
+            BindingResult bindingResult,
             HttpSession session) {
 
-        companyService.registerCompany(
-                super.getEmail(session),
-                super.getPassword(session),
-                companyName,
-                address,
-                phone,
-                website,
-                internshipCoordinator,
-                internshipCoordinatorEmail);
 
+        if (bindingResult.hasErrors())
+            return "register/company_registration";
+
+        companyRegistrationDto.setEmail(super.getEmail(session));
+        companyRegistrationDto.setPassword(super.getPassword(session));
+        companyService.registerCompany(companyRegistrationDto);
         super.clearSession(session);
         return "redirect:/public/register/success";
     }

@@ -159,6 +159,15 @@
             transition: background 0.3s ease, transform 0.2s ease;
         }
 
+        .field-error {
+            background: #ffcccc;
+            color: #800000;
+            padding: 6px 12px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            margin: -5px 0 10px;
+        }
+
         .interest-tag button:hover {
             background: #ff3333;
             transform: scale(1.1);
@@ -169,20 +178,19 @@
 <body>
 <h1>Professor Registration</h1>
 
-<div class="message-box success" style="display: none;" id="success-message">Registration successful!</div>
-<div class="message-box error" style="display: none;" id="error-message">Please fix the errors and try again.</div>
-
-<form action="/public/register/professor" method="post" onsubmit="return validateProfessorForm()">
+<form th:action="@{/public/register/professor}" th:object="${professor}" method="post">
     <label for="firstName">First Name:</label>
-    <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+    <input type="text" id="firstName" th:field="*{firstName}" placeholder="Enter your first name">
     <div class="tooltip">Enter your first name.</div>
+    <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="field-error"></div>
 
     <label for="lastName">Last Name:</label>
-    <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+    <input type="text" id="lastName" th:field="*{lastName}" placeholder="Enter your last name">
     <div class="tooltip">Enter your last name.</div>
+    <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="field-error"></div>
 
     <label for="department">Department:</label>
-    <select id="department" name="department" required>
+    <select id="department" th:field="*{department}">
         <option value="" disabled selected>Select your department</option>
         <th:block th:each="dept : ${DEPARTMENTS}">
             <option th:value="${dept}"
@@ -190,6 +198,7 @@
         </th:block>
     </select>
     <div class="tooltip">Select the department you belong to.</div>
+    <div th:if="${#fields.hasErrors('department')}" th:errors="*{department}" class="field-error"></div>
 
     <label for="interestsSelect">Interests:</label>
     <select id="interestsSelect" name="interestsDropdown">
@@ -201,12 +210,13 @@
     </select>
     <div class="tooltip">Select topics you are interested in supervising. You can choose multiple interests.</div>
     <div id="selectedInterestsContainer" class="selected-interests"></div>
-    <input type="hidden" id="interestsHiddenInput" name="interests">
+    <input type="hidden" id="interestsHiddenInput" th:field="*{interests}">
 
     <div class="tooltip">Choose interests one by one. Selected interests will appear above.</div>
 
     <button type="submit">Register</button>
 </form>
+
 
 <footer>
     &copy; 2025. Developed with ❤️ by
@@ -244,37 +254,6 @@
         document.getElementById('interestsHiddenInput').value = selectedInterests.join(',');
     }
 
-    function validateProfessorForm() {
-        const firstName = document.getElementById("firstName").value.trim();
-        const lastName = document.getElementById("lastName").value.trim();
-        const department = document.getElementById("department").value;
-
-        if (!firstName || firstName.length > 50) {
-            showError("First name is required and can be up to 50 characters.");
-            return false;
-        }
-        if (!lastName || lastName.length > 50) {
-            showError("Last name is required and can be up to 50 characters.");
-            return false;
-        }
-        if (!department) {
-            showError("Please select a department.");
-            return false;
-        }
-        if (selectedInterests.length === 0) {
-            showError("Please select at least one interest.");
-            return false;
-        }
-
-        document.getElementById("success-message").style.display = "block";
-        return true;
-    }
-
-    function showError(message) {
-        const box = document.getElementById("error-message");
-        box.textContent = message;
-        box.style.display = "block";
-    }
 </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package xrddev.practiceportal.dto.professor;
+package xrddev.practiceportal.dto.user.professor;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;

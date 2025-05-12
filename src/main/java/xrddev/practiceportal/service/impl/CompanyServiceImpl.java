@@ -2,7 +2,8 @@ package xrddev.practiceportal.service.impl;
 
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-import xrddev.practiceportal.dto.company.CompanyDashboardDto;
+import xrddev.practiceportal.dto.user.company.CompanyDashboardDto;
+import xrddev.practiceportal.dto.user.company.CompanyRegistrationDto;
 import xrddev.practiceportal.model.user.Company;
 import xrddev.practiceportal.model.enums.UserRole;
 import xrddev.practiceportal.repository.api.CompanyRepository;
@@ -22,24 +23,20 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     @Transactional
-    public void registerCompany(String email,
-                                String password,
-                                String companyName,
-                                String address,
-                                String phone,
-                                String website,
-                                String internshipCoordinator,
-                                String internshipCoordinatorEmail) {
+    public void registerCompany(CompanyRegistrationDto companyRegistrationDto) {
         Company company = new Company();
+
+        company.setEmail(companyRegistrationDto.getEmail());
+        company.setPassword(companyRegistrationDto.getPassword());
         company.setRole(UserRole.COMPANY);
-        company.setEmail(email);
-        company.setPassword(password);
-        company.setCompanyName(companyName);
-        company.setAddress(address);
-        company.setPhone(phone);
-        company.setWebsite(website);
-        company.setInternshipCoordinator(internshipCoordinator);
-        company.setInternshipCoordinatorEmail(internshipCoordinatorEmail);
+
+        company.setCompanyName(companyRegistrationDto.getCompanyName());
+        company.setAddress(companyRegistrationDto.getAddress());
+        company.setPhone(companyRegistrationDto.getPhone());
+        company.setWebsite(companyRegistrationDto.getWebsite());
+        company.setInternshipCoordinator(companyRegistrationDto.getInternshipCoordinator());
+        company.setInternshipCoordinatorEmail(companyRegistrationDto.getInternshipCoordinatorEmail());
+
         companyRepository.save(company);
     }
 

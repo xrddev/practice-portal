@@ -10,14 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import xrddev.practiceportal.dto.student.StudentDto;
-import xrddev.practiceportal.model.enums.Department;
-import xrddev.practiceportal.model.enums.Interests;
-import xrddev.practiceportal.model.enums.Skills;
+import xrddev.practiceportal.dto.user.student.StudentDto;
 import xrddev.practiceportal.service.api.StudentService;
 
 import java.security.Principal;
-import java.util.Arrays;
 
 @Controller
 @RequestMapping("/student")

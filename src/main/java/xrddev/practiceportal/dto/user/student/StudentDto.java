@@ -1,4 +1,4 @@
-package xrddev.practiceportal.dto.student;
+package xrddev.practiceportal.dto.user.student;
 
 import jakarta.validation.constraints.*;
 import lombok.*;
