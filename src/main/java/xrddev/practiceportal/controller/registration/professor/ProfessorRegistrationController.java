@@ -2,6 +2,7 @@ package xrddev.practiceportal.controller.registration.professor;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,14 +12,11 @@ import xrddev.practiceportal.dto.user.professor.ProfessorRegistrationDto;
 import xrddev.practiceportal.service.api.ProfessorService;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/public/register/professor")
 public class ProfessorRegistrationController extends RegistrationSessionHelper {
 
     private final ProfessorService professorService;
-
-    public ProfessorRegistrationController( ProfessorService professorService) {
-        this.professorService = professorService;
-    }
 
     @GetMapping
     public String showProfessorRegistrationForm(Model model) {

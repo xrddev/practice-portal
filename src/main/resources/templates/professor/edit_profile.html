@@ -136,6 +136,16 @@
             margin-top: auto;
             width: 100%;
         }
+        .field-error {
+            background: #ffcccc;
+            color: #800000;
+            padding: 6px 12px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            margin: -5px 0 10px;
+        }
+
+
         @keyframes slideIn {
             from { opacity: 0; transform: translateY(-20px); }
             to   { opacity: 1; transform: translateY(0); }
@@ -148,22 +158,18 @@
 
 <div id="error-message" class="message-box error" style="display:none;"></div>
 
-<form th:action="@{/professor/edit-profile}" th:object="${PROFESSOR_DASHBOARD_DTO}" method="post" onsubmit="return validateProfessorForm()">
+<form th:action="@{/professor/edit-profile}" th:object="${professor}" method="post" onsubmit="return validateProfessorForm()">
     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 
     <label for="firstName">First Name:</label>
     <input type="text" id="firstName" th:field="*{firstName}" maxlength="100" required/>
+    <div class="tooltip">Enter your first name.</div>
+    <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="field-error"></div>
 
     <label for="lastName">Last Name:</label>
     <input type="text" id="lastName" th:field="*{lastName}" maxlength="100" required/>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" th:field="*{email}" readonly/>
-    <div class="tooltip">Email cannot be changed!</div>
-
-    <label for="department">Department:</label>
-    <input type="text" id="department" th:field="*{department}" readonly />
-    <div class="tooltip">Department cannot be changed.</div>
+    <div class="tooltip">Enter your last name.</div>
+    <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="field-error"></div>
 
     <label for="interestsSelect">Interests:</label>
     <select id="interestsSelect">
@@ -172,12 +178,14 @@
             <option th:value="${interest}" th:text="${#strings.capitalize(interest.toLowerCase().replace('_',' '))}"></option>
         </th:block>
     </select>
-    <div class="tooltip">Previously selected interests shown below.</div>
+    <div class="tooltip">Choose interests one by one. Selected interests will appear below.</div>
     <div id="selectedInterestsContainer" class="selected-interests"></div>
     <div id="interestsHiddenInputs"></div>
+    <div th:if="${#fields.hasErrors('interests')}" th:errors="*{interests}" class="field-error"></div>
 
     <button type="submit">Save Changes</button>
 </form>
+
 
 <footer>
     &copy; 2025. Developed with ❤️ by
@@ -186,9 +194,10 @@
 
 <script th:inline="javascript">
     /*<![CDATA[*/
-    let selectedInterests = /*[[${PROFESSOR_DASHBOARD_DTO.interests}]]*/ [];
+    let selectedInterests = /*[[${professor.interests}]]*/ [];
     /*]]>*/
 </script>
+
 
 <script>
     function formatLabel(text) {
@@ -230,29 +239,6 @@
         }
         e.target.value = '';
     });
-
-    function validateProfessorForm() {
-        const firstName = document.getElementById("firstName").value.trim();
-        const lastName = document.getElementById("lastName").value.trim();
-        const errBox = document.getElementById("error-message");
-        errBox.style.display = 'none';
-
-        if (!firstName || !lastName) {
-            showError("Please fill in all required fields.");
-            return false;
-        }
-        if (selectedInterests.length === 0) {
-            showError("Please select at least one interest.");
-            return false;
-        }
-        return true;
-    }
-
-    function showError(msg) {
-        const errBox = document.getElementById("error-message");
-        errBox.textContent = msg;
-        errBox.style.display = 'block';
-    }
 
     updateInterestsContainer();
 </script>

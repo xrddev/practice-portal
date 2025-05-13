@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,14 +22,11 @@ import java.util.List;
 
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/public/register/student")
 public class StudentRegistrationController extends RegistrationSessionHelper {
 
     private final StudentService studentService;
-
-    public StudentRegistrationController(StudentService studentService) {
-        this.studentService = studentService;
-    }
 
     @GetMapping
     public String showStudentRegistrationForm(Model model) {

@@ -18,8 +18,7 @@ public class StudentDashboardController {
 
     @GetMapping("/dashboard")
     public String viewDashboard(Model model, Principal principal) {
-        String email = principal.getName();
-        model.addAttribute("STUDENT_DTO", studentService.getByEmailMappedToDto(email));
+        model.addAttribute("student", studentService.getByEmailMappedToDashboardDto(principal.getName()));
         return "student/dashboard";
     }
 }

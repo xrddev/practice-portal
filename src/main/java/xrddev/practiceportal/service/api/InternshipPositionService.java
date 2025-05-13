@@ -1,20 +1,25 @@
 package xrddev.practiceportal.service.api;
 
 import xrddev.practiceportal.dto.intership_position.InternshipPositionCreateDto;
-import xrddev.practiceportal.dto.intership_position.InternshipPositionDto;
-import xrddev.practiceportal.model.internship.InternshipPosition;
+import xrddev.practiceportal.dto.intership_position.InternshipPositionDashboardDto;
+import xrddev.practiceportal.dto.intership_position.InternshipPositionEditDto;
+
 import java.util.List;
 
 public interface InternshipPositionService {
     void createPosition(InternshipPositionCreateDto dto);
+    void updatePosition(InternshipPositionEditDto dto, Long id);
+
+
+    InternshipPositionEditDto getByIdAndCompanyEmailMappedToEditDto(Long id, String email);
     void deleteByIdAndCompanyEmail(Long id, String companyEmail);
-    void updatePosition(Long id, InternshipPositionDto dto, String companyEmail);
+
+    void deleteById(Long id);
     long count();
 
-    List<InternshipPositionDto> getAllByEmailMappedToDto(String companyEmail);
-    InternshipPositionDto getByIdAndCompanyEmailMappedToDto(Long id, String email);
 
-    List<InternshipPositionDto> getAllMappedToDto();
-    void deleteById(Long id);
+    InternshipPositionEditDto getByIdMappedToEditDto(Long id);
+
+    List<InternshipPositionDashboardDto> getAllByCompanyEmailMappedToDashboardDto(String email);
 
 }

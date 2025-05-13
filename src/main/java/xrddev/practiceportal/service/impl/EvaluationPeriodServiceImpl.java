@@ -1,5 +1,6 @@
 package xrddev.practiceportal.service.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import xrddev.practiceportal.model.period.EvaluationPeriod;
@@ -8,13 +9,10 @@ import xrddev.practiceportal.repository.api.EvaluationPeriodRepository;
 import xrddev.practiceportal.service.api.EvaluationPeriodService;
 
 @Service
+@RequiredArgsConstructor
 public class EvaluationPeriodServiceImpl implements EvaluationPeriodService {
 
     private final EvaluationPeriodRepository evaluationPeriodRepository;
-
-    public EvaluationPeriodServiceImpl(EvaluationPeriodRepository evaluationPeriodRepository) {
-        this.evaluationPeriodRepository = evaluationPeriodRepository;
-    }
 
     @Override
     @Transactional(readOnly = true)

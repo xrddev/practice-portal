@@ -1,8 +1,6 @@
 package xrddev.practiceportal.dto.intership_position;
 
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
@@ -13,7 +11,7 @@ import java.util.List;
 @Data
 public class InternshipPositionCreateDto {
 
-    @NotNull(message = "Title is required.")
+    @NotBlank(message = "Title is required.")
     @Size(max = 150, message = "Title can be up to 150 characters.")
     private String title;
 
@@ -32,4 +30,10 @@ public class InternshipPositionCreateDto {
 
     @NotEmpty(message = "At least one interest is required.")
     private List<Interests> interests;
+
+    @AssertTrue(message = "End date must be after or equal to start date.")
+    public boolean isValidDateRange() {
+        if (startDate == null || endDate == null) return true;
+        return !endDate.isBefore(startDate);
+    }
 }

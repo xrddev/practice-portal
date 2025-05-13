@@ -1,11 +1,7 @@
 package xrddev.practiceportal.dto.intership_position;
 
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import xrddev.practiceportal.dto.user.student.StudentDto;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
 import xrddev.practiceportal.model.internship.InternshipPosition;
@@ -13,13 +9,10 @@ import xrddev.practiceportal.model.internship.InternshipPosition;
 import java.time.LocalDate;
 import java.util.List;
 
-@NoArgsConstructor
 @Data
-public class InternshipPositionDto {
+public class InternshipPositionEditDto {
 
-    private Long id;
-
-    @NotNull(message = "Title is required.")
+    @NotBlank(message = "Title is required.")
     @Size(max = 150, message = "Title can be up to 150 characters.")
     private String title;
 
@@ -39,16 +32,18 @@ public class InternshipPositionDto {
     @NotEmpty(message = "At least one interest is required.")
     private List<Interests> interests;
 
-    private StudentDto student;
+    @AssertTrue(message = "End date must be after or equal to start date.")
+    public boolean isValidDateRange() {
+        if (startDate == null || endDate == null) return true;
+        return !endDate.isBefore(startDate);
+    }
 
-
-    public InternshipPositionDto(InternshipPosition position) {
-        this.id = position.getId();
-        this.title = position.getTitle();
-        this.description = position.getDescription();
-        this.startDate = position.getStartDate();
-        this.endDate = position.getEndDate();
-        this.skills = position.getSkills();
-        this.interests = position.getInterests();
+    public InternshipPositionEditDto(InternshipPosition internshipPosition){
+        this.title = internshipPosition.getTitle();
+        this.description = internshipPosition.getDescription();
+        this.startDate = internshipPosition.getStartDate();
+        this.endDate = internshipPosition.getEndDate();
+        this.skills = internshipPosition.getSkills();
+        this.interests = internshipPosition.getInterests();
     }
 }

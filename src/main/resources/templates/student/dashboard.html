@@ -125,22 +125,22 @@
         </form>
     </div>
 
-    <p><strong>Name:</strong> <span th:text="|${STUDENT_DTO.firstName} ${STUDENT_DTO.lastName}|">Student Name</span></p>
-    <p><strong>Student Number:</strong> <span th:text="${STUDENT_DTO.studentNumber}">123456</span></p>
-    <p><strong>Email:</strong> <span th:text="${STUDENT_DTO.email}">student@example.com</span></p>
-    <p><strong>Department:</strong> <span th:text="${STUDENT_DTO.department}">Department</span></p>
-    <p><strong>Year of Study:</strong> <span th:text="${STUDENT_DTO.yearOfStudy}">3</span></p>
-    <p><strong>Average Grade:</strong> <span th:text="${STUDENT_DTO.averageGrade}">8.5</span></p>
-    <p><strong>Preferred Location:</strong> <span th:text="${STUDENT_DTO.preferredLocation ?: '---'}">Ioannina</span></p>
+    <p><strong>Name:</strong> <span th:text="|${student.firstName} ${student.lastName}|">Student Name</span></p>
+    <p><strong>Student Number:</strong> <span th:text="${student.studentNumber}">123456</span></p>
+    <p><strong>Email:</strong> <span th:text="${student.email}">student@example.com</span></p>
+    <p><strong>Department:</strong> <span th:text="${student.department}">Department</span></p>
+    <p><strong>Year of Study:</strong> <span th:text="${student.yearOfStudy}">3</span></p>
+    <p><strong>Average Grade:</strong> <span th:text="${student.averageGrade}">8.5</span></p>
+    <p><strong>Preferred Location:</strong> <span th:text="${student.preferredLocation ?: '---'}">Ioannina</span></p>
 
-    <div class="position-tags skills" th:if="${STUDENT_DTO.skills}">
+    <div class="position-tags skills" th:if="${student.skills}">
         <span class="label" style="font-size: 1.2rem;">Skills:</span><br/>
-        <span th:each="skill : ${STUDENT_DTO.skills}" th:text="${skill}" class="tag">Skill</span>
+        <span th:each="skill : ${student.skills}" th:text="${skill}" class="tag">Skill</span>
     </div>
 
-    <div class="position-tags interests" th:if="${STUDENT_DTO.interests}">
+    <div class="position-tags interests" th:if="${student.interests}">
         <span class="label" style="font-size: 1.2rem;">Interests:</span><br/>
-        <span th:each="interest : ${STUDENT_DTO.interests}" th:text="${interest}" class="tag">Interest</span>
+        <span th:each="interest : ${student.interests}" th:text="${interest}" class="tag">Interest</span>
     </div>
 </div>
 

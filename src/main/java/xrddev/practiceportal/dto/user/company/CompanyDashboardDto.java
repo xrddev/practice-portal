@@ -2,7 +2,6 @@ package xrddev.practiceportal.dto.user.company;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import xrddev.practiceportal.dto.intership_position.InternshipPositionDto;
 import xrddev.practiceportal.model.user.Company;
 
 import java.util.List;
@@ -18,7 +17,6 @@ public class CompanyDashboardDto {
     private String website;
     private String internshipCoordinator;
     private String internshipCoordinatorEmail;
-    private List<InternshipPositionDto> positions;
 
     public CompanyDashboardDto(Company company) {
         this.companyName = company.getCompanyName();
@@ -28,9 +26,5 @@ public class CompanyDashboardDto {
         this.website = company.getWebsite();
         this.internshipCoordinator = company.getInternshipCoordinator();
         this.internshipCoordinatorEmail = company.getInternshipCoordinatorEmail();
-        this.positions = company.getInternshipPositions()
-                .stream()
-                .map(InternshipPositionDto::new)
-                .collect(Collectors.toList());
     }
 }

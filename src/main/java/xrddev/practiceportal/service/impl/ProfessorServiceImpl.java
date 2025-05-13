@@ -4,7 +4,8 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import xrddev.practiceportal.dto.user.professor.ProfessorDto;
+import xrddev.practiceportal.dto.user.professor.ProfessorDashboardDto;
+import xrddev.practiceportal.dto.user.professor.ProfessorEditDto;
 import xrddev.practiceportal.dto.user.professor.ProfessorRegistrationDto;
 import xrddev.practiceportal.model.enums.UserRole;
 import xrddev.practiceportal.model.user.Professor;
@@ -44,7 +45,7 @@ public class ProfessorServiceImpl implements ProfessorService {
 
     @Override
     @Transactional
-    public void updateProfessor(ProfessorDto dto, String email) {
+    public void updateProfessor(ProfessorEditDto dto, String email) {
         Professor professor = professorRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Professor not found"));
 
@@ -60,19 +61,19 @@ public class ProfessorServiceImpl implements ProfessorService {
     }
 
     @Override
-    public ProfessorDto getByEmailMappedToDto(String email) {
+    public ProfessorEditDto getByEmailMappedToEditDto(String email) {
         return professorRepository.findByEmail(email)
-                .map(ProfessorDto::new)
+                .map(ProfessorEditDto::new)
                 .orElseThrow(() -> new EntityNotFoundException("Professor not found"));
     }
 
     @Override
-    public List<ProfessorDto> getAllMappedToDto() {
-        return professorRepository.findAll()
-                .stream()
-                .map(ProfessorDto::new)
-                .toList();
+    public ProfessorDashboardDto getByEmailMappedToDashboardDto(String email) {
+        return professorRepository.findByEmail(email)
+                .map(ProfessorDashboardDto::new)
+                .orElseThrow(() -> new EntityNotFoundException("Professor not found"));
     }
+
 
     @Override
     public void deleteById(Long id) {

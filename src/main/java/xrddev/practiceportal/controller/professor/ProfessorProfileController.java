@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import xrddev.practiceportal.config.ModelAttributeKeys;
-import xrddev.practiceportal.dto.user.professor.ProfessorDto;
+import xrddev.practiceportal.dto.user.professor.ProfessorEditDto;
 import xrddev.practiceportal.service.api.ProfessorService;
 
 import java.security.Principal;
@@ -25,29 +23,21 @@ public class ProfessorProfileController {
 
     @GetMapping("/edit-profile")
     public String editProfile(Model model, Principal principal) {
-        model.addAttribute(ModelAttributeKeys.PROFESSOR_DASHBOARD_DTO, professorService.getByEmailMappedToDto(principal.getName()));
+        model.addAttribute("professor", professorService.getByEmailMappedToEditDto(principal.getName()));
         return "professor/edit_profile";
     }
 
+
     @PostMapping("/edit-profile")
     public String updateProfile(
-            @Valid @ModelAttribute(ModelAttributeKeys.PROFESSOR_DASHBOARD_DTO) ProfessorDto dto,
+            @Valid @ModelAttribute("professor") ProfessorEditDto professorEditDto,
             BindingResult bindingResult,
-            Principal principal,
-            Model model,
-            RedirectAttributes redirectAttributes) {
+            Principal principal) {
 
-        if (bindingResult.hasErrors()) {
-            model.addAttribute(ModelAttributeKeys.PROFESSOR_DASHBOARD_DTO, dto);
-            System.out.println("Got here !");
+        if (bindingResult.hasErrors())
             return "professor/edit_profile";
-        }
 
-        // Ensure the email is taken from the authenticated user and not from the submitted form for security reasons
-        dto.setEmail(principal.getName());
-
-        professorService.updateProfessor(dto, principal.getName());
-        redirectAttributes.addFlashAttribute("profileUpdated", true);
+        professorService.updateProfessor(professorEditDto, principal.getName());
         return "redirect:/professor/dashboard";
     }
 }

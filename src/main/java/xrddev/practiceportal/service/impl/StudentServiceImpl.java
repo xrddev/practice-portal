@@ -1,9 +1,11 @@
 package xrddev.practiceportal.service.impl;
 
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import xrddev.practiceportal.dto.user.student.StudentDto;
+import xrddev.practiceportal.dto.user.student.StudentDashboardDto;
+import xrddev.practiceportal.dto.user.student.StudentEditDto;
 import xrddev.practiceportal.dto.user.student.StudentRegistrationDto;
 import xrddev.practiceportal.model.user.Student;
 import xrddev.practiceportal.model.enums.Department;
@@ -17,13 +19,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
-
-    public StudentServiceImpl(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
-    }
 
     @Override
     @Transactional
@@ -47,23 +46,36 @@ public class StudentServiceImpl implements StudentService {
         studentRepository.save(student);
     }
 
-
     @Override
-    public void updateStudent(StudentDto dto, String email) {
+    public void updateStudent(StudentEditDto dto, String email) {
         Student student = studentRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Student not found"));
 
         student.setFirstName(dto.getFirstName());
         student.setLastName(dto.getLastName());
-        student.setStudentNumber(dto.getStudentNumber());
         student.setYearOfStudy(dto.getYearOfStudy());
         student.setAverageGrade(dto.getAverageGrade());
-        student.setInterests(dto.getInterests());
         student.setSkills(dto.getSkills());
+        student.setInterests(dto.getInterests());
         student.setPreferredLocation(dto.getPreferredLocation());
-
         studentRepository.save(student);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     @Override
@@ -72,17 +84,10 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.findByEmail(email);
     }
 
+
     @Override
     public long count() {
         return studentRepository.count();
-    }
-
-    @Override
-    public List<StudentDto> getAllMappedToDto() {
-        return studentRepository.findAll()
-                .stream()
-                .map(StudentDto::new)
-                .toList();
     }
 
     @Override
@@ -92,9 +97,16 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public StudentDto getByEmailMappedToDto(String email) {
+    public StudentDashboardDto getByEmailMappedToDashboardDto(String email) {
         return studentRepository.findByEmail(email)
-                .map(StudentDto::new)
+                .map(StudentDashboardDto::new)
+                .orElseThrow(() -> new EntityNotFoundException("Student not found"));
+    }
+
+    @Override
+    public StudentEditDto getByEmailMappedToEditDto(String email) {
+        return studentRepository.findByEmail(email)
+                .map(StudentEditDto::new)
                 .orElseThrow(() -> new EntityNotFoundException("Student not found"));
     }
 

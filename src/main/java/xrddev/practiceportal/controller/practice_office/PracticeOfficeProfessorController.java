@@ -16,7 +16,7 @@ public class PracticeOfficeProfessorController {
 
     @GetMapping
     public String showAllProfessors(Model model) {
-        model.addAttribute("professors", professorService.getAllMappedToDto());
+        //model.addAttribute("professors", professorService.getAllMappedToDto());
         return "practice_office/professors";
     }
 

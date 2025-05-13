@@ -122,10 +122,6 @@
 
 <h1>Professor – Internship Dashboard</h1>
 
-<div th:if="${profileUpdated}" id="profile-success" class="message-box success">
-    Profile updated successfully!
-</div>
-
 <div class="box">
     <div class="action-buttons">
         <form th:action="@{/professor/edit-profile}" method="get">
@@ -137,13 +133,13 @@
         </form>
     </div>
 
-    <p>Welcome, <strong th:text="|${PROFESSOR_DASHBOARD_DTO.firstName} ${PROFESSOR_DASHBOARD_DTO.lastName}|">Professor Name</strong>!</p>
-    <p>Your email: <strong th:text="${PROFESSOR_DASHBOARD_DTO.email}">email@uoi.gr</strong></p>
-    <p>Department: <strong th:text="${PROFESSOR_DASHBOARD_DTO.department}">INFORMATICS</strong></p>
+    <p>Welcome, <strong th:text="|${professor.firstName} ${professor.lastName}|">Professor Name</strong>!</p>
+    <p>Your email: <strong th:text="${professor.email}">email@uoi.gr</strong></p>
+    <p>Department: <strong th:text="${professor.department}">YourDepartment</strong></p>
 
-    <div class="position-tags interests" th:if="${PROFESSOR_DASHBOARD_DTO.interests}">
+    <div class="position-tags interests" th:if="${professor.interests}">
         <span class="label" style="font-size: 1.2rem;">Interests:</span><br/>
-        <span th:each="interest : ${PROFESSOR_DASHBOARD_DTO.interests}" th:text="${interest}" class="tag">Interest</span>
+        <span th:each="interest : ${professor.interests}" th:text="${interest}" class="tag">Interest</span>
     </div>
 </div>
 
@@ -168,7 +164,6 @@
         fadeOutFlash("profile-success");
     });
 </script>
-
 
 </body>
 </html>

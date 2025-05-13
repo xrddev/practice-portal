@@ -1,6 +1,8 @@
 package xrddev.practiceportal.service.api;
 
-import xrddev.practiceportal.dto.user.student.StudentDto;
+import jakarta.validation.Valid;
+import xrddev.practiceportal.dto.user.student.StudentDashboardDto;
+import xrddev.practiceportal.dto.user.student.StudentEditDto;
 import xrddev.practiceportal.dto.user.student.StudentRegistrationDto;
 import xrddev.practiceportal.model.user.Student;
 import java.util.List;
@@ -10,11 +12,10 @@ public interface StudentService {
     void registerStudent(StudentRegistrationDto studentRegistrationDto);
 
     Optional<Student> findByEmail(String email);
-    void updateStudent(StudentDto dto, String email);
     long count();
-    List<StudentDto> getAllMappedToDto();
     void deleteById(Long id);
 
-    StudentDto getByEmailMappedToDto(String email);
-
+    StudentDashboardDto getByEmailMappedToDashboardDto(String email);
+    StudentEditDto getByEmailMappedToEditDto(String email);
+    void updateStudent(StudentEditDto studentEditDto, String email);
 }

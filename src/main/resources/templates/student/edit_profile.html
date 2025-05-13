@@ -134,32 +134,14 @@
 <body>
 <h1>Edit Student Profile</h1>
 
-<form th:action="@{/student/edit-profile}" th:object="${STUDENT_DTO}" method="post" onsubmit="return validateStudentForm()">
+<form th:action="@{/student/edit-profile}" th:object="${student}" method="post" onsubmit="return validateStudentForm()">
     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" th:field="*{email}" readonly />
-    <div class="tooltip">Email cannot be changed!</div>
-
-    <label for="studentNumber">Student Number:</label>
-    <input type="text" id="studentNumber" th:field="*{studentNumber}" maxlength="7" required readonly/>
 
     <label for="firstName">First Name:</label>
     <input type="text" id="firstName" th:field="*{firstName}" maxlength="50" required/>
 
     <label for="lastName">Last Name:</label>
     <input type="text" id="lastName" th:field="*{lastName}" maxlength="50" required/>
-
-    <label for="department">Department:</label>
-    <select id="department" th:field="*{department}" required>
-        <option value="" disabled>Select your department</option>
-        <th:block th:each="dept : ${DEPARTMENTS}">
-            <option th:value="${dept}"
-                    th:text="${#strings.capitalize(dept.toLowerCase().replace('_',' '))}"
-                    th:selected="${dept == STUDENT_DTO.department}">
-            </option>
-        </th:block>
-    </select>
 
     <label for="yearOfStudy">Year of Study:</label>
     <input type="number" id="yearOfStudy" th:field="*{yearOfStudy}" min="1" max="10" required/>
@@ -201,8 +183,8 @@
 </footer>
 
 <script th:inline="javascript">
-    let selectedSkills = /*[[${STUDENT_DTO.skills}]]*/ [];
-    let selectedInterests = /*[[${STUDENT_DTO.interests}]]*/ [];
+    let selectedSkills = /*[[${student.skills}]]*/ [];
+    let selectedInterests = /*[[${student.interests}]]*/ [];
 
     document.addEventListener("DOMContentLoaded", () => {
         updateSkillsContainer();

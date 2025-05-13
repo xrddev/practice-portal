@@ -1,8 +1,10 @@
 package xrddev.practiceportal.service.impl;
 
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import xrddev.practiceportal.dto.user.company.CompanyDashboardDto;
+import xrddev.practiceportal.dto.user.company.CompanyEditDto;
 import xrddev.practiceportal.dto.user.company.CompanyRegistrationDto;
 import xrddev.practiceportal.model.user.Company;
 import xrddev.practiceportal.model.enums.UserRole;
@@ -13,13 +15,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class CompanyServiceImpl implements CompanyService {
 
     private final CompanyRepository companyRepository;
-
-    public CompanyServiceImpl(CompanyRepository companyRepository) {
-        this.companyRepository = companyRepository;
-    }
 
     @Override
     @Transactional
@@ -47,9 +46,16 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public CompanyDashboardDto getByEmailMappedToDto(String email) {
+    public CompanyDashboardDto getByEmailMappedToDashboardDto(String email) {
         return companyRepository.findByEmail(email)
                 .map(CompanyDashboardDto::new)
+                .orElseThrow(() -> new RuntimeException("Company not found"));
+    }
+
+    @Override
+    public CompanyEditDto getByEmailMappedToEditDto(String email) {
+        return companyRepository.findByEmail(email)
+                .map(CompanyEditDto::new)
                 .orElseThrow(() -> new RuntimeException("Company not found"));
     }
 
@@ -57,7 +63,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     @Transactional
-    public void updateCompany(CompanyDashboardDto dto, String email) {
+    public void updateCompany(CompanyEditDto dto, String email) {
         Company company = companyRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Company not found"));
 

@@ -2,12 +2,13 @@ package xrddev.practiceportal.service.impl;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionCreateDto;
-import xrddev.practiceportal.dto.intership_position.InternshipPositionDto;
-import xrddev.practiceportal.dto.user.student.StudentDto;
+import xrddev.practiceportal.dto.intership_position.InternshipPositionDashboardDto;
+import xrddev.practiceportal.dto.intership_position.InternshipPositionEditDto;
 import xrddev.practiceportal.model.internship.InternshipPosition;
 import xrddev.practiceportal.model.user.Company;
 import xrddev.practiceportal.repository.api.InternshipPositionRepository;
@@ -16,17 +17,14 @@ import xrddev.practiceportal.service.api.InternshipPositionService;
 
 import java.util.List;
 
+
 @Service
+@RequiredArgsConstructor
 public class InternshipPositionServiceImpl implements InternshipPositionService {
 
     private final InternshipPositionRepository internshipPositionRepository;
     private final CompanyService companyService;
 
-    public InternshipPositionServiceImpl(InternshipPositionRepository positionRepo,
-                                         CompanyService companyService) {
-        this.internshipPositionRepository = positionRepo;
-        this.companyService = companyService;
-    }
 
     @Override
     @Transactional
@@ -48,17 +46,20 @@ public class InternshipPositionServiceImpl implements InternshipPositionService 
         internshipPositionRepository.save(internshipPosition);
     }
 
+
     @Override
-    public List<InternshipPositionDto> getAllByEmailMappedToDto(String companyEmail) {
-        return internshipPositionRepository.findAllByCompanyEmail(companyEmail).stream()
-                .map(position -> {
-                    InternshipPositionDto dto = new InternshipPositionDto(position);
-                    if (!position.isAvailable() && position.getStudent() != null) {
-                        dto.setStudent(new StudentDto(position.getStudent()));
-                    }
-                    return dto;
-                })
-                .toList();
+    public void updatePosition(InternshipPositionEditDto dto, Long id) {
+        InternshipPosition position = internshipPositionRepository
+            .findById(id)
+            .orElseThrow(() -> new EntityNotFoundException("Position not found"));
+
+        position.setTitle(dto.getTitle());
+        position.setDescription(dto.getDescription());
+        position.setStartDate(dto.getStartDate());
+        position.setEndDate(dto.getEndDate());
+        position.setSkills(dto.getSkills());
+        position.setInterests(dto.getInterests());
+        internshipPositionRepository.save(position);
     }
 
 
@@ -71,21 +72,6 @@ public class InternshipPositionServiceImpl implements InternshipPositionService 
     }
 
 
-    @Override
-    @Transactional
-    public void updatePosition(Long id, InternshipPositionDto dto, String companyEmail) {
-        InternshipPosition position = internshipPositionRepository.findByIdAndCompanyEmail(id, companyEmail)
-                .orElseThrow(() -> new EntityNotFoundException("Position not found or not yours"));
-
-        position.setTitle(dto.getTitle());
-        position.setDescription(dto.getDescription());
-        position.setStartDate(dto.getStartDate());
-        position.setEndDate(dto.getEndDate());
-        position.setSkills(dto.getSkills());
-        position.setInterests(dto.getInterests());
-
-        internshipPositionRepository.save(position);
-    }
 
     @Override
     public long count(){
@@ -94,23 +80,30 @@ public class InternshipPositionServiceImpl implements InternshipPositionService 
 
 
     @Override
-    public InternshipPositionDto getByIdAndCompanyEmailMappedToDto(Long id, String email) {
-        InternshipPosition position = internshipPositionRepository
+    public InternshipPositionEditDto getByIdAndCompanyEmailMappedToEditDto(Long id, String email) {
+        return internshipPositionRepository
                 .findByIdAndCompanyEmail(id, email)
+                .map(InternshipPositionEditDto::new)
                 .orElseThrow(() -> new EntityNotFoundException("Not found or not allowed"));
-
-        return new InternshipPositionDto(position);
-    }
-
-    @Override
-    public List<InternshipPositionDto> getAllMappedToDto(){
-        return internshipPositionRepository.findAll().stream()
-                .map(InternshipPositionDto::new)
-                .toList();
     }
 
     @Override
     public void deleteById(Long id){
         internshipPositionRepository.deleteById(id);
+    }
+
+    @Override
+    public InternshipPositionEditDto getByIdMappedToEditDto(Long id) {
+        return internshipPositionRepository.findById(id)
+                .map(InternshipPositionEditDto::new)
+                .orElseThrow(() -> new EntityNotFoundException("Position not found"));
+    }
+
+    @Override
+    public List<InternshipPositionDashboardDto> getAllByCompanyEmailMappedToDashboardDto(String email){
+        return internshipPositionRepository.findAllByCompanyEmail(email)
+                .stream()
+                .map(InternshipPositionDashboardDto::new)
+                .toList();
     }
 }

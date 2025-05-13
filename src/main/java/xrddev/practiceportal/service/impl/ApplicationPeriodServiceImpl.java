@@ -1,5 +1,6 @@
 package xrddev.practiceportal.service.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import xrddev.practiceportal.model.period.ApplicationPeriod;
@@ -8,19 +9,15 @@ import xrddev.practiceportal.repository.api.ApplicationPeriodRepository;
 import xrddev.practiceportal.service.api.ApplicationPeriodService;
 
 @Service
+@RequiredArgsConstructor
 public class ApplicationPeriodServiceImpl implements ApplicationPeriodService {
 
     private final ApplicationPeriodRepository applicationPeriodRepository;
 
-    public ApplicationPeriodServiceImpl(ApplicationPeriodRepository applicationPeriodRepository) {
-        this.applicationPeriodRepository = applicationPeriodRepository;
-    }
-
     @Override
     @Transactional(readOnly = true)
     public ApplicationPeriod getPeriod() {
-        return applicationPeriodRepository
-                .findById(1)
+        return applicationPeriodRepository.findById(1)
                 .orElseThrow(() -> new IllegalStateException("No application period found"));
     }
 

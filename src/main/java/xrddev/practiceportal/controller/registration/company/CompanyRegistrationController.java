@@ -2,6 +2,7 @@ package xrddev.practiceportal.controller.registration.company;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,13 +14,11 @@ import xrddev.practiceportal.service.api.CompanyService;
 
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/public/register/company")
 public class CompanyRegistrationController extends RegistrationSessionHelper {
-    private final CompanyService companyService;
 
-    public CompanyRegistrationController(CompanyService companyService) {
-        this.companyService = companyService;
-    }
+    private final CompanyService companyService;
 
     @GetMapping
     public String showCompanyRegistrationForm(Model model) {

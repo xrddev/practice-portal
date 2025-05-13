@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import xrddev.practiceportal.service.api.InternshipPositionService;
-import xrddev.practiceportal.config.ModelAttributeKeys;
-import xrddev.practiceportal.dto.intership_position.InternshipPositionDto;
 
 import java.util.List;
 
@@ -22,8 +20,6 @@ public class PracticeOfficeInternshipController {
 
     @GetMapping
     public String manageInternships(Model model) {
-        List<InternshipPositionDto> positions = internshipPositionService.getAllMappedToDto();
-        model.addAttribute("internships", positions);
         return "practice_office/internships";
     }
 

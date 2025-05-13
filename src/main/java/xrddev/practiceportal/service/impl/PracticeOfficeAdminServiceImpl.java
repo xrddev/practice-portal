@@ -2,6 +2,7 @@ package xrddev.practiceportal.service.impl;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import xrddev.practiceportal.dto.user.practice_office.PracticeOfficeAdminDto;
 import xrddev.practiceportal.model.enums.UserRole;
@@ -12,13 +13,11 @@ import xrddev.practiceportal.service.api.PracticeOfficeAdminService;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class PracticeOfficeAdminServiceImpl implements PracticeOfficeAdminService {
 
     private final PracticeOfficeAdminRepository practiceOfficeAdminRepository;
 
-    public PracticeOfficeAdminServiceImpl(PracticeOfficeAdminRepository practiceOfficeAdminRepository) {
-        this.practiceOfficeAdminRepository = practiceOfficeAdminRepository;
-    }
 
     @Override
     @Transactional
