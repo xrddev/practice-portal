@@ -21,7 +21,7 @@ public class PracticeOfficeStudentController {
 
     @GetMapping
     public String showAllStudents(Model model, Principal principal) {
-        //model.addAttribute("students", studentService.getAllMappedToDto());
+        model.addAttribute("students", studentService.getAllMappedToDashboardDto());
         return "practice_office/students";
     }
 

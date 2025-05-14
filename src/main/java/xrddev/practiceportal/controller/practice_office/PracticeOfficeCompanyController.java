@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import xrddev.practiceportal.service.api.CompanyService;
 
 @Controller
@@ -19,14 +18,13 @@ public class PracticeOfficeCompanyController {
 
     @GetMapping()
     public String manageCompanies(Model model) {
-        model.addAttribute("companies", companyService.getAllMappedToDto());
+        model.addAttribute("companies", companyService.getAllMappedToDashboardDto());
         return "practice_office/companies";
     }
 
     @PostMapping("/delete/{email}")
-    public String deleteCompany(@PathVariable String email, RedirectAttributes redirectAttributes) {
+    public String deleteCompany(@PathVariable String email) {
         companyService.deleteByEmail(email);
-        redirectAttributes.addFlashAttribute("successMessage", "Company deleted successfully.");
         return "redirect:/practice-office/companies";
     }
 }

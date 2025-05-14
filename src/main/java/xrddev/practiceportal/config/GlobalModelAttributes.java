@@ -53,4 +53,11 @@ public class GlobalModelAttributes {
                 .map(Enum::name)
                 .toList();
     }
+
+    @ModelAttribute("RATINGS")
+    public List<String> ratings() {
+        return Arrays.stream(xrddev.practiceportal.model.enums.Rating.values())
+                .map(Enum::name)
+                .toList();
+    }
 }

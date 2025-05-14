@@ -138,6 +138,7 @@
 
 <h1>All Registered Students</h1>
 
+<!-- Back button -->
 <div style="width: 95%; max-width: 1000px; margin-bottom: 10px; display: flex; justify-content: flex-end;">
     <form th:action="@{/practice-office/dashboard}" method="get">
         <button type="submit"
@@ -149,6 +150,7 @@
     </form>
 </div>
 
+<!-- Count -->
 <div style="width: 95%; max-width: 1000px; margin-bottom: 10px;">
     <span style="
         display: inline-block;
@@ -162,7 +164,6 @@
         Total Students: <span th:text="${students.size()}">0</span>
     </span>
 </div>
-
 
 <div class="student-list">
     <div class="student-row" th:each="student, iterStat : ${students}">
@@ -181,13 +182,10 @@
             </div>
 
             <div class="student-info">
-                <p><strong>ID:</strong> <span th:text="${student.id}">4</span></p>
                 <p><strong>Email:</strong> <span th:text="${student.email}">student@uoi.gr</span></p>
-                <p><strong>Student #:</strong> <span th:text="${student.studentNumber}">123456</span> |
-                    <strong>Dept:</strong> <span th:text="${student.department}">CS</span> |
-                    <strong>Year:</strong> <span th:text="${student.yearOfStudy}">3</span> |
-                    <strong>Grade:</strong> <span th:text="${student.averageGrade}">8.5</span>
-                </p>
+                <p><strong>Department:</strong> <span th:text="${student.department}">CS</span></p>
+                <p><strong>Year:</strong> <span th:text="${student.yearOfStudy}">3</span></p>
+                <p><strong>Grade:</strong> <span th:text="${student.averageGrade}">8.5</span></p>
                 <p><strong>Location:</strong> <span th:text="${student.preferredLocation ?: '---'}">Ioannina</span></p>
 
                 <div class="tag-group" th:if="${student.skills}">
@@ -201,9 +199,14 @@
     </div>
 </div>
 
+<div th:if="${students == null or #lists.isEmpty(students)}"
+     style="color: rgba(255,255,255,0.8); margin-top: 40px; text-align: center;">
+    <p>No students registered.</p>
+</div>
+
+
 <footer>
-    &copy; 2025. Developed with ❤️ by
-    <a href="https://github.com/xrddev" target="_blank">xrddev</a>.
+    &copy; 2025. Developed with ❤️ by <a href="https://github.com/xrddev" target="_blank">xrddev</a>.
 </footer>
 
 </body>

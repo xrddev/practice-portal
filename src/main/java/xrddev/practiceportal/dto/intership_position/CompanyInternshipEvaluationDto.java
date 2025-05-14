@@ -1,27 +1,17 @@
-package xrddev.practiceportal.model.internship;
+package xrddev.practiceportal.dto.intership_position;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import xrddev.practiceportal.model.enums.OverallGrade;
 import xrddev.practiceportal.model.enums.Rating;
+import xrddev.practiceportal.model.enums.OverallGrade;
 
-@Entity
-@Table(name = "company_evaluation")
-@Data
 @NoArgsConstructor
-@AllArgsConstructor
-public class CompanyEvaluation {
+@Data
+public class CompanyInternshipEvaluationDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "evaluation_id")
-    private Long id;
-
-    @OneToOne(mappedBy = "companyInternshipEvaluation")
-    private InternshipPosition internshipPosition;
+    @NotNull
+    private Long positionId;
 
     @NotNull(message = "Motivation rating is required.")
     private Rating motivation;
@@ -37,4 +27,8 @@ public class CompanyEvaluation {
 
     @Size(max = 500, message = "Comments can be up to 500 characters.")
     private String comments;
+
+    public CompanyInternshipEvaluationDto(Long positionId) {
+        this.positionId = positionId;
+    }
 }

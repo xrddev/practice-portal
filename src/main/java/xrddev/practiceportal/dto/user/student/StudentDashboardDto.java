@@ -11,6 +11,7 @@ import java.util.List;
 @Data
 public class StudentDashboardDto {
 
+    private long id;
     private String studentNumber;
     private String firstName;
     private String lastName;
@@ -23,6 +24,7 @@ public class StudentDashboardDto {
     private List<Interests> interests;
 
     public StudentDashboardDto(Student student) {
+        this.id = student.getId();
         this.studentNumber = student.getStudentNumber();
         this.firstName = student.getFirstName();
         this.lastName = student.getLastName();

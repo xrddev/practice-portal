@@ -2,6 +2,7 @@ package xrddev.practiceportal.dto.intership_position;
 
 import jakarta.validation.constraints.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
 import xrddev.practiceportal.model.internship.InternshipPosition;
@@ -9,8 +10,12 @@ import xrddev.practiceportal.model.internship.InternshipPosition;
 import java.time.LocalDate;
 import java.util.List;
 
+@NoArgsConstructor
 @Data
 public class InternshipPositionEditDto {
+
+    @NotNull
+    private Long id;
 
     @NotBlank(message = "Title is required.")
     @Size(max = 150, message = "Title can be up to 150 characters.")
@@ -39,6 +44,7 @@ public class InternshipPositionEditDto {
     }
 
     public InternshipPositionEditDto(InternshipPosition internshipPosition){
+        this.id = internshipPosition.getId();
         this.title = internshipPosition.getTitle();
         this.description = internshipPosition.getDescription();
         this.startDate = internshipPosition.getStartDate();

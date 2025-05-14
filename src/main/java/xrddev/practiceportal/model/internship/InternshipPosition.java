@@ -73,10 +73,10 @@ public class InternshipPosition {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "company_evaluation_id", referencedColumnName = "evaluation_id")
-    private CompanyEvaluation companyEvaluation;
+    private CompanyEvaluation companyInternshipEvaluation;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "professor_evaluation_id", referencedColumnName = "evaluation_id")
-    private ProfessorEvaluation professorEvaluation;
+    private ProfessorEvaluation professorInternshipEvaluation;
 
 }

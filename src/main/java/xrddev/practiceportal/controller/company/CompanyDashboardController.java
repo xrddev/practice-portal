@@ -8,6 +8,7 @@ import java.security.Principal;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import xrddev.practiceportal.service.api.CompanyService;
+import xrddev.practiceportal.service.api.EvaluationPeriodService;
 import xrddev.practiceportal.service.api.InternshipPositionService;
 
 @Controller
@@ -17,11 +18,13 @@ public class CompanyDashboardController {
 
     private final CompanyService companyService;
     private final InternshipPositionService internshipPositionService;
+    private final EvaluationPeriodService evaluationPeriodService;
 
     @GetMapping("/dashboard")
     public String dashboard(Model model, Principal principal) {
         model.addAttribute("company", companyService.getByEmailMappedToDashboardDto(principal.getName()));
         model.addAttribute("positions", internshipPositionService.getAllByCompanyEmailMappedToDashboardDto(principal.getName()));
+        model.addAttribute("evaluationOpen", evaluationPeriodService.isOpen());
         return "company/dashboard";
     }
 }

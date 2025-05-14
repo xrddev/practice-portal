@@ -63,15 +63,13 @@ public class StudentServiceImpl implements StudentService {
 
 
 
-
-
-
-
-
-
-
-
-
+    @Override
+    public List<StudentDashboardDto> getAllMappedToDashboardDto() {
+        return studentRepository.findAll()
+                .stream()
+                .map(StudentDashboardDto::new)
+                .toList();
+    }
 
 
 

@@ -9,6 +9,7 @@ import java.util.List;
 
 @Data
 public class ProfessorDashboardDto {
+    private long id;
     private String firstName;
     private String lastName;
     private String email;
@@ -16,6 +17,7 @@ public class ProfessorDashboardDto {
     private List<Interests> interests;
 
     public ProfessorDashboardDto(Professor professor) {
+        this.id = professor.getId();
         this.firstName = professor.getFirstName();
         this.lastName = professor.getLastName();
         this.email = professor.getEmail();

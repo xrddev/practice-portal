@@ -82,7 +82,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public List<CompanyDashboardDto> getAllMappedToDto() {
+    public List<CompanyDashboardDto> getAllMappedToDashboardDto() {
         return companyRepository.findAll()
                 .stream()
                 .map(CompanyDashboardDto::new)

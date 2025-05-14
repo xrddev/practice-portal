@@ -7,19 +7,22 @@ import xrddev.practiceportal.dto.intership_position.InternshipPositionEditDto;
 import java.util.List;
 
 public interface InternshipPositionService {
-    void createPosition(InternshipPositionCreateDto dto);
-    void updatePosition(InternshipPositionEditDto dto, Long id);
 
+    void createPosition(InternshipPositionCreateDto positionDto, String email);
 
-    InternshipPositionEditDto getByIdAndCompanyEmailMappedToEditDto(Long id, String email);
+    void updatePosition(Long id, String companyEmail, InternshipPositionEditDto positionDto);
+
     void deleteByIdAndCompanyEmail(Long id, String companyEmail);
 
-    void deleteById(Long id);
     long count();
 
+    InternshipPositionEditDto getByIdAndCompanyEmailMappedToEditDto(Long id, String companyEmail);
 
     InternshipPositionEditDto getByIdMappedToEditDto(Long id);
 
-    List<InternshipPositionDashboardDto> getAllByCompanyEmailMappedToDashboardDto(String email);
+    List<InternshipPositionDashboardDto> getAllByCompanyEmailMappedToDashboardDto(String companyEmail);
 
+    InternshipPositionDashboardDto getByIdAndCompanyEmailMappedToDashboardDto(Long id, String companyEmail);
+
+    List<InternshipPositionDashboardDto> getAllMappedToDashboardDto();
 }

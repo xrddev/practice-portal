@@ -17,7 +17,7 @@ public interface CompanyService {
     CompanyEditDto getByEmailMappedToEditDto(String email);
     Optional<Company> findByEmail(String email);
 
-    List<CompanyDashboardDto> getAllMappedToDto();
+    List<CompanyDashboardDto> getAllMappedToDashboardDto();
     void deleteByEmail(String email);
 
 }

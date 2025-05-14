@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import xrddev.practiceportal.dto.intership_position.InternshipPositionDashboardDto;
 import xrddev.practiceportal.service.api.InternshipPositionService;
 
 import java.util.List;
@@ -23,9 +24,9 @@ public class PracticeOfficeInternshipController {
         return "practice_office/internships";
     }
 
-    @PostMapping("/delete/{id}")
-    public String deletePosition(@PathVariable Long id) {
-        internshipPositionService.deleteById(id);
-        return "redirect:/practice-office/internships";
+    @GetMapping("/practice-office/internships")
+    public String viewAllInternships(Model model) {
+        model.addAttribute("internships", internshipPositionService.getAllMappedToDashboardDto());
+        return "practice_office/internships";
     }
 }

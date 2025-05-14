@@ -134,6 +134,7 @@
 
 <h1>All Registered Professors</h1>
 
+<!-- Back button -->
 <div style="width: 95%; max-width: 1000px; margin-bottom: 10px; display: flex; justify-content: flex-end;">
     <form th:action="@{/practice-office/dashboard}" method="get">
         <button type="submit"
@@ -145,6 +146,7 @@
     </form>
 </div>
 
+<!-- Count -->
 <div style="width: 95%; max-width: 1000px; margin-bottom: 10px;">
     <span style="
         display: inline-block;
@@ -159,6 +161,7 @@
     </span>
 </div>
 
+<!-- Professor Cards -->
 <div class="professor-list">
     <div class="professor-row" th:each="professor, iterStat : ${professors}">
         <div class="index-badge" th:text="${iterStat.index + 1}">1</div>
@@ -187,9 +190,13 @@
     </div>
 </div>
 
+<div th:if="${professors == null or #lists.isEmpty(professors)}"
+     style="color: rgba(255,255,255,0.85); margin-top: 30px; font-size: 1.1rem;">
+    No professors found.
+</div>
+
 <footer>
-    &copy; 2025. Developed with ❤️ by
-    <a href="https://github.com/xrddev" target="_blank">xrddev</a>.
+    &copy; 2025. Developed with ❤️ by <a href="https://github.com/xrddev" target="_blank">xrddev</a>.
 </footer>
 
 </body>

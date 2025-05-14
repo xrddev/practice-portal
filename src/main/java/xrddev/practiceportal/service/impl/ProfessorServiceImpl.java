@@ -80,4 +80,12 @@ public class ProfessorServiceImpl implements ProfessorService {
         professorRepository.deleteById(id);
     }
 
+
+    @Override
+    public List<ProfessorDashboardDto> getAllMappedToDashboardDto() {
+        return professorRepository.findAll()
+                .stream()
+                .map(ProfessorDashboardDto::new)
+                .toList();
+    }
 }

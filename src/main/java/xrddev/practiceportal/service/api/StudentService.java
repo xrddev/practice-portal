@@ -1,6 +1,5 @@
 package xrddev.practiceportal.service.api;
 
-import jakarta.validation.Valid;
 import xrddev.practiceportal.dto.user.student.StudentDashboardDto;
 import xrddev.practiceportal.dto.user.student.StudentEditDto;
 import xrddev.practiceportal.dto.user.student.StudentRegistrationDto;
@@ -18,4 +17,5 @@ public interface StudentService {
     StudentDashboardDto getByEmailMappedToDashboardDto(String email);
     StudentEditDto getByEmailMappedToEditDto(String email);
     void updateStudent(StudentEditDto studentEditDto, String email);
+    List<StudentDashboardDto> getAllMappedToDashboardDto();
 }

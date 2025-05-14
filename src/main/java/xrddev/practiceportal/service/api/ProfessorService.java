@@ -4,6 +4,8 @@ import xrddev.practiceportal.dto.user.professor.ProfessorDashboardDto;
 import xrddev.practiceportal.dto.user.professor.ProfessorEditDto;
 import xrddev.practiceportal.dto.user.professor.ProfessorRegistrationDto;
 import xrddev.practiceportal.model.user.Professor;
+
+import java.util.List;
 import java.util.Optional;
 
 public interface ProfessorService {
@@ -19,4 +21,5 @@ public interface ProfessorService {
 
     void deleteById(Long id);
 
+    List<ProfessorDashboardDto> getAllMappedToDashboardDto();
 }

@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import xrddev.practiceportal.config.ModelAttributeKeys;
 import xrddev.practiceportal.service.api.ProfessorService;
 
 @Controller
@@ -16,7 +15,7 @@ public class PracticeOfficeProfessorController {
 
     @GetMapping
     public String showAllProfessors(Model model) {
-        //model.addAttribute("professors", professorService.getAllMappedToDto());
+        model.addAttribute("professors", professorService.getAllMappedToDashboardDto());
         return "practice_office/professors";
     }
 

@@ -14,12 +14,14 @@ import xrddev.practiceportal.service.api.CompanyService;
 
 import java.security.Principal;
 
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/company")
 public class CompanyProfileController {
 
     private final CompanyService companyService;
+
 
     @GetMapping("/edit-profile")
     public String editProfile(Model model, Principal principal) {
