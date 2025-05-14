@@ -5,6 +5,7 @@ import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
 import xrddev.practiceportal.model.user.Company;
@@ -16,6 +17,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = { "company", "internshipAssignment" })
 @Table(name = "internship_position")
 public class InternshipPosition {
 
@@ -60,5 +62,9 @@ public class InternshipPosition {
 
     @OneToOne(mappedBy = "position")
     private InternshipAssignment internshipAssignment;
+
+    public String getLocation() {
+        return (company != null) ? company.getAddress().split(",")[1] : null;
+    }
 
 }

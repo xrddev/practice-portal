@@ -10,4 +10,8 @@ public interface InternshipPositionRepository extends JpaRepository<InternshipPo
     InternshipPosition findById(long id);
     List<InternshipPosition> findAllByCompanyEmail(String email);
     Optional<InternshipPosition> findByIdAndCompanyEmail(Long id, String companyEmail);
+
+    List<InternshipPosition> findByInternshipAssignmentIsNull();
+    boolean existsByIdAndInternshipAssignmentIsNull(Long id);
+
 }

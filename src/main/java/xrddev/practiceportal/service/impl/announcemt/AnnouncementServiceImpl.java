@@ -1,4 +1,4 @@
-package xrddev.practiceportal.service.impl;
+package xrddev.practiceportal.service.impl.announcemt;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

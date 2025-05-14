@@ -1,4 +1,4 @@
-package xrddev.practiceportal.service.impl;
+package xrddev.practiceportal.service.impl.periods;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

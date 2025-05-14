@@ -1,7 +1,7 @@
 package xrddev.practiceportal.model.enums;
 
 public enum AssignmentStrategy {
-    INTEREST,
+    INTERESTS_AND_SKILLS,
     LOCATION,
     COMBINED
 }

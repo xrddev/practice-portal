@@ -1,5 +1,6 @@
 package xrddev.practiceportal.service.api;
 
+import org.springframework.transaction.annotation.Transactional;
 import xrddev.practiceportal.dto.user.student.StudentDashboardDto;
 import xrddev.practiceportal.dto.user.student.StudentEditDto;
 import xrddev.practiceportal.dto.user.student.StudentRegistrationDto;
@@ -18,4 +19,10 @@ public interface StudentService {
     StudentEditDto getByEmailMappedToEditDto(String email);
     void updateStudent(StudentEditDto studentEditDto, String email);
     List<StudentDashboardDto> getAllMappedToDashboardDto();
+
+    @Transactional(readOnly = true)
+    Optional<Student> findById(Long id);
+
+    List<Student> findAll();
+
 }

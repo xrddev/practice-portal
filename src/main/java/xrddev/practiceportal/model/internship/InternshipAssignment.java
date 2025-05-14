@@ -28,7 +28,7 @@ public class InternshipAssignment {
     private Student student;
 
     @ManyToOne
-    @JoinColumn(name = "professor_id", nullable = false)
+    @JoinColumn(name = "professor_id")
     private Professor professor;
 
     private LocalDate assignedAt;

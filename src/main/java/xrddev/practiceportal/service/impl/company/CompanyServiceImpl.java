@@ -1,4 +1,4 @@
-package xrddev.practiceportal.service.impl;
+package xrddev.practiceportal.service.impl.company;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

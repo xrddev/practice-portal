@@ -1,4 +1,4 @@
-package xrddev.practiceportal.service.impl;
+package xrddev.practiceportal.service.impl.practice_office;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;

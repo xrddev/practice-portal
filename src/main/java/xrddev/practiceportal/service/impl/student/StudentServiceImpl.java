@@ -1,4 +1,4 @@
-package xrddev.practiceportal.service.impl;
+package xrddev.practiceportal.service.impl.student;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -8,9 +8,6 @@ import xrddev.practiceportal.dto.user.student.StudentDashboardDto;
 import xrddev.practiceportal.dto.user.student.StudentEditDto;
 import xrddev.practiceportal.dto.user.student.StudentRegistrationDto;
 import xrddev.practiceportal.model.user.Student;
-import xrddev.practiceportal.model.enums.Department;
-import xrddev.practiceportal.model.enums.Interests;
-import xrddev.practiceportal.model.enums.Skills;
 import xrddev.practiceportal.model.enums.UserRole;
 import xrddev.practiceportal.repository.api.StudentRepository;
 import xrddev.practiceportal.service.api.StudentService;
@@ -73,9 +70,6 @@ public class StudentServiceImpl implements StudentService {
 
 
 
-
-
-
     @Override
     @Transactional(readOnly = true)
     public Optional<Student> findByEmail(String email) {
@@ -107,5 +101,17 @@ public class StudentServiceImpl implements StudentService {
                 .map(StudentEditDto::new)
                 .orElseThrow(() -> new EntityNotFoundException("Student not found"));
     }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Optional<Student> findById(Long id) {
+        return studentRepository.findById(id);
+    }
+
+    @Override
+    public List<Student> findAll() {
+        return studentRepository.findAll();
+    }
+
 
 }

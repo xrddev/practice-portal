@@ -2,16 +2,14 @@ package xrddev.practiceportal.model.user;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import xrddev.practiceportal.model.internship.InternshipPosition;
 
 import java.util.List;
 
 @Entity
 @Data
+@ToString(exclude = "internshipPositions")
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)

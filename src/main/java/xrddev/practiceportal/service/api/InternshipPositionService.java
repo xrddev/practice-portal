@@ -3,6 +3,7 @@ package xrddev.practiceportal.service.api;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionCreateDto;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionDashboardDto;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionEditDto;
+import xrddev.practiceportal.model.internship.InternshipPosition;
 
 import java.util.List;
 
@@ -25,4 +26,8 @@ public interface InternshipPositionService {
     InternshipPositionDashboardDto getByIdAndCompanyEmailMappedToDashboardDto(Long id, String companyEmail);
 
     List<InternshipPositionDashboardDto> getAllMappedToDashboardDto();
+
+    List<InternshipPosition> findAllAvailable();
+
+    boolean isAvailable(Long id);
 }

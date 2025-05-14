@@ -1,4 +1,4 @@
-package xrddev.practiceportal.service.impl;
+package xrddev.practiceportal.service.impl.internship;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -106,5 +106,17 @@ public class InternshipPositionServiceImpl implements InternshipPositionService 
                 .stream()
                 .map(InternshipPositionDashboardDto::new)
                 .toList();
+    }
+
+
+
+    @Override
+    public List<InternshipPosition> findAllAvailable() {
+        return internshipPositionRepository.findByInternshipAssignmentIsNull();
+    }
+
+    @Override
+    public boolean isAvailable(Long id) {
+        return internshipPositionRepository.existsByIdAndInternshipAssignmentIsNull(id);
     }
 }

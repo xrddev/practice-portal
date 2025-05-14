@@ -2,10 +2,7 @@ package xrddev.practiceportal.model.user;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import xrddev.practiceportal.model.internship.InternshipAssignment;
 import xrddev.practiceportal.model.internship.InternshipPosition;
 import xrddev.practiceportal.model.enums.Department;
@@ -18,6 +15,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = "internshipAssignments")
 @EqualsAndHashCode(callSuper = true)
 public class Student extends User{
 

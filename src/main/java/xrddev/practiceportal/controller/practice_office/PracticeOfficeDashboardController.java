@@ -4,16 +4,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import xrddev.practiceportal.service.api.ApplicationPeriodService;
-import xrddev.practiceportal.service.api.CompanyService;
-import xrddev.practiceportal.service.api.InternshipPositionService;
-import xrddev.practiceportal.service.api.ProfessorService;
-import xrddev.practiceportal.service.api.PracticeOfficeAdminService;
-import xrddev.practiceportal.service.api.StudentService;
+import org.springframework.web.bind.annotation.RequestParam;
+import xrddev.practiceportal.model.enums.AssignmentStrategy;
+import xrddev.practiceportal.service.api.*;
 
 import java.security.Principal;
-
 
 @Controller
 @RequestMapping("/practice-office")
@@ -25,7 +22,7 @@ public class PracticeOfficeDashboardController {
     private final CompanyService companyService;
     private final ProfessorService professorService;
     private final InternshipPositionService internshipPositionService;
-    private final ApplicationPeriodService applicationPeriodService;
+    private final StrategyDispatchService strategyDispatchService;
 
     @GetMapping("/dashboard")
     public String showDashboard(Model model, Principal principal) {
@@ -37,4 +34,12 @@ public class PracticeOfficeDashboardController {
         model.addAttribute("TOTAL_POSITIONS", internshipPositionService.count());
         return "practice_office/dashboard";
     }
+
+    @PostMapping("/dashboard/match")
+    public String matchInternships(@RequestParam("strategy") String strategy) {
+        System.out.println("Click happened");
+        strategyDispatchService.dispatchStrategy(AssignmentStrategy.valueOf(strategy.toUpperCase()));
+        return "redirect:/practice-office/dashboard";
+    }
+
 }
