@@ -6,10 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import xrddev.practiceportal.dto.intership_position.CompanyInternshipEvaluationDto;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionCreateDto;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionEditDto;
-import xrddev.practiceportal.service.api.CompanyInternshipEvaluationService;
 import xrddev.practiceportal.service.api.InternshipPositionService;
 
 
@@ -21,10 +19,9 @@ import java.security.Principal;
 public class CompanyPositionController {
 
     private final InternshipPositionService internshipPositionService;
-    private final CompanyInternshipEvaluationService companyInternshipEvaluationService;
 
 
-    /**
+    /*
      * Displays the form for creating a new internship position.
      *
      * @param model the Model object to add attributes
@@ -114,22 +111,4 @@ public class CompanyPositionController {
     }
 
 
-    @GetMapping("/evaluation/{positionId}")
-    public String showEvaluationForm(@PathVariable Long positionId, Model model) {
-        model.addAttribute("evaluation", new CompanyInternshipEvaluationDto(positionId));
-        return "company/internship_evaluation";
-    }
-
-    @PostMapping("/evaluation")
-    public String submitEvaluation(
-            @Valid @ModelAttribute("evaluation") CompanyInternshipEvaluationDto evaluationDto,
-            BindingResult bindingResult) {
-
-        if (bindingResult.hasErrors()) {
-            return "company/internship_evaluation";
-        }
-
-        companyInternshipEvaluationService.evaluate(evaluationDto);
-        return "redirect:/company/dashboard";
-    }
 }

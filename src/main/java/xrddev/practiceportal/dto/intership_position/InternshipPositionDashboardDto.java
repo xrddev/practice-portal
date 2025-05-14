@@ -19,8 +19,6 @@ public class InternshipPositionDashboardDto {
     private LocalDate endDate;
     private List<Skills> skills;
     private List<Interests> interests;
-    private StudentDashboardDto student;
-    private boolean companyEvaluated;
 
     public InternshipPositionDashboardDto(InternshipPosition internshipPosition){
         this.id = internshipPosition.getId();
@@ -30,7 +28,5 @@ public class InternshipPositionDashboardDto {
         this.endDate = internshipPosition.getEndDate();
         this.skills = internshipPosition.getSkills();
         this.interests = internshipPosition.getInterests();
-        this.student = internshipPosition.isAvailable() ?  null : new StudentDashboardDto(internshipPosition.getStudent());
-        this.companyEvaluated = internshipPosition.getCompanyInternshipEvaluation() != null;
     }
 }

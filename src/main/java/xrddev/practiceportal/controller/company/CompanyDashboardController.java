@@ -24,7 +24,6 @@ public class CompanyDashboardController {
     public String dashboard(Model model, Principal principal) {
         model.addAttribute("company", companyService.getByEmailMappedToDashboardDto(principal.getName()));
         model.addAttribute("positions", internshipPositionService.getAllByCompanyEmailMappedToDashboardDto(principal.getName()));
-        model.addAttribute("evaluationOpen", evaluationPeriodService.isOpen());
         return "company/dashboard";
     }
 }

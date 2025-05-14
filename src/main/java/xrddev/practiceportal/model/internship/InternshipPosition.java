@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
 import xrddev.practiceportal.model.user.Company;
-import xrddev.practiceportal.model.user.Professor;
-import xrddev.practiceportal.model.user.Student;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -56,27 +54,11 @@ public class InternshipPosition {
     @Column(name = "interest")
     private List<Interests> interests;
 
-    @Column(name = "is_available", nullable = false)
-    private boolean isAvailable;
-
     @ManyToOne
     @JoinColumn(name = "company_id", nullable = false)
     private Company company;
 
-    @OneToOne
-    @JoinColumn(name = "student_id", unique = true)
-    private Student student;
-
-    @ManyToOne
-    @JoinColumn(name = "professor_id", nullable = true)
-    private Professor supervisor;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "company_evaluation_id", referencedColumnName = "evaluation_id")
-    private CompanyEvaluation companyInternshipEvaluation;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "professor_evaluation_id", referencedColumnName = "evaluation_id")
-    private ProfessorEvaluation professorInternshipEvaluation;
+    @OneToOne(mappedBy = "position")
+    private InternshipAssignment internshipAssignment;
 
 }

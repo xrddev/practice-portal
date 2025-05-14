@@ -74,7 +74,8 @@
             margin-top: 30px;
         }
 
-        .admin-actions a {
+        .admin-actions a,
+        .match-buttons-container button {
             display: block;
             background-color: #eacd45;
             color: #003366;
@@ -83,11 +84,22 @@
             text-decoration: none;
             font-weight: bold;
             font-size: 1rem;
+            font-family: 'Ubuntu Mono', monospace;
             transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
 
-        .admin-actions a:hover {
+        .admin-actions a:hover,
+        .match-buttons-container button:hover {
             background-color: #ffdb4d;
+        }
+
+        .match-buttons-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
         }
 
         footer {
@@ -139,6 +151,19 @@
         <a th:href="@{/practice-office/professors}">Manage Professors</a>
         <a th:href="@{/practice-office/internships}">Manage Internships</a>
     </div>
+</div>
+
+<!-- Match Buttons -->
+<div class="box">
+    <h2>Matching Actions</h2>
+    <form th:action="@{/practice-office/dashboard/match}" method="post">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <div class="match-buttons-container">
+            <button type="submit" name="strategy" value="interest">Match by Interests</button>
+            <button type="submit" name="strategy" value="location">Match by Location</button>
+            <button type="submit" name="strategy" value="combined">Match Interests + Location</button>
+        </div>
+    </form>
 </div>
 
 <footer>

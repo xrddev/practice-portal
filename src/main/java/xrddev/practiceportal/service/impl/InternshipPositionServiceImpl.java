@@ -32,7 +32,6 @@ public class InternshipPositionServiceImpl implements InternshipPositionService 
         position.setEndDate(dto.getEndDate());
         position.setSkills(dto.getSkills());
         position.setInterests(dto.getInterests());
-        position.setAvailable(true);
 
         Company company = companyService.findByEmail(email)
                 .orElseThrow(() -> new EntityNotFoundException("Company not found: " + email));

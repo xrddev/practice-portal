@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import xrddev.practiceportal.model.internship.InternshipAssignment;
 import xrddev.practiceportal.model.internship.InternshipPosition;
 import xrddev.practiceportal.model.enums.Department;
 import xrddev.practiceportal.model.enums.Interests;
@@ -66,6 +67,7 @@ public class Student extends User{
     @Size(max = 50, message = "Preferred location can have up to 50 characters.")
     private String preferredLocation;
 
-    @OneToOne(mappedBy = "student")
-    private InternshipPosition internshipPosition;
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
+    private List<InternshipAssignment> internshipAssignments;
+
 }

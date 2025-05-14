@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import xrddev.practiceportal.model.enums.Department;
+import xrddev.practiceportal.model.internship.InternshipAssignment;
 import xrddev.practiceportal.model.internship.InternshipPosition;
 import xrddev.practiceportal.model.enums.Interests;
 
@@ -41,7 +42,6 @@ public class Professor extends User {
     @Column(name = "interest")
     private List<Interests> interests;
 
-    @OneToMany(mappedBy = "supervisor", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<InternshipPosition> supervisedPositions;
-
+    @OneToMany(mappedBy = "professor", fetch = FetchType.LAZY)
+    private List<InternshipAssignment> internshipAssignments;
 }

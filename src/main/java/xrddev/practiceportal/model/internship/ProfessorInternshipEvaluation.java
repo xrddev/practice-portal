@@ -3,37 +3,39 @@ package xrddev.practiceportal.model.internship;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import xrddev.practiceportal.model.enums.OverallGrade;
 import xrddev.practiceportal.model.enums.Rating;
 
 @Entity
-@Table(name = "professor_evaluation")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class ProfessorEvaluation {
+@Getter
+@Setter
+@Table(name = "professor_internship_evaluation")
+public class ProfessorInternshipEvaluation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "evaluation_id")
     private Long id;
 
-    @OneToOne(mappedBy = "professorInternshipEvaluation")
-    private InternshipPosition internshipPosition;
+    @OneToOne
+    @JoinColumn(name = "assignment_id", nullable = false, unique = true)
+    private InternshipAssignment assignment;
 
     @NotNull(message = "Motivation rating is required.")
+    @Enumerated(EnumType.STRING)
     private Rating motivation;
 
     @NotNull(message = "Effectiveness rating is required.")
+    @Enumerated(EnumType.STRING)
     private Rating effectiveness;
 
     @NotNull(message = "Efficiency rating is required.")
+    @Enumerated(EnumType.STRING)
     private Rating efficiency;
 
     @NotNull(message = "Overall grade is required.")
+    @Enumerated(EnumType.STRING)
     private OverallGrade overallGrade;
 
     @Size(max = 500, message = "Comments can be up to 500 characters.")
