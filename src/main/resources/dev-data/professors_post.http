@@ -1,0 +1,534 @@
+### Batch create professors (consistent departments & interests)
+POST http://localhost:8080/public/api/professors/batch
+Content-Type: application/json
+Accept: application/json
+
+[
+  {
+    "email": "prof1@uoi.gr",
+    "password": "secure1!",
+    "firstName": "Alexander",
+    "lastName": "Le",
+    "department": "TRANSLATION_INTERPRETING",
+    "interests": [
+      "COMPUTER_SCIENCE",
+      "LINGUISTICS"
+    ]
+  },
+  {
+    "email": "prof2@uoi.gr",
+    "password": "secure2!",
+    "firstName": "Erin",
+    "lastName": "Herrera",
+    "department": "HISTORY",
+    "interests": [
+      "PHILOSOPHY"
+    ]
+  },
+  {
+    "email": "prof3@uoi.gr",
+    "password": "secure3!",
+    "firstName": "Joseph",
+    "lastName": "Davidson",
+    "department": "NURSING",
+    "interests": [
+      "PUBLIC_HEALTH"
+    ]
+  },
+  {
+    "email": "prof4@uoi.gr",
+    "password": "secure4!",
+    "firstName": "Daniel",
+    "lastName": "Graham",
+    "department": "PSYCHOLOGY",
+    "interests": [
+      "PSYCHOLOGY",
+      "PUBLIC_HEALTH"
+    ]
+  },
+  {
+    "email": "prof5@uoi.gr",
+    "password": "secure5!",
+    "firstName": "Shawn",
+    "lastName": "Mckay",
+    "department": "AGRICULTURE",
+    "interests": [
+      "ENVIRONMENTAL_SCIENCES"
+    ]
+  },
+  {
+    "email": "prof6@uoi.gr",
+    "password": "secure6!",
+    "firstName": "Nancy",
+    "lastName": "Baker",
+    "department": "TRANSLATION_INTERPRETING",
+    "interests": [
+      "FOREIGN_LANGUAGES"
+    ]
+  },
+  {
+    "email": "prof7@uoi.gr",
+    "password": "secure7!",
+    "firstName": "Vincent",
+    "lastName": "White",
+    "department": "PHILOSOPHY",
+    "interests": [
+      "ETHICS_AND_DEONTOLOGY"
+    ]
+  },
+  {
+    "email": "prof8@uoi.gr",
+    "password": "secure8!",
+    "firstName": "Rita",
+    "lastName": "Harrell",
+    "department": "PHILOSOPHY",
+    "interests": [
+      "PHILOSOPHY"
+    ]
+  },
+  {
+    "email": "prof9@uoi.gr",
+    "password": "secure9!",
+    "firstName": "Kenneth",
+    "lastName": "Fowler",
+    "department": "TRANSLATION_INTERPRETING",
+    "interests": [
+      "FOREIGN_LANGUAGES"
+    ]
+  },
+  {
+    "email": "prof10@uoi.gr",
+    "password": "secure10!",
+    "firstName": "Chelsea",
+    "lastName": "Hernandez",
+    "department": "TRANSLATION_INTERPRETING",
+    "interests": [
+      "LINGUISTICS",
+      "FOREIGN_LANGUAGES"
+    ]
+  },
+  {
+    "email": "prof11@uoi.gr",
+    "password": "secure11!",
+    "firstName": "Kathryn",
+    "lastName": "Ryan",
+    "department": "FINE_ARTS",
+    "interests": [
+      "PHILOSOPHY",
+      "ART_STUDIES"
+    ]
+  },
+  {
+    "email": "prof12@uoi.gr",
+    "password": "secure12!",
+    "firstName": "Kimberly",
+    "lastName": "Moreno",
+    "department": "MATHEMATICS",
+    "interests": [
+      "PHILOSOPHY"
+    ]
+  },
+  {
+    "email": "prof13@uoi.gr",
+    "password": "secure13!",
+    "firstName": "Aaron",
+    "lastName": "Nguyen",
+    "department": "PHYSICS",
+    "interests": [
+      "ASTRONOMY",
+      "ELECTRICAL_ENGINEERING"
+    ]
+  },
+  {
+    "email": "prof14@uoi.gr",
+    "password": "secure14!",
+    "firstName": "Andrew",
+    "lastName": "Hickman",
+    "department": "PSYCHOLOGY",
+    "interests": [
+      "PSYCHOLOGY"
+    ]
+  },
+  {
+    "email": "prof15@uoi.gr",
+    "password": "secure15!",
+    "firstName": "Natasha",
+    "lastName": "Decker",
+    "department": "INFORMATICS_TELECOMMUNICATIONS",
+    "interests": [
+      "NETWORKS",
+      "COMPUTER_SCIENCE"
+    ]
+  },
+  {
+    "email": "prof16@uoi.gr",
+    "password": "secure16!",
+    "firstName": "Kyle",
+    "lastName": "Brown",
+    "department": "AGRICULTURE",
+    "interests": [
+      "AGRICULTURAL_SCIENCES",
+      "ENVIRONMENTAL_SCIENCES"
+    ]
+  },
+  {
+    "email": "prof17@uoi.gr",
+    "password": "secure17!",
+    "firstName": "Natalie",
+    "lastName": "Arroyo",
+    "department": "INFORMATICS_TELECOMMUNICATIONS",
+    "interests": [
+      "NETWORKS"
+    ]
+  },
+  {
+    "email": "prof18@uoi.gr",
+    "password": "secure18!",
+    "firstName": "Christopher",
+    "lastName": "Tucker",
+    "department": "COMPUTER_SCIENCE_AND_ENGINEERING",
+    "interests": [
+      "COMPUTER_SCIENCE",
+      "ARTIFICIAL_INTELLIGENCE"
+    ]
+  },
+  {
+    "email": "prof19@uoi.gr",
+    "password": "secure19!",
+    "firstName": "Chad",
+    "lastName": "Hodges",
+    "department": "MATERIALS_SCIENCE",
+    "interests": [
+      "MECHANICAL_ENGINEERING"
+    ]
+  },
+  {
+    "email": "prof20@uoi.gr",
+    "password": "secure20!",
+    "firstName": "Katie",
+    "lastName": "Anderson",
+    "department": "MATERIALS_SCIENCE",
+    "interests": [
+      "AGRICULTURAL_SCIENCES"
+    ]
+  },
+  {
+    "email": "prof21@uoi.gr",
+    "password": "secure21!",
+    "firstName": "Thomas",
+    "lastName": "Pierce",
+    "department": "FINE_ARTS",
+    "interests": [
+      "ART_STUDIES"
+    ]
+  },
+  {
+    "email": "prof22@uoi.gr",
+    "password": "secure22!",
+    "firstName": "Joseph",
+    "lastName": "Brennan",
+    "department": "BIOLOGICAL_APPLICATIONS",
+    "interests": [
+      "ENVIRONMENTAL_SCIENCES",
+      "BIOTECHNOLOGY"
+    ]
+  },
+  {
+    "email": "prof23@uoi.gr",
+    "password": "secure23!",
+    "firstName": "Rodney",
+    "lastName": "Lewis",
+    "department": "ECONOMICS",
+    "interests": [
+      "BUSINESS_ADMINISTRATION"
+    ]
+  },
+  {
+    "email": "prof24@uoi.gr",
+    "password": "secure24!",
+    "firstName": "Amber",
+    "lastName": "Blair",
+    "department": "CHEMISTRY",
+    "interests": [
+      "ENVIRONMENTAL_SCIENCES"
+    ]
+  },
+  {
+    "email": "prof25@uoi.gr",
+    "password": "secure25!",
+    "firstName": "James",
+    "lastName": "Collins",
+    "department": "ECONOMICS",
+    "interests": [
+      "ECONOMICS",
+      "BUSINESS_ADMINISTRATION"
+    ]
+  },
+  {
+    "email": "prof26@uoi.gr",
+    "password": "secure26!",
+    "firstName": "Wanda",
+    "lastName": "Santos",
+    "department": "PRIMARY_EDUCATION",
+    "interests": [
+      "SOCIAL_SCIENCES",
+      "EDUCATION_SCIENCES"
+    ]
+  },
+  {
+    "email": "prof27@uoi.gr",
+    "password": "secure27!",
+    "firstName": "Samuel",
+    "lastName": "Holmes",
+    "department": "LITERATURE",
+    "interests": [
+      "LITERATURE"
+    ]
+  },
+  {
+    "email": "prof28@uoi.gr",
+    "password": "secure28!",
+    "firstName": "David",
+    "lastName": "Walker",
+    "department": "MEDICINE",
+    "interests": [
+      "MEDICAL_SCIENCES"
+    ]
+  },
+  {
+    "email": "prof29@uoi.gr",
+    "password": "secure29!",
+    "firstName": "Matthew",
+    "lastName": "Chapman",
+    "department": "COMPUTER_SCIENCE_AND_ENGINEERING",
+    "interests": [
+      "SOFTWARE_ENGINEERING",
+      "ARTIFICIAL_INTELLIGENCE"
+    ]
+  },
+  {
+    "email": "prof30@uoi.gr",
+    "password": "secure30!",
+    "firstName": "Jerry",
+    "lastName": "Robinson",
+    "department": "ARCHITECTURE",
+    "interests": [
+      "ART_STUDIES",
+      "ARCHITECTURE"
+    ]
+  },
+  {
+    "email": "prof31@uoi.gr",
+    "password": "secure31!",
+    "firstName": "Chad",
+    "lastName": "Welch",
+    "department": "EARLY_YEARS_LEARNING_CARE",
+    "interests": [
+      "PSYCHOLOGY",
+      "EDUCATION_SCIENCES"
+    ]
+  },
+  {
+    "email": "prof32@uoi.gr",
+    "password": "secure32!",
+    "firstName": "Jeremy",
+    "lastName": "Whitehead",
+    "department": "AGRICULTURE",
+    "interests": [
+      "AGRICULTURAL_SCIENCES"
+    ]
+  },
+  {
+    "email": "prof33@uoi.gr",
+    "password": "secure33!",
+    "firstName": "Michele",
+    "lastName": "Jones",
+    "department": "NURSING",
+    "interests": [
+      "MEDICAL_SCIENCES",
+      "PUBLIC_HEALTH"
+    ]
+  },
+  {
+    "email": "prof34@uoi.gr",
+    "password": "secure34!",
+    "firstName": "John",
+    "lastName": "Caldwell",
+    "department": "CHEMISTRY",
+    "interests": [
+      "BIOTECHNOLOGY"
+    ]
+  },
+  {
+    "email": "prof35@uoi.gr",
+    "password": "secure35!",
+    "firstName": "Jason",
+    "lastName": "Anderson",
+    "department": "PHILOSOPHY",
+    "interests": [
+      "PHILOSOPHY",
+      "ETHICS_AND_DEONTOLOGY"
+    ]
+  },
+  {
+    "email": "prof36@uoi.gr",
+    "password": "secure36!",
+    "firstName": "Selena",
+    "lastName": "Duncan",
+    "department": "MATERIALS_SCIENCE",
+    "interests": [
+      "COMPUTER_SCIENCE",
+      "HISTORY"
+    ]
+  },
+  {
+    "email": "prof37@uoi.gr",
+    "password": "secure37!",
+    "firstName": "Thomas",
+    "lastName": "Mueller",
+    "department": "PSYCHOLOGY",
+    "interests": [
+      "PUBLIC_HEALTH",
+      "PSYCHOLOGY"
+    ]
+  },
+  {
+    "email": "prof38@uoi.gr",
+    "password": "secure38!",
+    "firstName": "Lindsey",
+    "lastName": "Lee",
+    "department": "ARCHITECTURE",
+    "interests": [
+      "ART_STUDIES",
+      "ARCHITECTURE"
+    ]
+  },
+  {
+    "email": "prof39@uoi.gr",
+    "password": "secure39!",
+    "firstName": "Collin",
+    "lastName": "Jordan",
+    "department": "NURSING",
+    "interests": [
+      "PUBLIC_HEALTH",
+      "MEDICAL_SCIENCES"
+    ]
+  },
+  {
+    "email": "prof40@uoi.gr",
+    "password": "secure40!",
+    "firstName": "Rodney",
+    "lastName": "Owens",
+    "department": "PRIMARY_EDUCATION",
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "SOCIAL_SCIENCES"
+    ]
+  },
+  {
+    "email": "prof41@uoi.gr",
+    "password": "secure41!",
+    "firstName": "Jessica",
+    "lastName": "Nunez",
+    "department": "TRANSLATION_INTERPRETING",
+    "interests": [
+      "FOREIGN_LANGUAGES"
+    ]
+  },
+  {
+    "email": "prof42@uoi.gr",
+    "password": "secure42!",
+    "firstName": "Tracey",
+    "lastName": "Garcia",
+    "department": "COMPUTER_SCIENCE_AND_ENGINEERING",
+    "interests": [
+      "SOFTWARE_ENGINEERING"
+    ]
+  },
+  {
+    "email": "prof43@uoi.gr",
+    "password": "secure43!",
+    "firstName": "Richard",
+    "lastName": "Morgan",
+    "department": "LITERATURE",
+    "interests": [
+      "LINGUISTICS"
+    ]
+  },
+  {
+    "email": "prof44@uoi.gr",
+    "password": "secure44!",
+    "firstName": "Michelle",
+    "lastName": "Wright",
+    "department": "NURSING",
+    "interests": [
+      "PUBLIC_HEALTH",
+      "MEDICAL_SCIENCES"
+    ]
+  },
+  {
+    "email": "prof45@uoi.gr",
+    "password": "secure45!",
+    "firstName": "James",
+    "lastName": "West",
+    "department": "PHYSICS",
+    "interests": [
+      "ELECTRICAL_ENGINEERING",
+      "ASTRONOMY"
+    ]
+  },
+  {
+    "email": "prof46@uoi.gr",
+    "password": "secure46!",
+    "firstName": "Robert",
+    "lastName": "Ramirez",
+    "department": "TRANSLATION_INTERPRETING",
+    "interests": [
+      "FOREIGN_LANGUAGES"
+    ]
+  },
+  {
+    "email": "prof47@uoi.gr",
+    "password": "secure47!",
+    "firstName": "John",
+    "lastName": "Leblanc",
+    "department": "PRIMARY_EDUCATION",
+    "interests": [
+      "SOCIAL_SCIENCES",
+      "EDUCATION_SCIENCES"
+    ]
+  },
+  {
+    "email": "prof48@uoi.gr",
+    "password": "secure48!",
+    "firstName": "Scott",
+    "lastName": "Callahan",
+    "department": "COMPUTER_SCIENCE_AND_ENGINEERING",
+    "interests": [
+      "SOFTWARE_ENGINEERING",
+      "CYBERSECURITY"
+    ]
+  },
+  {
+    "email": "prof49@uoi.gr",
+    "password": "secure49!",
+    "firstName": "Andrea",
+    "lastName": "Williams",
+    "department": "ECONOMICS",
+    "interests": [
+      "BUSINESS_ADMINISTRATION",
+      "ECONOMICS"
+    ]
+  },
+  {
+    "email": "prof50@uoi.gr",
+    "password": "secure50!",
+    "firstName": "Yvette",
+    "lastName": "Huff",
+    "department": "MATHEMATICS",
+    "interests": [
+      "PHILOSOPHY",
+      "DATA_SCIENCE"
+    ]
+  }
+]

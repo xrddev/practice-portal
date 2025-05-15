@@ -3,9 +3,7 @@ package xrddev.practiceportal.controller.registration.common;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,12 +19,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/public/register")
 public class UserRegistrationController {
-
-    private final BCryptPasswordEncoder passwordEncoder;
-
-    public UserRegistrationController() {
-        this.passwordEncoder = new BCryptPasswordEncoder();
-    }
 
     @GetMapping
     public String showRegistrationForm(Model model) {
@@ -48,7 +40,7 @@ public class UserRegistrationController {
                     HttpStatus.FORBIDDEN, "Cannot register as ADMIN ! / GOT U ");
         }
 
-        session.setAttribute(SessionAttribute.PASSWORD, passwordEncoder.encode(password));
+        session.setAttribute(SessionAttribute.PASSWORD, password);
         session.setAttribute(SessionAttribute.EMAIL, email);
 
         return switch (role) {

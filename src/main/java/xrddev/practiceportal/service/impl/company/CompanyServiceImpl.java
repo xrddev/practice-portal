@@ -2,6 +2,7 @@ package xrddev.practiceportal.service.impl.company;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import xrddev.practiceportal.dto.user.company.CompanyDashboardDto;
 import xrddev.practiceportal.dto.user.company.CompanyEditDto;
@@ -15,10 +16,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class CompanyServiceImpl implements CompanyService {
 
     private final CompanyRepository companyRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    public CompanyServiceImpl(CompanyRepository companyRepository, PasswordEncoder passwordEncoder) {
+        this.companyRepository = companyRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     @Transactional
@@ -26,7 +32,7 @@ public class CompanyServiceImpl implements CompanyService {
         Company company = new Company();
 
         company.setEmail(companyRegistrationDto.getEmail());
-        company.setPassword(companyRegistrationDto.getPassword());
+        company.setPassword(passwordEncoder.encode(companyRegistrationDto.getPassword()));
         company.setRole(UserRole.COMPANY);
 
         company.setCompanyName(companyRegistrationDto.getCompanyName());

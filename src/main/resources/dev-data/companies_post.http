@@ -1,0 +1,507 @@
+### Batch create professors (consistent departments & interests)
+POST http://localhost:8080/public/api/companies/batch
+Content-Type: application/json
+Accept: application/json
+
+[
+  {
+    "email": "c1@mail.gr",
+    "password": "Pass1!",
+    "companyName": "Apple Greece",
+    "address": "Syggrou 39, Agrinio, 15541",
+    "phone": "+302101927641",
+    "website": "https://www.scott-miller.net/",
+    "internshipCoordinator": "Rodney Hall",
+    "internshipCoordinatorEmail": "c1_coord@mail.gr"
+  },
+  {
+    "email": "c2@mail.gr",
+    "password": "Pass2!",
+    "companyName": "Microsoft Hellas",
+    "address": "Leoforos Alexandras 57, Agrinio, 51749",
+    "phone": "+302105165365",
+    "website": "https://www.cummings-smith.biz/",
+    "internshipCoordinator": "Patricia Walker",
+    "internshipCoordinatorEmail": "c2_coord@mail.gr"
+  },
+  {
+    "email": "c3@mail.gr",
+    "password": "Pass3!",
+    "companyName": "Google Greece",
+    "address": "Panepistimiou 8, Kavala, 36779",
+    "phone": "+302101188881",
+    "website": "http://www.campbell-valdez.org/",
+    "internshipCoordinator": "Brittany Decker",
+    "internshipCoordinatorEmail": "c3_coord@mail.gr"
+  },
+  {
+    "email": "c4@mail.gr",
+    "password": "Pass4!",
+    "companyName": "Coca-Cola HBC",
+    "address": "Patission 54, Xanthi, 38920",
+    "phone": "+302105511662",
+    "website": "http://www.cooper.org/",
+    "internshipCoordinator": "Pamela Mcdonald",
+    "internshipCoordinatorEmail": "c4_coord@mail.gr"
+  },
+  {
+    "email": "c5@mail.gr",
+    "password": "Pass5!",
+    "companyName": "Nestlé Hellas",
+    "address": "Leoforos Alexandras 48, Kalamata, 40860",
+    "phone": "+302101667660",
+    "website": "http://cobb.net/",
+    "internshipCoordinator": "Garrett Stone",
+    "internshipCoordinatorEmail": "c5_coord@mail.gr"
+  },
+  {
+    "email": "c6@mail.gr",
+    "password": "Pass6!",
+    "companyName": "OTE Group",
+    "address": "Ermou 24, Heraklion, 28151",
+    "phone": "+302105655273",
+    "website": "https://www.alexander.com/",
+    "internshipCoordinator": "Christina Williams",
+    "internshipCoordinatorEmail": "c6_coord@mail.gr"
+  },
+  {
+    "email": "c7@mail.gr",
+    "password": "Pass7!",
+    "companyName": "Vodafone Greece",
+    "address": "Ermou 72, Karditsa, 55101",
+    "phone": "+302101946292",
+    "website": "http://www.coleman.com/",
+    "internshipCoordinator": "Corey Watson PhD",
+    "internshipCoordinatorEmail": "c7_coord@mail.gr"
+  },
+  {
+    "email": "c8@mail.gr",
+    "password": "Pass8!",
+    "companyName": "DEI",
+    "address": "Kifisias 90, Katerini, 36134",
+    "phone": "+302100634587",
+    "website": "https://thomas.com/",
+    "internshipCoordinator": "Jennifer Marshall",
+    "internshipCoordinatorEmail": "c8_coord@mail.gr"
+  },
+  {
+    "email": "c9@mail.gr",
+    "password": "Pass9!",
+    "companyName": "Alpha Bank",
+    "address": "Kifisias 99, Komotini, 38292",
+    "phone": "+302102611610",
+    "website": "http://www.clark-nash.org/",
+    "internshipCoordinator": "Rachel Fernandez",
+    "internshipCoordinatorEmail": "c9_coord@mail.gr"
+  },
+  {
+    "email": "c10@mail.gr",
+    "password": "Pass10!",
+    "companyName": "National Bank of Greece",
+    "address": "Kifisias 32, Katerini, 32307",
+    "phone": "+302101458305",
+    "website": "http://james-medina.com/",
+    "internshipCoordinator": "Monica Goodwin",
+    "internshipCoordinatorEmail": "c10_coord@mail.gr"
+  },
+  {
+    "email": "c11@mail.gr",
+    "password": "Pass11!",
+    "companyName": "Eurobank",
+    "address": "Panepistimiou 19, Agrinio, 40306",
+    "phone": "+302103708749",
+    "website": "https://mcgee.org/",
+    "internshipCoordinator": "Alyssa Boyer",
+    "internshipCoordinatorEmail": "c11_coord@mail.gr"
+  },
+  {
+    "email": "c12@mail.gr",
+    "password": "Pass12!",
+    "companyName": "Piraeus Bank",
+    "address": "Ermou 62, Ioannina, 29315",
+    "phone": "+302101645450",
+    "website": "http://humphrey-pollard.biz/",
+    "internshipCoordinator": "Jonathon Morgan",
+    "internshipCoordinatorEmail": "c12_coord@mail.gr"
+  },
+  {
+    "email": "c13@mail.gr",
+    "password": "Pass13!",
+    "companyName": "Mytilineos",
+    "address": "Patission 90, Katerini, 50549",
+    "phone": "+302104862386",
+    "website": "http://silva.net/",
+    "internshipCoordinator": "Francisco Daniel",
+    "internshipCoordinatorEmail": "c13_coord@mail.gr"
+  },
+  {
+    "email": "c14@mail.gr",
+    "password": "Pass14!",
+    "companyName": "Motor Oil Hellas",
+    "address": "Aiolou 1, Ioannina, 29566",
+    "phone": "+302109812804",
+    "website": "http://www.wilson.com/",
+    "internshipCoordinator": "Dillon Cruz",
+    "internshipCoordinatorEmail": "c14_coord@mail.gr"
+  },
+  {
+    "email": "c15@mail.gr",
+    "password": "Pass15!",
+    "companyName": "Hellenic Petroleum",
+    "address": "Ermou 99, Kalamata, 45730",
+    "phone": "+302101403636",
+    "website": "http://www.robertson-smith.info/",
+    "internshipCoordinator": "Mandy Scott",
+    "internshipCoordinatorEmail": "c15_coord@mail.gr"
+  },
+  {
+    "email": "c16@mail.gr",
+    "password": "Pass16!",
+    "companyName": "Cosmote",
+    "address": "Kolokotroni 20, Komotini, 56287",
+    "phone": "+302109818496",
+    "website": "https://www.duncan-meyer.org/",
+    "internshipCoordinator": "Andrew Pittman",
+    "internshipCoordinatorEmail": "c16_coord@mail.gr"
+  },
+  {
+    "email": "c17@mail.gr",
+    "password": "Pass17!",
+    "companyName": "Wind Hellas",
+    "address": "Aiolou 12, Serres, 59813",
+    "phone": "+302103220302",
+    "website": "http://www.alvarado.info/",
+    "internshipCoordinator": "Derrick Kaufman",
+    "internshipCoordinatorEmail": "c17_coord@mail.gr"
+  },
+  {
+    "email": "c18@mail.gr",
+    "password": "Pass18!",
+    "companyName": "Papastratos",
+    "address": "Leoforos Alexandras 70, Kavala, 28355",
+    "phone": "+302100463369",
+    "website": "http://www.clayton-terrell.com/",
+    "internshipCoordinator": "Paula Smith",
+    "internshipCoordinatorEmail": "c18_coord@mail.gr"
+  },
+  {
+    "email": "c19@mail.gr",
+    "password": "Pass19!",
+    "companyName": "Lidl Hellas",
+    "address": "Patission 16, Chania, 67915",
+    "phone": "+302103383761",
+    "website": "https://www.carr.com/",
+    "internshipCoordinator": "Donald Harris",
+    "internshipCoordinatorEmail": "c19_coord@mail.gr"
+  },
+  {
+    "email": "c20@mail.gr",
+    "password": "Pass20!",
+    "companyName": "AB Vassilopoulos",
+    "address": "Patission 1, Chania, 36111",
+    "phone": "+302104303014",
+    "website": "https://miller.com/",
+    "internshipCoordinator": "David Kim",
+    "internshipCoordinatorEmail": "c20_coord@mail.gr"
+  },
+  {
+    "email": "c21@mail.gr",
+    "password": "Pass21!",
+    "companyName": "Public",
+    "address": "Panepistimiou 75, Kavala, 39136",
+    "phone": "+302103622106",
+    "website": "http://pitts.com/",
+    "internshipCoordinator": "Joshua Krause",
+    "internshipCoordinatorEmail": "c21_coord@mail.gr"
+  },
+  {
+    "email": "c22@mail.gr",
+    "password": "Pass22!",
+    "companyName": "Kotsovolos",
+    "address": "Ermou 96, Chania, 33188",
+    "phone": "+302103321386",
+    "website": "http://brown.com/",
+    "internshipCoordinator": "Erik Stokes",
+    "internshipCoordinatorEmail": "c22_coord@mail.gr"
+  },
+  {
+    "email": "c23@mail.gr",
+    "password": "Pass23!",
+    "companyName": "Jumbo",
+    "address": "Venizelou 97, Ioannina, 49020",
+    "phone": "+302109166924",
+    "website": "http://jackson-williams.info/",
+    "internshipCoordinator": "David Parker",
+    "internshipCoordinatorEmail": "c23_coord@mail.gr"
+  },
+  {
+    "email": "c24@mail.gr",
+    "password": "Pass24!",
+    "companyName": "Sklavenitis",
+    "address": "Ermou 5, Patras, 61920",
+    "phone": "+302108185627",
+    "website": "http://gutierrez.com/",
+    "internshipCoordinator": "John Zuniga",
+    "internshipCoordinatorEmail": "c24_coord@mail.gr"
+  },
+  {
+    "email": "c25@mail.gr",
+    "password": "Pass25!",
+    "companyName": "Masoutis",
+    "address": "Venizelou 40, Rhodes, 32275",
+    "phone": "+302107100770",
+    "website": "https://www.hernandez.com/",
+    "internshipCoordinator": "William Stephens",
+    "internshipCoordinatorEmail": "c25_coord@mail.gr"
+  },
+  {
+    "email": "c26@mail.gr",
+    "password": "Pass26!",
+    "companyName": "Frigoglass",
+    "address": "Ermou 68, Trikala, 68372",
+    "phone": "+302105409986",
+    "website": "https://www.chang.org/",
+    "internshipCoordinator": "Natasha Warren",
+    "internshipCoordinatorEmail": "c26_coord@mail.gr"
+  },
+  {
+    "email": "c27@mail.gr",
+    "password": "Pass27!",
+    "companyName": "Chipita",
+    "address": "Kifisias 9, Komotini, 66422",
+    "phone": "+302103388851",
+    "website": "http://brown.biz/",
+    "internshipCoordinator": "Christy Ferguson",
+    "internshipCoordinatorEmail": "c27_coord@mail.gr"
+  },
+  {
+    "email": "c28@mail.gr",
+    "password": "Pass28!",
+    "companyName": "Fage",
+    "address": "Venizelou 37, Drama, 18809",
+    "phone": "+302100162817",
+    "website": "http://www.smith.com/",
+    "internshipCoordinator": "Joanna Hill",
+    "internshipCoordinatorEmail": "c28_coord@mail.gr"
+  },
+  {
+    "email": "c29@mail.gr",
+    "password": "Pass29!",
+    "companyName": "Delta Foods",
+    "address": "Kolokotroni 67, Ioannina, 44824",
+    "phone": "+302105399325",
+    "website": "https://jones.com/",
+    "internshipCoordinator": "Pamela Brown",
+    "internshipCoordinatorEmail": "c29_coord@mail.gr"
+  },
+  {
+    "email": "c30@mail.gr",
+    "password": "Pass30!",
+    "companyName": "Vivartia",
+    "address": "Ermou 53, Rhodes, 36438",
+    "phone": "+302104309763",
+    "website": "https://www.sims.com/",
+    "internshipCoordinator": "Hunter Gallegos",
+    "internshipCoordinatorEmail": "c30_coord@mail.gr"
+  },
+  {
+    "email": "c31@mail.gr",
+    "password": "Pass31!",
+    "companyName": "Lamda Development",
+    "address": "Venizelou 38, Katerini, 34366",
+    "phone": "+302106358650",
+    "website": "https://www.mendoza.com/",
+    "internshipCoordinator": "Gina Turner",
+    "internshipCoordinatorEmail": "c31_coord@mail.gr"
+  },
+  {
+    "email": "c32@mail.gr",
+    "password": "Pass32!",
+    "companyName": "Intracom",
+    "address": "Kolokotroni 81, Larissa, 20293",
+    "phone": "+302107892528",
+    "website": "https://morrison.net/",
+    "internshipCoordinator": "Robert Cunningham",
+    "internshipCoordinatorEmail": "c32_coord@mail.gr"
+  },
+  {
+    "email": "c33@mail.gr",
+    "password": "Pass33!",
+    "companyName": "ElvalHalcor",
+    "address": "Ermou 90, Heraklion, 34997",
+    "phone": "+302100661287",
+    "website": "https://www.taylor.net/",
+    "internshipCoordinator": "Katie Mckenzie",
+    "internshipCoordinatorEmail": "c33_coord@mail.gr"
+  },
+  {
+    "email": "c34@mail.gr",
+    "password": "Pass34!",
+    "companyName": "Sarantis Group",
+    "address": "Syggrou 76, Katerini, 19144",
+    "phone": "+302100681692",
+    "website": "https://escobar-rose.com/",
+    "internshipCoordinator": "Judy Jones",
+    "internshipCoordinatorEmail": "c34_coord@mail.gr"
+  },
+  {
+    "email": "c35@mail.gr",
+    "password": "Pass35!",
+    "companyName": "Titan Cement",
+    "address": "Panepistimiou 86, Kalamata, 33203",
+    "phone": "+302107526076",
+    "website": "https://www.ayers.org/",
+    "internshipCoordinator": "Vincent Ward",
+    "internshipCoordinatorEmail": "c35_coord@mail.gr"
+  },
+  {
+    "email": "c36@mail.gr",
+    "password": "Pass36!",
+    "companyName": "Aegean Airlines",
+    "address": "Aiolou 96, Komotini, 24287",
+    "phone": "+302102496776",
+    "website": "http://www.hendricks.com/",
+    "internshipCoordinator": "Jonathan Cox",
+    "internshipCoordinatorEmail": "c36_coord@mail.gr"
+  },
+  {
+    "email": "c37@mail.gr",
+    "password": "Pass37!",
+    "companyName": "Attica Group",
+    "address": "Aiolou 63, Drama, 30856",
+    "phone": "+302108472488",
+    "website": "http://www.smith.com/",
+    "internshipCoordinator": "Daniel Mccall",
+    "internshipCoordinatorEmail": "c37_coord@mail.gr"
+  },
+  {
+    "email": "c38@mail.gr",
+    "password": "Pass38!",
+    "companyName": "Blue Star Ferries",
+    "address": "Aiolou 84, Thessaloniki, 39096",
+    "phone": "+302100564016",
+    "website": "http://hernandez.com/",
+    "internshipCoordinator": "Amy Merritt",
+    "internshipCoordinatorEmail": "c38_coord@mail.gr"
+  },
+  {
+    "email": "c39@mail.gr",
+    "password": "Pass39!",
+    "companyName": "Hellas Online",
+    "address": "Venizelou 19, Serres, 13434",
+    "phone": "+302108690570",
+    "website": "http://www.collins-schultz.org/",
+    "internshipCoordinator": "Antonio Mata",
+    "internshipCoordinatorEmail": "c39_coord@mail.gr"
+  },
+  {
+    "email": "c40@mail.gr",
+    "password": "Pass40!",
+    "companyName": "Intralot",
+    "address": "Kolokotroni 28, Athens, 33291",
+    "phone": "+302107153245",
+    "website": "https://lynch-rivera.com/",
+    "internshipCoordinator": "Paul Villanueva",
+    "internshipCoordinatorEmail": "c40_coord@mail.gr"
+  },
+  {
+    "email": "c41@mail.gr",
+    "password": "Pass41!",
+    "companyName": "InfoQuest",
+    "address": "Aiolou 51, Athens, 65458",
+    "phone": "+302108982794",
+    "website": "https://moore.com/",
+    "internshipCoordinator": "Ashley Lopez",
+    "internshipCoordinatorEmail": "c41_coord@mail.gr"
+  },
+  {
+    "email": "c42@mail.gr",
+    "password": "Pass42!",
+    "companyName": "Space Hellas",
+    "address": "Panepistimiou 9, Patras, 54977",
+    "phone": "+302108090201",
+    "website": "http://hill-rodriguez.com/",
+    "internshipCoordinator": "Kimberly Jones",
+    "internshipCoordinatorEmail": "c42_coord@mail.gr"
+  },
+  {
+    "email": "c43@mail.gr",
+    "password": "Pass43!",
+    "companyName": "SingularLogic",
+    "address": "Syggrou 1, Agrinio, 12698",
+    "phone": "+302103918672",
+    "website": "http://www.cruz-levine.com/",
+    "internshipCoordinator": "Robert Miller",
+    "internshipCoordinatorEmail": "c43_coord@mail.gr"
+  },
+  {
+    "email": "c44@mail.gr",
+    "password": "Pass44!",
+    "companyName": "SoftOne",
+    "address": "Ermou 80, Athens, 27716",
+    "phone": "+302103052931",
+    "website": "http://www.gutierrez.com/",
+    "internshipCoordinator": "Jennifer Castro",
+    "internshipCoordinatorEmail": "c44_coord@mail.gr"
+  },
+  {
+    "email": "c45@mail.gr",
+    "password": "Pass45!",
+    "companyName": "MetLife Greece",
+    "address": "Venizelou 94, Trikala, 19219",
+    "phone": "+302104269120",
+    "website": "http://thomas.com/",
+    "internshipCoordinator": "Caroline Davis",
+    "internshipCoordinatorEmail": "c45_coord@mail.gr"
+  },
+  {
+    "email": "c46@mail.gr",
+    "password": "Pass46!",
+    "companyName": "NN Hellas",
+    "address": "Kolokotroni 37, Ioannina, 16911",
+    "phone": "+302104395756",
+    "website": "http://smith.com/",
+    "internshipCoordinator": "Margaret Moore",
+    "internshipCoordinatorEmail": "c46_coord@mail.gr"
+  },
+  {
+    "email": "c47@mail.gr",
+    "password": "Pass47!",
+    "companyName": "Generali Greece",
+    "address": "Syggrou 59, Xanthi, 35174",
+    "phone": "+302106437072",
+    "website": "http://www.smith-hoover.com/",
+    "internshipCoordinator": "Paul Miller",
+    "internshipCoordinatorEmail": "c47_coord@mail.gr"
+  },
+  {
+    "email": "c48@mail.gr",
+    "password": "Pass48!",
+    "companyName": "Groupama",
+    "address": "Kifisias 43, Komotini, 52467",
+    "phone": "+302102136088",
+    "website": "https://fox.biz/",
+    "internshipCoordinator": "Kristen Stone",
+    "internshipCoordinatorEmail": "c48_coord@mail.gr"
+  },
+  {
+    "email": "c49@mail.gr",
+    "password": "Pass49!",
+    "companyName": "AXA Insurance",
+    "address": "Syggrou 19, Katerini, 56453",
+    "phone": "+302105604003",
+    "website": "https://www.thomas.biz/",
+    "internshipCoordinator": "Audrey Jones",
+    "internshipCoordinatorEmail": "c49_coord@mail.gr"
+  },
+  {
+    "email": "c50@mail.gr",
+    "password": "Pass50!",
+    "companyName": "Allianz Hellas",
+    "address": "Kifisias 68, Xanthi, 18468",
+    "phone": "+302107010628",
+    "website": "https://briggs.info/",
+    "internshipCoordinator": "Crystal Shaw",
+    "internshipCoordinatorEmail": "c50_coord@mail.gr"
+  }
+]

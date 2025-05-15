@@ -1,0 +1,913 @@
+### Batch create students (Greek city only for preferredLocation)
+POST http://localhost:8080/public/api/students/batch
+Content-Type: application/json
+Accept: application/json
+
+[
+  {
+    "email": "student1@uoi.gr",
+    "password": "secure1!",
+    "firstName": "Cindy",
+    "lastName": "Johnson",
+    "studentNumber": "AM0001",
+    "department": "MATHEMATICS",
+    "yearOfStudy": 5,
+    "averageGrade": 7.57,
+    "skills": [
+      "STATISTICAL_ANALYSIS",
+      "CRITICAL_THINKING"
+    ],
+    "interests": [
+      "DATA_SCIENCE"
+    ],
+    "preferredLocation": "IOANNINA"
+  },
+  {
+    "email": "student2@uoi.gr",
+    "password": "secure2!",
+    "firstName": "Phillip",
+    "lastName": "Elliott",
+    "studentNumber": "AM0002",
+    "department": "ECONOMICS",
+    "yearOfStudy": 1,
+    "averageGrade": 5.74,
+    "skills": [
+      "ACCOUNTING",
+      "BUSINESS_ANALYSIS"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION"
+    ],
+    "preferredLocation": "THESSALONIKI"
+  },
+  {
+    "email": "student3@uoi.gr",
+    "password": "secure3!",
+    "firstName": "Anthony",
+    "lastName": "Day",
+    "studentNumber": "AM0003",
+    "department": "PHYSICS",
+    "yearOfStudy": 5,
+    "averageGrade": 7.26,
+    "skills": [
+      "CRITICAL_THINKING",
+      "RESEARCH_METHODS"
+    ],
+    "interests": [
+      "ELECTRICAL_ENGINEERING"
+    ],
+    "preferredLocation": "KAVALA"
+  },
+  {
+    "email": "student4@uoi.gr",
+    "password": "secure4!",
+    "firstName": "Derek",
+    "lastName": "Murray",
+    "studentNumber": "AM0004",
+    "department": "PSYCHOLOGY",
+    "yearOfStudy": 2,
+    "averageGrade": 9.27,
+    "skills": [
+      "CRITICAL_THINKING"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "PSYCHOLOGY"
+    ],
+    "preferredLocation": "PATRAS"
+  },
+  {
+    "email": "student5@uoi.gr",
+    "password": "secure5!",
+    "firstName": "Brent",
+    "lastName": "Gray",
+    "studentNumber": "AM0005",
+    "department": "PHYSICS",
+    "yearOfStudy": 2,
+    "averageGrade": 7.27,
+    "skills": [
+      "RESEARCH_METHODS"
+    ],
+    "interests": [
+      "ELECTRICAL_ENGINEERING"
+    ],
+    "preferredLocation": "LARISSA"
+  },
+  {
+    "email": "student6@uoi.gr",
+    "password": "secure6!",
+    "firstName": "Jason",
+    "lastName": "Murphy",
+    "studentNumber": "AM0006",
+    "department": "MUSIC_STUDIES",
+    "yearOfStudy": 3,
+    "averageGrade": 5.92,
+    "skills": [
+      "ARTISTIC_SKILLS"
+    ],
+    "interests": [
+      "MUSIC_STUDIES"
+    ],
+    "preferredLocation": "VOLOS"
+  },
+  {
+    "email": "student7@uoi.gr",
+    "password": "secure7!",
+    "firstName": "Kathleen",
+    "lastName": "Gray",
+    "studentNumber": "AM0007",
+    "department": "LITERATURE",
+    "yearOfStudy": 4,
+    "averageGrade": 8.86,
+    "skills": [
+      "TRANSLATION_INTERPRETING",
+      "SCIENTIFIC_WRITING"
+    ],
+    "interests": [
+      "LINGUISTICS",
+      "LITERATURE"
+    ],
+    "preferredLocation": "THESSALONIKI"
+  },
+  {
+    "email": "student8@uoi.gr",
+    "password": "secure8!",
+    "firstName": "Karen",
+    "lastName": "Decker",
+    "studentNumber": "AM0008",
+    "department": "BIOLOGY",
+    "yearOfStudy": 3,
+    "averageGrade": 9.14,
+    "skills": [
+      "LABORATORY_SKILLS",
+      "RESEARCH_METHODS"
+    ],
+    "interests": [
+      "BIOTECHNOLOGY"
+    ],
+    "preferredLocation": "HERAKLION"
+  },
+  {
+    "email": "student9@uoi.gr",
+    "password": "secure9!",
+    "firstName": "Johnny",
+    "lastName": "Miller",
+    "studentNumber": "AM0009",
+    "department": "ECONOMICS",
+    "yearOfStudy": 2,
+    "averageGrade": 5.87,
+    "skills": [
+      "BUSINESS_ANALYSIS",
+      "ACCOUNTING"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION",
+      "ECONOMICS"
+    ],
+    "preferredLocation": "HERAKLION"
+  },
+  {
+    "email": "student10@uoi.gr",
+    "password": "secure10!",
+    "firstName": "Andrew",
+    "lastName": "Ryan",
+    "studentNumber": "AM0010",
+    "department": "PSYCHOLOGY",
+    "yearOfStudy": 6,
+    "averageGrade": 8.31,
+    "skills": [
+      "COMMUNICATION",
+      "CRITICAL_THINKING"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "PSYCHOLOGY"
+    ],
+    "preferredLocation": "IOANNINA"
+  },
+  {
+    "email": "student11@uoi.gr",
+    "password": "secure11!",
+    "firstName": "Zoe",
+    "lastName": "Bell",
+    "studentNumber": "AM0011",
+    "department": "PHILOSOPHY",
+    "yearOfStudy": 2,
+    "averageGrade": 6.37,
+    "skills": [
+      "ETHICS_AND_DEONTOLOGY"
+    ],
+    "interests": [
+      "PHILOSOPHY"
+    ],
+    "preferredLocation": "KOMOTINI"
+  },
+  {
+    "email": "student12@uoi.gr",
+    "password": "secure12!",
+    "firstName": "Debra",
+    "lastName": "Harrington",
+    "studentNumber": "AM0012",
+    "department": "BIOLOGY",
+    "yearOfStudy": 3,
+    "averageGrade": 9.65,
+    "skills": [
+      "RESEARCH_METHODS",
+      "LABORATORY_SKILLS"
+    ],
+    "interests": [
+      "MEDICAL_SCIENCES"
+    ],
+    "preferredLocation": "ATHENS"
+  },
+  {
+    "email": "student13@uoi.gr",
+    "password": "secure13!",
+    "firstName": "Denise",
+    "lastName": "Webster",
+    "studentNumber": "AM0013",
+    "department": "PSYCHOLOGY",
+    "yearOfStudy": 1,
+    "averageGrade": 6.76,
+    "skills": [
+      "COMMUNICATION",
+      "CRITICAL_THINKING"
+    ],
+    "interests": [
+      "PSYCHOLOGY"
+    ],
+    "preferredLocation": "VOLOS"
+  },
+  {
+    "email": "student14@uoi.gr",
+    "password": "secure14!",
+    "firstName": "Stefanie",
+    "lastName": "Gonzalez",
+    "studentNumber": "AM0014",
+    "department": "MATHEMATICS",
+    "yearOfStudy": 4,
+    "averageGrade": 7.4,
+    "skills": [
+      "STATISTICAL_ANALYSIS",
+      "CRITICAL_THINKING"
+    ],
+    "interests": [
+      "DATA_SCIENCE"
+    ],
+    "preferredLocation": "PATRAS"
+  },
+  {
+    "email": "student15@uoi.gr",
+    "password": "secure15!",
+    "firstName": "Andrew",
+    "lastName": "Hernandez",
+    "studentNumber": "AM0015",
+    "department": "MEDICINE",
+    "yearOfStudy": 4,
+    "averageGrade": 9.41,
+    "skills": [
+      "LABORATORY_SKILLS",
+      "MEDICAL_CARE"
+    ],
+    "interests": [
+      "PUBLIC_HEALTH",
+      "MEDICAL_SCIENCES"
+    ],
+    "preferredLocation": "CHANIA"
+  },
+  {
+    "email": "student16@uoi.gr",
+    "password": "secure16!",
+    "firstName": "David",
+    "lastName": "Caldwell",
+    "studentNumber": "AM0016",
+    "department": "ECONOMICS",
+    "yearOfStudy": 2,
+    "averageGrade": 5.87,
+    "skills": [
+      "ACCOUNTING",
+      "BUSINESS_ANALYSIS"
+    ],
+    "interests": [
+      "ECONOMICS",
+      "BUSINESS_ADMINISTRATION"
+    ],
+    "preferredLocation": "KAVALA"
+  },
+  {
+    "email": "student17@uoi.gr",
+    "password": "secure17!",
+    "firstName": "Anne",
+    "lastName": "Robinson",
+    "studentNumber": "AM0017",
+    "department": "MUSIC_STUDIES",
+    "yearOfStudy": 5,
+    "averageGrade": 5.75,
+    "skills": [
+      "MUSIC_PERFORMANCE",
+      "ARTISTIC_SKILLS"
+    ],
+    "interests": [
+      "MUSIC_STUDIES"
+    ],
+    "preferredLocation": "CHANIA"
+  },
+  {
+    "email": "student18@uoi.gr",
+    "password": "secure18!",
+    "firstName": "Holly",
+    "lastName": "Wang",
+    "studentNumber": "AM0018",
+    "department": "ARCHITECTURE",
+    "yearOfStudy": 4,
+    "averageGrade": 8.62,
+    "skills": [
+      "CAD_DESIGN",
+      "GRAPHIC_DESIGN"
+    ],
+    "interests": [
+      "ART_STUDIES",
+      "ARCHITECTURE"
+    ],
+    "preferredLocation": "ATHENS"
+  },
+  {
+    "email": "student19@uoi.gr",
+    "password": "secure19!",
+    "firstName": "Gary",
+    "lastName": "Lawson",
+    "studentNumber": "AM0019",
+    "department": "MUSIC_STUDIES",
+    "yearOfStudy": 5,
+    "averageGrade": 7.66,
+    "skills": [
+      "ARTISTIC_SKILLS"
+    ],
+    "interests": [
+      "ART_STUDIES",
+      "MUSIC_STUDIES"
+    ],
+    "preferredLocation": "IOANNINA"
+  },
+  {
+    "email": "student20@uoi.gr",
+    "password": "secure20!",
+    "firstName": "Julie",
+    "lastName": "Wilson",
+    "studentNumber": "AM0020",
+    "department": "MUSIC_STUDIES",
+    "yearOfStudy": 3,
+    "averageGrade": 7.0,
+    "skills": [
+      "MUSIC_PERFORMANCE"
+    ],
+    "interests": [
+      "MUSIC_STUDIES"
+    ],
+    "preferredLocation": "ATHENS"
+  },
+  {
+    "email": "student21@uoi.gr",
+    "password": "secure21!",
+    "firstName": "Lori",
+    "lastName": "Oconnell",
+    "studentNumber": "AM0021",
+    "department": "MEDICINE",
+    "yearOfStudy": 4,
+    "averageGrade": 6.62,
+    "skills": [
+      "LABORATORY_SKILLS",
+      "MEDICAL_CARE"
+    ],
+    "interests": [
+      "MEDICAL_SCIENCES"
+    ],
+    "preferredLocation": "THESSALONIKI"
+  },
+  {
+    "email": "student22@uoi.gr",
+    "password": "secure22!",
+    "firstName": "Daniel",
+    "lastName": "Johnson",
+    "studentNumber": "AM0022",
+    "department": "PSYCHOLOGY",
+    "yearOfStudy": 3,
+    "averageGrade": 7.83,
+    "skills": [
+      "COMMUNICATION"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "PSYCHOLOGY"
+    ],
+    "preferredLocation": "LARISSA"
+  },
+  {
+    "email": "student23@uoi.gr",
+    "password": "secure23!",
+    "firstName": "Larry",
+    "lastName": "Byrd",
+    "studentNumber": "AM0023",
+    "department": "BIOLOGY",
+    "yearOfStudy": 4,
+    "averageGrade": 8.21,
+    "skills": [
+      "RESEARCH_METHODS",
+      "LABORATORY_SKILLS"
+    ],
+    "interests": [
+      "BIOTECHNOLOGY"
+    ],
+    "preferredLocation": "HERAKLION"
+  },
+  {
+    "email": "student24@uoi.gr",
+    "password": "secure24!",
+    "firstName": "Susan",
+    "lastName": "Sanders",
+    "studentNumber": "AM0024",
+    "department": "PSYCHOLOGY",
+    "yearOfStudy": 3,
+    "averageGrade": 8.66,
+    "skills": [
+      "COMMUNICATION",
+      "CRITICAL_THINKING"
+    ],
+    "interests": [
+      "PSYCHOLOGY"
+    ],
+    "preferredLocation": "LARISSA"
+  },
+  {
+    "email": "student25@uoi.gr",
+    "password": "secure25!",
+    "firstName": "Jennifer",
+    "lastName": "Jones",
+    "studentNumber": "AM0025",
+    "department": "PSYCHOLOGY",
+    "yearOfStudy": 1,
+    "averageGrade": 8.78,
+    "skills": [
+      "COMMUNICATION"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES"
+    ],
+    "preferredLocation": "LARISSA"
+  },
+  {
+    "email": "student26@uoi.gr",
+    "password": "secure26!",
+    "firstName": "Hannah",
+    "lastName": "Burton",
+    "studentNumber": "AM0026",
+    "department": "PHILOSOPHY",
+    "yearOfStudy": 1,
+    "averageGrade": 5.3,
+    "skills": [
+      "ETHICS_AND_DEONTOLOGY",
+      "CRITICAL_THINKING"
+    ],
+    "interests": [
+      "HISTORY",
+      "PHILOSOPHY"
+    ],
+    "preferredLocation": "IOANNINA"
+  },
+  {
+    "email": "student27@uoi.gr",
+    "password": "secure27!",
+    "firstName": "Curtis",
+    "lastName": "Barton",
+    "studentNumber": "AM0027",
+    "department": "MUSIC_STUDIES",
+    "yearOfStudy": 6,
+    "averageGrade": 7.84,
+    "skills": [
+      "MUSIC_PERFORMANCE",
+      "ARTISTIC_SKILLS"
+    ],
+    "interests": [
+      "MUSIC_STUDIES"
+    ],
+    "preferredLocation": "LARISSA"
+  },
+  {
+    "email": "student28@uoi.gr",
+    "password": "secure28!",
+    "firstName": "Melissa",
+    "lastName": "Burke",
+    "studentNumber": "AM0028",
+    "department": "MUSIC_STUDIES",
+    "yearOfStudy": 4,
+    "averageGrade": 9.57,
+    "skills": [
+      "MUSIC_PERFORMANCE",
+      "ARTISTIC_SKILLS"
+    ],
+    "interests": [
+      "MUSIC_STUDIES"
+    ],
+    "preferredLocation": "PATRAS"
+  },
+  {
+    "email": "student29@uoi.gr",
+    "password": "secure29!",
+    "firstName": "David",
+    "lastName": "Riggs",
+    "studentNumber": "AM0029",
+    "department": "PSYCHOLOGY",
+    "yearOfStudy": 5,
+    "averageGrade": 6.04,
+    "skills": [
+      "CRITICAL_THINKING",
+      "COMMUNICATION"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES"
+    ],
+    "preferredLocation": "CHANIA"
+  },
+  {
+    "email": "student30@uoi.gr",
+    "password": "secure30!",
+    "firstName": "Kimberly",
+    "lastName": "Reed",
+    "studentNumber": "AM0030",
+    "department": "MUSIC_STUDIES",
+    "yearOfStudy": 3,
+    "averageGrade": 6.65,
+    "skills": [
+      "ARTISTIC_SKILLS"
+    ],
+    "interests": [
+      "MUSIC_STUDIES",
+      "ART_STUDIES"
+    ],
+    "preferredLocation": "VOLOS"
+  },
+  {
+    "email": "student31@uoi.gr",
+    "password": "secure31!",
+    "firstName": "Ross",
+    "lastName": "Wood",
+    "studentNumber": "AM0031",
+    "department": "MUSIC_STUDIES",
+    "yearOfStudy": 3,
+    "averageGrade": 7.48,
+    "skills": [
+      "MUSIC_PERFORMANCE",
+      "ARTISTIC_SKILLS"
+    ],
+    "interests": [
+      "MUSIC_STUDIES",
+      "ART_STUDIES"
+    ],
+    "preferredLocation": "PATRAS"
+  },
+  {
+    "email": "student32@uoi.gr",
+    "password": "secure32!",
+    "firstName": "William",
+    "lastName": "Peterson",
+    "studentNumber": "AM0032",
+    "department": "COMPUTER_SCIENCE_AND_ENGINEERING",
+    "yearOfStudy": 6,
+    "averageGrade": 7.51,
+    "skills": [
+      "WEB_DEVELOPMENT",
+      "SOFTWARE_TESTING",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "SOFTWARE_ENGINEERING"
+    ],
+    "preferredLocation": "LARISSA"
+  },
+  {
+    "email": "student33@uoi.gr",
+    "password": "secure33!",
+    "firstName": "Melissa",
+    "lastName": "Short",
+    "studentNumber": "AM0033",
+    "department": "PHYSICS",
+    "yearOfStudy": 3,
+    "averageGrade": 9.09,
+    "skills": [
+      "CRITICAL_THINKING"
+    ],
+    "interests": [
+      "ELECTRICAL_ENGINEERING",
+      "ASTRONOMY"
+    ],
+    "preferredLocation": "VOLOS"
+  },
+  {
+    "email": "student34@uoi.gr",
+    "password": "secure34!",
+    "firstName": "Daniel",
+    "lastName": "Yu",
+    "studentNumber": "AM0034",
+    "department": "PHILOSOPHY",
+    "yearOfStudy": 1,
+    "averageGrade": 7.66,
+    "skills": [
+      "ETHICS_AND_DEONTOLOGY"
+    ],
+    "interests": [
+      "PHILOSOPHY"
+    ],
+    "preferredLocation": "CHANIA"
+  },
+  {
+    "email": "student35@uoi.gr",
+    "password": "secure35!",
+    "firstName": "Cynthia",
+    "lastName": "Poole",
+    "studentNumber": "AM0035",
+    "department": "PHYSICS",
+    "yearOfStudy": 5,
+    "averageGrade": 8.02,
+    "skills": [
+      "CRITICAL_THINKING"
+    ],
+    "interests": [
+      "ASTRONOMY"
+    ],
+    "preferredLocation": "CHANIA"
+  },
+  {
+    "email": "student36@uoi.gr",
+    "password": "secure36!",
+    "firstName": "Jasmine",
+    "lastName": "Graham",
+    "studentNumber": "AM0036",
+    "department": "MEDICINE",
+    "yearOfStudy": 5,
+    "averageGrade": 6.78,
+    "skills": [
+      "LABORATORY_SKILLS",
+      "MEDICAL_CARE"
+    ],
+    "interests": [
+      "PUBLIC_HEALTH"
+    ],
+    "preferredLocation": "CHANIA"
+  },
+  {
+    "email": "student37@uoi.gr",
+    "password": "secure37!",
+    "firstName": "Jessica",
+    "lastName": "Sheppard",
+    "studentNumber": "AM0037",
+    "department": "MATHEMATICS",
+    "yearOfStudy": 1,
+    "averageGrade": 5.76,
+    "skills": [
+      "STATISTICAL_ANALYSIS",
+      "CRITICAL_THINKING"
+    ],
+    "interests": [
+      "DATA_SCIENCE",
+      "PHILOSOPHY"
+    ],
+    "preferredLocation": "CHANIA"
+  },
+  {
+    "email": "student38@uoi.gr",
+    "password": "secure38!",
+    "firstName": "Joseph",
+    "lastName": "Morton",
+    "studentNumber": "AM0038",
+    "department": "COMPUTER_SCIENCE_AND_ENGINEERING",
+    "yearOfStudy": 6,
+    "averageGrade": 7.36,
+    "skills": [
+      "PROGRAMMING",
+      "SOFTWARE_TESTING"
+    ],
+    "interests": [
+      "COMPUTER_SCIENCE"
+    ],
+    "preferredLocation": "PATRAS"
+  },
+  {
+    "email": "student39@uoi.gr",
+    "password": "secure39!",
+    "firstName": "Amanda",
+    "lastName": "Webb",
+    "studentNumber": "AM0039",
+    "department": "MUSIC_STUDIES",
+    "yearOfStudy": 3,
+    "averageGrade": 6.05,
+    "skills": [
+      "ARTISTIC_SKILLS",
+      "MUSIC_PERFORMANCE"
+    ],
+    "interests": [
+      "MUSIC_STUDIES"
+    ],
+    "preferredLocation": "HERAKLION"
+  },
+  {
+    "email": "student40@uoi.gr",
+    "password": "secure40!",
+    "firstName": "Ryan",
+    "lastName": "Simon",
+    "studentNumber": "AM0040",
+    "department": "PSYCHOLOGY",
+    "yearOfStudy": 5,
+    "averageGrade": 8.67,
+    "skills": [
+      "COMMUNICATION",
+      "CRITICAL_THINKING"
+    ],
+    "interests": [
+      "PSYCHOLOGY",
+      "EDUCATION_SCIENCES"
+    ],
+    "preferredLocation": "THESSALONIKI"
+  },
+  {
+    "email": "student41@uoi.gr",
+    "password": "secure41!",
+    "firstName": "Joseph",
+    "lastName": "Christian",
+    "studentNumber": "AM0041",
+    "department": "MUSIC_STUDIES",
+    "yearOfStudy": 6,
+    "averageGrade": 6.88,
+    "skills": [
+      "ARTISTIC_SKILLS"
+    ],
+    "interests": [
+      "MUSIC_STUDIES"
+    ],
+    "preferredLocation": "IOANNINA"
+  },
+  {
+    "email": "student42@uoi.gr",
+    "password": "secure42!",
+    "firstName": "Mariah",
+    "lastName": "Miller",
+    "studentNumber": "AM0042",
+    "department": "ARCHITECTURE",
+    "yearOfStudy": 2,
+    "averageGrade": 5.51,
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "CAD_DESIGN"
+    ],
+    "interests": [
+      "ARCHITECTURE"
+    ],
+    "preferredLocation": "VOLOS"
+  },
+  {
+    "email": "student43@uoi.gr",
+    "password": "secure43!",
+    "firstName": "Nicole",
+    "lastName": "Sanchez",
+    "studentNumber": "AM0043",
+    "department": "COMPUTER_SCIENCE_AND_ENGINEERING",
+    "yearOfStudy": 3,
+    "averageGrade": 6.87,
+    "skills": [
+      "PROGRAMMING",
+      "WEB_DEVELOPMENT"
+    ],
+    "interests": [
+      "SOFTWARE_ENGINEERING",
+      "COMPUTER_SCIENCE"
+    ],
+    "preferredLocation": "IOANNINA"
+  },
+  {
+    "email": "student44@uoi.gr",
+    "password": "secure44!",
+    "firstName": "Steven",
+    "lastName": "Bishop",
+    "studentNumber": "AM0044",
+    "department": "MEDICINE",
+    "yearOfStudy": 1,
+    "averageGrade": 7.84,
+    "skills": [
+      "MEDICAL_CARE",
+      "LABORATORY_SKILLS"
+    ],
+    "interests": [
+      "MEDICAL_SCIENCES",
+      "PUBLIC_HEALTH"
+    ],
+    "preferredLocation": "VOLOS"
+  },
+  {
+    "email": "student45@uoi.gr",
+    "password": "secure45!",
+    "firstName": "Nicholas",
+    "lastName": "Johnson",
+    "studentNumber": "AM0045",
+    "department": "ARCHITECTURE",
+    "yearOfStudy": 1,
+    "averageGrade": 6.52,
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "CAD_DESIGN"
+    ],
+    "interests": [
+      "ART_STUDIES"
+    ],
+    "preferredLocation": "KOMOTINI"
+  },
+  {
+    "email": "student46@uoi.gr",
+    "password": "secure46!",
+    "firstName": "Melissa",
+    "lastName": "White",
+    "studentNumber": "AM0046",
+    "department": "ECONOMICS",
+    "yearOfStudy": 5,
+    "averageGrade": 7.14,
+    "skills": [
+      "ACCOUNTING",
+      "BUSINESS_ANALYSIS"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION",
+      "ECONOMICS"
+    ],
+    "preferredLocation": "KOMOTINI"
+  },
+  {
+    "email": "student47@uoi.gr",
+    "password": "secure47!",
+    "firstName": "Jason",
+    "lastName": "Salinas",
+    "studentNumber": "AM0047",
+    "department": "ECONOMICS",
+    "yearOfStudy": 5,
+    "averageGrade": 8.45,
+    "skills": [
+      "ACCOUNTING",
+      "BUSINESS_ANALYSIS"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION"
+    ],
+    "preferredLocation": "CHANIA"
+  },
+  {
+    "email": "student48@uoi.gr",
+    "password": "secure48!",
+    "firstName": "Matthew",
+    "lastName": "Beard",
+    "studentNumber": "AM0048",
+    "department": "MATHEMATICS",
+    "yearOfStudy": 6,
+    "averageGrade": 8.39,
+    "skills": [
+      "STATISTICAL_ANALYSIS",
+      "CRITICAL_THINKING"
+    ],
+    "interests": [
+      "PHILOSOPHY",
+      "DATA_SCIENCE"
+    ],
+    "preferredLocation": "LARISSA"
+  },
+  {
+    "email": "student49@uoi.gr",
+    "password": "secure49!",
+    "firstName": "Jacqueline",
+    "lastName": "Hill",
+    "studentNumber": "AM0049",
+    "department": "MATHEMATICS",
+    "yearOfStudy": 4,
+    "averageGrade": 9.04,
+    "skills": [
+      "STATISTICAL_ANALYSIS",
+      "CRITICAL_THINKING"
+    ],
+    "interests": [
+      "PHILOSOPHY"
+    ],
+    "preferredLocation": "THESSALONIKI"
+  },
+  {
+    "email": "student50@uoi.gr",
+    "password": "secure50!",
+    "firstName": "Alejandro",
+    "lastName": "Vaughan",
+    "studentNumber": "AM0050",
+    "department": "PSYCHOLOGY",
+    "yearOfStudy": 6,
+    "averageGrade": 6.85,
+    "skills": [
+      "COMMUNICATION"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES"
+    ],
+    "preferredLocation": "KAVALA"
+  }
+]

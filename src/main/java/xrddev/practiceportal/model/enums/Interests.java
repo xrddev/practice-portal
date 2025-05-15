@@ -31,5 +31,6 @@ public enum Interests {
     MUSIC_STUDIES,               // Musicology, performance studies
     LITERATURE,                  // Literary analysis, theory
     PUBLIC_HEALTH,               // Epidemiology, health systems
-    ETHICS_AND_DEONTOLOGY        // Ethics, compliance, professional standards
+    ETHICS_AND_DEONTOLOGY  ,      // Ethics, compliance, professional standards
+    FOREIGN_LANGUAGES
 }

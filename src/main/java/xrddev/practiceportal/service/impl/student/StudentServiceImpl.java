@@ -2,6 +2,7 @@ package xrddev.practiceportal.service.impl.student;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import xrddev.practiceportal.dto.user.student.StudentDashboardDto;
@@ -9,6 +10,7 @@ import xrddev.practiceportal.dto.user.student.StudentEditDto;
 import xrddev.practiceportal.dto.user.student.StudentRegistrationDto;
 import xrddev.practiceportal.model.user.Student;
 import xrddev.practiceportal.model.enums.UserRole;
+import xrddev.practiceportal.repository.api.ProfessorRepository;
 import xrddev.practiceportal.repository.api.StudentRepository;
 import xrddev.practiceportal.service.api.StudentService;
 
@@ -16,10 +18,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    public StudentServiceImpl(StudentRepository studentRepository, PasswordEncoder passwordEncoder) {
+        this.studentRepository = studentRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     @Transactional
@@ -27,7 +34,7 @@ public class StudentServiceImpl implements StudentService {
         Student student = new Student();
 
         student.setEmail(studentRegistrationDto.getEmail());
-        student.setPassword(studentRegistrationDto.getPassword());
+        student.setPassword(passwordEncoder.encode(studentRegistrationDto.getPassword()));
         student.setRole(UserRole.STUDENT);
 
         student.setStudentNumber(studentRegistrationDto.getStudentNumber());

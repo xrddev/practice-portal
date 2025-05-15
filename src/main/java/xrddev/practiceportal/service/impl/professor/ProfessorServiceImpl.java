@@ -2,6 +2,7 @@ package xrddev.practiceportal.service.impl.professor;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import xrddev.practiceportal.dto.user.professor.ProfessorDashboardDto;
@@ -16,17 +17,22 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 @Transactional
 public class ProfessorServiceImpl implements ProfessorService {
 
     private final ProfessorRepository professorRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
+
+    public ProfessorServiceImpl(ProfessorRepository professorRepository) {
+        this.professorRepository = professorRepository;
+        this.passwordEncoder = new BCryptPasswordEncoder();
+    }
 
     public void registerProfessor(ProfessorRegistrationDto professorRegistrationDto) {
         Professor professor = new Professor();
 
         professor.setEmail(professorRegistrationDto.getEmail());
-        professor.setPassword(professorRegistrationDto.getPassword());
+        professor.setPassword(passwordEncoder.encode(professorRegistrationDto.getPassword()));
         professor.setRole(UserRole.PROFESSOR);
 
         professor.setFirstName(professorRegistrationDto.getFirstName());
