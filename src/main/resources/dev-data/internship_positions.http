@@ -1,0 +1,2894 @@
+### Batch add internship positions
+POST http://localhost:8080/public/api/internships/batch
+Content-Type: application/json
+
+[
+  {
+    "companyEmail": "c1@mail.gr",
+    "title": "Frontend Intern",
+    "description": "Join a cross-functional team contributing to scalable services.",
+    "startDate": "2025-07-01",
+    "endDate": "2025-09-17",
+    "skills": [
+      "PROGRAMMING",
+      "COMMUNICATION",
+      "NETWORK_CONFIGURATION",
+      "UI_UX_DESIGN",
+      "SOFTWARE_TESTING",
+      "TRANSLATION_INTERPRETING"
+    ],
+    "interests": [
+      "HUMAN_COMPUTER_INTERACTION",
+      "EDUCATION_SCIENCES",
+      "CLOUD_COMPUTING",
+      "ARTIFICIAL_INTELLIGENCE"
+    ]
+  },
+  {
+    "companyEmail": "c1@mail.gr",
+    "title": "Marketing Analyst Intern",
+    "description": "Help build internal tools using Python and modern web stacks.",
+    "startDate": "2025-07-02",
+    "endDate": "2025-10-28",
+    "skills": [
+      "TRANSLATION_INTERPRETING",
+      "COMMUNICATION",
+      "GRAPHIC_DESIGN",
+      "PROGRAMMING",
+      "SOFTWARE_TESTING"
+    ],
+    "interests": [
+      "CLOUD_COMPUTING",
+      "NETWORKS",
+      "ARTIFICIAL_INTELLIGENCE"
+    ]
+  },
+  {
+    "companyEmail": "c1@mail.gr",
+    "title": "Data Analytics Intern",
+    "description": "Engage in UI/UX evaluations for improving product usability.",
+    "startDate": "2025-07-03",
+    "endDate": "2025-10-27",
+    "skills": [
+      "NETWORK_CONFIGURATION",
+      "GRAPHIC_DESIGN",
+      "PYTHON",
+      "CAD_DESIGN",
+      "TRANSLATION_INTERPRETING"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION",
+      "CLOUD_COMPUTING",
+      "DATA_SCIENCE",
+      "NETWORKS",
+      "EDUCATION_SCIENCES"
+    ]
+  },
+  {
+    "companyEmail": "c2@mail.gr",
+    "title": "QA Tester Intern",
+    "description": "Get involved with agile sprints and DevOps practices.",
+    "startDate": "2025-07-03",
+    "endDate": "2025-09-06",
+    "skills": [
+      "JAVA",
+      "GRAPHIC_DESIGN",
+      "PROJECT_MANAGEMENT"
+    ],
+    "interests": [
+      "GRAPHIC_ARTS",
+      "DATA_SCIENCE",
+      "EDUCATION_SCIENCES",
+      "HUMAN_COMPUTER_INTERACTION"
+    ]
+  },
+  {
+    "companyEmail": "c2@mail.gr",
+    "title": "Cloud Engineering Intern",
+    "description": "Support marketing research and analytics using live data.",
+    "startDate": "2025-07-04",
+    "endDate": "2025-09-04",
+    "skills": [
+      "NETWORK_CONFIGURATION",
+      "DATABASE_MANAGEMENT",
+      "SCIENTIFIC_WRITING",
+      "GRAPHIC_DESIGN",
+      "PYTHON",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "DATA_SCIENCE",
+      "ARTIFICIAL_INTELLIGENCE",
+      "HUMAN_COMPUTER_INTERACTION",
+      "SOFTWARE_ENGINEERING",
+      "NETWORKS",
+      "BUSINESS_ADMINISTRATION"
+    ]
+  },
+  {
+    "companyEmail": "c2@mail.gr",
+    "title": "Cloud Engineering Intern",
+    "description": "Join a cross-functional team contributing to scalable services.",
+    "startDate": "2025-07-05",
+    "endDate": "2025-10-12",
+    "skills": [
+      "PROGRAMMING",
+      "SCIENTIFIC_WRITING",
+      "PYTHON",
+      "NETWORK_CONFIGURATION"
+    ],
+    "interests": [
+      "SOFTWARE_ENGINEERING",
+      "GRAPHIC_ARTS"
+    ]
+  },
+  {
+    "companyEmail": "c3@mail.gr",
+    "title": "UI/UX Intern",
+    "description": "Engage in UI/UX evaluations for improving product usability.",
+    "startDate": "2025-07-05",
+    "endDate": "2025-10-20",
+    "skills": [
+      "PROGRAMMING",
+      "DATABASE_MANAGEMENT",
+      "TRANSLATION_INTERPRETING"
+    ],
+    "interests": [
+      "MARKETING",
+      "BUSINESS_ADMINISTRATION",
+      "NETWORKS",
+      "CLOUD_COMPUTING",
+      "SOFTWARE_ENGINEERING",
+      "HUMAN_COMPUTER_INTERACTION"
+    ]
+  },
+  {
+    "companyEmail": "c3@mail.gr",
+    "title": "Backend Intern",
+    "description": "Work with a collaborative team on real-world case studies.",
+    "startDate": "2025-07-06",
+    "endDate": "2025-10-18",
+    "skills": [
+      "NETWORK_CONFIGURATION",
+      "PROGRAMMING",
+      "GRAPHIC_DESIGN"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "GRAPHIC_ARTS",
+      "CLOUD_COMPUTING",
+      "NETWORKS",
+      "ARTIFICIAL_INTELLIGENCE",
+      "HUMAN_COMPUTER_INTERACTION"
+    ]
+  },
+  {
+    "companyEmail": "c3@mail.gr",
+    "title": "Cloud Engineering Intern",
+    "description": "Participate in hands-on development and testing activities.",
+    "startDate": "2025-07-07",
+    "endDate": "2025-09-22",
+    "skills": [
+      "NETWORK_CONFIGURATION",
+      "CAD_DESIGN",
+      "SOFTWARE_TESTING",
+      "SCIENTIFIC_WRITING",
+      "COMMUNICATION",
+      "UI_UX_DESIGN"
+    ],
+    "interests": [
+      "SOFTWARE_ENGINEERING",
+      "EDUCATION_SCIENCES",
+      "NETWORKS",
+      "CLOUD_COMPUTING",
+      "DATA_SCIENCE"
+    ]
+  },
+  {
+    "companyEmail": "c4@mail.gr",
+    "title": "Cloud Engineering Intern",
+    "description": "Assist in technical writing, presentations, and stakeholder reports.",
+    "startDate": "2025-07-07",
+    "endDate": "2025-10-23",
+    "skills": [
+      "PYTHON",
+      "TRANSLATION_INTERPRETING",
+      "CAD_DESIGN",
+      "GRAPHIC_DESIGN"
+    ],
+    "interests": [
+      "NETWORKS",
+      "CLOUD_COMPUTING"
+    ]
+  },
+  {
+    "companyEmail": "c4@mail.gr",
+    "title": "Data Analytics Intern",
+    "description": "Participate in hands-on development and testing activities.",
+    "startDate": "2025-07-08",
+    "endDate": "2025-09-19",
+    "skills": [
+      "TRANSLATION_INTERPRETING",
+      "GRAPHIC_DESIGN",
+      "SOFTWARE_TESTING",
+      "JAVA",
+      "NETWORK_CONFIGURATION",
+      "SCIENTIFIC_WRITING"
+    ],
+    "interests": [
+      "GRAPHIC_ARTS",
+      "CLOUD_COMPUTING",
+      "EDUCATION_SCIENCES",
+      "DATA_SCIENCE",
+      "ARTIFICIAL_INTELLIGENCE"
+    ]
+  },
+  {
+    "companyEmail": "c4@mail.gr",
+    "title": "AI Research Intern",
+    "description": "Join a cross-functional team contributing to scalable services.",
+    "startDate": "2025-07-09",
+    "endDate": "2025-09-17",
+    "skills": [
+      "COMMUNICATION",
+      "PYTHON",
+      "SCIENTIFIC_WRITING",
+      "JAVA"
+    ],
+    "interests": [
+      "SOFTWARE_ENGINEERING",
+      "BUSINESS_ADMINISTRATION"
+    ]
+  },
+  {
+    "companyEmail": "c5@mail.gr",
+    "title": "Frontend Intern",
+    "description": "Get involved with agile sprints and DevOps practices.",
+    "startDate": "2025-07-09",
+    "endDate": "2025-11-03",
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "UI_UX_DESIGN",
+      "CAD_DESIGN",
+      "JAVA"
+    ],
+    "interests": [
+      "SOFTWARE_ENGINEERING",
+      "ARTIFICIAL_INTELLIGENCE",
+      "NETWORKS"
+    ]
+  },
+  {
+    "companyEmail": "c5@mail.gr",
+    "title": "UI/UX Intern",
+    "description": "Assist in real client-facing projects with dedicated mentorship.",
+    "startDate": "2025-07-10",
+    "endDate": "2025-09-24",
+    "skills": [
+      "PYTHON",
+      "GRAPHIC_DESIGN",
+      "SOFTWARE_TESTING"
+    ],
+    "interests": [
+      "GRAPHIC_ARTS",
+      "ARTIFICIAL_INTELLIGENCE",
+      "HUMAN_COMPUTER_INTERACTION",
+      "CLOUD_COMPUTING",
+      "SOFTWARE_ENGINEERING",
+      "BUSINESS_ADMINISTRATION"
+    ]
+  },
+  {
+    "companyEmail": "c5@mail.gr",
+    "title": "Network Admin Intern",
+    "description": "Work with a collaborative team on real-world case studies.",
+    "startDate": "2025-07-11",
+    "endDate": "2025-09-19",
+    "skills": [
+      "UI_UX_DESIGN",
+      "SOFTWARE_TESTING",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION",
+      "CLOUD_COMPUTING",
+      "MARKETING",
+      "ARTIFICIAL_INTELLIGENCE",
+      "SOFTWARE_ENGINEERING"
+    ]
+  },
+  {
+    "companyEmail": "c6@mail.gr",
+    "title": "Backend Intern",
+    "description": "Join a cross-functional team contributing to scalable services.",
+    "startDate": "2025-07-11",
+    "endDate": "2025-09-13",
+    "skills": [
+      "PYTHON",
+      "SOFTWARE_TESTING",
+      "JAVA",
+      "CAD_DESIGN",
+      "NETWORK_CONFIGURATION",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "NETWORKS",
+      "SOFTWARE_ENGINEERING",
+      "BUSINESS_ADMINISTRATION"
+    ]
+  },
+  {
+    "companyEmail": "c6@mail.gr",
+    "title": "Cloud Engineering Intern",
+    "description": "Get involved with agile sprints and DevOps practices.",
+    "startDate": "2025-07-12",
+    "endDate": "2025-09-18",
+    "skills": [
+      "NETWORK_CONFIGURATION",
+      "CAD_DESIGN",
+      "SCIENTIFIC_WRITING"
+    ],
+    "interests": [
+      "CLOUD_COMPUTING",
+      "DATA_SCIENCE",
+      "HUMAN_COMPUTER_INTERACTION",
+      "MARKETING",
+      "GRAPHIC_ARTS"
+    ]
+  },
+  {
+    "companyEmail": "c6@mail.gr",
+    "title": "Frontend Intern",
+    "description": "Contribute to QA documentation and test case design.",
+    "startDate": "2025-07-13",
+    "endDate": "2025-10-28",
+    "skills": [
+      "SOFTWARE_TESTING",
+      "GRAPHIC_DESIGN",
+      "DATABASE_MANAGEMENT"
+    ],
+    "interests": [
+      "CLOUD_COMPUTING",
+      "GRAPHIC_ARTS",
+      "HUMAN_COMPUTER_INTERACTION"
+    ]
+  },
+  {
+    "companyEmail": "c7@mail.gr",
+    "title": "Backend Intern",
+    "description": "Join a cross-functional team contributing to scalable services.",
+    "startDate": "2025-07-13",
+    "endDate": "2025-10-13",
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "JAVA",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "DATA_SCIENCE",
+      "HUMAN_COMPUTER_INTERACTION",
+      "ARTIFICIAL_INTELLIGENCE",
+      "BUSINESS_ADMINISTRATION",
+      "GRAPHIC_ARTS"
+    ]
+  },
+  {
+    "companyEmail": "c7@mail.gr",
+    "title": "UI/UX Intern",
+    "description": "Help build internal tools using Python and modern web stacks.",
+    "startDate": "2025-07-14",
+    "endDate": "2025-10-06",
+    "skills": [
+      "UI_UX_DESIGN",
+      "CAD_DESIGN",
+      "JAVA",
+      "GRAPHIC_DESIGN",
+      "PROJECT_MANAGEMENT"
+    ],
+    "interests": [
+      "DATA_SCIENCE",
+      "ARTIFICIAL_INTELLIGENCE",
+      "EDUCATION_SCIENCES",
+      "MARKETING",
+      "HUMAN_COMPUTER_INTERACTION"
+    ]
+  },
+  {
+    "companyEmail": "c7@mail.gr",
+    "title": "AI Research Intern",
+    "description": "Assist in technical writing, presentations, and stakeholder reports.",
+    "startDate": "2025-07-15",
+    "endDate": "2025-10-14",
+    "skills": [
+      "CAD_DESIGN",
+      "UI_UX_DESIGN",
+      "DATABASE_MANAGEMENT",
+      "PROJECT_MANAGEMENT"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "NETWORKS",
+      "ARTIFICIAL_INTELLIGENCE"
+    ]
+  },
+  {
+    "companyEmail": "c8@mail.gr",
+    "title": "UI/UX Intern",
+    "description": "Join a cross-functional team contributing to scalable services.",
+    "startDate": "2025-07-15",
+    "endDate": "2025-09-13",
+    "skills": [
+      "NETWORK_CONFIGURATION",
+      "UI_UX_DESIGN",
+      "PROJECT_MANAGEMENT",
+      "SOFTWARE_TESTING",
+      "JAVA"
+    ],
+    "interests": [
+      "ARTIFICIAL_INTELLIGENCE",
+      "EDUCATION_SCIENCES",
+      "DATA_SCIENCE",
+      "BUSINESS_ADMINISTRATION",
+      "GRAPHIC_ARTS"
+    ]
+  },
+  {
+    "companyEmail": "c8@mail.gr",
+    "title": "Frontend Intern",
+    "description": "Assist in technical writing, presentations, and stakeholder reports.",
+    "startDate": "2025-07-16",
+    "endDate": "2025-09-29",
+    "skills": [
+      "PROGRAMMING",
+      "TRANSLATION_INTERPRETING",
+      "NETWORK_CONFIGURATION",
+      "COMMUNICATION"
+    ],
+    "interests": [
+      "HUMAN_COMPUTER_INTERACTION",
+      "ARTIFICIAL_INTELLIGENCE",
+      "BUSINESS_ADMINISTRATION",
+      "GRAPHIC_ARTS",
+      "EDUCATION_SCIENCES",
+      "SOFTWARE_ENGINEERING"
+    ]
+  },
+  {
+    "companyEmail": "c8@mail.gr",
+    "title": "QA Tester Intern",
+    "description": "Contribute to QA documentation and test case design.",
+    "startDate": "2025-07-17",
+    "endDate": "2025-09-23",
+    "skills": [
+      "NETWORK_CONFIGURATION",
+      "JAVA",
+      "GRAPHIC_DESIGN",
+      "PYTHON",
+      "DATABASE_MANAGEMENT",
+      "UI_UX_DESIGN"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "GRAPHIC_ARTS",
+      "HUMAN_COMPUTER_INTERACTION"
+    ]
+  },
+  {
+    "companyEmail": "c9@mail.gr",
+    "title": "Data Analytics Intern",
+    "description": "Join a cross-functional team contributing to scalable services.",
+    "startDate": "2025-07-17",
+    "endDate": "2025-10-09",
+    "skills": [
+      "COMMUNICATION",
+      "PYTHON",
+      "PROJECT_MANAGEMENT"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "BUSINESS_ADMINISTRATION",
+      "HUMAN_COMPUTER_INTERACTION",
+      "CLOUD_COMPUTING"
+    ]
+  },
+  {
+    "companyEmail": "c9@mail.gr",
+    "title": "Network Admin Intern",
+    "description": "Get involved with agile sprints and DevOps practices.",
+    "startDate": "2025-07-18",
+    "endDate": "2025-11-15",
+    "skills": [
+      "PYTHON",
+      "COMMUNICATION",
+      "SCIENTIFIC_WRITING",
+      "DATABASE_MANAGEMENT",
+      "CAD_DESIGN",
+      "TRANSLATION_INTERPRETING"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "CLOUD_COMPUTING",
+      "DATA_SCIENCE",
+      "ARTIFICIAL_INTELLIGENCE",
+      "SOFTWARE_ENGINEERING",
+      "GRAPHIC_ARTS"
+    ]
+  },
+  {
+    "companyEmail": "c9@mail.gr",
+    "title": "Software Developer Intern",
+    "description": "Contribute to QA documentation and test case design.",
+    "startDate": "2025-07-19",
+    "endDate": "2025-10-24",
+    "skills": [
+      "COMMUNICATION",
+      "PROGRAMMING",
+      "TRANSLATION_INTERPRETING",
+      "CAD_DESIGN",
+      "PYTHON"
+    ],
+    "interests": [
+      "ARTIFICIAL_INTELLIGENCE",
+      "SOFTWARE_ENGINEERING",
+      "GRAPHIC_ARTS"
+    ]
+  },
+  {
+    "companyEmail": "c10@mail.gr",
+    "title": "AI Research Intern",
+    "description": "Work with a collaborative team on real-world case studies.",
+    "startDate": "2025-07-19",
+    "endDate": "2025-10-28",
+    "skills": [
+      "DATABASE_MANAGEMENT",
+      "SOFTWARE_TESTING",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION",
+      "EDUCATION_SCIENCES",
+      "SOFTWARE_ENGINEERING",
+      "HUMAN_COMPUTER_INTERACTION",
+      "CLOUD_COMPUTING"
+    ]
+  },
+  {
+    "companyEmail": "c10@mail.gr",
+    "title": "Frontend Intern",
+    "description": "Get involved with agile sprints and DevOps practices.",
+    "startDate": "2025-07-20",
+    "endDate": "2025-11-06",
+    "skills": [
+      "JAVA",
+      "GRAPHIC_DESIGN",
+      "COMMUNICATION",
+      "NETWORK_CONFIGURATION"
+    ],
+    "interests": [
+      "SOFTWARE_ENGINEERING",
+      "ARTIFICIAL_INTELLIGENCE",
+      "DATA_SCIENCE",
+      "CLOUD_COMPUTING"
+    ]
+  },
+  {
+    "companyEmail": "c10@mail.gr",
+    "title": "Cloud Engineering Intern",
+    "description": "Help build internal tools using Python and modern web stacks.",
+    "startDate": "2025-07-21",
+    "endDate": "2025-11-08",
+    "skills": [
+      "SOFTWARE_TESTING",
+      "COMMUNICATION",
+      "PYTHON",
+      "TRANSLATION_INTERPRETING",
+      "GRAPHIC_DESIGN",
+      "PROJECT_MANAGEMENT"
+    ],
+    "interests": [
+      "HUMAN_COMPUTER_INTERACTION",
+      "SOFTWARE_ENGINEERING"
+    ]
+  },
+  {
+    "companyEmail": "c11@mail.gr",
+    "title": "AI Research Intern",
+    "description": "Work with a collaborative team on real-world case studies.",
+    "startDate": "2025-07-21",
+    "endDate": "2025-10-06",
+    "skills": [
+      "PROJECT_MANAGEMENT",
+      "PROGRAMMING",
+      "CAD_DESIGN",
+      "JAVA",
+      "COMMUNICATION"
+    ],
+    "interests": [
+      "SOFTWARE_ENGINEERING",
+      "MARKETING",
+      "CLOUD_COMPUTING",
+      "HUMAN_COMPUTER_INTERACTION"
+    ]
+  },
+  {
+    "companyEmail": "c11@mail.gr",
+    "title": "Software Developer Intern",
+    "description": "Work with a collaborative team on real-world case studies.",
+    "startDate": "2025-07-22",
+    "endDate": "2025-10-29",
+    "skills": [
+      "UI_UX_DESIGN",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "HUMAN_COMPUTER_INTERACTION",
+      "EDUCATION_SCIENCES",
+      "BUSINESS_ADMINISTRATION",
+      "SOFTWARE_ENGINEERING",
+      "GRAPHIC_ARTS",
+      "ARTIFICIAL_INTELLIGENCE"
+    ]
+  },
+  {
+    "companyEmail": "c11@mail.gr",
+    "title": "Marketing Analyst Intern",
+    "description": "Work with a collaborative team on real-world case studies.",
+    "startDate": "2025-07-23",
+    "endDate": "2025-10-05",
+    "skills": [
+      "COMMUNICATION",
+      "SOFTWARE_TESTING",
+      "SCIENTIFIC_WRITING",
+      "PROJECT_MANAGEMENT"
+    ],
+    "interests": [
+      "CLOUD_COMPUTING",
+      "HUMAN_COMPUTER_INTERACTION",
+      "EDUCATION_SCIENCES",
+      "MARKETING"
+    ]
+  },
+  {
+    "companyEmail": "c12@mail.gr",
+    "title": "Frontend Intern",
+    "description": "Assist in technical writing, presentations, and stakeholder reports.",
+    "startDate": "2025-07-23",
+    "endDate": "2025-11-20",
+    "skills": [
+      "NETWORK_CONFIGURATION",
+      "DATABASE_MANAGEMENT"
+    ],
+    "interests": [
+      "NETWORKS",
+      "GRAPHIC_ARTS",
+      "ARTIFICIAL_INTELLIGENCE",
+      "SOFTWARE_ENGINEERING"
+    ]
+  },
+  {
+    "companyEmail": "c12@mail.gr",
+    "title": "Backend Intern",
+    "description": "Participate in hands-on development and testing activities.",
+    "startDate": "2025-07-24",
+    "endDate": "2025-10-20",
+    "skills": [
+      "PYTHON",
+      "UI_UX_DESIGN",
+      "DATABASE_MANAGEMENT",
+      "JAVA"
+    ],
+    "interests": [
+      "HUMAN_COMPUTER_INTERACTION",
+      "BUSINESS_ADMINISTRATION",
+      "ARTIFICIAL_INTELLIGENCE"
+    ]
+  },
+  {
+    "companyEmail": "c12@mail.gr",
+    "title": "Software Developer Intern",
+    "description": "Participate in hands-on development and testing activities.",
+    "startDate": "2025-07-25",
+    "endDate": "2025-10-17",
+    "skills": [
+      "TRANSLATION_INTERPRETING",
+      "GRAPHIC_DESIGN",
+      "COMMUNICATION",
+      "JAVA",
+      "CAD_DESIGN"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION",
+      "EDUCATION_SCIENCES"
+    ]
+  },
+  {
+    "companyEmail": "c13@mail.gr",
+    "title": "Data Analytics Intern",
+    "description": "Join a cross-functional team contributing to scalable services.",
+    "startDate": "2025-07-25",
+    "endDate": "2025-11-01",
+    "skills": [
+      "PROJECT_MANAGEMENT",
+      "CAD_DESIGN",
+      "SCIENTIFIC_WRITING"
+    ],
+    "interests": [
+      "GRAPHIC_ARTS",
+      "BUSINESS_ADMINISTRATION",
+      "CLOUD_COMPUTING",
+      "NETWORKS",
+      "DATA_SCIENCE"
+    ]
+  },
+  {
+    "companyEmail": "c13@mail.gr",
+    "title": "Marketing Analyst Intern",
+    "description": "Engage in UI/UX evaluations for improving product usability.",
+    "startDate": "2025-07-26",
+    "endDate": "2025-09-28",
+    "skills": [
+      "UI_UX_DESIGN",
+      "PROJECT_MANAGEMENT",
+      "PYTHON",
+      "DATABASE_MANAGEMENT"
+    ],
+    "interests": [
+      "SOFTWARE_ENGINEERING",
+      "HUMAN_COMPUTER_INTERACTION",
+      "GRAPHIC_ARTS",
+      "MARKETING",
+      "BUSINESS_ADMINISTRATION"
+    ]
+  },
+  {
+    "companyEmail": "c13@mail.gr",
+    "title": "Technical Writer Intern",
+    "description": "Assist in technical writing, presentations, and stakeholder reports.",
+    "startDate": "2025-07-27",
+    "endDate": "2025-10-12",
+    "skills": [
+      "TRANSLATION_INTERPRETING",
+      "SCIENTIFIC_WRITING",
+      "COMMUNICATION",
+      "JAVA",
+      "GRAPHIC_DESIGN",
+      "PYTHON"
+    ],
+    "interests": [
+      "CLOUD_COMPUTING",
+      "EDUCATION_SCIENCES",
+      "GRAPHIC_ARTS",
+      "DATA_SCIENCE",
+      "SOFTWARE_ENGINEERING"
+    ]
+  },
+  {
+    "companyEmail": "c14@mail.gr",
+    "title": "Marketing Analyst Intern",
+    "description": "Assist in technical writing, presentations, and stakeholder reports.",
+    "startDate": "2025-07-27",
+    "endDate": "2025-11-04",
+    "skills": [
+      "UI_UX_DESIGN",
+      "PYTHON",
+      "JAVA",
+      "DATABASE_MANAGEMENT",
+      "SOFTWARE_TESTING",
+      "NETWORK_CONFIGURATION"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "NETWORKS"
+    ]
+  },
+  {
+    "companyEmail": "c14@mail.gr",
+    "title": "Technical Writer Intern",
+    "description": "Engage in UI/UX evaluations for improving product usability.",
+    "startDate": "2025-07-28",
+    "endDate": "2025-10-31",
+    "skills": [
+      "COMMUNICATION",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "DATA_SCIENCE",
+      "CLOUD_COMPUTING"
+    ]
+  },
+  {
+    "companyEmail": "c14@mail.gr",
+    "title": "QA Tester Intern",
+    "description": "Assist in real client-facing projects with dedicated mentorship.",
+    "startDate": "2025-07-29",
+    "endDate": "2025-10-10",
+    "skills": [
+      "JAVA",
+      "SCIENTIFIC_WRITING"
+    ],
+    "interests": [
+      "CLOUD_COMPUTING",
+      "DATA_SCIENCE",
+      "SOFTWARE_ENGINEERING",
+      "BUSINESS_ADMINISTRATION",
+      "GRAPHIC_ARTS"
+    ]
+  },
+  {
+    "companyEmail": "c15@mail.gr",
+    "title": "Backend Intern",
+    "description": "Assist in technical writing, presentations, and stakeholder reports.",
+    "startDate": "2025-07-29",
+    "endDate": "2025-10-14",
+    "skills": [
+      "COMMUNICATION",
+      "UI_UX_DESIGN",
+      "DATABASE_MANAGEMENT",
+      "GRAPHIC_DESIGN",
+      "JAVA"
+    ],
+    "interests": [
+      "GRAPHIC_ARTS",
+      "ARTIFICIAL_INTELLIGENCE",
+      "MARKETING",
+      "DATA_SCIENCE",
+      "NETWORKS"
+    ]
+  },
+  {
+    "companyEmail": "c15@mail.gr",
+    "title": "Software Developer Intern",
+    "description": "Work with a collaborative team on real-world case studies.",
+    "startDate": "2025-07-30",
+    "endDate": "2025-10-24",
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "PYTHON",
+      "TRANSLATION_INTERPRETING",
+      "JAVA",
+      "DATABASE_MANAGEMENT",
+      "NETWORK_CONFIGURATION"
+    ],
+    "interests": [
+      "DATA_SCIENCE",
+      "BUSINESS_ADMINISTRATION"
+    ]
+  },
+  {
+    "companyEmail": "c15@mail.gr",
+    "title": "Data Analytics Intern",
+    "description": "Support marketing research and analytics using live data.",
+    "startDate": "2025-07-31",
+    "endDate": "2025-10-30",
+    "skills": [
+      "NETWORK_CONFIGURATION",
+      "UI_UX_DESIGN",
+      "SOFTWARE_TESTING"
+    ],
+    "interests": [
+      "CLOUD_COMPUTING",
+      "NETWORKS",
+      "DATA_SCIENCE",
+      "GRAPHIC_ARTS",
+      "EDUCATION_SCIENCES",
+      "ARTIFICIAL_INTELLIGENCE"
+    ]
+  },
+  {
+    "companyEmail": "c16@mail.gr",
+    "title": "AI Research Intern",
+    "description": "Participate in hands-on development and testing activities.",
+    "startDate": "2025-07-31",
+    "endDate": "2025-11-08",
+    "skills": [
+      "TRANSLATION_INTERPRETING",
+      "GRAPHIC_DESIGN",
+      "CAD_DESIGN",
+      "JAVA",
+      "COMMUNICATION",
+      "SOFTWARE_TESTING"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION",
+      "ARTIFICIAL_INTELLIGENCE",
+      "GRAPHIC_ARTS",
+      "EDUCATION_SCIENCES"
+    ]
+  },
+  {
+    "companyEmail": "c16@mail.gr",
+    "title": "Backend Intern",
+    "description": "Participate in hands-on development and testing activities.",
+    "startDate": "2025-08-01",
+    "endDate": "2025-10-16",
+    "skills": [
+      "SOFTWARE_TESTING",
+      "UI_UX_DESIGN"
+    ],
+    "interests": [
+      "NETWORKS",
+      "GRAPHIC_ARTS",
+      "BUSINESS_ADMINISTRATION",
+      "CLOUD_COMPUTING",
+      "DATA_SCIENCE"
+    ]
+  },
+  {
+    "companyEmail": "c16@mail.gr",
+    "title": "AI Research Intern",
+    "description": "Contribute to QA documentation and test case design.",
+    "startDate": "2025-08-02",
+    "endDate": "2025-11-30",
+    "skills": [
+      "PROGRAMMING",
+      "JAVA",
+      "GRAPHIC_DESIGN",
+      "UI_UX_DESIGN",
+      "PROJECT_MANAGEMENT",
+      "SCIENTIFIC_WRITING"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "ARTIFICIAL_INTELLIGENCE",
+      "GRAPHIC_ARTS",
+      "HUMAN_COMPUTER_INTERACTION",
+      "MARKETING",
+      "SOFTWARE_ENGINEERING"
+    ]
+  },
+  {
+    "companyEmail": "c17@mail.gr",
+    "title": "AI Research Intern",
+    "description": "Support marketing research and analytics using live data.",
+    "startDate": "2025-08-02",
+    "endDate": "2025-11-28",
+    "skills": [
+      "PROGRAMMING",
+      "JAVA",
+      "COMMUNICATION"
+    ],
+    "interests": [
+      "DATA_SCIENCE",
+      "CLOUD_COMPUTING"
+    ]
+  },
+  {
+    "companyEmail": "c17@mail.gr",
+    "title": "Network Admin Intern",
+    "description": "Get involved with agile sprints and DevOps practices.",
+    "startDate": "2025-08-03",
+    "endDate": "2025-10-27",
+    "skills": [
+      "CAD_DESIGN",
+      "PROJECT_MANAGEMENT",
+      "DATABASE_MANAGEMENT"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION",
+      "NETWORKS",
+      "GRAPHIC_ARTS",
+      "SOFTWARE_ENGINEERING"
+    ]
+  },
+  {
+    "companyEmail": "c17@mail.gr",
+    "title": "QA Tester Intern",
+    "description": "Support marketing research and analytics using live data.",
+    "startDate": "2025-08-04",
+    "endDate": "2025-10-18",
+    "skills": [
+      "SCIENTIFIC_WRITING",
+      "CAD_DESIGN",
+      "PROJECT_MANAGEMENT",
+      "DATABASE_MANAGEMENT"
+    ],
+    "interests": [
+      "NETWORKS",
+      "GRAPHIC_ARTS",
+      "BUSINESS_ADMINISTRATION",
+      "SOFTWARE_ENGINEERING",
+      "MARKETING",
+      "CLOUD_COMPUTING"
+    ]
+  },
+  {
+    "companyEmail": "c18@mail.gr",
+    "title": "QA Tester Intern",
+    "description": "Help build internal tools using Python and modern web stacks.",
+    "startDate": "2025-08-04",
+    "endDate": "2025-10-05",
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "ARTIFICIAL_INTELLIGENCE",
+      "SOFTWARE_ENGINEERING"
+    ]
+  },
+  {
+    "companyEmail": "c18@mail.gr",
+    "title": "Technical Writer Intern",
+    "description": "Engage in UI/UX evaluations for improving product usability.",
+    "startDate": "2025-08-05",
+    "endDate": "2025-11-15",
+    "skills": [
+      "SCIENTIFIC_WRITING",
+      "CAD_DESIGN",
+      "DATABASE_MANAGEMENT",
+      "JAVA",
+      "NETWORK_CONFIGURATION",
+      "PROJECT_MANAGEMENT"
+    ],
+    "interests": [
+      "ARTIFICIAL_INTELLIGENCE",
+      "MARKETING",
+      "SOFTWARE_ENGINEERING",
+      "HUMAN_COMPUTER_INTERACTION"
+    ]
+  },
+  {
+    "companyEmail": "c18@mail.gr",
+    "title": "AI Research Intern",
+    "description": "Join a cross-functional team contributing to scalable services.",
+    "startDate": "2025-08-06",
+    "endDate": "2025-11-20",
+    "skills": [
+      "DATABASE_MANAGEMENT",
+      "UI_UX_DESIGN",
+      "PROGRAMMING",
+      "JAVA"
+    ],
+    "interests": [
+      "HUMAN_COMPUTER_INTERACTION",
+      "BUSINESS_ADMINISTRATION",
+      "ARTIFICIAL_INTELLIGENCE"
+    ]
+  },
+  {
+    "companyEmail": "c19@mail.gr",
+    "title": "Marketing Analyst Intern",
+    "description": "Engage in UI/UX evaluations for improving product usability.",
+    "startDate": "2025-08-06",
+    "endDate": "2025-12-04",
+    "skills": [
+      "UI_UX_DESIGN",
+      "NETWORK_CONFIGURATION"
+    ],
+    "interests": [
+      "CLOUD_COMPUTING",
+      "DATA_SCIENCE",
+      "ARTIFICIAL_INTELLIGENCE",
+      "GRAPHIC_ARTS",
+      "HUMAN_COMPUTER_INTERACTION",
+      "EDUCATION_SCIENCES"
+    ]
+  },
+  {
+    "companyEmail": "c19@mail.gr",
+    "title": "Technical Writer Intern",
+    "description": "Join a cross-functional team contributing to scalable services.",
+    "startDate": "2025-08-07",
+    "endDate": "2025-11-24",
+    "skills": [
+      "CAD_DESIGN",
+      "DATABASE_MANAGEMENT",
+      "GRAPHIC_DESIGN",
+      "PROGRAMMING",
+      "NETWORK_CONFIGURATION",
+      "UI_UX_DESIGN"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION",
+      "MARKETING",
+      "DATA_SCIENCE",
+      "GRAPHIC_ARTS"
+    ]
+  },
+  {
+    "companyEmail": "c19@mail.gr",
+    "title": "Network Admin Intern",
+    "description": "Join a cross-functional team contributing to scalable services.",
+    "startDate": "2025-08-08",
+    "endDate": "2025-11-01",
+    "skills": [
+      "PYTHON",
+      "GRAPHIC_DESIGN",
+      "DATABASE_MANAGEMENT",
+      "CAD_DESIGN",
+      "SOFTWARE_TESTING",
+      "JAVA"
+    ],
+    "interests": [
+      "HUMAN_COMPUTER_INTERACTION",
+      "GRAPHIC_ARTS",
+      "DATA_SCIENCE",
+      "EDUCATION_SCIENCES"
+    ]
+  },
+  {
+    "companyEmail": "c20@mail.gr",
+    "title": "Frontend Intern",
+    "description": "Assist in real client-facing projects with dedicated mentorship.",
+    "startDate": "2025-08-08",
+    "endDate": "2025-10-07",
+    "skills": [
+      "PROJECT_MANAGEMENT",
+      "SCIENTIFIC_WRITING",
+      "JAVA",
+      "SOFTWARE_TESTING",
+      "CAD_DESIGN"
+    ],
+    "interests": [
+      "ARTIFICIAL_INTELLIGENCE",
+      "NETWORKS",
+      "HUMAN_COMPUTER_INTERACTION",
+      "EDUCATION_SCIENCES"
+    ]
+  },
+  {
+    "companyEmail": "c20@mail.gr",
+    "title": "Network Admin Intern",
+    "description": "Engage in UI/UX evaluations for improving product usability.",
+    "startDate": "2025-08-09",
+    "endDate": "2025-12-04",
+    "skills": [
+      "PROGRAMMING",
+      "NETWORK_CONFIGURATION",
+      "JAVA",
+      "COMMUNICATION",
+      "PROJECT_MANAGEMENT",
+      "GRAPHIC_DESIGN"
+    ],
+    "interests": [
+      "HUMAN_COMPUTER_INTERACTION",
+      "DATA_SCIENCE",
+      "NETWORKS"
+    ]
+  },
+  {
+    "companyEmail": "c20@mail.gr",
+    "title": "Backend Intern",
+    "description": "Assist in real client-facing projects with dedicated mentorship.",
+    "startDate": "2025-08-10",
+    "endDate": "2025-11-09",
+    "skills": [
+      "PROGRAMMING",
+      "PYTHON",
+      "JAVA",
+      "DATABASE_MANAGEMENT",
+      "COMMUNICATION",
+      "SCIENTIFIC_WRITING"
+    ],
+    "interests": [
+      "ARTIFICIAL_INTELLIGENCE",
+      "CLOUD_COMPUTING",
+      "DATA_SCIENCE",
+      "GRAPHIC_ARTS",
+      "MARKETING",
+      "BUSINESS_ADMINISTRATION"
+    ]
+  },
+  {
+    "companyEmail": "c21@mail.gr",
+    "title": "Marketing Analyst Intern",
+    "description": "Participate in hands-on development and testing activities.",
+    "startDate": "2025-08-10",
+    "endDate": "2025-11-25",
+    "skills": [
+      "SCIENTIFIC_WRITING",
+      "CAD_DESIGN",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "NETWORKS",
+      "HUMAN_COMPUTER_INTERACTION",
+      "ARTIFICIAL_INTELLIGENCE",
+      "MARKETING"
+    ]
+  },
+  {
+    "companyEmail": "c21@mail.gr",
+    "title": "AI Research Intern",
+    "description": "Participate in hands-on development and testing activities.",
+    "startDate": "2025-08-11",
+    "endDate": "2025-10-26",
+    "skills": [
+      "COMMUNICATION",
+      "JAVA"
+    ],
+    "interests": [
+      "MARKETING",
+      "NETWORKS",
+      "ARTIFICIAL_INTELLIGENCE",
+      "DATA_SCIENCE"
+    ]
+  },
+  {
+    "companyEmail": "c21@mail.gr",
+    "title": "Cloud Engineering Intern",
+    "description": "Contribute to QA documentation and test case design.",
+    "startDate": "2025-08-12",
+    "endDate": "2025-11-10",
+    "skills": [
+      "CAD_DESIGN",
+      "SOFTWARE_TESTING",
+      "NETWORK_CONFIGURATION",
+      "PROGRAMMING",
+      "UI_UX_DESIGN"
+    ],
+    "interests": [
+      "CLOUD_COMPUTING",
+      "DATA_SCIENCE",
+      "EDUCATION_SCIENCES",
+      "BUSINESS_ADMINISTRATION",
+      "GRAPHIC_ARTS"
+    ]
+  },
+  {
+    "companyEmail": "c22@mail.gr",
+    "title": "Cloud Engineering Intern",
+    "description": "Participate in hands-on development and testing activities.",
+    "startDate": "2025-08-12",
+    "endDate": "2025-11-26",
+    "skills": [
+      "PROGRAMMING",
+      "SCIENTIFIC_WRITING",
+      "JAVA"
+    ],
+    "interests": [
+      "NETWORKS",
+      "HUMAN_COMPUTER_INTERACTION",
+      "CLOUD_COMPUTING"
+    ]
+  },
+  {
+    "companyEmail": "c22@mail.gr",
+    "title": "Technical Writer Intern",
+    "description": "Get involved with agile sprints and DevOps practices.",
+    "startDate": "2025-08-13",
+    "endDate": "2025-10-18",
+    "skills": [
+      "PROJECT_MANAGEMENT",
+      "SOFTWARE_TESTING",
+      "DATABASE_MANAGEMENT",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "NETWORKS",
+      "SOFTWARE_ENGINEERING",
+      "MARKETING",
+      "CLOUD_COMPUTING",
+      "ARTIFICIAL_INTELLIGENCE",
+      "HUMAN_COMPUTER_INTERACTION"
+    ]
+  },
+  {
+    "companyEmail": "c22@mail.gr",
+    "title": "Network Admin Intern",
+    "description": "Get involved with agile sprints and DevOps practices.",
+    "startDate": "2025-08-14",
+    "endDate": "2025-11-25",
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "SOFTWARE_TESTING",
+      "NETWORK_CONFIGURATION"
+    ],
+    "interests": [
+      "GRAPHIC_ARTS",
+      "SOFTWARE_ENGINEERING",
+      "ARTIFICIAL_INTELLIGENCE"
+    ]
+  },
+  {
+    "companyEmail": "c23@mail.gr",
+    "title": "AI Research Intern",
+    "description": "Participate in hands-on development and testing activities.",
+    "startDate": "2025-08-14",
+    "endDate": "2025-10-27",
+    "skills": [
+      "SCIENTIFIC_WRITING",
+      "COMMUNICATION",
+      "PYTHON",
+      "CAD_DESIGN",
+      "JAVA",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "GRAPHIC_ARTS",
+      "NETWORKS"
+    ]
+  },
+  {
+    "companyEmail": "c23@mail.gr",
+    "title": "Cloud Engineering Intern",
+    "description": "Help build internal tools using Python and modern web stacks.",
+    "startDate": "2025-08-15",
+    "endDate": "2025-10-17",
+    "skills": [
+      "PYTHON",
+      "GRAPHIC_DESIGN",
+      "NETWORK_CONFIGURATION",
+      "COMMUNICATION",
+      "CAD_DESIGN"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION",
+      "SOFTWARE_ENGINEERING",
+      "GRAPHIC_ARTS",
+      "MARKETING",
+      "NETWORKS",
+      "CLOUD_COMPUTING"
+    ]
+  },
+  {
+    "companyEmail": "c23@mail.gr",
+    "title": "Software Developer Intern",
+    "description": "Contribute to QA documentation and test case design.",
+    "startDate": "2025-08-16",
+    "endDate": "2025-11-21",
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "TRANSLATION_INTERPRETING",
+      "COMMUNICATION"
+    ],
+    "interests": [
+      "SOFTWARE_ENGINEERING",
+      "DATA_SCIENCE",
+      "MARKETING",
+      "ARTIFICIAL_INTELLIGENCE"
+    ]
+  },
+  {
+    "companyEmail": "c24@mail.gr",
+    "title": "Marketing Analyst Intern",
+    "description": "Assist in technical writing, presentations, and stakeholder reports.",
+    "startDate": "2025-08-16",
+    "endDate": "2025-11-09",
+    "skills": [
+      "COMMUNICATION",
+      "PROGRAMMING",
+      "UI_UX_DESIGN"
+    ],
+    "interests": [
+      "CLOUD_COMPUTING",
+      "NETWORKS"
+    ]
+  },
+  {
+    "companyEmail": "c24@mail.gr",
+    "title": "Software Developer Intern",
+    "description": "Work with a collaborative team on real-world case studies.",
+    "startDate": "2025-08-17",
+    "endDate": "2025-11-21",
+    "skills": [
+      "NETWORK_CONFIGURATION",
+      "DATABASE_MANAGEMENT"
+    ],
+    "interests": [
+      "CLOUD_COMPUTING",
+      "DATA_SCIENCE",
+      "HUMAN_COMPUTER_INTERACTION",
+      "EDUCATION_SCIENCES",
+      "MARKETING",
+      "NETWORKS"
+    ]
+  },
+  {
+    "companyEmail": "c24@mail.gr",
+    "title": "Network Admin Intern",
+    "description": "Support marketing research and analytics using live data.",
+    "startDate": "2025-08-18",
+    "endDate": "2025-11-21",
+    "skills": [
+      "DATABASE_MANAGEMENT",
+      "PYTHON",
+      "CAD_DESIGN"
+    ],
+    "interests": [
+      "HUMAN_COMPUTER_INTERACTION",
+      "SOFTWARE_ENGINEERING",
+      "EDUCATION_SCIENCES",
+      "MARKETING"
+    ]
+  },
+  {
+    "companyEmail": "c25@mail.gr",
+    "title": "Marketing Analyst Intern",
+    "description": "Join a cross-functional team contributing to scalable services.",
+    "startDate": "2025-08-18",
+    "endDate": "2025-10-22",
+    "skills": [
+      "COMMUNICATION",
+      "SOFTWARE_TESTING",
+      "DATABASE_MANAGEMENT",
+      "GRAPHIC_DESIGN"
+    ],
+    "interests": [
+      "CLOUD_COMPUTING",
+      "NETWORKS",
+      "EDUCATION_SCIENCES"
+    ]
+  },
+  {
+    "companyEmail": "c25@mail.gr",
+    "title": "Data Analytics Intern",
+    "description": "Engage in UI/UX evaluations for improving product usability.",
+    "startDate": "2025-08-19",
+    "endDate": "2025-11-28",
+    "skills": [
+      "PYTHON",
+      "SOFTWARE_TESTING",
+      "DATABASE_MANAGEMENT",
+      "JAVA",
+      "PROJECT_MANAGEMENT"
+    ],
+    "interests": [
+      "ARTIFICIAL_INTELLIGENCE",
+      "EDUCATION_SCIENCES",
+      "BUSINESS_ADMINISTRATION",
+      "MARKETING"
+    ]
+  },
+  {
+    "companyEmail": "c25@mail.gr",
+    "title": "QA Tester Intern",
+    "description": "Work with a collaborative team on real-world case studies.",
+    "startDate": "2025-08-20",
+    "endDate": "2025-11-28",
+    "skills": [
+      "CAD_DESIGN",
+      "PROGRAMMING",
+      "PROJECT_MANAGEMENT"
+    ],
+    "interests": [
+      "MARKETING",
+      "SOFTWARE_ENGINEERING"
+    ]
+  },
+  {
+    "companyEmail": "c26@mail.gr",
+    "title": "Backend Intern",
+    "description": "Assist in real client-facing projects with dedicated mentorship.",
+    "startDate": "2025-08-20",
+    "endDate": "2025-11-02",
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "UI_UX_DESIGN",
+      "PROJECT_MANAGEMENT",
+      "SOFTWARE_TESTING"
+    ],
+    "interests": [
+      "CLOUD_COMPUTING",
+      "DATA_SCIENCE",
+      "HUMAN_COMPUTER_INTERACTION",
+      "GRAPHIC_ARTS",
+      "BUSINESS_ADMINISTRATION",
+      "EDUCATION_SCIENCES"
+    ]
+  },
+  {
+    "companyEmail": "c26@mail.gr",
+    "title": "QA Tester Intern",
+    "description": "Contribute to QA documentation and test case design.",
+    "startDate": "2025-08-21",
+    "endDate": "2025-11-01",
+    "skills": [
+      "PROJECT_MANAGEMENT",
+      "TRANSLATION_INTERPRETING"
+    ],
+    "interests": [
+      "HUMAN_COMPUTER_INTERACTION",
+      "CLOUD_COMPUTING",
+      "SOFTWARE_ENGINEERING"
+    ]
+  },
+  {
+    "companyEmail": "c26@mail.gr",
+    "title": "AI Research Intern",
+    "description": "Support marketing research and analytics using live data.",
+    "startDate": "2025-08-22",
+    "endDate": "2025-12-11",
+    "skills": [
+      "PYTHON",
+      "COMMUNICATION",
+      "PROJECT_MANAGEMENT",
+      "PROGRAMMING",
+      "DATABASE_MANAGEMENT",
+      "TRANSLATION_INTERPRETING"
+    ],
+    "interests": [
+      "GRAPHIC_ARTS",
+      "HUMAN_COMPUTER_INTERACTION",
+      "MARKETING",
+      "CLOUD_COMPUTING",
+      "SOFTWARE_ENGINEERING"
+    ]
+  },
+  {
+    "companyEmail": "c27@mail.gr",
+    "title": "Frontend Intern",
+    "description": "Assist in technical writing, presentations, and stakeholder reports.",
+    "startDate": "2025-08-22",
+    "endDate": "2025-11-14",
+    "skills": [
+      "COMMUNICATION",
+      "JAVA",
+      "TRANSLATION_INTERPRETING"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION",
+      "ARTIFICIAL_INTELLIGENCE",
+      "SOFTWARE_ENGINEERING",
+      "CLOUD_COMPUTING",
+      "MARKETING",
+      "NETWORKS"
+    ]
+  },
+  {
+    "companyEmail": "c27@mail.gr",
+    "title": "Cloud Engineering Intern",
+    "description": "Support marketing research and analytics using live data.",
+    "startDate": "2025-08-23",
+    "endDate": "2025-11-15",
+    "skills": [
+      "COMMUNICATION",
+      "SOFTWARE_TESTING",
+      "SCIENTIFIC_WRITING",
+      "PROJECT_MANAGEMENT",
+      "TRANSLATION_INTERPRETING"
+    ],
+    "interests": [
+      "ARTIFICIAL_INTELLIGENCE",
+      "HUMAN_COMPUTER_INTERACTION",
+      "SOFTWARE_ENGINEERING",
+      "DATA_SCIENCE",
+      "BUSINESS_ADMINISTRATION",
+      "CLOUD_COMPUTING"
+    ]
+  },
+  {
+    "companyEmail": "c27@mail.gr",
+    "title": "UI/UX Intern",
+    "description": "Join a cross-functional team contributing to scalable services.",
+    "startDate": "2025-08-24",
+    "endDate": "2025-11-08",
+    "skills": [
+      "PYTHON",
+      "TRANSLATION_INTERPRETING",
+      "SCIENTIFIC_WRITING",
+      "UI_UX_DESIGN",
+      "JAVA",
+      "COMMUNICATION"
+    ],
+    "interests": [
+      "NETWORKS",
+      "CLOUD_COMPUTING",
+      "MARKETING",
+      "HUMAN_COMPUTER_INTERACTION",
+      "BUSINESS_ADMINISTRATION",
+      "EDUCATION_SCIENCES"
+    ]
+  },
+  {
+    "companyEmail": "c28@mail.gr",
+    "title": "QA Tester Intern",
+    "description": "Contribute to QA documentation and test case design.",
+    "startDate": "2025-08-24",
+    "endDate": "2025-11-08",
+    "skills": [
+      "SCIENTIFIC_WRITING",
+      "GRAPHIC_DESIGN",
+      "UI_UX_DESIGN"
+    ],
+    "interests": [
+      "CLOUD_COMPUTING",
+      "HUMAN_COMPUTER_INTERACTION"
+    ]
+  },
+  {
+    "companyEmail": "c28@mail.gr",
+    "title": "UI/UX Intern",
+    "description": "Work with a collaborative team on real-world case studies.",
+    "startDate": "2025-08-25",
+    "endDate": "2025-11-04",
+    "skills": [
+      "PROJECT_MANAGEMENT",
+      "UI_UX_DESIGN",
+      "PROGRAMMING",
+      "GRAPHIC_DESIGN",
+      "NETWORK_CONFIGURATION",
+      "SOFTWARE_TESTING"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION",
+      "GRAPHIC_ARTS",
+      "HUMAN_COMPUTER_INTERACTION",
+      "NETWORKS",
+      "EDUCATION_SCIENCES",
+      "CLOUD_COMPUTING"
+    ]
+  },
+  {
+    "companyEmail": "c28@mail.gr",
+    "title": "Frontend Intern",
+    "description": "Assist in real client-facing projects with dedicated mentorship.",
+    "startDate": "2025-08-26",
+    "endDate": "2025-11-15",
+    "skills": [
+      "JAVA",
+      "PYTHON",
+      "PROJECT_MANAGEMENT",
+      "CAD_DESIGN",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "SOFTWARE_ENGINEERING",
+      "ARTIFICIAL_INTELLIGENCE",
+      "EDUCATION_SCIENCES",
+      "NETWORKS"
+    ]
+  },
+  {
+    "companyEmail": "c29@mail.gr",
+    "title": "Data Analytics Intern",
+    "description": "Assist in technical writing, presentations, and stakeholder reports.",
+    "startDate": "2025-08-26",
+    "endDate": "2025-11-06",
+    "skills": [
+      "TRANSLATION_INTERPRETING",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "BUSINESS_ADMINISTRATION"
+    ]
+  },
+  {
+    "companyEmail": "c29@mail.gr",
+    "title": "UI/UX Intern",
+    "description": "Participate in hands-on development and testing activities.",
+    "startDate": "2025-08-27",
+    "endDate": "2025-11-12",
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "COMMUNICATION",
+      "UI_UX_DESIGN",
+      "SCIENTIFIC_WRITING"
+    ],
+    "interests": [
+      "SOFTWARE_ENGINEERING",
+      "HUMAN_COMPUTER_INTERACTION",
+      "CLOUD_COMPUTING",
+      "DATA_SCIENCE",
+      "MARKETING"
+    ]
+  },
+  {
+    "companyEmail": "c29@mail.gr",
+    "title": "Technical Writer Intern",
+    "description": "Join a cross-functional team contributing to scalable services.",
+    "startDate": "2025-08-28",
+    "endDate": "2025-11-21",
+    "skills": [
+      "PROJECT_MANAGEMENT",
+      "COMMUNICATION",
+      "PROGRAMMING",
+      "UI_UX_DESIGN",
+      "JAVA"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "NETWORKS"
+    ]
+  },
+  {
+    "companyEmail": "c30@mail.gr",
+    "title": "Frontend Intern",
+    "description": "Engage in UI/UX evaluations for improving product usability.",
+    "startDate": "2025-08-28",
+    "endDate": "2025-12-13",
+    "skills": [
+      "UI_UX_DESIGN",
+      "PROJECT_MANAGEMENT",
+      "COMMUNICATION",
+      "SCIENTIFIC_WRITING",
+      "NETWORK_CONFIGURATION"
+    ],
+    "interests": [
+      "HUMAN_COMPUTER_INTERACTION",
+      "ARTIFICIAL_INTELLIGENCE"
+    ]
+  },
+  {
+    "companyEmail": "c30@mail.gr",
+    "title": "Data Analytics Intern",
+    "description": "Help build internal tools using Python and modern web stacks.",
+    "startDate": "2025-08-29",
+    "endDate": "2025-12-05",
+    "skills": [
+      "SOFTWARE_TESTING",
+      "GRAPHIC_DESIGN",
+      "SCIENTIFIC_WRITING",
+      "CAD_DESIGN",
+      "PROGRAMMING",
+      "COMMUNICATION"
+    ],
+    "interests": [
+      "GRAPHIC_ARTS",
+      "HUMAN_COMPUTER_INTERACTION",
+      "CLOUD_COMPUTING",
+      "BUSINESS_ADMINISTRATION",
+      "MARKETING",
+      "EDUCATION_SCIENCES"
+    ]
+  },
+  {
+    "companyEmail": "c30@mail.gr",
+    "title": "Backend Intern",
+    "description": "Support marketing research and analytics using live data.",
+    "startDate": "2025-08-30",
+    "endDate": "2025-12-10",
+    "skills": [
+      "TRANSLATION_INTERPRETING",
+      "GRAPHIC_DESIGN",
+      "PROGRAMMING",
+      "SOFTWARE_TESTING",
+      "UI_UX_DESIGN",
+      "COMMUNICATION"
+    ],
+    "interests": [
+      "NETWORKS",
+      "EDUCATION_SCIENCES",
+      "GRAPHIC_ARTS",
+      "ARTIFICIAL_INTELLIGENCE",
+      "HUMAN_COMPUTER_INTERACTION",
+      "BUSINESS_ADMINISTRATION"
+    ]
+  },
+  {
+    "companyEmail": "c31@mail.gr",
+    "title": "UI/UX Intern",
+    "description": "Support marketing research and analytics using live data.",
+    "startDate": "2025-08-30",
+    "endDate": "2025-12-10",
+    "skills": [
+      "DATABASE_MANAGEMENT",
+      "SOFTWARE_TESTING",
+      "PROJECT_MANAGEMENT",
+      "NETWORK_CONFIGURATION"
+    ],
+    "interests": [
+      "CLOUD_COMPUTING",
+      "NETWORKS",
+      "GRAPHIC_ARTS"
+    ]
+  },
+  {
+    "companyEmail": "c31@mail.gr",
+    "title": "Frontend Intern",
+    "description": "Help build internal tools using Python and modern web stacks.",
+    "startDate": "2025-08-31",
+    "endDate": "2025-12-03",
+    "skills": [
+      "JAVA",
+      "PYTHON"
+    ],
+    "interests": [
+      "SOFTWARE_ENGINEERING",
+      "BUSINESS_ADMINISTRATION",
+      "GRAPHIC_ARTS",
+      "EDUCATION_SCIENCES"
+    ]
+  },
+  {
+    "companyEmail": "c31@mail.gr",
+    "title": "Network Admin Intern",
+    "description": "Assist in technical writing, presentations, and stakeholder reports.",
+    "startDate": "2025-09-01",
+    "endDate": "2025-11-12",
+    "skills": [
+      "JAVA",
+      "DATABASE_MANAGEMENT",
+      "COMMUNICATION",
+      "CAD_DESIGN"
+    ],
+    "interests": [
+      "MARKETING",
+      "GRAPHIC_ARTS",
+      "DATA_SCIENCE",
+      "HUMAN_COMPUTER_INTERACTION",
+      "ARTIFICIAL_INTELLIGENCE"
+    ]
+  },
+  {
+    "companyEmail": "c32@mail.gr",
+    "title": "Software Developer Intern",
+    "description": "Help build internal tools using Python and modern web stacks.",
+    "startDate": "2025-09-01",
+    "endDate": "2025-12-24",
+    "skills": [
+      "COMMUNICATION",
+      "UI_UX_DESIGN",
+      "DATABASE_MANAGEMENT",
+      "NETWORK_CONFIGURATION",
+      "TRANSLATION_INTERPRETING",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "SOFTWARE_ENGINEERING",
+      "NETWORKS",
+      "CLOUD_COMPUTING",
+      "DATA_SCIENCE"
+    ]
+  },
+  {
+    "companyEmail": "c32@mail.gr",
+    "title": "UI/UX Intern",
+    "description": "Assist in technical writing, presentations, and stakeholder reports.",
+    "startDate": "2025-09-02",
+    "endDate": "2025-12-28",
+    "skills": [
+      "NETWORK_CONFIGURATION",
+      "UI_UX_DESIGN",
+      "PYTHON",
+      "PROJECT_MANAGEMENT"
+    ],
+    "interests": [
+      "NETWORKS",
+      "DATA_SCIENCE",
+      "MARKETING"
+    ]
+  },
+  {
+    "companyEmail": "c32@mail.gr",
+    "title": "Cloud Engineering Intern",
+    "description": "Participate in hands-on development and testing activities.",
+    "startDate": "2025-09-03",
+    "endDate": "2025-12-03",
+    "skills": [
+      "UI_UX_DESIGN",
+      "TRANSLATION_INTERPRETING",
+      "PYTHON"
+    ],
+    "interests": [
+      "SOFTWARE_ENGINEERING",
+      "HUMAN_COMPUTER_INTERACTION",
+      "BUSINESS_ADMINISTRATION",
+      "GRAPHIC_ARTS"
+    ]
+  },
+  {
+    "companyEmail": "c33@mail.gr",
+    "title": "Data Analytics Intern",
+    "description": "Participate in hands-on development and testing activities.",
+    "startDate": "2025-09-03",
+    "endDate": "2025-11-09",
+    "skills": [
+      "NETWORK_CONFIGURATION",
+      "DATABASE_MANAGEMENT",
+      "CAD_DESIGN",
+      "GRAPHIC_DESIGN"
+    ],
+    "interests": [
+      "MARKETING",
+      "HUMAN_COMPUTER_INTERACTION"
+    ]
+  },
+  {
+    "companyEmail": "c33@mail.gr",
+    "title": "UI/UX Intern",
+    "description": "Work with a collaborative team on real-world case studies.",
+    "startDate": "2025-09-04",
+    "endDate": "2025-11-24",
+    "skills": [
+      "CAD_DESIGN",
+      "PYTHON",
+      "UI_UX_DESIGN",
+      "PROJECT_MANAGEMENT",
+      "COMMUNICATION"
+    ],
+    "interests": [
+      "MARKETING",
+      "BUSINESS_ADMINISTRATION",
+      "NETWORKS",
+      "HUMAN_COMPUTER_INTERACTION",
+      "DATA_SCIENCE",
+      "CLOUD_COMPUTING"
+    ]
+  },
+  {
+    "companyEmail": "c33@mail.gr",
+    "title": "Data Analytics Intern",
+    "description": "Participate in hands-on development and testing activities.",
+    "startDate": "2025-09-05",
+    "endDate": "2025-12-06",
+    "skills": [
+      "UI_UX_DESIGN",
+      "GRAPHIC_DESIGN",
+      "JAVA",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "DATA_SCIENCE",
+      "HUMAN_COMPUTER_INTERACTION",
+      "MARKETING",
+      "SOFTWARE_ENGINEERING"
+    ]
+  },
+  {
+    "companyEmail": "c34@mail.gr",
+    "title": "Network Admin Intern",
+    "description": "Engage in UI/UX evaluations for improving product usability.",
+    "startDate": "2025-09-05",
+    "endDate": "2025-12-29",
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "MARKETING",
+      "NETWORKS",
+      "CLOUD_COMPUTING",
+      "BUSINESS_ADMINISTRATION",
+      "HUMAN_COMPUTER_INTERACTION",
+      "DATA_SCIENCE"
+    ]
+  },
+  {
+    "companyEmail": "c34@mail.gr",
+    "title": "Network Admin Intern",
+    "description": "Contribute to QA documentation and test case design.",
+    "startDate": "2025-09-06",
+    "endDate": "2025-11-23",
+    "skills": [
+      "COMMUNICATION",
+      "NETWORK_CONFIGURATION",
+      "SCIENTIFIC_WRITING",
+      "PYTHON"
+    ],
+    "interests": [
+      "CLOUD_COMPUTING",
+      "BUSINESS_ADMINISTRATION"
+    ]
+  },
+  {
+    "companyEmail": "c34@mail.gr",
+    "title": "Backend Intern",
+    "description": "Join a cross-functional team contributing to scalable services.",
+    "startDate": "2025-09-07",
+    "endDate": "2025-12-02",
+    "skills": [
+      "PROGRAMMING",
+      "COMMUNICATION",
+      "DATABASE_MANAGEMENT"
+    ],
+    "interests": [
+      "HUMAN_COMPUTER_INTERACTION",
+      "DATA_SCIENCE",
+      "GRAPHIC_ARTS",
+      "NETWORKS"
+    ]
+  },
+  {
+    "companyEmail": "c35@mail.gr",
+    "title": "Technical Writer Intern",
+    "description": "Get involved with agile sprints and DevOps practices.",
+    "startDate": "2025-09-07",
+    "endDate": "2025-12-26",
+    "skills": [
+      "JAVA",
+      "COMMUNICATION",
+      "CAD_DESIGN",
+      "GRAPHIC_DESIGN",
+      "SCIENTIFIC_WRITING"
+    ],
+    "interests": [
+      "HUMAN_COMPUTER_INTERACTION",
+      "SOFTWARE_ENGINEERING"
+    ]
+  },
+  {
+    "companyEmail": "c35@mail.gr",
+    "title": "AI Research Intern",
+    "description": "Engage in UI/UX evaluations for improving product usability.",
+    "startDate": "2025-09-08",
+    "endDate": "2025-11-28",
+    "skills": [
+      "JAVA",
+      "CAD_DESIGN",
+      "COMMUNICATION",
+      "DATABASE_MANAGEMENT"
+    ],
+    "interests": [
+      "ARTIFICIAL_INTELLIGENCE",
+      "CLOUD_COMPUTING"
+    ]
+  },
+  {
+    "companyEmail": "c35@mail.gr",
+    "title": "Network Admin Intern",
+    "description": "Assist in real client-facing projects with dedicated mentorship.",
+    "startDate": "2025-09-09",
+    "endDate": "2025-12-17",
+    "skills": [
+      "PROGRAMMING",
+      "SOFTWARE_TESTING"
+    ],
+    "interests": [
+      "HUMAN_COMPUTER_INTERACTION",
+      "DATA_SCIENCE",
+      "NETWORKS",
+      "GRAPHIC_ARTS",
+      "SOFTWARE_ENGINEERING"
+    ]
+  },
+  {
+    "companyEmail": "c36@mail.gr",
+    "title": "Cloud Engineering Intern",
+    "description": "Assist in technical writing, presentations, and stakeholder reports.",
+    "startDate": "2025-09-09",
+    "endDate": "2025-11-08",
+    "skills": [
+      "JAVA",
+      "PROJECT_MANAGEMENT",
+      "GRAPHIC_DESIGN"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION",
+      "MARKETING"
+    ]
+  },
+  {
+    "companyEmail": "c36@mail.gr",
+    "title": "Data Analytics Intern",
+    "description": "Contribute to QA documentation and test case design.",
+    "startDate": "2025-09-10",
+    "endDate": "2025-12-30",
+    "skills": [
+      "TRANSLATION_INTERPRETING",
+      "DATABASE_MANAGEMENT",
+      "NETWORK_CONFIGURATION",
+      "GRAPHIC_DESIGN",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "HUMAN_COMPUTER_INTERACTION",
+      "ARTIFICIAL_INTELLIGENCE"
+    ]
+  },
+  {
+    "companyEmail": "c36@mail.gr",
+    "title": "Marketing Analyst Intern",
+    "description": "Join a cross-functional team contributing to scalable services.",
+    "startDate": "2025-09-11",
+    "endDate": "2025-12-02",
+    "skills": [
+      "PROJECT_MANAGEMENT",
+      "COMMUNICATION",
+      "UI_UX_DESIGN",
+      "DATABASE_MANAGEMENT",
+      "CAD_DESIGN",
+      "PYTHON"
+    ],
+    "interests": [
+      "NETWORKS",
+      "HUMAN_COMPUTER_INTERACTION",
+      "SOFTWARE_ENGINEERING",
+      "GRAPHIC_ARTS",
+      "DATA_SCIENCE"
+    ]
+  },
+  {
+    "companyEmail": "c37@mail.gr",
+    "title": "Frontend Intern",
+    "description": "Get involved with agile sprints and DevOps practices.",
+    "startDate": "2025-09-11",
+    "endDate": "2025-12-01",
+    "skills": [
+      "CAD_DESIGN",
+      "DATABASE_MANAGEMENT",
+      "PROJECT_MANAGEMENT",
+      "TRANSLATION_INTERPRETING",
+      "JAVA"
+    ],
+    "interests": [
+      "SOFTWARE_ENGINEERING",
+      "MARKETING",
+      "BUSINESS_ADMINISTRATION",
+      "ARTIFICIAL_INTELLIGENCE",
+      "NETWORKS",
+      "CLOUD_COMPUTING"
+    ]
+  },
+  {
+    "companyEmail": "c37@mail.gr",
+    "title": "Data Analytics Intern",
+    "description": "Help build internal tools using Python and modern web stacks.",
+    "startDate": "2025-09-12",
+    "endDate": "2025-12-14",
+    "skills": [
+      "CAD_DESIGN",
+      "TRANSLATION_INTERPRETING",
+      "DATABASE_MANAGEMENT",
+      "PYTHON"
+    ],
+    "interests": [
+      "DATA_SCIENCE",
+      "MARKETING"
+    ]
+  },
+  {
+    "companyEmail": "c37@mail.gr",
+    "title": "Backend Intern",
+    "description": "Contribute to QA documentation and test case design.",
+    "startDate": "2025-09-13",
+    "endDate": "2025-12-15",
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "SOFTWARE_TESTING"
+    ],
+    "interests": [
+      "ARTIFICIAL_INTELLIGENCE",
+      "HUMAN_COMPUTER_INTERACTION"
+    ]
+  },
+  {
+    "companyEmail": "c38@mail.gr",
+    "title": "Technical Writer Intern",
+    "description": "Assist in technical writing, presentations, and stakeholder reports.",
+    "startDate": "2025-09-13",
+    "endDate": "2026-01-03",
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION",
+      "ARTIFICIAL_INTELLIGENCE",
+      "DATA_SCIENCE",
+      "MARKETING",
+      "GRAPHIC_ARTS"
+    ]
+  },
+  {
+    "companyEmail": "c38@mail.gr",
+    "title": "Frontend Intern",
+    "description": "Support marketing research and analytics using live data.",
+    "startDate": "2025-09-14",
+    "endDate": "2025-12-03",
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "PROGRAMMING",
+      "NETWORK_CONFIGURATION",
+      "SCIENTIFIC_WRITING",
+      "CAD_DESIGN"
+    ],
+    "interests": [
+      "CLOUD_COMPUTING",
+      "SOFTWARE_ENGINEERING"
+    ]
+  },
+  {
+    "companyEmail": "c38@mail.gr",
+    "title": "Network Admin Intern",
+    "description": "Engage in UI/UX evaluations for improving product usability.",
+    "startDate": "2025-09-15",
+    "endDate": "2025-12-02",
+    "skills": [
+      "PROJECT_MANAGEMENT",
+      "NETWORK_CONFIGURATION",
+      "SCIENTIFIC_WRITING",
+      "UI_UX_DESIGN"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION",
+      "ARTIFICIAL_INTELLIGENCE"
+    ]
+  },
+  {
+    "companyEmail": "c39@mail.gr",
+    "title": "Data Analytics Intern",
+    "description": "Assist in real client-facing projects with dedicated mentorship.",
+    "startDate": "2025-09-15",
+    "endDate": "2025-12-11",
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "TRANSLATION_INTERPRETING",
+      "COMMUNICATION"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "NETWORKS",
+      "MARKETING"
+    ]
+  },
+  {
+    "companyEmail": "c39@mail.gr",
+    "title": "Frontend Intern",
+    "description": "Engage in UI/UX evaluations for improving product usability.",
+    "startDate": "2025-09-16",
+    "endDate": "2026-01-06",
+    "skills": [
+      "NETWORK_CONFIGURATION",
+      "SCIENTIFIC_WRITING",
+      "GRAPHIC_DESIGN",
+      "CAD_DESIGN",
+      "DATABASE_MANAGEMENT",
+      "PYTHON"
+    ],
+    "interests": [
+      "DATA_SCIENCE",
+      "EDUCATION_SCIENCES",
+      "CLOUD_COMPUTING",
+      "HUMAN_COMPUTER_INTERACTION"
+    ]
+  },
+  {
+    "companyEmail": "c39@mail.gr",
+    "title": "UI/UX Intern",
+    "description": "Participate in hands-on development and testing activities.",
+    "startDate": "2025-09-17",
+    "endDate": "2025-12-04",
+    "skills": [
+      "SOFTWARE_TESTING",
+      "TRANSLATION_INTERPRETING",
+      "PYTHON"
+    ],
+    "interests": [
+      "CLOUD_COMPUTING",
+      "SOFTWARE_ENGINEERING",
+      "DATA_SCIENCE",
+      "BUSINESS_ADMINISTRATION"
+    ]
+  },
+  {
+    "companyEmail": "c40@mail.gr",
+    "title": "Technical Writer Intern",
+    "description": "Engage in UI/UX evaluations for improving product usability.",
+    "startDate": "2025-09-17",
+    "endDate": "2025-12-19",
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "PROGRAMMING",
+      "TRANSLATION_INTERPRETING",
+      "DATABASE_MANAGEMENT",
+      "PROJECT_MANAGEMENT"
+    ],
+    "interests": [
+      "DATA_SCIENCE",
+      "EDUCATION_SCIENCES",
+      "NETWORKS",
+      "HUMAN_COMPUTER_INTERACTION",
+      "CLOUD_COMPUTING"
+    ]
+  },
+  {
+    "companyEmail": "c40@mail.gr",
+    "title": "Marketing Analyst Intern",
+    "description": "Contribute to QA documentation and test case design.",
+    "startDate": "2025-09-18",
+    "endDate": "2025-11-20",
+    "skills": [
+      "SOFTWARE_TESTING",
+      "UI_UX_DESIGN"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION",
+      "DATA_SCIENCE",
+      "HUMAN_COMPUTER_INTERACTION"
+    ]
+  },
+  {
+    "companyEmail": "c40@mail.gr",
+    "title": "Software Developer Intern",
+    "description": "Support marketing research and analytics using live data.",
+    "startDate": "2025-09-19",
+    "endDate": "2026-01-02",
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "PROJECT_MANAGEMENT",
+      "NETWORK_CONFIGURATION",
+      "UI_UX_DESIGN",
+      "TRANSLATION_INTERPRETING"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "GRAPHIC_ARTS",
+      "NETWORKS",
+      "HUMAN_COMPUTER_INTERACTION"
+    ]
+  },
+  {
+    "companyEmail": "c41@mail.gr",
+    "title": "Technical Writer Intern",
+    "description": "Assist in technical writing, presentations, and stakeholder reports.",
+    "startDate": "2025-09-19",
+    "endDate": "2025-12-14",
+    "skills": [
+      "UI_UX_DESIGN",
+      "JAVA"
+    ],
+    "interests": [
+      "NETWORKS",
+      "SOFTWARE_ENGINEERING",
+      "DATA_SCIENCE",
+      "CLOUD_COMPUTING",
+      "EDUCATION_SCIENCES",
+      "MARKETING"
+    ]
+  },
+  {
+    "companyEmail": "c41@mail.gr",
+    "title": "Data Analytics Intern",
+    "description": "Engage in UI/UX evaluations for improving product usability.",
+    "startDate": "2025-09-20",
+    "endDate": "2025-12-01",
+    "skills": [
+      "SOFTWARE_TESTING",
+      "SCIENTIFIC_WRITING",
+      "CAD_DESIGN",
+      "UI_UX_DESIGN"
+    ],
+    "interests": [
+      "GRAPHIC_ARTS",
+      "CLOUD_COMPUTING",
+      "DATA_SCIENCE"
+    ]
+  },
+  {
+    "companyEmail": "c41@mail.gr",
+    "title": "AI Research Intern",
+    "description": "Support marketing research and analytics using live data.",
+    "startDate": "2025-09-21",
+    "endDate": "2025-12-09",
+    "skills": [
+      "PROJECT_MANAGEMENT",
+      "COMMUNICATION",
+      "TRANSLATION_INTERPRETING",
+      "SOFTWARE_TESTING",
+      "JAVA",
+      "NETWORK_CONFIGURATION"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION",
+      "MARKETING",
+      "DATA_SCIENCE",
+      "HUMAN_COMPUTER_INTERACTION",
+      "CLOUD_COMPUTING",
+      "ARTIFICIAL_INTELLIGENCE"
+    ]
+  },
+  {
+    "companyEmail": "c42@mail.gr",
+    "title": "QA Tester Intern",
+    "description": "Join a cross-functional team contributing to scalable services.",
+    "startDate": "2025-09-21",
+    "endDate": "2025-12-14",
+    "skills": [
+      "JAVA",
+      "GRAPHIC_DESIGN",
+      "COMMUNICATION"
+    ],
+    "interests": [
+      "GRAPHIC_ARTS",
+      "SOFTWARE_ENGINEERING",
+      "CLOUD_COMPUTING",
+      "DATA_SCIENCE",
+      "EDUCATION_SCIENCES"
+    ]
+  },
+  {
+    "companyEmail": "c42@mail.gr",
+    "title": "Backend Intern",
+    "description": "Help build internal tools using Python and modern web stacks.",
+    "startDate": "2025-09-22",
+    "endDate": "2025-12-08",
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "TRANSLATION_INTERPRETING"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "BUSINESS_ADMINISTRATION",
+      "MARKETING",
+      "NETWORKS"
+    ]
+  },
+  {
+    "companyEmail": "c42@mail.gr",
+    "title": "Network Admin Intern",
+    "description": "Support marketing research and analytics using live data.",
+    "startDate": "2025-09-23",
+    "endDate": "2026-01-01",
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "COMMUNICATION",
+      "SOFTWARE_TESTING",
+      "UI_UX_DESIGN"
+    ],
+    "interests": [
+      "HUMAN_COMPUTER_INTERACTION",
+      "DATA_SCIENCE",
+      "GRAPHIC_ARTS",
+      "CLOUD_COMPUTING",
+      "EDUCATION_SCIENCES",
+      "BUSINESS_ADMINISTRATION"
+    ]
+  },
+  {
+    "companyEmail": "c43@mail.gr",
+    "title": "Cloud Engineering Intern",
+    "description": "Work with a collaborative team on real-world case studies.",
+    "startDate": "2025-09-23",
+    "endDate": "2025-12-01",
+    "skills": [
+      "PROGRAMMING",
+      "TRANSLATION_INTERPRETING",
+      "DATABASE_MANAGEMENT",
+      "SCIENTIFIC_WRITING",
+      "PROJECT_MANAGEMENT",
+      "COMMUNICATION"
+    ],
+    "interests": [
+      "GRAPHIC_ARTS",
+      "CLOUD_COMPUTING",
+      "ARTIFICIAL_INTELLIGENCE",
+      "BUSINESS_ADMINISTRATION",
+      "DATA_SCIENCE"
+    ]
+  },
+  {
+    "companyEmail": "c43@mail.gr",
+    "title": "Backend Intern",
+    "description": "Assist in technical writing, presentations, and stakeholder reports.",
+    "startDate": "2025-09-24",
+    "endDate": "2025-12-30",
+    "skills": [
+      "PYTHON",
+      "GRAPHIC_DESIGN",
+      "SOFTWARE_TESTING",
+      "PROJECT_MANAGEMENT",
+      "TRANSLATION_INTERPRETING"
+    ],
+    "interests": [
+      "GRAPHIC_ARTS",
+      "MARKETING",
+      "CLOUD_COMPUTING"
+    ]
+  },
+  {
+    "companyEmail": "c43@mail.gr",
+    "title": "Network Admin Intern",
+    "description": "Support marketing research and analytics using live data.",
+    "startDate": "2025-09-25",
+    "endDate": "2025-11-29",
+    "skills": [
+      "UI_UX_DESIGN",
+      "DATABASE_MANAGEMENT",
+      "CAD_DESIGN",
+      "TRANSLATION_INTERPRETING"
+    ],
+    "interests": [
+      "NETWORKS",
+      "HUMAN_COMPUTER_INTERACTION",
+      "MARKETING",
+      "BUSINESS_ADMINISTRATION",
+      "ARTIFICIAL_INTELLIGENCE",
+      "DATA_SCIENCE"
+    ]
+  },
+  {
+    "companyEmail": "c44@mail.gr",
+    "title": "Cloud Engineering Intern",
+    "description": "Help build internal tools using Python and modern web stacks.",
+    "startDate": "2025-09-25",
+    "endDate": "2025-12-11",
+    "skills": [
+      "CAD_DESIGN",
+      "SOFTWARE_TESTING",
+      "GRAPHIC_DESIGN",
+      "PROGRAMMING",
+      "JAVA",
+      "PYTHON"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION",
+      "CLOUD_COMPUTING",
+      "NETWORKS"
+    ]
+  },
+  {
+    "companyEmail": "c44@mail.gr",
+    "title": "Data Analytics Intern",
+    "description": "Assist in real client-facing projects with dedicated mentorship.",
+    "startDate": "2025-09-26",
+    "endDate": "2025-12-08",
+    "skills": [
+      "CAD_DESIGN",
+      "SCIENTIFIC_WRITING",
+      "PROJECT_MANAGEMENT"
+    ],
+    "interests": [
+      "GRAPHIC_ARTS",
+      "BUSINESS_ADMINISTRATION",
+      "NETWORKS"
+    ]
+  },
+  {
+    "companyEmail": "c44@mail.gr",
+    "title": "Frontend Intern",
+    "description": "Join a cross-functional team contributing to scalable services.",
+    "startDate": "2025-09-27",
+    "endDate": "2025-12-29",
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "PROGRAMMING",
+      "SCIENTIFIC_WRITING",
+      "PYTHON",
+      "JAVA",
+      "TRANSLATION_INTERPRETING"
+    ],
+    "interests": [
+      "SOFTWARE_ENGINEERING",
+      "CLOUD_COMPUTING"
+    ]
+  },
+  {
+    "companyEmail": "c45@mail.gr",
+    "title": "Marketing Analyst Intern",
+    "description": "Assist in technical writing, presentations, and stakeholder reports.",
+    "startDate": "2025-09-27",
+    "endDate": "2025-12-15",
+    "skills": [
+      "JAVA",
+      "COMMUNICATION"
+    ],
+    "interests": [
+      "ARTIFICIAL_INTELLIGENCE",
+      "MARKETING",
+      "EDUCATION_SCIENCES",
+      "SOFTWARE_ENGINEERING",
+      "DATA_SCIENCE",
+      "CLOUD_COMPUTING"
+    ]
+  },
+  {
+    "companyEmail": "c45@mail.gr",
+    "title": "Backend Intern",
+    "description": "Get involved with agile sprints and DevOps practices.",
+    "startDate": "2025-09-28",
+    "endDate": "2026-01-19",
+    "skills": [
+      "PROGRAMMING",
+      "COMMUNICATION",
+      "UI_UX_DESIGN",
+      "SCIENTIFIC_WRITING",
+      "JAVA"
+    ],
+    "interests": [
+      "NETWORKS",
+      "BUSINESS_ADMINISTRATION",
+      "GRAPHIC_ARTS",
+      "MARKETING",
+      "CLOUD_COMPUTING"
+    ]
+  },
+  {
+    "companyEmail": "c45@mail.gr",
+    "title": "Network Admin Intern",
+    "description": "Contribute to QA documentation and test case design.",
+    "startDate": "2025-09-29",
+    "endDate": "2025-12-19",
+    "skills": [
+      "JAVA",
+      "TRANSLATION_INTERPRETING",
+      "UI_UX_DESIGN",
+      "CAD_DESIGN",
+      "COMMUNICATION",
+      "DATABASE_MANAGEMENT"
+    ],
+    "interests": [
+      "HUMAN_COMPUTER_INTERACTION",
+      "GRAPHIC_ARTS",
+      "ARTIFICIAL_INTELLIGENCE"
+    ]
+  },
+  {
+    "companyEmail": "c46@mail.gr",
+    "title": "Frontend Intern",
+    "description": "Support marketing research and analytics using live data.",
+    "startDate": "2025-09-29",
+    "endDate": "2025-12-18",
+    "skills": [
+      "GRAPHIC_DESIGN",
+      "COMMUNICATION",
+      "PROJECT_MANAGEMENT",
+      "JAVA"
+    ],
+    "interests": [
+      "HUMAN_COMPUTER_INTERACTION",
+      "EDUCATION_SCIENCES",
+      "DATA_SCIENCE",
+      "NETWORKS",
+      "MARKETING"
+    ]
+  },
+  {
+    "companyEmail": "c46@mail.gr",
+    "title": "Network Admin Intern",
+    "description": "Participate in hands-on development and testing activities.",
+    "startDate": "2025-09-30",
+    "endDate": "2025-12-28",
+    "skills": [
+      "NETWORK_CONFIGURATION",
+      "DATABASE_MANAGEMENT"
+    ],
+    "interests": [
+      "HUMAN_COMPUTER_INTERACTION",
+      "SOFTWARE_ENGINEERING",
+      "MARKETING"
+    ]
+  },
+  {
+    "companyEmail": "c46@mail.gr",
+    "title": "QA Tester Intern",
+    "description": "Assist in real client-facing projects with dedicated mentorship.",
+    "startDate": "2025-10-01",
+    "endDate": "2025-12-27",
+    "skills": [
+      "PYTHON",
+      "UI_UX_DESIGN",
+      "COMMUNICATION",
+      "PROGRAMMING",
+      "DATABASE_MANAGEMENT",
+      "PROJECT_MANAGEMENT"
+    ],
+    "interests": [
+      "MARKETING",
+      "EDUCATION_SCIENCES",
+      "HUMAN_COMPUTER_INTERACTION",
+      "SOFTWARE_ENGINEERING"
+    ]
+  },
+  {
+    "companyEmail": "c47@mail.gr",
+    "title": "Marketing Analyst Intern",
+    "description": "Assist in real client-facing projects with dedicated mentorship.",
+    "startDate": "2025-10-01",
+    "endDate": "2026-01-04",
+    "skills": [
+      "SCIENTIFIC_WRITING",
+      "DATABASE_MANAGEMENT"
+    ],
+    "interests": [
+      "ARTIFICIAL_INTELLIGENCE",
+      "SOFTWARE_ENGINEERING",
+      "EDUCATION_SCIENCES",
+      "BUSINESS_ADMINISTRATION"
+    ]
+  },
+  {
+    "companyEmail": "c47@mail.gr",
+    "title": "Cloud Engineering Intern",
+    "description": "Get involved with agile sprints and DevOps practices.",
+    "startDate": "2025-10-02",
+    "endDate": "2026-01-10",
+    "skills": [
+      "PROJECT_MANAGEMENT",
+      "UI_UX_DESIGN",
+      "SOFTWARE_TESTING",
+      "COMMUNICATION"
+    ],
+    "interests": [
+      "SOFTWARE_ENGINEERING",
+      "BUSINESS_ADMINISTRATION",
+      "HUMAN_COMPUTER_INTERACTION",
+      "ARTIFICIAL_INTELLIGENCE",
+      "MARKETING",
+      "GRAPHIC_ARTS"
+    ]
+  },
+  {
+    "companyEmail": "c47@mail.gr",
+    "title": "Frontend Intern",
+    "description": "Assist in real client-facing projects with dedicated mentorship.",
+    "startDate": "2025-10-03",
+    "endDate": "2025-12-04",
+    "skills": [
+      "CAD_DESIGN",
+      "NETWORK_CONFIGURATION",
+      "SOFTWARE_TESTING",
+      "DATABASE_MANAGEMENT",
+      "GRAPHIC_DESIGN",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "SOFTWARE_ENGINEERING"
+    ]
+  },
+  {
+    "companyEmail": "c48@mail.gr",
+    "title": "QA Tester Intern",
+    "description": "Engage in UI/UX evaluations for improving product usability.",
+    "startDate": "2025-10-03",
+    "endDate": "2026-01-09",
+    "skills": [
+      "DATABASE_MANAGEMENT",
+      "CAD_DESIGN",
+      "SOFTWARE_TESTING",
+      "SCIENTIFIC_WRITING"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "DATA_SCIENCE",
+      "GRAPHIC_ARTS"
+    ]
+  },
+  {
+    "companyEmail": "c48@mail.gr",
+    "title": "Marketing Analyst Intern",
+    "description": "Join a cross-functional team contributing to scalable services.",
+    "startDate": "2025-10-04",
+    "endDate": "2025-12-09",
+    "skills": [
+      "PROGRAMMING",
+      "PROJECT_MANAGEMENT",
+      "TRANSLATION_INTERPRETING",
+      "CAD_DESIGN",
+      "PYTHON"
+    ],
+    "interests": [
+      "ARTIFICIAL_INTELLIGENCE",
+      "BUSINESS_ADMINISTRATION",
+      "EDUCATION_SCIENCES",
+      "HUMAN_COMPUTER_INTERACTION"
+    ]
+  },
+  {
+    "companyEmail": "c48@mail.gr",
+    "title": "Cloud Engineering Intern",
+    "description": "Join a cross-functional team contributing to scalable services.",
+    "startDate": "2025-10-05",
+    "endDate": "2026-01-04",
+    "skills": [
+      "SCIENTIFIC_WRITING",
+      "DATABASE_MANAGEMENT",
+      "PROJECT_MANAGEMENT",
+      "JAVA",
+      "GRAPHIC_DESIGN",
+      "SOFTWARE_TESTING"
+    ],
+    "interests": [
+      "DATA_SCIENCE",
+      "HUMAN_COMPUTER_INTERACTION",
+      "NETWORKS"
+    ]
+  },
+  {
+    "companyEmail": "c49@mail.gr",
+    "title": "Cloud Engineering Intern",
+    "description": "Support marketing research and analytics using live data.",
+    "startDate": "2025-10-05",
+    "endDate": "2026-01-27",
+    "skills": [
+      "CAD_DESIGN",
+      "TRANSLATION_INTERPRETING",
+      "GRAPHIC_DESIGN",
+      "PROGRAMMING",
+      "NETWORK_CONFIGURATION"
+    ],
+    "interests": [
+      "GRAPHIC_ARTS",
+      "NETWORKS",
+      "CLOUD_COMPUTING",
+      "DATA_SCIENCE",
+      "MARKETING",
+      "ARTIFICIAL_INTELLIGENCE"
+    ]
+  },
+  {
+    "companyEmail": "c49@mail.gr",
+    "title": "UI/UX Intern",
+    "description": "Contribute to QA documentation and test case design.",
+    "startDate": "2025-10-06",
+    "endDate": "2025-12-31",
+    "skills": [
+      "PROGRAMMING",
+      "GRAPHIC_DESIGN",
+      "SOFTWARE_TESTING",
+      "TRANSLATION_INTERPRETING",
+      "SCIENTIFIC_WRITING",
+      "UI_UX_DESIGN"
+    ],
+    "interests": [
+      "CLOUD_COMPUTING",
+      "NETWORKS",
+      "BUSINESS_ADMINISTRATION",
+      "MARKETING",
+      "HUMAN_COMPUTER_INTERACTION",
+      "SOFTWARE_ENGINEERING"
+    ]
+  },
+  {
+    "companyEmail": "c49@mail.gr",
+    "title": "Software Developer Intern",
+    "description": "Help build internal tools using Python and modern web stacks.",
+    "startDate": "2025-10-07",
+    "endDate": "2026-01-03",
+    "skills": [
+      "SCIENTIFIC_WRITING",
+      "COMMUNICATION",
+      "SOFTWARE_TESTING",
+      "CAD_DESIGN",
+      "NETWORK_CONFIGURATION",
+      "PROGRAMMING"
+    ],
+    "interests": [
+      "EDUCATION_SCIENCES",
+      "NETWORKS",
+      "HUMAN_COMPUTER_INTERACTION",
+      "MARKETING",
+      "SOFTWARE_ENGINEERING",
+      "CLOUD_COMPUTING"
+    ]
+  },
+  {
+    "companyEmail": "c50@mail.gr",
+    "title": "Cloud Engineering Intern",
+    "description": "Participate in hands-on development and testing activities.",
+    "startDate": "2025-10-07",
+    "endDate": "2025-12-14",
+    "skills": [
+      "COMMUNICATION",
+      "SCIENTIFIC_WRITING"
+    ],
+    "interests": [
+      "ARTIFICIAL_INTELLIGENCE",
+      "HUMAN_COMPUTER_INTERACTION",
+      "EDUCATION_SCIENCES",
+      "DATA_SCIENCE",
+      "GRAPHIC_ARTS"
+    ]
+  },
+  {
+    "companyEmail": "c50@mail.gr",
+    "title": "Technical Writer Intern",
+    "description": "Participate in hands-on development and testing activities.",
+    "startDate": "2025-10-08",
+    "endDate": "2026-01-07",
+    "skills": [
+      "PYTHON",
+      "CAD_DESIGN",
+      "TRANSLATION_INTERPRETING"
+    ],
+    "interests": [
+      "DATA_SCIENCE",
+      "GRAPHIC_ARTS",
+      "HUMAN_COMPUTER_INTERACTION",
+      "EDUCATION_SCIENCES",
+      "CLOUD_COMPUTING",
+      "MARKETING"
+    ]
+  },
+  {
+    "companyEmail": "c50@mail.gr",
+    "title": "UI/UX Intern",
+    "description": "Assist in technical writing, presentations, and stakeholder reports.",
+    "startDate": "2025-10-09",
+    "endDate": "2025-12-16",
+    "skills": [
+      "PYTHON",
+      "GRAPHIC_DESIGN",
+      "CAD_DESIGN"
+    ],
+    "interests": [
+      "BUSINESS_ADMINISTRATION",
+      "HUMAN_COMPUTER_INTERACTION"
+    ]
+  }
+]

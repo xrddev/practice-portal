@@ -11,7 +11,10 @@ import java.util.List;
 
 @NoArgsConstructor
 @Data
-public class InternshipPositionCreateDto {
+public class InternshipPositionManualCreateDto {
+
+    @NotNull(message = "Company email is required")
+    private String companyEmail;
 
     @NotBlank(message = "Title is required.")
     @Size(max = 150, message = "Title can be up to 150 characters.")
@@ -37,14 +40,5 @@ public class InternshipPositionCreateDto {
     public boolean isValidDateRange() {
         if (startDate == null || endDate == null) return true;
         return !endDate.isBefore(startDate);
-    }
-
-    public InternshipPositionCreateDto(InternshipPositionManualCreateDto frontEndDto) {
-        this.title = frontEndDto.getTitle();
-        this.description = frontEndDto.getDescription();
-        this.startDate = frontEndDto.getStartDate();
-        this.endDate = frontEndDto.getEndDate();
-        this.skills = frontEndDto.getSkills();
-        this.interests = frontEndDto.getInterests();
     }
 }

@@ -32,5 +32,9 @@ public enum Interests {
     LITERATURE,                  // Literary analysis, theory
     PUBLIC_HEALTH,               // Epidemiology, health systems
     ETHICS_AND_DEONTOLOGY  ,      // Ethics, compliance, professional standards
-    FOREIGN_LANGUAGES
+    FOREIGN_LANGUAGES,
+    MARKETING,
+    CLOUD_COMPUTING,
+    HUMAN_COMPUTER_INTERACTION,
+    GRAPHIC_ARTS
 }

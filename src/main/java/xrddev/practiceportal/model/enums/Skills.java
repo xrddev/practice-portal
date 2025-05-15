@@ -35,5 +35,9 @@ public enum Skills {
     MUSIC_PERFORMANCE,            // Performing music (instrumental or vocal)
     ETHICS_AND_DEONTOLOGY,        // Knowledge of ethics and professional standards
     WEB_DEVELOPMENT,              // Building and maintaining websites
-    MOBILE_DEVELOPMENT            // Developing mobile applications (Android, iOS)
+    MOBILE_DEVELOPMENT,
+    NETWORK_CONFIGURATION,
+    PYTHON,
+    JAVA,
+    GRAPHIC_ARTS,
 }

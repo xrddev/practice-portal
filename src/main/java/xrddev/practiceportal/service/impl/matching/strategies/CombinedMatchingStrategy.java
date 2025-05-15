@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import xrddev.practiceportal.dto.InternshipAssignmentDashboardDto;
 import xrddev.practiceportal.model.enums.AssignmentStrategy;
+import xrddev.practiceportal.model.internship.InternshipAssignment;
 import xrddev.practiceportal.model.internship.InternshipPosition;
 import xrddev.practiceportal.model.user.Student;
 import xrddev.practiceportal.repository.api.InternshipAssignmentRepository;
@@ -30,6 +31,7 @@ public class CombinedMatchingStrategy implements PositionMatchingStrategy {
     }
 
     @Override
-    public void match() {
+    public List<InternshipAssignment>  match() {
+        return null;
     }
 }

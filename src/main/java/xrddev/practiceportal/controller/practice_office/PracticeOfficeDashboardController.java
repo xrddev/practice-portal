@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import xrddev.practiceportal.model.enums.AssignmentStrategy;
+import xrddev.practiceportal.repository.api.InternshipAssignmentRepository;
 import xrddev.practiceportal.service.api.*;
 
 import java.security.Principal;
@@ -23,6 +24,7 @@ public class PracticeOfficeDashboardController {
     private final ProfessorService professorService;
     private final InternshipPositionService internshipPositionService;
     private final StrategyDispatchService strategyDispatchService;
+    private final InternshipAssignmentRepository internshipAssignmentRepository;
 
     @GetMapping("/dashboard")
     public String showDashboard(Model model, Principal principal) {
@@ -32,13 +34,14 @@ public class PracticeOfficeDashboardController {
         model.addAttribute("TOTAL_COMPANIES", companyService.count());
         model.addAttribute("TOTAL_PROFESSORS", professorService.count());
         model.addAttribute("TOTAL_POSITIONS", internshipPositionService.count());
+        model.addAttribute("TOTAL_MATCHED_POSITIONS", internshipAssignmentRepository.count());
         return "practice_office/dashboard";
     }
 
     @PostMapping("/dashboard/match")
     public String matchInternships(@RequestParam("strategy") String strategy) {
-        System.out.println("Click happened");
-        strategyDispatchService.dispatchStrategy(AssignmentStrategy.valueOf(strategy.toUpperCase()));
+        internshipAssignmentRepository
+                .saveAll(strategyDispatchService.dispatchStrategy(AssignmentStrategy.valueOf(strategy.toUpperCase())));
         return "redirect:/practice-office/dashboard";
     }
 

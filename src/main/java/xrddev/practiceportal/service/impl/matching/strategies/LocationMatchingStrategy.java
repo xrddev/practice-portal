@@ -20,7 +20,6 @@ public class LocationMatchingStrategy implements PositionMatchingStrategy {
 
     private final StudentService studentService;
     private final InternshipPositionService internshipPositionService;
-    private final InternshipAssignmentRepository internshipAssignmentRepository;
 
     @Override
     public AssignmentStrategy getStrategyType() {
@@ -28,24 +27,35 @@ public class LocationMatchingStrategy implements PositionMatchingStrategy {
     }
 
     @Override
-    public void match() {
-        Map<String, List<InternshipPosition>> locationToPositionMap = internshipPositionService.findAllAvailable().stream()
-                .collect(Collectors.groupingBy(internshipPosition -> internshipPosition.getLocation().trim()));
+    public List<InternshipAssignment> match() {
+        Map<String, Deque<InternshipPosition>> locationToPositionMap =
+                internshipPositionService.findAllAvailable()
+                        .stream()
+                        .collect(Collectors.groupingBy(position -> position.getLocation().trim().toUpperCase()
+                                ,Collectors.toCollection(ArrayDeque::new)));
 
-        studentService.findAll().forEach(student -> {
-            String studentPreferredLocation = student.getPreferredLocation().trim();
-            if(locationToPositionMap.containsKey(studentPreferredLocation) && !locationToPositionMap.get(studentPreferredLocation).isEmpty()) {
-                InternshipPosition internshipPosition = locationToPositionMap.get(studentPreferredLocation).getFirst();
-                locationToPositionMap.get(studentPreferredLocation).removeFirst();
+        LocalDate localDate = LocalDate.now();
 
-                InternshipAssignment assignment = new InternshipAssignment();
-                assignment.setStudent(student);
-                assignment.setPosition(internshipPosition);
-                assignment.setStrategy(AssignmentStrategy.LOCATION);
-                assignment.setAssignedAt(LocalDate.now());
-                assignment.setProfessor(null);
-                internshipAssignmentRepository.save(assignment);
-            }
-        });
+        return studentService.findAll()
+                .stream()
+                .map(student -> {
+                    String preferredLocation = student.getPreferredLocation().trim().toUpperCase();
+                    Deque<InternshipPosition> availablePositionsAtTheSpecificLocation = locationToPositionMap.get(preferredLocation);
+
+                    //No Positions at the specific location at all or no positions left
+                    if (availablePositionsAtTheSpecificLocation == null || availablePositionsAtTheSpecificLocation.isEmpty()) return null;
+
+                    InternshipPosition internshipPosition = availablePositionsAtTheSpecificLocation.pollFirst();
+                    InternshipAssignment matchedAssignment = new InternshipAssignment();
+                    matchedAssignment.setStudent(student);
+                    matchedAssignment.setPosition(internshipPosition);
+                    matchedAssignment.setStrategy(AssignmentStrategy.LOCATION);
+                    matchedAssignment.setAssignedAt(localDate);
+                    matchedAssignment.setProfessor(null);
+
+                    System.out.println("Matched position: " + internshipPosition.getTitle() + " to student: " + student.getEmail() + "");
+                    return matchedAssignment;})
+                .filter(Objects::nonNull)
+                .toList();
     }
 }
