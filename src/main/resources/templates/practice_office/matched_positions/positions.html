@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Matched Positions</title>
+    <link rel="icon" href="/uoi-logo-new-1024x784.webp" type="image/webp">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Ubuntu Mono', monospace;
+            background: linear-gradient(135deg, #0073e6, #00b3b3);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-top: 40px;
+            font-size: 2.7rem;
+            text-align: center;
+            color: #ffcc33;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .match-container {
+            background-color: rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+            margin: 20px auto;
+            width: 95%;
+            max-width: 1200px;
+        }
+
+        .match-inner {
+            display: flex;
+            gap: 16px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 16px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            min-width: 250px;
+        }
+
+        .card-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #ffcc33;
+            margin-bottom: 10px;
+        }
+
+        .card div {
+            margin-bottom: 6px;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            font-size: 0.8rem;
+            width: 100%;
+        }
+
+        a {
+            color: #ffcc33;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Manage Matched Positions</h1>
+
+<div th:each="match : ${matchedAssignments}" class="match-container">
+    <div class="match-inner">
+        <!-- Student Card -->
+        <div class="card">
+            <div class="card-title">Student</div>
+            <div><strong>Name:</strong> <span th:text="${match.student.firstName + ' ' + match.student.lastName}">John Doe</span></div>
+            <div><strong>Email:</strong> <span th:text="${match.student.email}">student@example.com</span></div>
+            <div><strong>Grade:</strong> <span th:text="${match.student.averageGrade}">8.5</span></div>
+        </div>
+
+        <!-- Position Card -->
+        <div class="card">
+            <div class="card-title">Position</div>
+            <div><strong>Title:</strong> <span th:text="${match.position.title}">Backend Intern</span></div>
+            <div><strong>Start:</strong> <span th:text="${match.position.startDate}">2025-06-01</span></div>
+            <div><strong>End:</strong> <span th:text="${match.position.endDate}">2025-09-01</span></div>
+        </div>
+
+        <!-- Professor Card -->
+        <div class="card">
+            <div class="card-title">Professor</div>
+            <div><strong>Name:</strong> <span th:text="${match.professor.firstName + ' ' + match.professor.lastName}">Dr. Smith</span></div>
+            <div><strong>Email:</strong> <span th:text="${match.professor.email}">prof@example.com</span></div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    &copy; 2025. Developed with ❤️ by <a href="https://github.com/xrddev" target="_blank">xrddev</a>.
+</footer>
+
+</body>
+</html>

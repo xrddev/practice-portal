@@ -5,14 +5,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import xrddev.practiceportal.model.enums.UserRole;
-import xrddev.practiceportal.service.api.CustomUserDetailsService;
+import xrddev.practiceportal.service.user_service.CustomUserDetailsService;
+
 
 @Configuration
 public class SecurityConfig {

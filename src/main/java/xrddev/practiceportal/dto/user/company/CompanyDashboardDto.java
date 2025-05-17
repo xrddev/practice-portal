@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @Data
 public class CompanyDashboardDto {
+    private long id;
     private String companyName;
     private String email;
     private String address;
@@ -19,6 +20,7 @@ public class CompanyDashboardDto {
     private String internshipCoordinatorEmail;
 
     public CompanyDashboardDto(Company company) {
+        this.id = company.getId();
         this.companyName = company.getCompanyName();
         this.email = company.getEmail();
         this.address = company.getAddress();

@@ -7,7 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import xrddev.practiceportal.dto.user.student.StudentRegistrationDto;
-import xrddev.practiceportal.service.api.StudentService;
+import xrddev.practiceportal.service.student.StudentService;
 
 import java.util.List;
 

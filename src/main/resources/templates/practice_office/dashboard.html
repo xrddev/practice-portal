@@ -120,7 +120,7 @@
 </head>
 <body>
 
-<h1>Admin – Dashboard</h1>
+<h1>Practice Office Admin – Dashboard</h1>
 
 <!-- Admin Details -->
 <div class="box">
@@ -139,7 +139,7 @@
     <p>Total Students: <strong th:text="${TOTAL_STUDENTS}">120</strong></p>
     <p>Total Companies: <strong th:text="${TOTAL_COMPANIES}">45</strong></p>
     <p>Total Professors: <strong th:text="${TOTAL_PROFESSORS}">30</strong></p>
-    <p>Total Internship Positions: <strong th:text="${TOTAL_POSITIONS}">85</strong></p>
+    <p>Total Posted Internship Positions: <strong th:text="${TOTAL_POSITIONS}">85</strong></p>
     <p>Total Matched Internship Positions: <strong th:text="${TOTAL_MATCHED_POSITIONS}">85</strong></p>
 </div>
 
@@ -147,10 +147,10 @@
 <div class="box">
     <h2>Management Actions</h2>
     <div class="admin-actions">
-        <a th:href="@{/practice-office/students}">Manage Students</a>
-        <a th:href="@{/practice-office/companies}">Manage Companies</a>
-        <a th:href="@{/practice-office/professors}">Manage Professors</a>
-        <a th:href="@{/practice-office/internships}">Manage Internships</a>
+        <a th:href="@{/practice-office/students/dashboard}">Manage Students</a>
+        <a th:href="@{/practice-office/companies/dashboard}">Manage Companies</a>
+        <a th:href="@{/practice-office/professors/dashboard}">Manage Professors</a>
+        <a th:href="@{/practice-office/matched-positions/dashboard}">Manage Matched positions</a>
     </div>
 </div>
 

@@ -9,7 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import xrddev.practiceportal.controller.registration.common.RegistrationSessionHelper;
 import xrddev.practiceportal.dto.user.professor.ProfessorRegistrationDto;
-import xrddev.practiceportal.service.api.ProfessorService;
+import xrddev.practiceportal.service.professor.ProfessorService;
 
 @Controller
 @RequiredArgsConstructor

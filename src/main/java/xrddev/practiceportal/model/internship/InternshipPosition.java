@@ -63,6 +63,9 @@ public class InternshipPosition {
     @OneToOne(mappedBy = "position")
     private InternshipAssignment internshipAssignment;
 
+    @Column(name = "is_assigned", nullable = false)
+    private boolean isAssigned = false;
+
     public String getLocation() {
         return (company != null) ? company.getAddress().split(",")[1] : null;
     }

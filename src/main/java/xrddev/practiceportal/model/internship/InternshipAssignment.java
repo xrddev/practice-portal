@@ -3,7 +3,8 @@ package xrddev.practiceportal.model.internship;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import xrddev.practiceportal.model.enums.AssignmentStrategy;
+import xrddev.practiceportal.model.enums.InternshipMatchingOptions;
+import xrddev.practiceportal.model.enums.ProfessorMatchingOptions;
 import xrddev.practiceportal.model.user.Professor;
 import xrddev.practiceportal.model.user.Student;
 
@@ -34,8 +35,12 @@ public class InternshipAssignment {
     private LocalDate assignedAt;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "strategy", nullable = false, length = 20)
-    private AssignmentStrategy strategy;
+    @Column(name = "student_match_strategy", nullable = false, length = 20)
+    private InternshipMatchingOptions StudentMatchStrategy;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "professor_match_strategy", nullable = false, length = 20)
+    private ProfessorMatchingOptions ProfessorMatchStrategy;
 
     @OneToOne(mappedBy = "assignment", cascade = CascadeType.ALL, orphanRemoval = true)
     private CompanyInternshipEvaluation companyEvaluation;

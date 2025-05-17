@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import xrddev.practiceportal.service.api.ProfessorService;
+import xrddev.practiceportal.service.professor.ProfessorService;
 
 @Controller
 @RequestMapping("/practice-office/professors")
@@ -13,15 +13,15 @@ public class PracticeOfficeProfessorController {
 
     private final ProfessorService professorService;
 
-    @GetMapping
+    @GetMapping("/dashboard")
     public String showAllProfessors(Model model) {
         model.addAttribute("professors", professorService.getAllMappedToDashboardDto());
-        return "practice_office/professors";
+        return "practice_office/professors/dashboard";
     }
 
     @PostMapping("/delete/{id}")
     public String deleteProfessor(@PathVariable Long id) {
         professorService.deleteById(id);
-        return "redirect:/practice-office/professors";
+        return "redirect:/practice-office/professors/dashboard";
     }
 }

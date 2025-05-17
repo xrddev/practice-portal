@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionCreateDto;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionManualCreateDto;
-import xrddev.practiceportal.service.api.InternshipPositionService;
+import xrddev.practiceportal.service.internship.InternshipPositionService;
 
 import java.util.List;
 

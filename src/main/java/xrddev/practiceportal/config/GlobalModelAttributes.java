@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import xrddev.practiceportal.model.enums.Department;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
-import xrddev.practiceportal.service.api.ApplicationPeriodService;
-import xrddev.practiceportal.service.api.EvaluationPeriodService;
+import xrddev.practiceportal.service.periods.ApplicationPeriodService;
+import xrddev.practiceportal.service.periods.EvaluationPeriodService;
 
 import java.util.Arrays;
 import java.util.List;

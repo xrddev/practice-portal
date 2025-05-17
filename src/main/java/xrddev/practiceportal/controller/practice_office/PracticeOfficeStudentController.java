@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import xrddev.practiceportal.service.api.StudentService;
+import xrddev.practiceportal.service.student.StudentService;
 
 import java.security.Principal;
 
@@ -19,16 +19,16 @@ public class PracticeOfficeStudentController {
 
     private final StudentService studentService;
 
-    @GetMapping
+    @GetMapping("/dashboard")
     public String showAllStudents(Model model, Principal principal) {
         model.addAttribute("students", studentService.getAllMappedToDashboardDto());
-        return "practice_office/students";
+        return "practice_office/students/dashboard";
     }
 
     @PostMapping("/delete/{id}")
     public String deleteStudent(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         studentService.deleteById(id);
         redirectAttributes.addFlashAttribute("studentDeleted", true);
-        return "redirect:/practice-office/students";
+        return "redirect:/practice-office/students/dashboard";
     }
 }

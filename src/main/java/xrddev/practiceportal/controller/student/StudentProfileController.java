@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import xrddev.practiceportal.dto.user.student.StudentEditDto;
-import xrddev.practiceportal.service.api.StudentService;
+import xrddev.practiceportal.service.student.StudentService;
 
 import java.security.Principal;
 

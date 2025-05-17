@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import xrddev.practiceportal.dto.user.company.CompanyEditDto;
-import xrddev.practiceportal.service.api.CompanyService;
+import xrddev.practiceportal.service.company.CompanyService;
 
 import java.security.Principal;
 

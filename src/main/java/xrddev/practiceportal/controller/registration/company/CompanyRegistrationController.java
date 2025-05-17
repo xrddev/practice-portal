@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import xrddev.practiceportal.controller.registration.common.RegistrationSessionHelper;
 import xrddev.practiceportal.dto.user.company.CompanyRegistrationDto;
-import xrddev.practiceportal.service.api.CompanyService;
+import xrddev.practiceportal.service.company.CompanyService;
 
 
 @Controller

@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import xrddev.practiceportal.dto.user.practice_office.PracticeOfficeAdminDto;
-import xrddev.practiceportal.service.api.PracticeOfficeAdminService;
+import xrddev.practiceportal.service.practice_office.PracticeOfficeAdminService;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
 public class AdminDataInitializer {
 
     @Bean
-    @Order(100)  // τρέχει μετά τα Flyway migrations
+    @Order(100)
     ApplicationRunner seedAdmins(
             PracticeOfficeAdminService adminService,
             PasswordEncoder passwordEncoder,

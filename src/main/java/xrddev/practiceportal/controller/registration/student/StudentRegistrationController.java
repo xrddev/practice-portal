@@ -2,23 +2,14 @@ package xrddev.practiceportal.controller.registration.student;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import xrddev.practiceportal.config.ModelAttributeKeys;
 import xrddev.practiceportal.controller.registration.common.RegistrationSessionHelper;
 import xrddev.practiceportal.dto.user.student.StudentRegistrationDto;
-import xrddev.practiceportal.model.enums.Department;
-import xrddev.practiceportal.model.enums.Interests;
-import xrddev.practiceportal.model.enums.Skills;
-import xrddev.practiceportal.service.api.StudentService;
-
-import java.util.Arrays;
-import java.util.List;
+import xrddev.practiceportal.service.student.StudentService;
 
 
 @Controller

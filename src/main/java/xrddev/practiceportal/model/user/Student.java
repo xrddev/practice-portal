@@ -65,7 +65,6 @@ public class Student extends User{
     @Size(max = 50, message = "Preferred location can have up to 50 characters.")
     private String preferredLocation;
 
-    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<InternshipAssignment> internshipAssignments;
-
 }

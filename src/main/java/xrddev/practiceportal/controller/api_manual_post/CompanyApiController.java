@@ -7,7 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import xrddev.practiceportal.dto.user.company.CompanyRegistrationDto;
-import xrddev.practiceportal.service.api.CompanyService;
+import xrddev.practiceportal.service.company.CompanyService;
 
 import java.util.List;
 
