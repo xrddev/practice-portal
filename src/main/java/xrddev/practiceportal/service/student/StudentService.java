@@ -1,10 +1,10 @@
 package xrddev.practiceportal.service.student;
 
 import org.springframework.transaction.annotation.Transactional;
-import xrddev.practiceportal.dto.user.student.StudentDashboardDto;
-import xrddev.practiceportal.dto.user.student.StudentEditDto;
-import xrddev.practiceportal.dto.user.student.StudentRegistrationDto;
-import xrddev.practiceportal.model.user.Student;
+import xrddev.practiceportal.dto.student.StudentDashboardDto;
+import xrddev.practiceportal.dto.student.StudentEditDto;
+import xrddev.practiceportal.dto.student.StudentRegistrationDto;
+import xrddev.practiceportal.model.student.Student;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +23,6 @@ public interface StudentService {
     @Transactional(readOnly = true)
     Optional<Student> findById(Long id);
 
-    List<Student> findAll();
+    List<Student> getAll();
 
 }

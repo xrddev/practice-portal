@@ -20,7 +20,7 @@ public class PracticeOfficeStudentController {
     private final StudentService studentService;
 
     @GetMapping("/dashboard")
-    public String showAllStudents(Model model, Principal principal) {
+    public String showAllStudents(Model model) {
         model.addAttribute("students", studentService.getAllMappedToDashboardDto());
         return "practice_office/students/dashboard";
     }

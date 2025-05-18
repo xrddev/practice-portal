@@ -145,27 +145,58 @@
 
 <!-- Admin Actions -->
 <div class="box">
-    <h2>Management Actions</h2>
+    <h2>DataBase Overview</h2>
     <div class="admin-actions">
         <a th:href="@{/practice-office/students/dashboard}">Manage Students</a>
         <a th:href="@{/practice-office/companies/dashboard}">Manage Companies</a>
         <a th:href="@{/practice-office/professors/dashboard}">Manage Professors</a>
-        <a th:href="@{/practice-office/matched-positions/dashboard}">Manage Matched positions</a>
+        <a th:href="@{/practice-office/assigned-internships/dashboard}">Manage Matched positions</a>
     </div>
 </div>
 
-<!-- Match Buttons -->
+
+<!-- Combined Matching Strategy -->
+<!-- Combined Matching Strategy -->
+<!-- Combined Matching Strategy -->
 <div class="box">
-    <h2>Matching Actions</h2>
-    <form th:action="@{/practice-office/dashboard/match}" method="post">
+    <h2>Assign Internships to Students and Professors</h2>
+    <form th:action="@{/practice-office/dashboard/execute-match}" method="post">
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-        <div class="match-buttons-container">
-            <button type="submit" name="strategy" value="interest">Match by Interests</button>
-            <button type="submit" name="strategy" value="location">Match by Location</button>
-            <button type="submit" name="strategy" value="combined">Match Interests + Location</button>
+
+        <div style="display: flex; flex-direction: column; gap: 20px; align-items: center; margin-top: 20px;">
+
+            <div style="text-align: left; width: 100%; max-width: 500px;">
+                <label for="internshipMatchingStrategy" style="font-weight: bold; font-size: 1rem;">Student–Position Strategy</label><br>
+                <select name="internshipMatchingStrategy" id="internshipMatchingStrategy" required
+                        style="width: 100%; margin-top: 8px; padding: 12px; border-radius: 10px;
+                               font-family: 'Ubuntu Mono', monospace; font-size: 1rem;
+                               background-color: #eacd45; color: #003366; border: none; text-align: center;">
+                    <option th:each="option : ${INTERNSHIP_MATCHING_OPTIONS}"
+                            th:value="${option}" th:text="${option}">INTERESTS_AND_SKILLS</option>
+                </select>
+            </div>
+
+            <div style="text-align: left; width: 100%; max-width: 500px;">
+                <label for="professorMatchingStrategy" style="font-weight: bold; font-size: 1rem;">Professor Strategy</label><br>
+                <select name="professorMatchingStrategy" id="professorMatchingStrategy" required
+                        style="width: 100%; margin-top: 8px; padding: 12px; border-radius: 10px;
+                               font-family: 'Ubuntu Mono', monospace; font-size: 1rem;
+                               background-color: #eacd45; color: #003366; border: none; text-align: center;">
+                    <option th:each="option : ${PROFESSOR_MATCHING_OPTIONS}"
+                            th:value="${option}" th:text="${option}">MIN_LOAD</option>
+                </select>
+            </div>
+
+            <button type="submit"
+                    style="margin-top: 10px; background-color: #eacd45; color: #003366; padding: 12px 24px;
+                           border-radius: 10px; font-weight: bold; font-size: 1rem;
+                           font-family: 'Ubuntu Mono', monospace; border: none; cursor: pointer;">
+                Execute Matching
+            </button>
         </div>
     </form>
 </div>
+
 
 <footer>
     &copy; 2025. Developed with ❤️ by

@@ -108,6 +108,62 @@
             text-decoration: none;
         }
 
+        .assignment-row {
+            display: grid;
+            grid-template-columns: 40px repeat(4, 1fr);
+            gap: 12px;
+            background: rgba(255,255,255,0.08);
+            padding: 12px 16px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .index-badge {
+            background-color: #ffcc33;
+            color: #003366;
+            font-weight: bold;
+            font-size: 1.1rem;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        }
+
+        .card-block {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .card-block strong {
+            color: #ffcc33;
+        }
+
+        .tag-group {
+            margin-top: 6px;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: #ffcc33;
+            color: #003366;
+            border-radius: 20px;
+            padding: 5px 14px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin: 4px 6px 0 0;
+        }
+
+        .tag.interest {
+            background-color: #33ccff;
+        }
+
+
     </style>
 </head>
 <body>
@@ -143,6 +199,80 @@
         <span th:each="interest : ${student.interests}" th:text="${interest}" class="tag">Interest</span>
     </div>
 </div>
+
+<h2 style="margin-top: 50px; color: #ffcc33;">Your Internship Assignment:</h2>
+
+<div th:if="${internship_assigment == null}" style="margin-top: 20px; font-size: 1.2rem;">
+    <em>You haven't been assigned to an internship yet.</em>
+</div>
+
+<div class="assignment-row" style="width: 95%; max-width: 1400px; margin: 30px auto;" th:if="${internship_assigment != null}">
+    <div class="index-badge">1</div>
+
+    <!-- Student (minimal) -->
+    <div class="card-block">
+        <strong>You</strong>
+        <span th:text="${student.firstName + ' ' + student.lastName}">John Doe</span>
+        <span th:text="${student.email}">student@uoi.gr</span>
+        <span th:text="${student.department}">INFORMATICS</span>
+        <span th:text="'Year: ' + ${student.yearOfStudy}">Year: 3</span>
+        <span th:text="'Grade: ' + ${student.averageGrade}">Grade: 8.5</span>
+        <span th:text="'Preferred Location: ' + (${student.preferredLocation} ?: '---')">Ioannina</span>
+
+        <div class="tag-group" th:if="${student.skills}">
+            <span class="tag" th:each="skill : ${student.skills}" th:text="${skill}">Skill</span>
+        </div>
+
+        <div class="tag-group" th:if="${student.interests}">
+            <span class="tag interest" th:each="interest : ${student.interests}" th:text="${interest}">Interest</span>
+        </div>
+    </div>
+
+    <!-- Position -->
+    <div class="card-block">
+        <strong>Company</strong>
+        <span th:text="${internship_assigment.position.company.companyName}">Company Name</span>
+        <span th:text="${internship_assigment.position.company.email}">company@example.com</span>
+        <span th:text="${internship_assigment.position.company.phone}">+30 1234567890</span>
+        <span th:text="${internship_assigment.position.company.address}">Athens, Greece</span>
+
+        <br/>
+
+        <strong>Position</strong>
+        <span th:text="${internship_assigment.position.title}">Backend Intern</span>
+        <span th:text="|From: ${internship_assigment.position.startDate} to ${internship_assigment.position.endDate}|">2025-06-01 to 2025-09-01</span>
+
+        <div class="tag-group" th:if="${internship_assigment.position.skills}">
+            <span class="tag" th:each="skill : ${internship_assigment.position.skills}" th:text="${skill}">Skill</span>
+        </div>
+
+        <div class="tag-group" th:if="${internship_assigment.position.interests}">
+            <span class="tag interest" th:each="interest : ${internship_assigment.position.interests}" th:text="${interest}">Interest</span>
+        </div>
+    </div>
+
+    <!-- Professor -->
+    <div class="card-block">
+        <strong>Professor</strong>
+        <span th:if="${internship_assigment.professor != null}" th:text="${internship_assigment.professor.firstName + ' ' + internship_assigment.professor.lastName}">Dr. Smith</span>
+        <span th:if="${internship_assigment.professor != null}" th:text="${internship_assigment.professor.email}">prof@example.com</span>
+        <span th:if="${internship_assigment.professor != null}" th:text="'Department: ' + ${internship_assigment.professor.department}">CS</span>
+        <span th:if="${internship_assigment.professor == null}"><em>Not assigned</em></span>
+
+        <div class="tag-group" th:if="${internship_assigment.professor.interests}">
+            <span class="tag interest" th:each="interest : ${internship_assigment.professor.interests}" th:text="${interest}">Interest</span>
+        </div>
+    </div>
+
+    <!-- Strategy Info -->
+    <div class="card-block">
+        <strong>Details</strong>
+        <span><strong>Position Matching Strategy:</strong> <span th:text="${internship_assigment.positionStrategy}">INTERESTS_AND_SKILLS</span></span>
+        <span><strong>Professor Matching strategy:</strong> <span th:text="${internship_assigment.professorStrategy ?: '---'}">MIN_LOAD</span></span>
+        <span><strong>Assigned At:</strong> <span th:text="${internship_assigment.assignedAt}">2025-05-17</span></span>
+    </div>
+</div>
+
 
 <footer>
     &copy; 2025. Developed with ❤️ by

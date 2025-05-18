@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionCreateDto;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionDashboardDto;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionEditDto;
-import xrddev.practiceportal.model.internship.InternshipPosition;
-import xrddev.practiceportal.model.user.Company;
+import xrddev.practiceportal.model.internship_position.InternshipPosition;
+import xrddev.practiceportal.model.company.Company;
 import xrddev.practiceportal.repository.InternshipPositionRepository;
 import xrddev.practiceportal.service.company.CompanyService;
 

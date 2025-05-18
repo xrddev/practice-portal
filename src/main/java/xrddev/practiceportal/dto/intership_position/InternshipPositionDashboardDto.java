@@ -1,10 +1,9 @@
 package xrddev.practiceportal.dto.intership_position;
 
 import lombok.Data;
-import xrddev.practiceportal.dto.user.student.StudentDashboardDto;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
-import xrddev.practiceportal.model.internship.InternshipPosition;
+import xrddev.practiceportal.model.internship_position.InternshipPosition;
 
 import java.time.LocalDate;
 import java.util.List;

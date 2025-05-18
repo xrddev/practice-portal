@@ -3,10 +3,10 @@ package xrddev.practiceportal.service.company;
 import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import xrddev.practiceportal.dto.user.company.CompanyDashboardDto;
-import xrddev.practiceportal.dto.user.company.CompanyEditDto;
-import xrddev.practiceportal.dto.user.company.CompanyRegistrationDto;
-import xrddev.practiceportal.model.user.Company;
+import xrddev.practiceportal.dto.company.CompanyDashboardDto;
+import xrddev.practiceportal.dto.company.CompanyEditDto;
+import xrddev.practiceportal.dto.company.CompanyRegistrationDto;
+import xrddev.practiceportal.model.company.Company;
 import xrddev.practiceportal.model.enums.UserRole;
 import xrddev.practiceportal.repository.CompanyRepository;
 

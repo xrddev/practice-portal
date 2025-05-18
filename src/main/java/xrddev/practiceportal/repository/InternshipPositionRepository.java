@@ -1,7 +1,7 @@
 package xrddev.practiceportal.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import xrddev.practiceportal.model.internship.InternshipPosition;
+import xrddev.practiceportal.model.internship_position.InternshipPosition;
 
 import java.util.List;
 import java.util.Optional;

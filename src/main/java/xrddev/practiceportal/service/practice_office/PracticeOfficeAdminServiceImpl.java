@@ -4,9 +4,9 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import xrddev.practiceportal.dto.user.practice_office.PracticeOfficeAdminDto;
+import xrddev.practiceportal.dto.practice_office.PracticeOfficeAdminDto;
 import xrddev.practiceportal.model.enums.UserRole;
-import xrddev.practiceportal.model.user.PracticeOfficeAdmin;
+import xrddev.practiceportal.model.practice_office.PracticeOfficeAdmin;
 import xrddev.practiceportal.repository.PracticeOfficeAdminRepository;
 
 import java.util.Optional;

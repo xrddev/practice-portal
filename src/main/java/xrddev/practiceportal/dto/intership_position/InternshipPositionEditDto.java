@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
-import xrddev.practiceportal.model.internship.InternshipPosition;
+import xrddev.practiceportal.model.internship_position.InternshipPosition;
 
 import java.time.LocalDate;
 import java.util.List;

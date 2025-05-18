@@ -252,6 +252,52 @@
             transform: scale(1.05);
         }
 
+        .assignment-list {
+            width: 95%;
+            max-width: 1400px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 50px;
+        }
+
+        .assignment-row {
+            display: grid;
+            grid-template-columns: 40px repeat(4, 1fr);
+            gap: 12px;
+            background: rgba(255,255,255,0.08);
+            padding: 12px 16px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .card-block {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .card-block strong {
+            color: #ffcc33;
+        }
+
+        .assignment-row {
+            position: relative; /* για να λειτουργεί το absolute positioning του κουμπιού */
+            display: grid;
+            grid-template-columns: 40px repeat(4, 1fr);
+            gap: 12px;
+            background: rgba(255,255,255,0.08);
+            padding: 12px 16px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+
+
 
     </style>
 </head>
@@ -282,7 +328,7 @@
 
 
 
-<div class="box">
+<div class="box" th:if="${#lists.isEmpty(matchedAssignments)}">
     <h2>Your Posted Positions</h2>
     <ul>
         <li class="position-item" th:each="position : ${positions}">
@@ -330,6 +376,89 @@
         <form th:action="@{/company/new-position}" method="get">
             <button class="add-position-btn" type="submit">+ Add New Position</button>
         </form>
+    </div>
+</div>
+
+
+<div class="box" th:if="${!#lists.isEmpty(matchedAssignments)}">
+    <h2>Matched Internship Assignments</h2>
+    <div class="assignment-list">
+        <div class="assignment-row" th:each="assignment, iterStat : ${matchedAssignments}">
+            <div class="index-badge" th:text="${iterStat.index + 1}">1</div>
+
+            <div style="position: absolute; top: 10px; right: 10px;">
+                <form th:action="@{|/company/evaluate/${assignment.id}|}" method="get">
+                    <button type="submit" style="
+            border: none;
+            border-radius: 5px;
+            padding: 6px 12px;
+            font-size: 0.9rem;
+            font-family: 'Ubuntu Mono', monospace;
+            cursor: pointer;
+            background-color: #ff4d4d;
+            color: white;
+            transition: background-color 0.3s, transform 0.2s;">
+                        Company Evaluation
+                    </button>
+                </form>
+            </div>
+
+
+            <!-- Student -->
+            <div class="card-block">
+                <strong>Student</strong>
+                <span th:text="${assignment.student.firstName + ' ' + assignment.student.lastName}">John Doe</span>
+                <span th:text="${assignment.student.email}">student@uoi.gr</span>
+                <span th:text="${assignment.student.department}">INFORMATICS</span>
+                <span th:text="'Year: ' + ${assignment.student.yearOfStudy}">Year: 3</span>
+                <span th:text="'Grade: ' + ${assignment.student.averageGrade}">Grade: 8.5</span>
+                <span th:text="'Preferred Location: ' + (${assignment.student.preferredLocation} ?: '---')">Ioannina</span>
+
+                <div class="tag-group" th:if="${assignment.student.skills}">
+                    <span class="tag" th:each="skill : ${assignment.student.skills}" th:text="${skill}">Skill</span>
+                </div>
+
+                <div class="tag-group" th:if="${assignment.student.interests}">
+                    <span class="tag interest" th:each="interest : ${assignment.student.interests}" th:text="${interest}">Interest</span>
+                </div>
+            </div>
+
+            <!-- Position -->
+            <div class="card-block">
+                <strong>Position</strong>
+                <span th:text="${assignment.position.title}">Backend Intern</span>
+                <span th:text="|From: ${assignment.position.startDate} to ${assignment.position.endDate}|">2025-06-01 to 2025-09-01</span>
+
+                <div class="tag-group" th:if="${assignment.position.skills}">
+                    <span class="tag" th:each="skill : ${assignment.position.skills}" th:text="${skill}">Skill</span>
+                </div>
+
+                <div class="tag-group" th:if="${assignment.position.interests}">
+                    <span class="tag interest" th:each="interest : ${assignment.position.interests}" th:text="${interest}">Interest</span>
+                </div>
+            </div>
+
+            <!-- Professor -->
+            <div class="card-block">
+                <strong>Professor</strong>
+                <span th:if="${assignment.professor != null}" th:text="${assignment.professor.firstName + ' ' + assignment.professor.lastName}">Dr. Smith</span>
+                <span th:if="${assignment.professor != null}" th:text="${assignment.professor.email}">prof@example.com</span>
+                <span th:if="${assignment.professor != null}" th:text="'Department: ' + ${assignment.professor.department}">CS</span>
+                <span th:if="${assignment.professor == null}"><em>Not assigned</em></span>
+
+                <div class="tag-group" th:if="${assignment.professor.interests}">
+                    <span class="tag interest" th:each="interest : ${assignment.professor.interests}" th:text="${interest}">Interest</span>
+                </div>
+            </div>
+
+            <!-- Strategy Info -->
+            <div class="card-block">
+                <strong>Details</strong>
+                <span><strong>Position Matching Strategy:</strong> <span th:text="${assignment.positionStrategy}">INTERESTS_AND_SKILLS</span></span>
+                <span><strong>Professor Matching Strategy:</strong> <span th:text="${assignment.professorStrategy ?: '---'}">MIN_LOAD</span></span>
+                <span><strong>Assignment Date:</strong> <span th:text="${assignment.assignedAt}">2025-05-17</span></span>
+            </div>
+        </div>
     </div>
 </div>
 

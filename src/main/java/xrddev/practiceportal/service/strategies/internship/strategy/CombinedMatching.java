@@ -3,7 +3,9 @@ package xrddev.practiceportal.service.strategies.internship.strategy;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import xrddev.practiceportal.model.enums.InternshipMatchingOptions;
-import xrddev.practiceportal.model.internship.InternshipAssignment;
+import xrddev.practiceportal.model.internship_assigment.InternshipAssignment;
+import xrddev.practiceportal.model.internship_position.InternshipPosition;
+import xrddev.practiceportal.model.student.Student;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -21,18 +23,12 @@ public class CombinedMatching implements InternshipAssigmentStrategy {
     }
 
     @Override
-    public List<InternshipAssignment> match() {
-        List<InternshipAssignment> locationMatchedPositions = locationMatching.match();
-        Map<Long, Long> interestsAndSkillsStudentIDtoPositionIDMap = interestsAndSkillsMatching.match().stream()
-                .collect(Collectors.toMap(
-                        internshipAssignment -> internshipAssignment.getStudent().getId(),
-                        internshipAssignment -> internshipAssignment.getPosition().getId()));
+    public List<InternshipAssignment> match(List<Student> students, List<InternshipPosition> positions) {
+        List<InternshipAssignment> interestsAndSkillsMatched = interestsAndSkillsMatching.match(students, positions);
 
+        List<Student> filteredStudents = interestsAndSkillsMatched.stream().map(InternshipAssignment::getStudent).toList();
+        List<InternshipPosition> filteredPositions = interestsAndSkillsMatched.stream().map(InternshipAssignment::getPosition).toList();
 
-        //Filter out positions that don't match the student's interests
-        return locationMatchedPositions.stream().filter(locationPosition -> {
-            Long mapPositionID = interestsAndSkillsStudentIDtoPositionIDMap.get(locationPosition.getStudent().getId());
-            return mapPositionID != null && mapPositionID.equals(locationPosition.getPosition().getId());
-        }).toList();
+        return locationMatching.match(filteredStudents, filteredPositions);
     }
 }

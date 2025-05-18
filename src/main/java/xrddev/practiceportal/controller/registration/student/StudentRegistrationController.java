@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import xrddev.practiceportal.controller.registration.common.RegistrationSessionHelper;
-import xrddev.practiceportal.dto.user.student.StudentRegistrationDto;
+import xrddev.practiceportal.dto.student.StudentRegistrationDto;
 import xrddev.practiceportal.service.student.StudentService;
 
 

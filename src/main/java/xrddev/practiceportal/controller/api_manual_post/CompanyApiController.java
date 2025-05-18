@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import xrddev.practiceportal.dto.user.company.CompanyRegistrationDto;
+import xrddev.practiceportal.dto.company.CompanyRegistrationDto;
 import xrddev.practiceportal.service.company.CompanyService;
 
 import java.util.List;
@@ -25,17 +25,13 @@ public class CompanyApiController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createCompany(
-        @RequestBody @Valid CompanyRegistrationDto dto
-    ) {
+    public void createCompany(@RequestBody @Valid CompanyRegistrationDto dto) {
         companyService.registerCompany(dto);
     }
 
     @PostMapping("/batch")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createCompaniesBatch(
-        @RequestBody @Valid List<CompanyRegistrationDto> dtos
-    ) {
-        dtos.forEach(companyService::registerCompany);
+    public void createCompaniesBatch(@RequestBody @Valid List<CompanyRegistrationDto> dtoList) {
+        dtoList.forEach(companyService::registerCompany);
     }
 }

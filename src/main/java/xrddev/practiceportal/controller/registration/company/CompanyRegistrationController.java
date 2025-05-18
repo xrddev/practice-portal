@@ -9,7 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import xrddev.practiceportal.controller.registration.common.RegistrationSessionHelper;
-import xrddev.practiceportal.dto.user.company.CompanyRegistrationDto;
+import xrddev.practiceportal.dto.company.CompanyRegistrationDto;
 import xrddev.practiceportal.service.company.CompanyService;
 
 

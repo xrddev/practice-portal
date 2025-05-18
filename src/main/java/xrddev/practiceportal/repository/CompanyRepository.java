@@ -1,7 +1,7 @@
 package xrddev.practiceportal.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import xrddev.practiceportal.model.user.Company;
+import xrddev.practiceportal.model.company.Company;
 
 import java.util.Optional;
 

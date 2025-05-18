@@ -1,9 +1,9 @@
 package xrddev.practiceportal.service.company;
 
-import xrddev.practiceportal.dto.user.company.CompanyDashboardDto;
-import xrddev.practiceportal.dto.user.company.CompanyEditDto;
-import xrddev.practiceportal.dto.user.company.CompanyRegistrationDto;
-import xrddev.practiceportal.model.user.Company;
+import xrddev.practiceportal.dto.company.CompanyDashboardDto;
+import xrddev.practiceportal.dto.company.CompanyEditDto;
+import xrddev.practiceportal.dto.company.CompanyRegistrationDto;
+import xrddev.practiceportal.model.company.Company;
 
 import java.util.List;
 import java.util.Optional;

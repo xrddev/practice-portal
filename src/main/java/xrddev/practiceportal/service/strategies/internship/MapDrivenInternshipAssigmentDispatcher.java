@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import xrddev.practiceportal.model.enums.InternshipMatchingOptions;
-import xrddev.practiceportal.model.internship.InternshipAssignment;
+import xrddev.practiceportal.model.internship_assigment.InternshipAssignment;
+import xrddev.practiceportal.model.internship_position.InternshipPosition;
+import xrddev.practiceportal.model.student.Student;
 import xrddev.practiceportal.service.strategies.InternshipAssigmentStrategyDispatcher;
 import xrddev.practiceportal.service.strategies.internship.strategy.InternshipAssigmentStrategy;
 
@@ -32,9 +34,9 @@ public class MapDrivenInternshipAssigmentDispatcher implements InternshipAssigme
 
     @Override
     @Transactional
-    public List<InternshipAssignment> dispatch(InternshipMatchingOptions strategy) {
+    public List<InternshipAssignment> dispatch(InternshipMatchingOptions strategy, List<Student> students, List<InternshipPosition> internshipPositions) {
         return Optional.ofNullable(assignmentStrategyMap.get(strategy))
                 .orElseThrow(() -> new IllegalArgumentException("No matching InternshipMatchingOptions for: " + strategy))
-                .match();
+                .match(students, internshipPositions);
     }
 }

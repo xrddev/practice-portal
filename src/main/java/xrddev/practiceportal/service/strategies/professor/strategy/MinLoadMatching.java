@@ -3,8 +3,8 @@ package xrddev.practiceportal.service.strategies.professor.strategy;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import xrddev.practiceportal.model.enums.ProfessorMatchingOptions;
-import xrddev.practiceportal.model.internship.InternshipAssignment;
-import xrddev.practiceportal.model.user.Professor;
+import xrddev.practiceportal.model.internship_assigment.InternshipAssignment;
+import xrddev.practiceportal.model.professor.Professor;
 import xrddev.practiceportal.service.professor.ProfessorService;
 
 import java.util.*;
@@ -21,12 +21,12 @@ public class MinLoadMatching implements ProfessorMatchingStrategy {
     }
 
     @Override
-    public List<InternshipAssignment> filterProfessorCompatibleAssignments(List<InternshipAssignment> internshipAssignments) {
+    public List<InternshipAssignment> filterProfessorCompatibleAssignments(List<Professor> professors,List<InternshipAssignment> internshipAssignments) {
         List<InternshipAssignment> professorCompatibleInternshipAssignments = new ArrayList<>();
         Map<Professor, Integer> loadMap = new HashMap<>();
         PriorityQueue<Professor> professorQueue = new PriorityQueue<>(Comparator.comparingInt(loadMap::get));
 
-        professorService.getAll().forEach(professor -> {
+        professors.forEach(professor -> {
             loadMap.put(professor, 0);
             professorQueue.add(professor);
         });

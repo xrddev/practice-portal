@@ -1,9 +1,9 @@
 package xrddev.practiceportal.service.professor;
 
-import xrddev.practiceportal.dto.user.professor.ProfessorDashboardDto;
-import xrddev.practiceportal.dto.user.professor.ProfessorEditDto;
-import xrddev.practiceportal.dto.user.professor.ProfessorRegistrationDto;
-import xrddev.practiceportal.model.user.Professor;
+import xrddev.practiceportal.dto.professor.ProfessorDashboardDto;
+import xrddev.practiceportal.dto.professor.ProfessorEditDto;
+import xrddev.practiceportal.dto.professor.ProfessorRegistrationDto;
+import xrddev.practiceportal.model.professor.Professor;
 
 import java.util.List;
 import java.util.Optional;

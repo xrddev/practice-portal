@@ -1,5 +1,8 @@
 package xrddev.practiceportal.controller.practice_office;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,13 +12,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import xrddev.practiceportal.model.enums.InternshipMatchingOptions;
-import xrddev.practiceportal.model.internship.InternshipAssignment;
+import xrddev.practiceportal.model.enums.ProfessorMatchingOptions;
+import xrddev.practiceportal.model.internship_assigment.InternshipAssignment;
+import xrddev.practiceportal.model.internship_position.InternshipPosition;
+import xrddev.practiceportal.model.student.Student;
 import xrddev.practiceportal.repository.InternshipAssignmentRepository;
 import xrddev.practiceportal.service.company.CompanyService;
 import xrddev.practiceportal.service.internship.InternshipPositionService;
 import xrddev.practiceportal.service.practice_office.PracticeOfficeAdminService;
 import xrddev.practiceportal.service.professor.ProfessorService;
 import xrddev.practiceportal.service.strategies.InternshipAssigmentStrategyDispatcher;
+import xrddev.practiceportal.service.strategies.ProfessorStrategyDispatcher;
+import xrddev.practiceportal.service.strategies.professor.strategy.ProfessorMatchingStrategy;
 import xrddev.practiceportal.service.student.StudentService;
 
 import java.security.Principal;
@@ -26,6 +34,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PracticeOfficeDashboardController {
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
     private final PracticeOfficeAdminService practiceOfficeAdminService;
     private final StudentService studentService;
     private final CompanyService companyService;
@@ -33,6 +44,7 @@ public class PracticeOfficeDashboardController {
     private final InternshipPositionService internshipPositionService;
     private final InternshipAssigmentStrategyDispatcher internshipAssigmentStrategyDispatcher;
     private final InternshipAssignmentRepository internshipAssignmentRepository;
+    private final ProfessorStrategyDispatcher professorStrategyDispatcher;
 
     @GetMapping("/dashboard")
     public String showDashboard(Model model, Principal principal) {
@@ -46,15 +58,26 @@ public class PracticeOfficeDashboardController {
         return "practice_office/dashboard";
     }
 
-    @Transactional
-    @PostMapping("/dashboard/match")
-    public String matchInternships(@RequestParam("strategy") String strategy) {
-        List<InternshipAssignment> matchedInternships =
-                internshipAssigmentStrategyDispatcher.dispatch(InternshipMatchingOptions.valueOf(strategy.toUpperCase()));
 
-        matchedInternships.forEach(assignment -> assignment.getPosition().setAssigned(true));
-        internshipAssignmentRepository.saveAll(matchedInternships);
+    @PostMapping("/dashboard/execute-match")
+    @Transactional
+    public String executeCombinedMatching(@RequestParam InternshipMatchingOptions internshipMatchingStrategy,
+                                          @RequestParam ProfessorMatchingOptions professorMatchingStrategy) {
+
+        //Clear session
+        internshipAssignmentRepository.deleteAllInBatch();
+        entityManager.clear();
+
+        List<InternshipAssignment> companyStudentMatched =
+                internshipAssigmentStrategyDispatcher.dispatch(
+                        internshipMatchingStrategy,
+                        studentService.getAll(),
+                        internshipPositionService.getAll());
+
+        List<InternshipAssignment> companyStudentMatchedWithCompatibleProfessors =
+                professorStrategyDispatcher.dispatch(professorMatchingStrategy,professorService.getAll(),companyStudentMatched);
+
+        internshipAssignmentRepository.saveAll(companyStudentMatchedWithCompatibleProfessors);
         return "redirect:/practice-office/dashboard";
     }
-
 }

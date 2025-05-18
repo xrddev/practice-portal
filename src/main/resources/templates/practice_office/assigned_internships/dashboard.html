@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Matched Assignments</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Ubuntu Mono', monospace;
+            background: linear-gradient(135deg, #0073e6, #00b3b3);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin: 40px 0 20px;
+            font-size: 2.8rem;
+            text-align: center;
+            color: #ffcc33;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .top-bar {
+            width: 95%;
+            max-width: 1400px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .top-bar form button {
+            background-color: #33cc33;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-family: 'Ubuntu Mono', monospace;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .total-count {
+            background-color: #ffcc33;
+            color: #003366;
+            border-radius: 20px;
+            padding: 6px 18px;
+            font-size: 1rem;
+            font-weight: bold;
+            box-shadow: 0 0 6px rgba(0,0,0,0.2);
+        }
+
+        .assignment-list {
+            width: 95%;
+            max-width: 1400px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 50px;
+        }
+
+        .assignment-row {
+            display: grid;
+            grid-template-columns: 40px repeat(4, 1fr) 100px;
+            gap: 12px;
+            background: rgba(255,255,255,0.08);
+            padding: 12px 16px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .index-badge {
+            background-color: #ffcc33;
+            color: #003366;
+            font-weight: bold;
+            font-size: 1.1rem;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        }
+
+        .card-block {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .card-block strong {
+            color: #ffcc33;
+        }
+
+        .delete-form {
+            text-align: center;
+        }
+
+        .delete-form button {
+            border: none;
+            border-radius: 5px;
+            padding: 6px 14px;
+            font-family: 'Ubuntu Mono', monospace;
+            font-size: 0.85rem;
+            cursor: pointer;
+            background-color: #ff4d4d;
+            color: white;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .delete-form button:hover {
+            background-color: #e60000;
+            transform: scale(1.05);
+        }
+
+        .no-results {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 1.2rem;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        footer {
+            text-align: center;
+            background: rgba(0,0,0,0.3);
+            color: rgba(255,255,255,0.9);
+            padding: 10px 0;
+            font-size: 0.8rem;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        a {
+            color: #ffcc33;
+            text-decoration: none;
+        }
+
+        @media (max-width: 992px) {
+            .assignment-row {
+                grid-template-columns: 40px 1fr;
+                grid-template-rows: auto auto auto auto auto;
+            }
+        }
+
+        .tag-group {
+            margin-top: 6px;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: #ffcc33;
+            color: #003366;
+            border-radius: 20px;
+            padding: 5px 14px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin: 4px 6px 0 0;
+        }
+
+        .tag.interest {
+            background-color: #33ccff;
+        }
+
+    </style>
+</head>
+<body>
+
+<h1>Matched Internship Assignments</h1>
+
+<!-- Back and Total -->
+<!-- Back button top right -->
+<div style="width: 95%; max-width: 1400px; margin-bottom: 10px; display: flex; justify-content: flex-end;">
+    <form th:action="@{/practice-office/dashboard}" method="get">
+        <button type="submit"
+                style="background-color: #33cc33; color: white; border: none; border-radius: 5px;
+                       padding: 10px 20px; font-size: 1rem; font-family: 'Ubuntu Mono', monospace;
+                       cursor: pointer; transition: background-color 0.3s;">
+            ← Back to Dashboard
+        </button>
+    </form>
+</div>
+
+<!-- Total assignments badge -->
+<div style="width: 95%; max-width: 1400px; margin-bottom: 10px;">
+    <span style="
+        display: inline-block;
+        background-color: #ffcc33;
+        color: #003366;
+        border-radius: 20px;
+        padding: 6px 18px;
+        font-size: 1rem;
+        font-weight: bold;
+        box-shadow: 0 0 6px rgba(0,0,0,0.2);">
+        Total Assignments: <span th:text="${matchedAssignments.size()}">0</span>
+    </span>
+</div>
+
+
+
+<!-- Assignments -->
+<div class="assignment-list">
+    <div class="assignment-row" th:each="assignment, iterStat : ${matchedAssignments}">
+        <div class="index-badge" th:text="${iterStat.index + 1}">1</div>
+
+        <!-- Student -->
+        <div class="card-block">
+            <strong>Student</strong>
+            <span th:text="${assignment.student.firstName + ' ' + assignment.student.lastName}">John Doe</span>
+            <span th:text="${assignment.student.email}">student@uoi.gr</span>
+            <span th:text="${assignment.student.department}">INFORMATICS</span>
+            <span th:text="'Year: ' + ${assignment.student.yearOfStudy}">Year: 3</span>
+            <span th:text="'Grade: ' + ${assignment.student.averageGrade}">Grade: 8.5</span>
+            <span th:text="'Preferred Location: ' + (${assignment.student.preferredLocation} ?: '---')">Ioannina</span>
+
+            <div class="tag-group" th:if="${assignment.student.skills}">
+                <span class="tag" th:each="skill : ${assignment.student.skills}" th:text="${skill}">Skill</span>
+            </div>
+
+            <div class="tag-group" th:if="${assignment.student.interests}">
+                <span class="tag interest" th:each="interest : ${assignment.student.interests}" th:text="${interest}">Interest</span>
+            </div>
+
+        </div>
+
+        <!-- Position -->
+        <div class="card-block">
+            <strong style="margin-top: 6px;">Company</strong>
+            <span th:text="${assignment.position.company.companyName}">Company Name</span>
+            <span th:text="${assignment.position.company.email}">company@example.com</span>
+            <span th:text="${assignment.position.company.phone}">+30 1234567890</span>
+            <span th:text="${assignment.position.company.address}">Athens, Greece</span>
+
+            <br/>
+
+            <strong>Position</strong>
+            <span th:text="${assignment.position.title}">Backend Intern</span>
+            <span th:text="|From: ${assignment.position.startDate} to ${assignment.position.endDate}|">2025-06-01 to 2025-09-01</span>
+
+            <div class="tag-group" th:if="${assignment.position.skills}">
+                <span class="tag" th:each="skill : ${assignment.position.skills}" th:text="${skill}">Skill</span>
+            </div>
+
+            <div class="tag-group" th:if="${assignment.position.interests}">
+                <span class="tag interest" th:each="interest : ${assignment.position.interests}" th:text="${interest}">Interest</span>
+            </div>
+        </div>
+
+        <!-- Professor -->
+        <div class="card-block">
+            <strong>Professor</strong>
+            <span th:if="${assignment.professor != null}" th:text="${assignment.professor.firstName + ' ' + assignment.professor.lastName}">Dr. Smith</span>
+            <span th:if="${assignment.professor != null}" th:text="${assignment.professor.email}">prof@example.com</span>
+            <span th:text="'Department: ' + ${assignment.professor.department}">CS</span>
+            <span th:if="${assignment.professor == null}"><em>Not assigned</em></span>
+
+            <div class="tag-group" th:if="${assignment.professor.interests}">
+                <span class="tag interest" th:each="interest : ${assignment.professor.interests}" th:text="${interest}">Interest</span>
+            </div>
+
+        </div>
+
+        <!-- Strategy Info -->
+        <div class="card-block">
+            <strong>Details</strong>
+            <span><strong>Position Matching Strategy:</strong> <span th:text="${assignment.positionStrategy}">INTERESTS_AND_SKILLS</span></span>
+            <span><strong>Professor Matching strategy:</strong> <span th:text="${assignment.professorStrategy ?: '---'}">MIN_LOAD</span></span>
+            <span><strong>Assigment Date:</strong> <span th:text="${assignment.assignedAt}">2025-05-17</span></span>
+        </div>
+    </div>
+</div>
+
+<footer>
+    &copy; 2025. Developed with ❤️ by <a href="https://github.com/xrddev" target="_blank">xrddev</a>.
+</footer>
+
+</body>
+</html>

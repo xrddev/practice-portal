@@ -1,20 +1,21 @@
 package xrddev.practiceportal.service.strategies.professor.strategy;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import xrddev.practiceportal.model.enums.ProfessorMatchingOptions;
-import xrddev.practiceportal.model.internship.InternshipAssignment;
-import xrddev.practiceportal.model.user.Professor;
+import xrddev.practiceportal.model.internship_assigment.InternshipAssignment;
+import xrddev.practiceportal.model.professor.Professor;
 import xrddev.practiceportal.service.professor.ProfessorService;
 import xrddev.practiceportal.service.strategies.SimilarityMetrics;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class InterestsMatching implements ProfessorMatchingStrategy {
-
-    private final ProfessorService professorService;
 
     private static final double MIN_JACCARD_THRESHOLD = 0.3;
 
@@ -24,29 +25,23 @@ public class InterestsMatching implements ProfessorMatchingStrategy {
     }
 
     @Override
-    public List<InternshipAssignment> filterProfessorCompatibleAssignments(List<InternshipAssignment> internshipAssignments) {
-        return professorService.getAll()
-                .stream()
-                .map(professor -> {
-                    InternshipAssignment assignment = findBestMatchForProfessor(professor, internshipAssignments);
-                    if (assignment != null) {
-                        assignment.setProfessor(professor);
-                        assignment.setProfessorMatchStrategy(ProfessorMatchingOptions.INTERESTS);
-                        return assignment;
-                    }
-                    return null;})
-                .filter(java.util.Objects::nonNull)
-                .toList();
-    }
+    public List<InternshipAssignment> filterProfessorCompatibleAssignments(List<Professor> professors, List<InternshipAssignment> internshipAssignments) {
+        List<InternshipAssignment> compatibleAssignments = new ArrayList<>();
 
-
-
-    private InternshipAssignment findBestMatchForProfessor(Professor professor, List<InternshipAssignment> internshipAssignments) {
-        return internshipAssignments
-                .stream()
-                .filter(assignment -> isCompatible(professor, assignment))
-                .findFirst()
-                .orElse(null);
+        for (InternshipAssignment assignment : internshipAssignments) {
+            Iterator<Professor> iterator = professors.iterator();
+            while (iterator.hasNext()) {
+                Professor professor = iterator.next();
+                if (isCompatible(professor, assignment)) {
+                    assignment.setProfessor(professor);
+                    assignment.setProfessorMatchStrategy(ProfessorMatchingOptions.INTERESTS);
+                    compatibleAssignments.add(assignment);
+                    iterator.remove();
+                    break;
+                }
+            }
+        }
+        return compatibleAssignments;
     }
 
     private boolean isCompatible(Professor professor, InternshipAssignment assignment) {

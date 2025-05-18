@@ -6,12 +6,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import xrddev.practiceportal.dto.user.professor.ProfessorRegistrationDto;
+import xrddev.practiceportal.dto.professor.ProfessorRegistrationDto;
 import xrddev.practiceportal.service.professor.ProfessorService;
 
 import java.util.List;
 
-@Validated                                         // ενεργοποιεί την container-element validation
+@Validated
 @RestController
 @RequestMapping(
         path     = "/public/api/professors",
@@ -25,17 +25,14 @@ public class ProfessorApiController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createProfessor(
-            @RequestBody @Valid ProfessorRegistrationDto dto
-    ) {
+    public void createProfessor(@RequestBody @Valid ProfessorRegistrationDto dto) {
         professorService.registerProfessor(dto);
     }
 
     @PostMapping("/batch")
     @ResponseStatus(HttpStatus.CREATED)
     public void createProfessorsBatch(
-            @RequestBody @Valid List<ProfessorRegistrationDto> dtos  // @Valid εδώ “πιάνει” κάθε στοιχείο
-    ) {
-        dtos.forEach(professorService::registerProfessor);
+            @RequestBody @Valid List<ProfessorRegistrationDto> dtoList) {
+        dtoList.forEach(professorService::registerProfessor);
     }
 }

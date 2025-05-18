@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import xrddev.practiceportal.dto.user.practice_office.PracticeOfficeAdminDto;
+import xrddev.practiceportal.dto.practice_office.PracticeOfficeAdminDto;
 import xrddev.practiceportal.service.practice_office.PracticeOfficeAdminService;
 
 import java.util.Arrays;

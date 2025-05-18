@@ -3,8 +3,9 @@ package xrddev.practiceportal.service.strategies.internship.strategy;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import xrddev.practiceportal.model.enums.InternshipMatchingOptions;
-import xrddev.practiceportal.model.internship.InternshipAssignment;
-import xrddev.practiceportal.model.internship.InternshipPosition;
+import xrddev.practiceportal.model.internship_assigment.InternshipAssignment;
+import xrddev.practiceportal.model.internship_position.InternshipPosition;
+import xrddev.practiceportal.model.student.Student;
 import xrddev.practiceportal.service.internship.InternshipPositionService;
 import xrddev.practiceportal.service.student.StudentService;
 
@@ -16,42 +17,34 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class LocationMatching implements InternshipAssigmentStrategy {
 
-    private final StudentService studentService;
-    private final InternshipPositionService internshipPositionService;
-
     @Override
     public InternshipMatchingOptions getStrategyType() {
         return InternshipMatchingOptions.LOCATION;
     }
 
     @Override
-    public List<InternshipAssignment> match() {
-        Map<String, Deque<InternshipPosition>> locationToPositionMap =
-                internshipPositionService.getAll()
-                        .stream()
-                        .collect(Collectors.groupingBy(position -> position.getLocation().trim().toUpperCase()
-                                ,Collectors.toCollection(ArrayDeque::new)));
+    public List<InternshipAssignment> match(List<Student> students, List<InternshipPosition> internshipPositions) {
+        Map<String, Queue<InternshipPosition>> locationToPositions = internshipPositions.stream()
+                .collect(Collectors.groupingBy(
+                        position -> position.getLocation().trim().toUpperCase(),
+                                Collectors.toCollection(LinkedList::new)));
 
-        LocalDate localDate = LocalDate.now();
+        List<InternshipAssignment> internshipAssignments = new ArrayList<>();
 
-        return studentService.findAll()
-                .stream()
-                .map(student -> {
-                    String preferredLocation = student.getPreferredLocation().trim().toUpperCase();
-                    Deque<InternshipPosition> availablePositionsAtTheSpecificLocation = locationToPositionMap.get(preferredLocation);
+        for (Student student : students) {
+            String preferredLocation = student.getPreferredLocation().trim().toUpperCase();
+            Queue<InternshipPosition> available = locationToPositions.get(preferredLocation);
+            if (available == null || available.isEmpty()) continue;
 
-                    //No Positions at the specific location at all or no positions left
-                    if (availablePositionsAtTheSpecificLocation == null || availablePositionsAtTheSpecificLocation.isEmpty()) return null;
+            InternshipAssignment assignment = new InternshipAssignment();
+            assignment.setPosition(available.poll());
+            assignment.setStudent(student);
+            assignment.setProfessor(null);
+            assignment.setStudentMatchStrategy(InternshipMatchingOptions.LOCATION);
+            assignment.setAssignedAt(LocalDate.now());
 
-                    InternshipPosition internshipPosition = availablePositionsAtTheSpecificLocation.pollFirst();
-                    InternshipAssignment matchedAssignment = new InternshipAssignment();
-                    matchedAssignment.setStudent(student);
-                    matchedAssignment.setPosition(internshipPosition);
-                    matchedAssignment.setStudentMatchStrategy(InternshipMatchingOptions.LOCATION);
-                    matchedAssignment.setAssignedAt(localDate);
-                    matchedAssignment.setProfessor(null);
-                    return matchedAssignment;})
-                .filter(Objects::nonNull)
-                .toList();
+            internshipAssignments.add(assignment);
+        }
+        return internshipAssignments;
     }
 }

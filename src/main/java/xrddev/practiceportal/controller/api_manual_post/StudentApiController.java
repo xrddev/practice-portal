@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import xrddev.practiceportal.dto.user.student.StudentRegistrationDto;
+import xrddev.practiceportal.dto.student.StudentRegistrationDto;
 import xrddev.practiceportal.service.student.StudentService;
 
 import java.util.List;
@@ -25,17 +25,13 @@ public class StudentApiController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createStudent(
-        @RequestBody @Valid StudentRegistrationDto dto
-    ) {
+    public void createStudent(@RequestBody @Valid StudentRegistrationDto dto) {
         studentService.registerStudent(dto);
     }
 
     @PostMapping("/batch")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createStudentsBatch(
-        @RequestBody @Valid List<StudentRegistrationDto> dtos
-    ) {
-        dtos.forEach(studentService::registerStudent);
+    public void createStudentsBatch(@RequestBody @Valid List<StudentRegistrationDto> dtoList) {
+        dtoList.forEach(studentService::registerStudent);
     }
 }

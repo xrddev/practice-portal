@@ -2,9 +2,7 @@ package xrddev.practiceportal.config;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import xrddev.practiceportal.model.enums.Department;
-import xrddev.practiceportal.model.enums.Interests;
-import xrddev.practiceportal.model.enums.Skills;
+import xrddev.practiceportal.model.enums.*;
 import xrddev.practiceportal.service.periods.ApplicationPeriodService;
 import xrddev.practiceportal.service.periods.EvaluationPeriodService;
 
@@ -57,6 +55,20 @@ public class GlobalModelAttributes {
     @ModelAttribute("RATINGS")
     public List<String> ratings() {
         return Arrays.stream(xrddev.practiceportal.model.enums.Rating.values())
+                .map(Enum::name)
+                .toList();
+    }
+
+    @ModelAttribute("INTERNSHIP_MATCHING_OPTIONS")
+    public List<String> internshipMatchingStrategies() {
+        return Arrays.stream(InternshipMatchingOptions.values())
+                .map(Enum::name)
+                .toList();
+    }
+
+    @ModelAttribute("PROFESSOR_MATCHING_OPTIONS")
+    public List<String> professorMatchingStrategies() {
+        return Arrays.stream(ProfessorMatchingOptions.values())
                 .map(Enum::name)
                 .toList();
     }

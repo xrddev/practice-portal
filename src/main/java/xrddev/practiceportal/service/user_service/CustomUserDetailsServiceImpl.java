@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import xrddev.practiceportal.model.user.User;
+import xrddev.practiceportal.model.practice_office.User;
 import xrddev.practiceportal.repository.UserRepository;
 
 @Service

@@ -4,10 +4,10 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import xrddev.practiceportal.dto.user.student.StudentDashboardDto;
-import xrddev.practiceportal.dto.user.student.StudentEditDto;
-import xrddev.practiceportal.dto.user.student.StudentRegistrationDto;
-import xrddev.practiceportal.model.user.Student;
+import xrddev.practiceportal.dto.student.StudentDashboardDto;
+import xrddev.practiceportal.dto.student.StudentEditDto;
+import xrddev.practiceportal.dto.student.StudentRegistrationDto;
+import xrddev.practiceportal.model.student.Student;
 import xrddev.practiceportal.model.enums.UserRole;
 import xrddev.practiceportal.repository.StudentRepository;
 
@@ -113,7 +113,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> findAll() {
+    public List<Student> getAll() {
         return studentRepository.findAll();
     }
 

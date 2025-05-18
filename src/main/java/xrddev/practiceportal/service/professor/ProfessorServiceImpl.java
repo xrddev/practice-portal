@@ -4,11 +4,11 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import xrddev.practiceportal.dto.user.professor.ProfessorDashboardDto;
-import xrddev.practiceportal.dto.user.professor.ProfessorEditDto;
-import xrddev.practiceportal.dto.user.professor.ProfessorRegistrationDto;
+import xrddev.practiceportal.dto.professor.ProfessorDashboardDto;
+import xrddev.practiceportal.dto.professor.ProfessorEditDto;
+import xrddev.practiceportal.dto.professor.ProfessorRegistrationDto;
 import xrddev.practiceportal.model.enums.UserRole;
-import xrddev.practiceportal.model.user.Professor;
+import xrddev.practiceportal.model.professor.Professor;
 import xrddev.practiceportal.repository.ProfessorRepository;
 
 import java.util.List;
