@@ -17,10 +17,6 @@ public class CompanyInternshipEvaluation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "assignment_id", nullable = false, unique = true)
-    private InternshipAssignment assignment;
-
     @Enumerated(EnumType.STRING)
     private Rating motivation;
 
@@ -30,8 +26,7 @@ public class CompanyInternshipEvaluation {
     @Enumerated(EnumType.STRING)
     private Rating efficiency;
 
-    @Enumerated(EnumType.STRING)
-    private OverallGrade overallGrade;
+    private String overallGrade;
 
     private String comments;
 }

@@ -1,14 +1,17 @@
 package xrddev.practiceportal.dto.internship_evaluations;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import xrddev.practiceportal.model.enums.OverallGrade;
 import xrddev.practiceportal.model.enums.Rating;
 import xrddev.practiceportal.model.internship_evaluations.CompanyInternshipEvaluation;
 import xrddev.practiceportal.model.internship_assigment.InternshipAssignment;
 
+@NoArgsConstructor
 @Data
-public class InternshipEvaluationCompanyDashboardDto {
+public class CompanyInternshipEvaluationDashboardDto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,17 +30,8 @@ public class InternshipEvaluationCompanyDashboardDto {
     @Enumerated(EnumType.STRING)
     private Rating efficiency;
 
-    @Enumerated(EnumType.STRING)
-    private OverallGrade overallGrade;
+    @Pattern(regexp = "^(10(\\.0+)?|[0-9](\\.\\d+)?)$", message = "Grade must be between 0 and 10")
+    private String overallGrade;
 
     private String comments;
-
-    public InternshipEvaluationCompanyDashboardDto(CompanyInternshipEvaluation companyInternshipEvaluation){
-        this.id = companyInternshipEvaluation.getId();
-        this.motivation = companyInternshipEvaluation.getMotivation();
-        this.effectiveness = companyInternshipEvaluation.getEffectiveness();
-        this.efficiency = companyInternshipEvaluation.getEfficiency();
-        this.overallGrade = companyInternshipEvaluation.getOverallGrade();
-        this.comments = companyInternshipEvaluation.getComments();
-    }
 }

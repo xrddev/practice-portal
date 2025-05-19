@@ -273,6 +273,19 @@
     </div>
 </div>
 
+<!-- Centered Red Button to Evaluate Experience -->
+<div style="width: 100%; margin: 30px 0; text-align: center;" th:if="${internship_assigment != null}">
+    <form th:action="@{/student/evaluation}" method="get">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <button type="submit"
+                style="background-color: #e60000; color: white; border: none; padding: 12px 24px; font-size: 1.1rem;
+                       border-radius: 8px; cursor: pointer; transition: background-color 0.3s;">
+            Evaluate your experience
+        </button>
+    </form>
+</div>
+
+
 
 <footer>
     &copy; 2025. Developed with ❤️ by

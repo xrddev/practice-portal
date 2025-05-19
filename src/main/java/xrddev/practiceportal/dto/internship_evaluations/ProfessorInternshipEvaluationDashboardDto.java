@@ -5,10 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import xrddev.practiceportal.model.enums.Rating;
 import xrddev.practiceportal.model.enums.OverallGrade;
+import xrddev.practiceportal.model.internship_evaluations.ProfessorInternshipEvaluation;
 
 @NoArgsConstructor
 @Data
-public class InternshipEvaluationProfessorDashboardDto {
+public class ProfessorInternshipEvaluationDashboardDto {
 
     @NotNull
     private Long positionId;
@@ -27,4 +28,5 @@ public class InternshipEvaluationProfessorDashboardDto {
 
     @Size(max = 500, message = "Comments can be up to 500 characters.")
     private String comments;
+
 }

@@ -1,6 +1,7 @@
 package xrddev.practiceportal.dto.intership_position;
 
 import lombok.Data;
+import xrddev.practiceportal.dto.company.CompanyDashboardDto;
 import xrddev.practiceportal.model.enums.Interests;
 import xrddev.practiceportal.model.enums.Skills;
 import xrddev.practiceportal.model.internship_position.InternshipPosition;
@@ -13,6 +14,7 @@ public class InternshipPositionDashboardDto {
 
     private Long id;
     private String title;
+    private CompanyDashboardDto company;
     private String description;
     private LocalDate startDate;
     private LocalDate endDate;
@@ -27,5 +29,6 @@ public class InternshipPositionDashboardDto {
         this.endDate = internshipPosition.getEndDate();
         this.skills = internshipPosition.getSkills();
         this.interests = internshipPosition.getInterests();
+        this.company = new CompanyDashboardDto(internshipPosition.getCompany());
     }
 }

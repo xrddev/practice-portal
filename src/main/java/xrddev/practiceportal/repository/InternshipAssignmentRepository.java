@@ -13,14 +13,16 @@ public interface InternshipAssignmentRepository extends JpaRepository<Internship
 
     List<InternshipAssignment> findAllByProfessorId(Long professorId);
 
-    Optional<InternshipAssignment> findByIdAndStudentId(Long id, Long studentId);
-
     Optional<InternshipAssignment> findByIdAndProfessorId(Long id, Long professorId);
 
     Optional<InternshipAssignment> findByStudentId(Long student_id);
 
     Optional<InternshipAssignment> findByStudentEmail(String email);
 
+    Optional<InternshipAssignment> findByPositionCompanyEmail(String email);
+
     List<InternshipAssignment> findAllByPositionCompanyEmail(String email);
+
+    Optional<InternshipAssignment> findByIdAndStudentIdAndPositionCompanyEmail(Long id, Long studentId, String companyEmail);
 
 }

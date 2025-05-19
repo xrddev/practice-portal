@@ -3,6 +3,7 @@ package xrddev.practiceportal.model.internship_assigment;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import xrddev.practiceportal.model.internship_evaluations.StudentInternshipEvaluation;
 import xrddev.practiceportal.model.enums.InternshipMatchingOptions;
 import xrddev.practiceportal.model.enums.ProfessorMatchingOptions;
 import xrddev.practiceportal.model.internship_evaluations.CompanyInternshipEvaluation;
@@ -45,9 +46,15 @@ public class InternshipAssignment {
     @Column(name = "professor_match_strategy", nullable = false, length = 20)
     private ProfessorMatchingOptions ProfessorMatchStrategy;
 
-    @OneToOne(mappedBy = "assignment", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "company_evaluation_id")
     private CompanyInternshipEvaluation companyEvaluation;
 
-    @OneToOne(mappedBy = "assignment", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "professor_evaluation_id")
     private ProfessorInternshipEvaluation professorEvaluation;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "student_evaluation_id")
+    private StudentInternshipEvaluation studentEvaluation;
 }
