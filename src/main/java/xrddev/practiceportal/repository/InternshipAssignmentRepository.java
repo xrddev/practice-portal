@@ -1,5 +1,6 @@
 package xrddev.practiceportal.repository;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import xrddev.practiceportal.model.internship_assigment.InternshipAssignment;
 
@@ -25,4 +26,7 @@ public interface InternshipAssignmentRepository extends JpaRepository<Internship
 
     Optional<InternshipAssignment> findByIdAndStudentIdAndPositionCompanyEmail(Long id, Long studentId, String companyEmail);
 
+    Optional<InternshipAssignment> findByIdAndStudentIdAndProfessorEmail(Long id, Long studentId, String professorEmail);
+
+    List<InternshipAssignment> findAllByProfessorEmail(String email);
 }

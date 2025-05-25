@@ -17,6 +17,16 @@ public class ProfessorDashboardDto {
     private List<Interests> interests;
 
     public ProfessorDashboardDto(Professor professor) {
+        if (professor == null) {
+            this.id = 0L;
+            this.firstName = null;
+            this.lastName = null;
+            this.email = null;
+            this.department = null;
+            this.interests = null;
+            return;
+        }//for testing
+
         this.id = professor.getId();
         this.firstName = professor.getFirstName();
         this.lastName = professor.getLastName();

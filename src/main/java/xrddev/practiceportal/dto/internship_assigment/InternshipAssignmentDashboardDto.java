@@ -1,6 +1,7 @@
 package xrddev.practiceportal.dto.internship_assigment;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import xrddev.practiceportal.dto.intership_position.InternshipPositionDashboardDto;
 import xrddev.practiceportal.dto.professor.ProfessorDashboardDto;
 import xrddev.practiceportal.dto.student.StudentDashboardDto;
@@ -12,6 +13,7 @@ import xrddev.practiceportal.model.enums.ProfessorMatchingOptions;
 import xrddev.practiceportal.model.internship_assigment.InternshipAssignment;
 
 @Data
+@NoArgsConstructor
 public class InternshipAssignmentDashboardDto {
 
     private Long id;

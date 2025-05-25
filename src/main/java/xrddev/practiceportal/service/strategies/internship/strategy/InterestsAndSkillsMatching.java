@@ -16,10 +16,6 @@ import java.util.*;
 @Service
 @RequiredArgsConstructor
 public class InterestsAndSkillsMatching implements InternshipAssigmentStrategy {
-
-    private final StudentService studentService;
-    private final InternshipPositionService positionService;
-
     private static final double MIN_JACCARD_THRESHOLD = 0.3;
 
     @Override

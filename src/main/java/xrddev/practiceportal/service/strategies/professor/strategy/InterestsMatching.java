@@ -29,14 +29,11 @@ public class InterestsMatching implements ProfessorMatchingStrategy {
         List<InternshipAssignment> compatibleAssignments = new ArrayList<>();
 
         for (InternshipAssignment assignment : internshipAssignments) {
-            Iterator<Professor> iterator = professors.iterator();
-            while (iterator.hasNext()) {
-                Professor professor = iterator.next();
+            for (Professor professor : professors) {
                 if (isCompatible(professor, assignment)) {
                     assignment.setProfessor(professor);
                     assignment.setProfessorMatchStrategy(ProfessorMatchingOptions.INTERESTS);
                     compatibleAssignments.add(assignment);
-                    iterator.remove();
                     break;
                 }
             }

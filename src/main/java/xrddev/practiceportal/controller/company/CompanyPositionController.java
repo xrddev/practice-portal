@@ -21,12 +21,6 @@ public class CompanyPositionController {
     private final InternshipPositionService internshipPositionService;
 
 
-    /*
-     * Displays the form for creating a new internship position.
-     *
-     * @param model the Model object to add attributes
-     * @return the view name for the creation form
-     */
     @GetMapping("/new-position")
     public String showCreateForm(Model model) {
         model.addAttribute("position", new InternshipPositionCreateDto());
@@ -34,15 +28,6 @@ public class CompanyPositionController {
     }
 
 
-
-    /**
-     * Handles the submission of a new internship position form.
-     *
-     * @param positionDto   the DTO containing the position data
-     * @param bindingResult contains the validation results
-     * @param principal     the currently authenticated user
-     * @return redirect to the dashboard on success or back to form on validation errors
-     */
     @PostMapping("/new-position")
     public String handleCreateForm(
             @Valid @ModelAttribute("position") InternshipPositionCreateDto positionDto,
@@ -58,13 +43,6 @@ public class CompanyPositionController {
 
 
 
-    /**
-     * Deletes an internship position by its ID.
-     *
-     * @param id        the ID of the position to delete
-     * @param principal the currently authenticated user
-     * @return redirect to dashboard after deletion
-     */
     @PostMapping("/positions/delete/{id}")
     public String deletePosition(@PathVariable Long id, Principal principal) {
         internshipPositionService.deleteByIdAndCompanyEmail(id, principal.getName());
@@ -73,14 +51,6 @@ public class CompanyPositionController {
 
 
 
-    /**
-     * Displays the form for editing an existing internship position.
-     *
-     * @param id        the ID of the position to edit
-     * @param model     the Model object to add attributes
-     * @param principal the currently authenticated user
-     * @return the view name for the edit form
-     */
     @GetMapping("/positions/edit/{id}")
     public String showEditForm(@PathVariable Long id, Model model, Principal principal) {
         model.addAttribute("position", internshipPositionService.getByIdAndCompanyEmailMappedToEditDto(id, principal.getName()));
@@ -88,15 +58,6 @@ public class CompanyPositionController {
     }
 
 
-
-    /**
-     * Handles the submission of an edited internship position form.
-     *
-     * @param dto           the DTO containing the updated position data
-     * @param bindingResult contains the validation results
-     * @param principal     the currently authenticated user
-     * @return redirect to the dashboard on success or back to form on validation errors
-     */
     @PostMapping("/positions/edit")
     public String handleEditForm(
             @Valid @ModelAttribute("position") InternshipPositionEditDto dto,

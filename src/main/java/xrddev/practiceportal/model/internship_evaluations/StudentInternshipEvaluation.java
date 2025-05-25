@@ -7,10 +7,9 @@ import xrddev.practiceportal.model.internship_assigment.InternshipAssignment;
 
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class StudentInternshipEvaluation {
 
     @Id

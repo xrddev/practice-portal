@@ -17,8 +17,7 @@ public class ProfessorInternshipEvaluation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "assignment_id", nullable = false, unique = true)
+    @OneToOne(mappedBy = "professorEvaluation")
     private InternshipAssignment assignment;
 
     @Enumerated(EnumType.STRING)
@@ -30,8 +29,7 @@ public class ProfessorInternshipEvaluation {
     @Enumerated(EnumType.STRING)
     private Rating efficiency;
 
-    @Enumerated(EnumType.STRING)
-    private OverallGrade overallGrade;
+    private String overallGrade;
 
     private String comments;
 }

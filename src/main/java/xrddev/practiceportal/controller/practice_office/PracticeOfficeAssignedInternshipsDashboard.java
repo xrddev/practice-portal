@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import xrddev.practiceportal.dto.internship_evaluations.CombinedInternshipEvaluationDashboardDto;
+import xrddev.practiceportal.model.internship_assigment.InternshipAssignment;
 import xrddev.practiceportal.service.internship_assigment.InternshipAssignmentService;
 
 @Controller
@@ -22,4 +24,13 @@ public class PracticeOfficeAssignedInternshipsDashboard {
         model.addAttribute("matchedAssignments", internshipAssignmentService.getAllMappedToDashboardDto());
         return "practice_office/assigned_internships/dashboard";
     }
+
+    @GetMapping("/evaluations/{assignmentId}")
+    public String viewEvaluationsForAssignment(@PathVariable Long assignmentId, Model model) {
+        CombinedInternshipEvaluationDashboardDto evaluationsDto = internshipAssignmentService.getCombinedEvaluation(assignmentId);
+        model.addAttribute("evaluations", evaluationsDto);
+        return "practice_office/assigned_internships/evaluations";
+    }
+
+
 }

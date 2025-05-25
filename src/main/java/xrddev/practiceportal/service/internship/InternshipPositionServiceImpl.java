@@ -21,6 +21,7 @@ public class InternshipPositionServiceImpl implements InternshipPositionService 
     private final InternshipPositionRepository internshipPositionRepository;
     private final CompanyService companyService;
 
+
     @Override
     @Transactional
     public void createPosition(InternshipPositionCreateDto dto, String email) {

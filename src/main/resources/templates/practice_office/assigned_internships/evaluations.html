@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Internship Evaluations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Ubuntu Mono', monospace;
+            background: linear-gradient(135deg, #0073e6, #00b3b3);
+            color: white;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffcc33;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .evaluation-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            width: 100%;
+            max-width: 1400px;
+            flex-wrap: wrap;
+        }
+
+        .evaluation-box {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .evaluation-box h2 {
+            color: #ffcc33;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .evaluation-box p {
+            margin: 8px 0;
+            font-size: 1rem;
+        }
+
+        .not-available {
+            font-style: italic;
+            color: #ccc;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.8);
+            width: 100%;
+            background: rgba(0,0,0,0.3);
+            padding: 10px 0;
+        }
+
+        a {
+            color: #ffcc33;
+            text-decoration: none;
+        }
+
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: 'Ubuntu Mono', monospace;
+            background: linear-gradient(135deg, #0073e6, #00b3b3);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<div style="flex: 1; display: flex; flex-direction: column; align-items: center; width: 100%;">
+    <h1>Internship Evaluations</h1>
+
+    <div class="evaluation-container">
+        <!-- Company -->
+        <div class="evaluation-box">
+            <h2>Company Evaluation</h2>
+            <div th:if="${evaluations.companyEvaluation != null}">
+                <p><strong>Motivation:</strong> <span th:text="${evaluations.companyEvaluation.motivation}">4</span></p>
+                <p><strong>Effectiveness:</strong> <span th:text="${evaluations.companyEvaluation.effectiveness}">5</span></p>
+                <p><strong>Efficiency:</strong> <span th:text="${evaluations.companyEvaluation.efficiency}">4</span></p>
+                <p><strong>Overall Grade:</strong> <span th:text="${evaluations.companyEvaluation.overallGrade}">8</span></p>
+                <p><strong>Comments:</strong> <span th:text="${evaluations.companyEvaluation.comments}">Great job!</span></p>
+            </div>
+            <div th:if="${evaluations.companyEvaluation == null}" class="not-available">
+                Evaluation hasn't been submitted yet.
+            </div>
+        </div>
+
+
+        <!-- Professor -->
+        <div class="evaluation-box">
+            <h2>Professor Evaluation</h2>
+            <div th:if="${evaluations.professorEvaluation != null}">
+                <p><strong>Motivation:</strong> <span th:text="${evaluations.professorEvaluation.motivation}">5</span></p>
+                <p><strong>Effectiveness:</strong> <span th:text="${evaluations.professorEvaluation.effectiveness}">4</span></p>
+                <p><strong>Efficiency:</strong> <span th:text="${evaluations.professorEvaluation.efficiency}">4</span></p>
+                <p><strong>Overall Grade:</strong> <span th:text="${evaluations.professorEvaluation.overallGrade}">9</span></p>
+                <p><strong>Comments:</strong> <span th:text="${evaluations.professorEvaluation.comments}">Excellent progress.</span></p>
+            </div>
+            <div th:if="${evaluations.professorEvaluation == null}" class="not-available">
+                Evaluation hasn't been submitted yet.
+            </div>
+        </div>
+
+
+        <div class="evaluation-box">
+            <h2>Student Evaluation</h2>
+            <div th:if="${evaluations.studentEvaluation != null}">
+                <p><strong>Rating:</strong> <span th:text="${evaluations.studentEvaluation.rating}">5</span></p>
+                <p><strong>Comments:</strong> <span th:text="${evaluations.studentEvaluation.comment}">Amazing internship.</span></p>
+            </div>
+            <div th:if="${evaluations.studentEvaluation == null}" class="not-available">
+                Evaluation hasn't been submitted yet.
+            </div>
+        </div>
+
+
+        <!-- Back to Dashboard Button -->
+        <div style="margin-top: 40px; text-align: center;">
+            <form th:action="@{/practice-office/assigned-internships/dashboard}" method="get">
+                <button type="submit"
+                        style="background-color: #33cc33; color: white; border: none;
+                       border-radius: 8px; padding: 12px 24px;
+                       font-size: 1.1rem; font-family: 'Ubuntu Mono', monospace;
+                       cursor: pointer; transition: background-color 0.3s;">
+                    ← Back to Dashboard
+                </button>
+            </form>
+
+
+        <!-- Info Message Box -->
+        <div style="margin-top: 30px; background-color: rgba(255,255,255,0.1); padding: 16px 24px; border-radius: 10px;
+            color: #ffcc33; font-size: 1rem; max-width: 800px; text-align: center; border: 1px solid rgba(255,255,255,0.3);">
+            <strong>Note:</strong> If some fields are missing, it means that the corresponding evaluation has not been submitted yet.
+        </div>
+
+
+    </div>
+
+</div>
+
+
+</body>
+
+<footer>
+    &copy; 2025. Developed with ❤️ by <a href="https://github.com/xrddev" target="_blank">xrddev</a>.
+</footer>
+
+
+</html>

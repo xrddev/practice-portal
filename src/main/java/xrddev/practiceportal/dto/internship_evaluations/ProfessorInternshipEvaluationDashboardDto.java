@@ -23,10 +23,20 @@ public class ProfessorInternshipEvaluationDashboardDto {
     @NotNull(message = "Efficiency rating is required.")
     private Rating efficiency;
 
-    @NotNull(message = "Overall grade is required.")
-    private OverallGrade overallGrade;
+    @Pattern(regexp = "^(10(\\.0+)?|[0-9](\\.\\d+)?)$", message = "Grade must be between 0 and 10")
+    private String overallGrade;
 
     @Size(max = 500, message = "Comments can be up to 500 characters.")
     private String comments;
+
+    public ProfessorInternshipEvaluationDashboardDto(ProfessorInternshipEvaluation evaluation) {
+        if(evaluation == null) return;
+        this.positionId = evaluation.getId();
+        this.motivation = evaluation.getMotivation();
+        this.effectiveness = evaluation.getEffectiveness();
+        this.efficiency = evaluation.getEfficiency();
+        this.overallGrade = evaluation.getOverallGrade();
+        this.comments = evaluation.getComments();
+    }
 
 }

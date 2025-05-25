@@ -22,6 +22,18 @@ public class InternshipPositionDashboardDto {
     private List<Interests> interests;
 
     public InternshipPositionDashboardDto(InternshipPosition internshipPosition){
+        if (internshipPosition == null) {
+            this.id = null;
+            this.title = null;
+            this.description = null;
+            this.startDate = null;
+            this.endDate = null;
+            this.skills = null;
+            this.interests = null;
+            this.company = null;
+            return;
+        }//for testing
+
         this.id = internshipPosition.getId();
         this.title = internshipPosition.getTitle();
         this.description = internshipPosition.getDescription();

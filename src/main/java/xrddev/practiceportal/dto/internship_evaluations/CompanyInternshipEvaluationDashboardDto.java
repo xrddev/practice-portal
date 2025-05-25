@@ -34,4 +34,13 @@ public class CompanyInternshipEvaluationDashboardDto {
     private String overallGrade;
 
     private String comments;
+
+    public CompanyInternshipEvaluationDashboardDto(CompanyInternshipEvaluation evaluation) {
+        if(evaluation == null) return;
+        this.motivation = evaluation.getMotivation();
+        this.effectiveness = evaluation.getEffectiveness();
+        this.efficiency = evaluation.getEfficiency();
+        this.overallGrade = evaluation.getOverallGrade();
+        this.comments = evaluation.getComments();
+    }
 }

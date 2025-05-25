@@ -38,8 +38,9 @@ public class CompanyDashboardController {
                                      @RequestParam Long studentId,
                                      Principal principal,
                                      Model model) {
+
         model.addAttribute("assignment",
-                internshipAssignmentService.getByAssigmentIDAndStudentIDMappedToDashboardDto(assignmentId, studentId, principal.getName()));
+                internshipAssignmentService.getByAssigmentIDAndStudentIDAndPositionCompanyEmailMappedToDashboardDto(assignmentId, studentId, principal.getName()));
         model.addAttribute("evaluation", new CompanyInternshipEvaluationDashboardDto());
         return "company/evaluation";
     }

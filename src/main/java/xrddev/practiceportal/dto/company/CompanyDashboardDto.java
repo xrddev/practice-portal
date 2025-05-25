@@ -17,6 +17,18 @@ public class CompanyDashboardDto {
     private String internshipCoordinatorEmail;
 
     public CompanyDashboardDto(Company company) {
+        if (company == null) {
+            this.id = 0L;
+            this.companyName = null;
+            this.email = null;
+            this.address = null;
+            this.phone = null;
+            this.website = null;
+            this.internshipCoordinator = null;
+            this.internshipCoordinatorEmail = null;
+            return;
+        }//For testing
+
         this.id = company.getId();
         this.companyName = company.getCompanyName();
         this.email = company.getEmail();
