@@ -30,14 +30,11 @@ class InternshipAssignmentServiceImplTest {
     @Mock
     private InternshipAssignmentRepository assignmentRepository;
 
-    @Mock
-    private StudentInternshipEvaluationRepository studentEvalRepository;
-
     private InternshipAssignmentServiceImpl service;
 
     @BeforeEach
     void setUp() {
-        service = new InternshipAssignmentServiceImpl(assignmentRepository, studentEvalRepository);
+        service = new InternshipAssignmentServiceImpl(assignmentRepository);
     }
 
     @Test

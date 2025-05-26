@@ -1,0 +1,116 @@
+@startuml
+
+package "xrddev.practiceportal" {
+package config {
+}
+
+package controller {
+  package api_manual_post {
+  }
+  package company {
+  }
+  package error {
+  }
+  package practice_office {
+  }
+  package professor {
+  }
+  package registration {
+  }
+  package student {
+  }
+}
+
+package dto {
+  package company {
+  }
+  package internship_assignment {
+  }
+  package internship_evaluations {
+  }
+  package internship_position {
+  }
+  package practice_office {
+  }
+  package professor {
+  }
+  package student {
+  }
+  package user {
+  }
+}
+
+package model {
+  package announcement {
+  }
+  package company {
+  }
+  package enums {
+  }
+  package internship_assignment {
+  }
+  package internship_evaluations {
+  }
+  package internship_position {
+  }
+  package period {
+  }
+  package practice_office {
+  }
+  package professor {
+  }
+  package student {
+  }
+}
+
+package repository {
+}
+
+
+package service {
+  package announcement {
+  }
+  package company {
+  }
+  package internship {
+  }
+  package internship_assignment {
+  }
+  package periods {
+  }
+  package practice_office {
+  }
+  package professor {
+  }
+
+  package strategies {
+    package internship {
+      package strategy {
+      }
+    }
+    package professor {
+      package strategy {
+      }
+    }
+
+
+  package student {
+  }
+  package user_service {
+  }
+}
+
+
+
+controller --> service
+controller --> dto
+
+service --> repository
+service --> model
+service --> dto
+
+repository --> model
+
+}
+@enduml
+

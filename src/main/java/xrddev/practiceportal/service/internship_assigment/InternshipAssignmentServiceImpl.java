@@ -22,7 +22,6 @@ import java.util.List;
 public class InternshipAssignmentServiceImpl implements InternshipAssignmentService {
 
     private final InternshipAssignmentRepository internshipAssignmentRepository;
-    private final StudentInternshipEvaluationRepository studentEvaluationRepository;
 
 
     @Override
