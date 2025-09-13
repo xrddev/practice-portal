@@ -34,7 +34,7 @@ public class InternshipAssignmentServiceImpl implements InternshipAssignmentServ
         return internshipAssignmentRepository
                 .findByStudentEmail(email)
                 .map(InternshipAssignmentDashboardDto::new)
-                .orElse(null); // ➤ Διορθωμένο
+                .orElse(null);
     }
 
 

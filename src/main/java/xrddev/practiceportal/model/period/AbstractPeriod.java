@@ -38,17 +38,15 @@ public abstract class AbstractPeriod {
         };
     }
 
-    /** Κλείνει χειροκίνητα την περίοδο (ορίζει CLOSED). */
+
     public void closePeriodManually() {
         this.statusMode = PeriodStatus.CLOSED;
     }
 
-    /** Ανοίγει χειροκίνητα την περίοδο (ορίζει OPEN). */
     public void openPeriodManually() {
         this.statusMode = PeriodStatus.OPEN;
     }
 
-    /** Επαναφέρει την αυτόματη λειτουργία (AUTOMATIC). */
     public void setPeriodAutomatic() {
         this.statusMode = PeriodStatus.AUTOMATIC;
     }

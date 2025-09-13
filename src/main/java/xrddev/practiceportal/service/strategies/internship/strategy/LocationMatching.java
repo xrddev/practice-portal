@@ -6,8 +6,6 @@ import xrddev.practiceportal.model.enums.InternshipMatchingOptions;
 import xrddev.practiceportal.model.internship_assigment.InternshipAssignment;
 import xrddev.practiceportal.model.internship_position.InternshipPosition;
 import xrddev.practiceportal.model.student.Student;
-import xrddev.practiceportal.service.internship.InternshipPositionService;
-import xrddev.practiceportal.service.student.StudentService;
 
 import java.time.LocalDate;
 import java.util.*;

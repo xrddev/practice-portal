@@ -25,10 +25,20 @@ public class CombinedMatching implements InternshipAssigmentStrategy {
     @Override
     public List<InternshipAssignment> match(List<Student> students, List<InternshipPosition> positions) {
         List<InternshipAssignment> interestsAndSkillsMatched = interestsAndSkillsMatching.match(students, positions);
+        List<InternshipAssignment> locationMatched = locationMatching.match(students, positions);
 
-        List<Student> filteredStudents = interestsAndSkillsMatched.stream().map(InternshipAssignment::getStudent).toList();
-        List<InternshipPosition> filteredPositions = interestsAndSkillsMatched.stream().map(InternshipAssignment::getPosition).toList();
 
-        return locationMatching.match(filteredStudents, filteredPositions);
+        List<InternshipAssignment> combined = new ArrayList<>();
+
+        for(InternshipAssignment assignment1 : interestsAndSkillsMatched){
+            for(InternshipAssignment assignment2 : locationMatched){
+                if(Objects.equals(assignment1.getStudent().getId(), assignment2.getStudent().getId())
+                    && Objects.equals(assignment1.getPosition().getId(), assignment2.getPosition().getId())){
+                    assignment1.setStudentMatchStrategy(InternshipMatchingOptions.COMBINED);
+                    combined.add(assignment1);
+                }
+            }
+        }
+        return combined;
     }
 }

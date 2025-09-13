@@ -32,7 +32,7 @@ public class AdminDataInitializer {
 
         if (emails.size() != pws.size()) {
             throw new IllegalArgumentException(
-                "app.admin.emails και app.admin.passwords πρέπει να έχουν ίδιο πλήθος στοιχείων");
+                "app.admin.emails and app.admin.passwords should have same length");
         }
 
         return args -> {

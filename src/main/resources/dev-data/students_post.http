@@ -15,10 +15,10 @@ Accept: application/json
     "averageGrade": 7.57,
     "skills": [
       "STATISTICAL_ANALYSIS",
-      "CRITICAL_THINKING"
+      "CRITICAL_THINKING", "ACCOUNTING"
     ],
     "interests": [
-      "DATA_SCIENCE"
+      "DATA_SCIENCE", "ART_STUDIES"
     ],
     "preferredLocation": "IOANNINA"
   },
@@ -177,11 +177,11 @@ Accept: application/json
     "averageGrade": 8.31,
     "skills": [
       "COMMUNICATION",
-      "CRITICAL_THINKING"
+      "CRITICAL_THINKING","ACCOUNTING"
     ],
     "interests": [
       "EDUCATION_SCIENCES",
-      "PSYCHOLOGY"
+      "PSYCHOLOGY","ART_STUDIES"
     ],
     "preferredLocation": "IOANNINA"
   },
@@ -341,11 +341,11 @@ Accept: application/json
     "yearOfStudy": 5,
     "averageGrade": 7.66,
     "skills": [
-      "ARTISTIC_SKILLS"
+      "ARTISTIC_SKILLS", "ACCOUNTING"
     ],
     "interests": [
       "ART_STUDIES",
-      "MUSIC_STUDIES"
+      "MUSIC_STUDIES","ART_STUDIES"
     ],
     "preferredLocation": "IOANNINA"
   },
@@ -466,11 +466,11 @@ Accept: application/json
     "averageGrade": 5.3,
     "skills": [
       "ETHICS_AND_DEONTOLOGY",
-      "CRITICAL_THINKING"
+      "CRITICAL_THINKING","ACCOUNTING"
     ],
     "interests": [
       "HISTORY",
-      "PHILOSOPHY"
+      "PHILOSOPHY","ART_STUDIES"
     ],
     "preferredLocation": "IOANNINA"
   },
@@ -774,11 +774,11 @@ Accept: application/json
     "averageGrade": 6.87,
     "skills": [
       "PROGRAMMING",
-      "WEB_DEVELOPMENT"
+      "WEB_DEVELOPMENT","ACCOUNTING"
     ],
     "interests": [
       "SOFTWARE_ENGINEERING",
-      "COMPUTER_SCIENCE"
+      "COMPUTER_SCIENCE","ART_STUDIES"
     ],
     "preferredLocation": "IOANNINA"
   },

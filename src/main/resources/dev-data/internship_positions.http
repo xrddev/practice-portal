@@ -657,13 +657,15 @@ Content-Type: application/json
     "endDate": "2025-11-20",
     "skills": [
       "NETWORK_CONFIGURATION",
-      "DATABASE_MANAGEMENT"
+      "DATABASE_MANAGEMENT",
+      "ACCOUNTING"
     ],
     "interests": [
       "NETWORKS",
       "GRAPHIC_ARTS",
       "ARTIFICIAL_INTELLIGENCE",
-      "SOFTWARE_ENGINEERING"
+      "SOFTWARE_ENGINEERING",
+      "ART_STUDIES"
     ]
   },
   {

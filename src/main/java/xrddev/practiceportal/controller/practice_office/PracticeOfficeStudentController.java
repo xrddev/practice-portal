@@ -26,9 +26,8 @@ public class PracticeOfficeStudentController {
     }
 
     @PostMapping("/delete/{id}")
-    public String deleteStudent(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+    public String deleteStudent(@PathVariable Long id) {
         studentService.deleteById(id);
-        redirectAttributes.addFlashAttribute("studentDeleted", true);
         return "redirect:/practice-office/students/dashboard";
     }
 }
