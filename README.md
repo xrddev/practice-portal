@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This repository contains the source code and files for the **Practice Portal**, a full-stack Spring Boot system designed to manage the University's mandatory student internship program. The application implements **Role-Based Access Control (RBAC)** and advanced **Strategy Pattern** for dynamic student/professor matching. The screenshots below provide a quick visual tour of the key functional areas.
+This repository contains the source code and files for the **Practice Portal**, a full-stack Spring Boot system designed to manage the University's mandatory student internship program. The application implements **Role-Based Access Control (RBAC)** and advanced **Strategy Pattern** for dynamic student/Company/professor matching. The screenshots below provide a quick visual tour of the key functional areas.
 
 ---
 
