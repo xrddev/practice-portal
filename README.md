@@ -6,6 +6,56 @@ This repository contains the source code and files for the **Practice Portal**, 
 
 ---
 
+## How to Run
+
+### Requirements
+
+- Java 21 (Oracle JDK or OpenJDK)
+- Apache Maven 3.9+
+- MySQL Server (if using the MySQL profile)
+
+## Linux
+
+### (Optional) Reset Database, Build and Run
+
+```bash
+# (Optional) Reset database (Flyway clean + migrate)
+./database_clean.sh
+
+# Build project
+mvn clean install
+
+# Run application
+mvn spring-boot:run
+```
+
+## Windows
+
+### (Optional) Reset Database, Build and Run
+
+```powershell
+# (Optional) Reset database (Flyway clean + migrate)
+.\database_clean_windows.ps1
+
+# Build project
+mvn clean install
+
+# Run application
+mvn spring-boot:run
+```
+
+### Aplication URL: http://localhost:8080/
+
+---
+## Development Data (Manual HTTP Requests)
+Sample HTTP request files are available under: src/main/resources/dev-data
+These `.http` files contain ready-to-use POST requests that can be executed using any HTTP client (e.g., Postman, curl, or similar tools).
+
+They are intended for development and testing purposes, allowing you to manually populate the database with sample data and verify that the application and API endpoints are functioning as expected.
+
+
+---
+
 ## Visual Walkthrough (Screenshots)
 
 ### ******************
